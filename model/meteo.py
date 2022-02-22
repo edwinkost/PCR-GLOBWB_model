@@ -676,8 +676,11 @@ class Meteo(object):
             self.referencePotET = pcr.windowaverage(self.referencePotET, self.smoothingWindowsLength)
         
         # rounding temperature values to minimize numerical errors (note only to minimize, not remove)
-        pcr.aguila(self.temperature)
-        self.temperature   = pcr.roundoff(self.temperature*1000.)/1000. 
+        # ~ pcr.aguila(self.temperature)
+        try:
+            self.temperature   = pcr.roundoff(self.temperature*1000.)/1000. 
+        except:
+            pass 
         
         # ignore snow by setting temperature to 25 deg C
         if self.ignore_snow: self.temperature = pcr.spatial(pcr.scalar(25.))
