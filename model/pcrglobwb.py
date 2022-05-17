@@ -488,17 +488,17 @@ class PCRGlobWB(object):
         if self._configuration.online_coupling_between_pcrglobwb_and_modflow:
             self.calculateAndDumpMonthlyValuesForMODFLOW(self._configuration.mapsDir)
         
-        if (report_water_balance):
-            landWaterStoresAtEnd    = self.totalLandWaterStores()          # not including surface water bodies
-            surfaceWaterStoresAtEnd = self.totalSurfaceWaterStores()     
+        #~ if (report_water_balance):
+            #~ landWaterStoresAtEnd    = self.totalLandWaterStores()          # not including surface water bodies
+            #~ surfaceWaterStoresAtEnd = self.totalSurfaceWaterStores()     
             
-            # water balance check for the land surface water part
-            self.checkLandSurfaceWaterBalance(landWaterStoresAtBeginning, landWaterStoresAtEnd)
+            #~ # water balance check for the land surface water part
+            #~ self.checkLandSurfaceWaterBalance(landWaterStoresAtBeginning, landWaterStoresAtEnd)
             
-            # TODO: include water balance checks for the surface water part and combination of both land surface and surface water parts
+            #~ # TODO: include water balance checks for the surface water part and combination of both land surface and surface water parts
 
-            self.report_summary(landWaterStoresAtBeginning, landWaterStoresAtEnd,\
-                                surfaceWaterStoresAtBeginning, surfaceWaterStoresAtEnd)
+            #~ self.report_summary(landWaterStoresAtBeginning, landWaterStoresAtEnd,\
+                                #~ surfaceWaterStoresAtBeginning, surfaceWaterStoresAtEnd)
 
         if self._modelTime.isLastDayOfMonth():
             # make an empty file to indicate that the calculation for this month has done
