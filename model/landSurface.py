@@ -646,7 +646,6 @@ class LandSurface(object):
                                     self.cloneMap,self.tmpDir,self.inputDir)
 
         extrapolate = True
-
         extrapolate = False
         if "noParameterExtrapolation" in iniItems.landSurfaceOptions.keys() and iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
@@ -695,6 +694,7 @@ class LandSurface(object):
             self.allocSegments = pcr.clump(self.allocSegments)
             
             extrapolate = True
+            extrapolate = False
             if "noParameterExtrapolation" in iniItems.landSurfaceOptions.keys() and iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
             if extrapolate:
@@ -743,6 +743,7 @@ class LandSurface(object):
             if not coverType.startswith('irr'):
 
                 extrapolate = True
+                extrapolate = False
                 if "noParameterExtrapolation" in self.iniItems.landSurfaceOptions.keys() and self.iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
                 if extrapolate:

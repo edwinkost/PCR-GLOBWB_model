@@ -153,6 +153,7 @@ class SoilAndTopoParameters(object):
                 if var == "percolationImp": vars(self)[var] = pcr.cover(vars(self)[var], 0.0)
 
                 extrapolate = True
+                extrapolate = False
                 if "noParameterExtrapolation" in iniItems.landSurfaceOptions.keys() and iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
                 if extrapolate:
@@ -222,6 +223,7 @@ class SoilAndTopoParameters(object):
                                             self.tmpDir,self.inputDir)
 
                 extrapolate = True
+                extrapolate = False
                 if "noParameterExtrapolation" in iniItems.landSurfaceOptions.keys() and iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
                 if extrapolate:
@@ -254,6 +256,7 @@ class SoilAndTopoParameters(object):
                                      cloneMapFileName = self.cloneMap)
 
                 extrapolate = True
+                extrapolate = False
                 if "noParameterExtrapolation" in iniItems.landSurfaceOptions.keys() and iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
                 if extrapolate:
