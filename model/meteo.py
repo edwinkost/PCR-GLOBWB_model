@@ -692,34 +692,34 @@ class Meteo(object):
         self.referencePotET = pcr.ifthen(self.landmask, self.referencePotET)
         
         
-        # updata average long term values
-        # - avgAnnualPrecipitation   
-        # - avgAnnualTemperature             
-        # - avgAnnualDiurnalDeltaTemp
+        #~ # updata average long term values
+        #~ # - avgAnnualPrecipitation   
+        #~ # - avgAnnualTemperature             
+        #~ # - avgAnnualDiurnalDeltaTemp
 
-        # avgAnnualPrecipitation
-        deltaAnnualPrecipitation    = self.precipitation - self.avgAnnualPrecipitation
-        self.avgAnnualPrecipitation = self.avgAnnualPrecipitation +\
-                                         deltaAnnualPrecipitation/\
-                                      pcr.min(365., pcr.max(1.0, routing.timestepsToAvgDischarge))
-        self.avgAnnualPrecipitation = pcr.max(0.0, self.avgAnnualPrecipitation)
+        #~ # avgAnnualPrecipitation
+        #~ deltaAnnualPrecipitation    = self.precipitation - self.avgAnnualPrecipitation
+        #~ self.avgAnnualPrecipitation = self.avgAnnualPrecipitation +\
+                                         #~ deltaAnnualPrecipitation/\
+                                      #~ pcr.min(365., pcr.max(1.0, routing.timestepsToAvgDischarge))
+        #~ self.avgAnnualPrecipitation = pcr.max(0.0, self.avgAnnualPrecipitation)
 
-        # avgAnnualTemperature
-        deltaAnnualTemperature    = self.temperature - self.avgAnnualTemperature
-        self.avgAnnualTemperature = self.avgAnnualTemperature +\
-                                       deltaAnnualTemperature/\
-                                    pcr.min(365., pcr.max(1.0, routing.timestepsToAvgDischarge))
+        #~ # avgAnnualTemperature
+        #~ deltaAnnualTemperature    = self.temperature - self.avgAnnualTemperature
+        #~ self.avgAnnualTemperature = self.avgAnnualTemperature +\
+                                       #~ deltaAnnualTemperature/\
+                                    #~ pcr.min(365., pcr.max(1.0, routing.timestepsToAvgDischarge))
 
-        # avgAnnualDiurnalDeltaTemp
-        if self.air_temperature_max is not None or self.air_temperature_min is not None:
-            diurnalDeltaTemp           = pcr.max(0.0, self.air_temperature_max - self.air_temperature_min)
-        else:
-            diurnalDeltaTemp           = pcr.ifthen(pcr.pcrnot(self.landmask), pcr.scalar(0.0))
-        deltaAnnualDiurnalDeltaTemp    = diurnalDeltaTemp - self.avgAnnualDiurnalDeltaTemp
-        self.avgAnnualDiurnalDeltaTemp = self.avgAnnualDiurnalDeltaTemp +\
-                                            deltaAnnualDiurnalDeltaTemp/\
-                                         pcr.min(365., pcr.max(1.0, routing.timestepsToAvgDischarge))
-        self.avgAnnualDiurnalDeltaTemp = pcr.max(0.0, self.avgAnnualDiurnalDeltaTemp)
+        #~ # avgAnnualDiurnalDeltaTemp
+        #~ if self.air_temperature_max is not None or self.air_temperature_min is not None:
+            #~ diurnalDeltaTemp           = pcr.max(0.0, self.air_temperature_max - self.air_temperature_min)
+        #~ else:
+            #~ diurnalDeltaTemp           = pcr.ifthen(pcr.pcrnot(self.landmask), pcr.scalar(0.0))
+        #~ deltaAnnualDiurnalDeltaTemp    = diurnalDeltaTemp - self.avgAnnualDiurnalDeltaTemp
+        #~ self.avgAnnualDiurnalDeltaTemp = self.avgAnnualDiurnalDeltaTemp +\
+                                            #~ deltaAnnualDiurnalDeltaTemp/\
+                                         #~ pcr.min(365., pcr.max(1.0, routing.timestepsToAvgDischarge))
+        #~ self.avgAnnualDiurnalDeltaTemp = pcr.max(0.0, self.avgAnnualDiurnalDeltaTemp)
 
 
         if self.report == True:
