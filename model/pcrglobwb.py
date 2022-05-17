@@ -474,7 +474,7 @@ class PCRGlobWB(object):
 
         #~ self.landSurface.update(self.meteo, self.groundwater, self.routing, self._modelTime)      
 
-        self.landSurface.update(self.meteo, None, None, self._modelTime)      
+        #~ self.landSurface.update(self.meteo, None, None, self._modelTime)      
 
         #~ self.groundwater.update(self.landSurface, self.routing, self._modelTime)
         #~ self.routing.update(self.landSurface, self.groundwater, self._modelTime, self.meteo)
