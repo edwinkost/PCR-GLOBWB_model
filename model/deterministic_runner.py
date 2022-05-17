@@ -61,7 +61,7 @@ class DeterministicRunner(DynamicModel):
         # update model (will pick up current model time from model time object)
         
         self.model.read_forcings()
-        #~ self.model.update(report_water_balance=True)
+        self.model.update(report_water_balance=True)
         
 
         # do any needed reporting for this time step        

@@ -469,9 +469,9 @@ class PCRGlobWB(object):
             surfaceWaterStoresAtBeginning = self.totalSurfaceWaterStores()     
 
         self.meteo.update(self.routing, self._modelTime)                                         
-        self.landSurface.update(self.meteo, self.groundwater, self.routing, self._modelTime)      
-        self.groundwater.update(self.landSurface, self.routing, self._modelTime)
-        self.routing.update(self.landSurface, self.groundwater, self._modelTime, self.meteo)
+        #~ self.landSurface.update(self.meteo, self.groundwater, self.routing, self._modelTime)      
+        #~ self.groundwater.update(self.landSurface, self.routing, self._modelTime)
+        #~ self.routing.update(self.landSurface, self.groundwater, self._modelTime, self.meteo)
 
         # save/dump states at the end of the year or at the end of model simulation
         # - option to also save model output at the last day of the month
