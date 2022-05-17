@@ -62,6 +62,7 @@ class Meteo(object):
     def getICs(self, iniItems, iniConditions = None):
 
         #~ self.initialize_states(iniItems, iniConditions)
+        pass
 
     def initialize_states(self, iniItems, iniConditions):
 
