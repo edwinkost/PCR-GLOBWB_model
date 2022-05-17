@@ -1035,6 +1035,9 @@ class Meteo(object):
                                       cloneMapFileName = self.cloneMap,\
                                       LatitudeLongitude = True)
 
+        #~ # example to set precipitation values
+        #~ self.precipitation = pcr.spatial(pcr.scalar(1.0))
+        
         #-----------------------------------------------------------------------
         # NOTE: RvB 13/07/2016 added to automatically update precipitation              
         self.precipitation  = self.preConst + self.preFactor * self.precipitation
@@ -1085,6 +1088,9 @@ class Meteo(object):
                                       useDoy = method_for_time_index,
                                       cloneMapFileName = self.cloneMap,\
                                       LatitudeLongitude = True)
+
+        #~ # example to set temperature values
+        #~ self.temperature = pcr.spatial(pcr.scalar(1.0))
 
         #-----------------------------------------------------------------------
         # NOTE: RvB 13/07/2016 added to automatically update temperature
