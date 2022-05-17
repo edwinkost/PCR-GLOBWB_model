@@ -119,6 +119,7 @@ class SoilAndTopoParameters(object):
                 
 
                 extrapolate = True
+                extrapolate = False
                 if "noParameterExtrapolation" in iniItems.landSurfaceOptions.keys() and iniItems.landSurfaceOptions["noParameterExtrapolation"] == "True": extrapolate = False
 
                 if extrapolate:
