@@ -45,6 +45,7 @@ function run_on_snellius_node()
         --verbose \
         `which python` -- \
             $LUE/hello_lue.py \
+            $LUE/hello_lue.py \
                 6000,4000 1000,1000 \
                 --hpx:print-bind
 }
