@@ -4,13 +4,13 @@ set -e
 
 # Change these for your specific setup.
 
-# In Kor's development environment:
-lue_install_prefix="$LUE_OBJECTS"
-hpx_install_prefix="$LUE_OBJECTS/_deps/hpx-build"
-
-# On a LUE user's runtime environment:
-lue_install_prefix="prefix/of/wherever/you/installed/lue"
-hpx_install_prefix="$lue_install_prefix"
+#~ # In Kor's development environment:
+#~ lue_install_prefix="$LUE_OBJECTS"
+#~ hpx_install_prefix="$LUE_OBJECTS/_deps/hpx-build"
+#~ 
+#~ # On a LUE user's runtime environment:
+#~ lue_install_prefix="prefix/of/wherever/you/installed/lue"
+#~ hpx_install_prefix="$lue_install_prefix"
 
 # edwin
 lue_install_prefix="/home/edwin/opt/lue"
@@ -51,10 +51,16 @@ function run_on_snellius_node()
 #~                 6000,4000 1000,1000 \
 #~                 --hpx:print-bind
 
+#~     # Start a cooperating set of processes:
+#~     python /home/edwin/github/edwinkost/PCR-GLOBWB_model/example_lue/example_from_kor/hello_lue.py \
+#~                 6000,4000 1000,1000 \
+#~                 --hpx:print-bind
+
     # Start a cooperating set of processes:
-    python /home/edwin/github/edwinkost/PCR-GLOBWB_model/example_lue/example_from_kor/hello_lue.py \
+    python /home/edwin/github/edwinkost/PCR-GLOBWB_model/example_lue/example_from_kor/hello_lue_edwin.py \
                 6000,4000 1000,1000 \
                 --hpx:print-bind
+
 }
 
 
