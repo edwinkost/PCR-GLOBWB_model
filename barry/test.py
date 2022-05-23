@@ -34,6 +34,20 @@ def hello_lue(
 
     print(lfr.to_numpy(test))
 
+<<<<<<< HEAD
+=======
+    maximum = str(lfr.maximum(cell))
+#~
+#~     print(maximum)
+#~     print(lfr.maximum(cell).get())
+#~
+#~     print(lfr.to_numpy(cell))
+#~     print(lfr.to_numpy(array))
+#~
+#~     with open('test.txt', 'w') as f:
+#~         f.write(str(lfr.maximum(array).get()))
+
+>>>>>>> 36f444341ac739ab5ec8eedd87b635597ab0c745
 
     # The HPX runtime will be stopped automatically on all localities once the computations
     # are done.
