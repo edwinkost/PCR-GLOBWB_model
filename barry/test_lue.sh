@@ -57,7 +57,7 @@ function run_on_snellius_node()
 #~                 --hpx:print-bind
 
     # Start a cooperating set of processes:
-    python /home/edwin/github/edwinkost/PCR-GLOBWB_model/example_lue/example_from_kor/hello_lue_edwin.py \
+    python /home/jaarsveldb/lue/PCR-GLOBWB_model/barry/hello_lue_edwin.py \
                 6000,4000 1000,1000 \
                 --hpx:print-bind
 
