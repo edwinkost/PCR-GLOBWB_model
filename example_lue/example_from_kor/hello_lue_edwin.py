@@ -32,6 +32,8 @@ def hello_lue(
     test = pcr.defined(cell)
     print(test)
     
+#~     test = lfr.sin(cell)
+    
     print(lfr.to_numpy(test))
     
     maximum = str(lfr.maximum(cell))
