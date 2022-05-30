@@ -77,6 +77,7 @@ if __name__ == "__main__":
     # partition_shape = (1000, 1000)
 
     x = lue_array(array_shape, partition_shape)
+    print(x)
     # test = satPressure(airT)
 
 
