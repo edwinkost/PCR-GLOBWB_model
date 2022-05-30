@@ -16,7 +16,7 @@ import math
 def lue_array(array_shape,partition_shape):
     airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
     airT = (lfr.uniform(airT, -10, 10) * airT) / airT
-    return print(lfr.to_numpy(airT))
+    print(lfr.to_numpy(airT))
 
 
 
