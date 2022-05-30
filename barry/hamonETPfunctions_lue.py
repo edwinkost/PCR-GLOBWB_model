@@ -13,13 +13,8 @@ import math
 
 
 @lfr.runtime_scope
-
-def hello_lue(
-        array_shape,
-        partition_shape):
-    array = lfr.create_array(
-        array_shape=array_shape, partition_shape=partition_shape,
-        dtype=np.dtype(np.float32), fill_value=5.5)
+def hello_lue(array_shape,partition_shape):
+    array = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
 
 #
 # def dayLength(doy,lat):
@@ -91,7 +86,7 @@ if __name__ == "__main__":
 
     array_shape = parse_shape(arguments["<array>"])
     partition_shape = parse_shape(arguments["<partition>"])
-    hello_lue(array_shape, partition_shape)
+    x = hello_lue(array_shape, partition_shape)
 
 
 # #######################################################################################
