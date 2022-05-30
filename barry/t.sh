@@ -58,12 +58,12 @@ function run_on_snellius_node()
 
     # Start a cooperating set of processes:
     python /home/jaarsveldb/lue/PCR-GLOBWB_model/barry/hamonETPfunctions_lue.py \
-                6000,4000 1000,1000 \
-                --hpx:print-bind
+                # 6000,4000 1000,1000 \
+                # --hpx:print-bind
 
 }
 
-
+#
 function run_on_snellius_partition()
 {
     nr_cluster_nodes=$1
@@ -84,8 +84,8 @@ function run_on_snellius_partition()
         srun \
             python \
                 $LUE/hello_lue.py \
-                    # 60000,40000 1000,1000 \
-                    # --hpx:print-bind
+                    60000,40000 1000,1000 \
+                    --hpx:print-bind
 }
 
 
