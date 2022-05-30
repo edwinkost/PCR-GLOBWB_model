@@ -21,7 +21,7 @@ def lue_array(array_shape,partition_shape):
     airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
     airT = (lfr.uniform(airT, -10, 10) * airT) / airT
     airT = lfr.to_numpy(airT)
-    print(airT)
+    # print(airT)
 
     return airT
 #
@@ -78,7 +78,7 @@ if __name__ == "__main__":
     # array_shape = (60000, 40000)
     # partition_shape = (1000, 1000)
 
-    lue_array(array_shape, partition_shape)
+    print(lue_array(array_shape, partition_shape))
     # print(x)
     # test = satPressure(airT)
 
