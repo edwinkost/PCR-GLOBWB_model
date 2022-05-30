@@ -13,15 +13,15 @@ import math
 
 
 @lfr.runtime_scope
-def ifthenelse(arg1, arg2, arg3):
-    return lfr.where(arg1, arg2, arg3)
+# def ifthenelse(arg1, arg2, arg3):
+#     return lfr.where(arg1, arg2, arg3)
 
 
 def lue_array(array_shape,partition_shape):
     airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
     airT = (lfr.uniform(airT, -10, 10) * airT) / airT
     print(lfr.to_numpy(airT))
-    return airT
+    # return airT
 #
 # def satPressure (airT):
 #     """ calculates saturated vp from airt temperature Murray (1967) """
@@ -68,15 +68,15 @@ def parse_shape(string):
 if __name__ == "__main__":
     # Filter out arguments meant for the HPX runtime
     argv = [arg for arg in sys.argv[1:] if not arg.startswith("--hpx")]
-    # arguments = docopt.docopt(usage, argv)
+    arguments = docopt.docopt(usage, argv)
 
-    # array_shape = parse_shape(arguments["<array>"])
-    # partition_shape = parse_shape(arguments["<partition>"])
+    array_shape = parse_shape(arguments["<array>"])
+    partition_shape = parse_shape(arguments["<partition>"])
 
-    array_shape = (60000, 40000)
-    partition_shape = (1000, 1000)
+    # array_shape = (60000, 40000)
+    # partition_shape = (1000, 1000)
 
-    airT = lue_array(array_shape, partition_shape)
+    lue_array(array_shape, partition_shape)
     # test = satPressure(airT)
 
 
