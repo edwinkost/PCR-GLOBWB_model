@@ -14,12 +14,19 @@ import math
 
 @lfr.runtime_scope
 def hello_lue(array_shape,partition_shape):
-    array = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
-    print(array)
+    airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
+    print(lfr.to_numpy(airT))
+
+
+#satPressure
+    airT_new = 0.61078 * lfr.exp (17.26939 * airT / (airT + 237.3))
+    print(lfr.to_numpy(airT_new))
+
+    # print(array)
 
 
 
-#
+
 # def dayLength(doy,lat):
 #     """ daylength fraction of day  """
 #     lat = lat * pcr.scalar(math.pi) /  180.0
@@ -34,14 +41,14 @@ def hello_lue(array_shape,partition_shape):
 #     h = pcr.ifthenelse(arg > 1.0, 0.0,h) # /* sun stays below horizon */
 #     h = pcr.ifthenelse(arg <  -1.0 ,math.pi,h) # /* sun stays above horizon */
 #     return (h /  math.pi)
-#
-#
-# def satPressure ( airT):
-#     """ calculates saturated vp from airt temperature Murray (1967) """
-#     # airT      - air temperature [degree C] */
-#     satPressure = pcr.ifthenelse(airT >= 0.0 , 0.61078 * pcr.exp (17.26939 * airT / (airT + 237.3)) ,\
-#         0.61078 * pcr.exp (21.87456 * airT / (airT + 265.5)))
-#     return satPressure
+
+
+def satPressure ( airT):
+    """ calculates saturated vp from airt temperature Murray (1967) """
+    # airT      - air temperature [degree C] */
+    satPressure = pcr.ifthenelse(airT >= 0.0 , 0.61078 * pcr.exp (17.26939 * airT / (airT + 237.3)) ,\
+        0.61078 * pcr.exp (21.87456 * airT / (airT + 265.5)))
+    return satPressure
 #
 # def HamonPotET(airT,doy,lat):
 #     # Note that all following functions use trigonometric function in degres.
