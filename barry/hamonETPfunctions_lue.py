@@ -15,12 +15,13 @@ import math
 @lfr.runtime_scope
 def hello_lue(array_shape,partition_shape):
     airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
+    airT = (lfr.uniform(airT, 0, 10) * airT) / airT
     print(lfr.to_numpy(airT))
 
 
 #satPressure
-    airT_new = 0.61078 * lfr.exp (17.26939 * airT / (airT + 237.3))
-    print(lfr.to_numpy(airT_new))
+    # airT_new = 0.61078 * lfr.exp (17.26939 * airT / (airT + 237.3))
+    # print(lfr.to_numpy(airT_new))
 
     # print(array)
 
