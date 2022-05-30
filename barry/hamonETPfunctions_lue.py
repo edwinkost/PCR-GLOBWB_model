@@ -20,8 +20,9 @@ import math
 def lue_array(array_shape,partition_shape):
     airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
     airT = (lfr.uniform(airT, -10, 10) * airT) / airT
-    print(lfr.to_numpy(airT))
-    return lfr.to_numpy(airT)
+    airT = lfr.to_numpy(airT)
+    print(airT)
+    # return lfr.to_numpy(airT)
 #
 # def satPressure (airT):
 #     """ calculates saturated vp from airt temperature Murray (1967) """
@@ -76,8 +77,8 @@ if __name__ == "__main__":
     # array_shape = (60000, 40000)
     # partition_shape = (1000, 1000)
 
-    x = lue_array(array_shape, partition_shape)
-    print(x)
+    lue_array(array_shape, partition_shape)
+    # print(x)
     # test = satPressure(airT)
 
 
