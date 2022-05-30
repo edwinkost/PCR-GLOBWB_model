@@ -84,8 +84,8 @@ function run_on_snellius_partition()
         srun \
             python \
                 $LUE/hello_lue.py \
-                    60000,40000 1000,1000 \
-                    --hpx:print-bind
+                    # 60000,40000 1000,1000 \
+                    # --hpx:print-bind
 }
 
 
