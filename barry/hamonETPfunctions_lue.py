@@ -87,6 +87,7 @@ if __name__ == "__main__":
     array_shape = parse_shape(arguments["<array>"])
     partition_shape = parse_shape(arguments["<partition>"])
     x = hello_lue(array_shape, partition_shape)
+    print(x)
 
 
 # #######################################################################################
