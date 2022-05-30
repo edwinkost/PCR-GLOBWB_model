@@ -22,14 +22,14 @@ def lue_array(array_shape,partition_shape):
     airT = (lfr.uniform(airT, -10, 10) * airT) / airT
     print(lfr.to_numpy(airT))
     return airT
-
-def satPressure (airT):
-    """ calculates saturated vp from airt temperature Murray (1967) """
-    # airT      - air temperature [degree C] */
-    satPressure = ifthenelse(airT >= 0.0 , 0.61078 * lfr.exp (17.26939 * airT / (airT + 237.3)) ,\
-        0.61078 * lfr.exp (21.87456 * airT / (airT + 265.5)))
-    print(lfr.to_numpy(satPressure))
-    return satPressure
+#
+# def satPressure (airT):
+#     """ calculates saturated vp from airt temperature Murray (1967) """
+#     # airT      - air temperature [degree C] */
+#     satPressure = ifthenelse(airT >= 0.0 , 0.61078 * lfr.exp (17.26939 * airT / (airT + 237.3)) ,\
+#         0.61078 * lfr.exp (21.87456 * airT / (airT + 265.5)))
+#     print(lfr.to_numpy(satPressure))
+#     return satPressure
 
 
 # def satPressure (airT):
@@ -68,11 +68,16 @@ def parse_shape(string):
 if __name__ == "__main__":
     # Filter out arguments meant for the HPX runtime
     argv = [arg for arg in sys.argv[1:] if not arg.startswith("--hpx")]
-    arguments = docopt.docopt(usage, argv)
+    # arguments = docopt.docopt(usage, argv)
 
-    array_shape = parse_shape(arguments["<array>"])
-    partition_shape = parse_shape(arguments["<partition>"])
-    lue_array(array_shape, partition_shape)
+    # array_shape = parse_shape(arguments["<array>"])
+    # partition_shape = parse_shape(arguments["<partition>"])
+
+    array_shape = (60000, 40000)
+    partition_shape = (1000, 1000)
+
+    airT = lue_array(array_shape, partition_shape)
+    # test = satPressure(airT)
 
 
 
