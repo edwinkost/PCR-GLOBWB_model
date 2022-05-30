@@ -15,6 +15,7 @@ import math
 @lfr.runtime_scope
 def hello_lue(array_shape,partition_shape):
     array = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
+    return array
 
 #
 # def dayLength(doy,lat):
