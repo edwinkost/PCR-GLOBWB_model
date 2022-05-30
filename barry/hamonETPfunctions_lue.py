@@ -13,23 +13,21 @@ import math
 
 
 @lfr.runtime_scope
+def ifthenelse(arg1, arg2, arg3):
+    return lfr.where(arg1, arg2, arg3)
+
+
 def lue_array(array_shape,partition_shape):
     airT = lfr.create_array(array_shape=array_shape, partition_shape=partition_shape,dtype=np.dtype(np.float32), fill_value=5.5)
     airT = (lfr.uniform(airT, -10, 10) * airT) / airT
     print(lfr.to_numpy(airT))
 
-
-
-
-
-# def satPressure (airT):
-#     """ calculates saturated vp from airt temperature Murray (1967) """
-#     # airT      - air temperature [degree C] */
-#     satPressure = lfr.greater_than_equal_to()
-#
-#     satPressure = pcr.ifthenelse(airT >= 0.0 , 0.61078 * pcr.exp (17.26939 * airT / (airT + 237.3)) ,\
-#         0.61078 * pcr.exp (21.87456 * airT / (airT + 265.5)))
-#     return satPressure
+def satPressure (airT):
+    """ calculates saturated vp from airt temperature Murray (1967) """
+    # airT      - air temperature [degree C] */
+    satPressure = pcr.ifthenelse(airT >= 0.0 , 0.61078 * pcr.exp (17.26939 * airT / (airT + 237.3)) ,\
+        0.61078 * pcr.exp (21.87456 * airT / (airT + 265.5)))
+    return satPressure
 
 
 # def satPressure (airT):
