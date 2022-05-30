@@ -1,11 +1,9 @@
 #!/usr/bin/env python
 import lue.framework as lfr
-import docopt
+# import docopt
 import numpy as np
 import os.path
 import sys
-
-import luepcr as pcr
 import math
 
 # LUE demo script, for showing how to use LUE:
