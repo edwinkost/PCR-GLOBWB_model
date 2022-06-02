@@ -67,7 +67,22 @@ class DeterministicRunner(DynamicModel):
         # do any needed reporting for this time step        
         #~ self.reporting.report()
 
+
 def main():
+    with_lue = False
+    if with_lue:
+        main_with_lue()
+    else:   
+        main_without_lue()
+
+@lfr.runtime_scope
+def main_with_lue():
+    main_with_and_without_lue()
+
+def main_without_lue():
+    main_with_and_without_lue()
+
+def main_with_and_without_lue():
 
     # print disclaimer
     disclaimer.print_disclaimer()

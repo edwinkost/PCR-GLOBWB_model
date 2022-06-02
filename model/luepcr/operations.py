@@ -1,6 +1,6 @@
 import numpy as np
 
-# ~ import pcraster as pcr
+import pcraster as pcr
 
 import lue.framework as lfr
 
@@ -79,8 +79,12 @@ def cover(arg1, arg2):
 # Mimic operations not in LUE
 
 def setclone(arg):
-    # Dummy clone for the modelling framework
-    pcr.setclone(5, 4, 3, 2, 1)
+
+    # ~ # Dummy clone for the modelling framework
+    # ~ pcr.setclone(5, 4, 3, 2, 1)
+
+    # Set the actual clone
+    pcr.setclone(arg)
 
 
 def celllength():
