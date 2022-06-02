@@ -38,6 +38,12 @@ from pcrglobwb import PCRGlobWB
 import logging
 logger = logging.getLogger(__name__)
 
+try:
+    from lue.framework as runtime_scope
+except:
+    def runtime_scope():
+        pass		
+
 import oldcalc_framework
 import disclaimer
 
@@ -75,7 +81,7 @@ def main():
     else:   
         main_without_lue()
 
-# ~ @lfr.runtime_scope
+@runtime_scope
 def main_with_lue():
     main_with_and_without_lue()
 
