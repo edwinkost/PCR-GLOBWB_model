@@ -39,7 +39,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 try:
-    from lue.framework as runtime_scope
+    from lue.framework import runtime_scope
 except:
     def runtime_scope():
         pass		
