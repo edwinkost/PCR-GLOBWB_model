@@ -71,11 +71,12 @@ class DeterministicRunner(DynamicModel):
 def main():
     with_lue = False
     if with_lue:
+        @lfr.runtime_scope
         main_with_lue()
     else:   
         main_without_lue()
 
-@lfr.runtime_scope
+# ~ @lfr.runtime_scope
 def main_with_lue():
     main_with_and_without_lue()
 
