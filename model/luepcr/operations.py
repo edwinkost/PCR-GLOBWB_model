@@ -81,6 +81,8 @@ def ifthenelse(arg1, arg2, arg3):
 def cover(arg1, arg2):
     return lfr.where(lfr.valid(arg1), arg1, arg2)
 
+def ldd
+    return lfr.d8_flow_direction(arg)
 
 # Mimic operations not in LUE
 
