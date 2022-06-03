@@ -199,7 +199,7 @@ def atan(arg):
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.atan(arg)
 
 def abs(arg):
-    return lfr.abs(arg)
+    return lfr.where(lfr.greater_than_equal_to(arg, 0), arg, arg*-1)
 
 def exp(arg):
     return lfr.exp(arg)
