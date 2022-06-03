@@ -809,15 +809,18 @@ class LandSurface(object):
                 self.landCoverObj[coverType].naturalFracVegCover = \
                 self.landCoverObj[coverType].fracVegCover
         #
-        # check and make sure that totalArea = 1.0 for all cells
-        totalArea = pristineAreaFrac
-        totalArea = pcr.ifthen(self.landmask,totalArea)
-        totalArea = pcr.cover(totalArea, 1.0)
-        check_map = totalArea - pcr.scalar(1.0)
-        a,b,c = vos.getMinMaxMean(check_map)
-        threshold = 1e-4
-        if abs(a) > threshold or abs(b) > threshold:
-            logger.error("total of 'Natural Area' fractions is not equal to 1.0 ... Min %f Max %f Mean %f" %(a,b,c)) 
+
+        # ~ # - disactivate due to LUE development - #
+        # ~ # check and make sure that totalArea = 1.0 for all cells
+        # ~ totalArea = pristineAreaFrac
+        # ~ totalArea = pcr.ifthen(self.landmask,totalArea)
+        # ~ totalArea = pcr.cover(totalArea, 1.0)
+        # ~ check_map = totalArea - pcr.scalar(1.0)
+        # ~ a,b,c = vos.getMinMaxMean(check_map)
+        # ~ threshold = 1e-4
+        # ~ if abs(a) > threshold or abs(b) > threshold:
+            # ~ logger.error("total of 'Natural Area' fractions is not equal to 1.0 ... Min %f Max %f Mean %f" %(a,b,c)) 
+
 
     def scaleModifiedLandCoverFractions(self): 
         ''' rescales the land cover fractions with irrigation areas'''
