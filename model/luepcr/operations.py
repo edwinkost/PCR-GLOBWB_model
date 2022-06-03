@@ -178,6 +178,9 @@ def sin(arg):
     if type(arg) == float: return lfr.sin(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.sin(arg)
 
+def exp(arg):
+    return lfr.exp(arg)
+
 
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
