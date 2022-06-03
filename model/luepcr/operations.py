@@ -38,6 +38,8 @@ def upstream(arg1, arg2):
 def mapmaximum(arg):
     return lfr.maximum(arg)
 
+def mapminimum(arg):
+    return lfr.minimum(arg)
 
 def sqrt(arg):
     return lfr.sqrt(arg)
