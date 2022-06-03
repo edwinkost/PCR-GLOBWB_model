@@ -1,6 +1,6 @@
 
-import pcraster as pcr
-# ~ from pcraster import setclone
+# ~ import pcraster as pcr
+from pcraster import setclone as pcrsetclone
 
 import lue.framework as lfr
 
@@ -95,7 +95,7 @@ def setclone(arg):
     # ~ pcr.setclone(5, 4, 3, 2, 1)
 
     # Set the actual clone
-    pcr.setclone(arg)
+    pcrsetclone(arg)
 
 
 def celllength():
@@ -119,6 +119,7 @@ def spatial(arg):
         print(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg))
         return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg)
     else:
+        print(ERROR)
         raise NotImplementedError
 
 
