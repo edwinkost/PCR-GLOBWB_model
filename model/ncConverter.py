@@ -33,7 +33,16 @@ import glob
 import subprocess
 import netCDF4 as nc
 import numpy as np
-import pcraster as pcr
+
+# ~ import pcraster as pcr
+import luepcr as pcr
+print("LUE is USED.")
+# ~ try:
+    # ~ import luepcr as pcr
+    # ~ print("LUE is USED.")
+# ~ except:
+    # ~ import pcraster as pcr		
+
 import virtualOS as vos
 
 # TODO: defined the dictionary (e.g. filecache = dict()) to avoid open and closing files
