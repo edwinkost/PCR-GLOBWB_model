@@ -56,7 +56,8 @@ def HamonPotET(airT,doy,lat):
     # Note that all following functions use trigonometric function in degres.
     
     reset_globaloption_to_radians = False
-    if float(pcr.sin(90.0)) < 1.0: 
+    # ~ if float(pcr.sin(90.0)) < 1.0: 
+    if pcr.mapmaximum((pcr.sin(90.0))) < 1.0: 
         pcr.setglobaloption("degrees")
         reset_globaloption_to_radians = True
          
