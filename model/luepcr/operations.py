@@ -127,19 +127,15 @@ def spatial(arg):
     else:
         raise NotImplementedError
 
+
 def lddrepair(arg):
     print("Note NO 'lddrepair' function is implemented yet.")
     return ldd(arg)
 
 
-# ~ def spatial(arg):
-    # ~ return arg
-    # ~ if type(arg) == lfr.PartitionedArray_float32_2:
-        # ~ return arg
-    # ~ elif type(arg) == int or type(arg) == float:
-        # ~ return float(arg)
-    # ~ else:
-        # ~ raise NotImplementedError
+def numpy2pcr(arg1, arg2, arg):
+    return from_numpy(arg2, arg3)
+
 
 
 # to create an array with a value:
