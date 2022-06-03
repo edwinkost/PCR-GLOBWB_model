@@ -198,6 +198,9 @@ def atan(arg):
     if type(arg) == float: return lfr.atan(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.atan(arg)
 
+def abs(arg):
+    return lfr.abs(arg)
+
 def exp(arg):
     return lfr.exp(arg)
 
