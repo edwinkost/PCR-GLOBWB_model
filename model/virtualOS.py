@@ -45,8 +45,8 @@ import numpy as np
 import numpy.ma as ma
 
 try:
-    print("LUE is USED.")
     import luepcr as pcr
+    print("LUE is USED.")
 except:
     import pcraster as pcr		
 
