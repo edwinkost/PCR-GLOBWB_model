@@ -155,9 +155,8 @@ def boolean(arg):
     return lfr.valid(arg)
 
 
-def max(*args):
-    args = scalar(args)
-    return lfr.maximum(*args)
+def max(arg1, arg2):
+    return ifthenelse(arg1 < arg2, arg1, arg2)
 
 
 
