@@ -116,10 +116,16 @@ def scalar(arg):
 
 def spatial(arg):
     if type(arg) == float:
-        print(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg))
-        return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg)
+
+        lue_array = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg)
+        print(lue_array)
+        
+        check
+        
+        return lue_array
+
     else:
-        print(ERROR)
+        print("ERROR")
         raise NotImplementedError
 
 
