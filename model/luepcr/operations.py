@@ -129,7 +129,7 @@ def spatial(arg):
 
 
 def lddrepair(arg):
-    print("Note NO 'lddrepair' function is implemented yet.")
+    print("Note 'pcraster.lddrepair' function is NOT implemented on LUE yet.")
     return ldd(arg)
 
 
@@ -138,6 +138,7 @@ def numpy2pcr(arg1, arg2, arg3):
 
 
 def Scalar():
+    print("Note 'pcr.Scalar' function is NOT implemented on LUE yet.")
     pass
 
 
