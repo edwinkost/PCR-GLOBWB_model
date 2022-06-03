@@ -103,6 +103,9 @@ def scalar(arg):
     else:
         raise NotImplementedError
 
+def spatial(arg):
+
+    return arg
 
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
