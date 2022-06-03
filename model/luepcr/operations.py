@@ -120,8 +120,6 @@ def spatial(arg):
         lue_array = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg)
         print(lue_array)
         
-        check
-        
         return lue_array
 
     else:
