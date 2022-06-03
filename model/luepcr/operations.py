@@ -129,7 +129,7 @@ def spatial(arg):
 
 def lddrepair(arg):
     print("Note NO 'lddrepair' function is implemented yet.")
-    return lfr.d8_flow_direction(arg)
+    return ldd(arg)
 
 
 # ~ def spatial(arg):
