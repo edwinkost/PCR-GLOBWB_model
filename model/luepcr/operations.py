@@ -137,6 +137,9 @@ def numpy2pcr(arg1, arg2, arg):
     return from_numpy(arg2, arg3)
 
 
+def Scalar():
+    pass
+
 
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
