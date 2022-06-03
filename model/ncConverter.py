@@ -97,7 +97,8 @@ class PCR2netCDF():
                   (key == "date_created" or key == "date_issued"):
                     self.attributeDictionary[key] = datetime.datetime.today().isoformat(' ')
  
-     def set_latlon_based_on_cloneMapFileName(self, cloneMapFileName):
+
+    def set_latlon_based_on_cloneMapFileName(self, cloneMapFileName):
 
         # cloneMap
         cloneMap = pcr.boolean(pcr.readmap(cloneMapFileName))
