@@ -70,6 +70,7 @@ def downstreamdist(arg):
 
 
 def defined(arg):
+    print(arg)
     return lfr.valid(arg)
 
 
@@ -131,6 +132,7 @@ def spatial(arg):
 def ycoordinate(arg):
     print("Note 'pcraster.ycoordinate' function is NOT implemented on LUE yet.")
     return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 0.0)
+
 
 def lddrepair(arg):
     print("Note 'pcraster.lddrepair' function is NOT implemented on LUE yet.")
