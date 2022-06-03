@@ -1621,7 +1621,6 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
     stderr = None; del stderr
     
     print(PCRmap)
-    check
     
     #~ pcr.aguila(PCRmap)
     
