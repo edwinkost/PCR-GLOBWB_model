@@ -149,5 +149,15 @@ def Scalar():
     pass
 
 
+def boolean(arg):
+    print("Note 'pcraster.boolean' is NOT implemented on LUE yet.")
+    print(arg)
+    return lfr.valid(arg)
+
+def max(arg):
+    return lfr.maximum(arg)
+
+
+
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
