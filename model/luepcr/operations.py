@@ -156,7 +156,7 @@ def boolean(arg):
 
 
 def max(*args):
-    args = pcr.scalar(args)
+    args = scalar(args)
     return lfr.maximum(*args)
 
 
