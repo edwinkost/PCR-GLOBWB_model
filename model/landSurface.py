@@ -125,6 +125,8 @@ class LandSurface(object):
         # cellArea (unit: m2)
         self.cellArea = vos.readPCRmapClone(iniItems.routingOptions['cellAreaMap'], \
                                             self.cloneMap, self.tmpDir, self.inputDir)
+        print(self.landmask)
+        print(self.cellArea)
         self.cellArea = pcr.ifthen(self.landmask, self.cellArea)
         
         # number of soil layers:
