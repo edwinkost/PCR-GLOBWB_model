@@ -165,8 +165,8 @@ def min(arg1, arg2):
     return ifthenelse(arg1 > arg2, arg1, arg2)
 
 
-def cellvalue(arg):
-    return [arg,"dummy"]
+def cellvalue(arg1, arg2):
+    return [arg1, "dummy"]
 
 
 # to create an array with a value:
