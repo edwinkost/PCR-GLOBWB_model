@@ -133,7 +133,7 @@ def lddrepair(arg):
     return ldd(arg)
 
 
-def numpy2pcr(arg1, arg2, arg):
+def numpy2pcr(arg1, arg2, arg3):
     return lfr.from_numpy(arg2, arg3)
 
 
