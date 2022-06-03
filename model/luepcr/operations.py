@@ -24,6 +24,8 @@ cellsize = 5./60.
 array_shape = (rows, cols)
 partition_shape = (shape1, shape2)
 
+partition_shape_np = (shape2, shape1)
+
 
 # PCRaster ~ LUE
 
@@ -134,7 +136,7 @@ def lddrepair(arg):
 
 
 def numpy2pcr(arg1, arg2, arg3):
-    return lfr.from_numpy(arg2, partition_shape, arg3)
+    return lfr.from_numpy(arg2, partition_shape_np, arg3)
 
 
 def Scalar():
