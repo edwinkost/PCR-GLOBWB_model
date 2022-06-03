@@ -81,12 +81,15 @@ def main():
     else:   
         main_without_lue()
 
-# ~ @runtime_scope
+
+@runtime_scope
 def main_with_lue():
     main_with_and_without_lue()
 
+
 def main_without_lue():
     main_with_and_without_lue()
+
 
 def main_with_and_without_lue():
 
