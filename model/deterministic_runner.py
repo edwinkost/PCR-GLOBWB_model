@@ -43,7 +43,7 @@ try:
     from lue.framework import runtime_scope
 except:
     def runtime_scope():
-        pass		
+        return 0		
 
 import oldcalc_framework
 import disclaimer
