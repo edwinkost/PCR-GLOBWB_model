@@ -114,17 +114,16 @@ def scalar(arg):
     else:
         raise NotImplementedError
 
+
 def spatial(arg):
     if type(arg) == float:
-
-        lue_array = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg)
-        print(lue_array)
-        
-        return lue_array
-
+        return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg)
     else:
-        print("ERROR")
         raise NotImplementedError
+
+def lddrepair(arg):
+    print("Note NO 'lddrepair' function is implemented yet.")
+    return lfr.d8_flow_direction(arg)
 
 
 # ~ def spatial(arg):
