@@ -55,10 +55,13 @@ class PCR2netCDF():
         pcr.setclone(iniItems.cloneMap)
         cloneMap = pcr.boolean(1.0)
         
-        # latitudes and longitudes
-        self.latitudes  = np.unique(pcr.pcr2numpy(pcr.ycoordinate(cloneMap), vos.MV))[::-1]
-        self.longitudes = np.unique(pcr.pcr2numpy(pcr.xcoordinate(cloneMap), vos.MV))
+        # ~ # latitudes and longitudes
+        # ~ self.latitudes  = np.unique(pcr.pcr2numpy(pcr.ycoordinate(cloneMap), vos.MV))[::-1]
+        # ~ self.longitudes = np.unique(pcr.pcr2numpy(pcr.xcoordinate(cloneMap), vos.MV))
         
+        # latitudes and longitudes
+        self.longitudes, self.latitudes, cellSizeInArcMin = self.set_latlon_based_on_cloneMapFileName(iniItems.cloneMap)
+
         # Let users decide what their preference regarding latitude order. 
         self.netcdf_y_orientation_follow_cf_convention = False
         if 'netcdf_y_orientation_follow_cf_convention' in list(iniItems.reportingOptions.keys()) and\
@@ -94,6 +97,41 @@ class PCR2netCDF():
                   (key == "date_created" or key == "date_issued"):
                     self.attributeDictionary[key] = datetime.datetime.today().isoformat(' ')
  
+     def set_latlon_based_on_cloneMapFileName(self, cloneMapFileName):
+
+        # cloneMap
+        cloneMap = pcr.boolean(pcr.readmap(cloneMapFileName))
+        cloneMap = pcr.boolean(pcr.scalar(1.0))
+        
+        # properties of the clone maps
+        # - numbers of rows and colums
+        rows = pcr.clone().nrRows() 
+        cols = pcr.clone().nrCols()
+        # - cell size in arc minutes rounded to one value behind the decimal
+        cellSizeInArcMin = round(pcr.clone().cellSize() * 60.0, 1) 
+        # - cell sizes in ar degrees for longitude and langitude direction 
+        deltaLon = cellSizeInArcMin / 60.
+        deltaLat = deltaLon
+        # - coordinates of the upper left corner - rounded to two values behind the decimal in order to avoid rounding errors during (future) resampling process
+        x_min = round(pcr.clone().west(), 2)
+        y_max = round(pcr.clone().north(), 2)
+        # - coordinates of the lower right corner - rounded to two values behind the decimal in order to avoid rounding errors during (future) resampling process
+        x_max = round(x_min + cols*deltaLon, 2) 
+        y_min = round(y_max - rows*deltaLat, 2) 
+        
+        # cell centres coordinates
+        longitudes = np.arange(x_min + deltaLon/2., x_max, deltaLon)
+        latitudes  = np.arange(y_max - deltaLat/2., y_min,-deltaLat)
+
+        #~ # cell centres coordinates
+        #~ longitudes = np.linspace(x_min + deltaLon/2., x_max - deltaLon/2., cols)
+        #~ latitudes  = np.linspace(y_max - deltaLat/2., y_min + deltaLat/2., rows)
+        
+        #~ # cell centres coordinates (latitudes and longitudes, directly from the clone maps)
+        #~ longitudes = np.unique(pcr.pcr2numpy(pcr.xcoordinate(cloneMap), vos.MV))
+        #~ latitudes  = np.unique(pcr.pcr2numpy(pcr.ycoordinate(cloneMap), vos.MV))[::-1]
+
+        return longitudes, latitudes, cellSizeInArcMin  
                     
     def set_general_netcdf_attributes(self,iniItems,specificAttributeDictionary=None):
 

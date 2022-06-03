@@ -134,11 +134,12 @@ def lddrepair(arg):
 
 
 def numpy2pcr(arg1, arg2, arg3):
+    print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
     return lfr.from_numpy(np.transpose(arg2), partition_shape, arg3)
 
 
 def Scalar():
-    print("Note 'pcr.Scalar' function is NOT implemented on LUE yet.")
+    print("Note 'pcraster.Scalar' is NOT implemented on LUE yet.")
     pass
 
 
