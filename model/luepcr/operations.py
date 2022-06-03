@@ -134,7 +134,7 @@ def lddrepair(arg):
 
 
 def numpy2pcr(arg1, arg2, arg3):
-    return lfr.from_numpy(np.ndarray(nd.float32(arg2)), arg3)
+    return lfr.from_numpy(np.ndarray(np.float32(arg2)), arg3)
 
 
 def Scalar():
