@@ -17,8 +17,8 @@ cellsize = 100.0
 
 rows = 4320
 cols = 2160
-shape1 = 100
-shape2 = 100
+shape1 = 1000
+shape2 = 1000
 cellsize = 5./60.
 
 array_shape = (rows, cols)
