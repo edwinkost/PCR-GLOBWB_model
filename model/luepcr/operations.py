@@ -154,8 +154,9 @@ def boolean(arg):
     print(arg)
     return lfr.valid(arg)
 
-def max(arg):
-    return lfr.maximum(arg)
+
+def max(args*):
+    return lfr.maximum(args*)
 
 
 
