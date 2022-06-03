@@ -104,8 +104,12 @@ def scalar(arg):
         raise NotImplementedError
 
 def spatial(arg):
-
-    return arg
+    if type(arg) == lfr.PartitionedArray_float32_2:
+        return arg
+    elif type(arg) == int or type(arg) == float:
+        return float(arg)
+    else:
+        raise NotImplementedError
 
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
