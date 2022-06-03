@@ -175,6 +175,7 @@ def maptotal(arg):
 
 
 def sin(arg):
+    print(sin)
     return lfr.sin(arg)
 
 
