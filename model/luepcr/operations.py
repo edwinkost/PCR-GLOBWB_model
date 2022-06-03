@@ -1,6 +1,7 @@
 import numpy as np
 
-import pcraster as pcr
+# ~ import pcraster as pcr
+from pcraster import setclone
 
 import lue.framework as lfr
 
