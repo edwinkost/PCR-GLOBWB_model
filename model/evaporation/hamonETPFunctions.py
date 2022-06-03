@@ -26,13 +26,13 @@ import sys
 
 # ~ import pcraster as pcr
 sys.path.append("..")
-import luepcr as pcr
-print("LUE is USED.")
-# ~ try:
-    # ~ import luepcr as pcr
-    # ~ print("LUE is USED.")
-# ~ except:
-    # ~ import pcraster as pcr		
+# ~ import luepcr as pcr
+# ~ print("LUE is USED.")
+try:
+    import luepcr as pcr
+    print("LUE is USED.")
+except:
+    import pcraster as pcr		
 
 
 import math
