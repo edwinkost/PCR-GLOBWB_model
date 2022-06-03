@@ -166,7 +166,7 @@ def min(arg1, arg2):
 
 
 def cellvalue(arg):
-    return arg
+    return [arg,"dummy"]
 
 
 # to create an array with a value:
