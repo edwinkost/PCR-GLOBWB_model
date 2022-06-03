@@ -93,7 +93,7 @@ class Meteo(object):
             self.avgAnnualTemperature      = iniConditions['meteo']['avgAnnualTemperature']
             self.avgAnnualDiurnalDeltaTemp = iniConditions['meteo']['avgAnnualDiurnalDeltaTemp']
 
-        
+        l
         # make sure the following values cannot be negative
         self.avgAnnualPrecipitation    = pcr.ifthen(self.landmask, pcr.max(0., pcr.cover(self.avgAnnualPrecipitation,    0.0)))
         self.avgAnnualDiurnalDeltaTemp = pcr.ifthen(self.landmask, pcr.max(0., pcr.cover(self.avgAnnualDiurnalDeltaTemp, 0.0)))
