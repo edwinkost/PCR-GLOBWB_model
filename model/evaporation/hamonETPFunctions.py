@@ -59,7 +59,6 @@ def HamonPotET(airT,doy,lat):
     
     # - DISACTIVATE due to LUE developement
     # ~ if float(pcr.sin(90.0)) < 1.0: 
-    # ~ if pcr.mapmaximum((pcr.sin(90.0))) < 1.0: 
         # ~ pcr.setglobaloption("degrees")
         # ~ reset_globaloption_to_radians = True
     # - DISACTIVATE due to LUE developement
