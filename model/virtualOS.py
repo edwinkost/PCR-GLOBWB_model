@@ -43,7 +43,12 @@ import glob
 import netCDF4 as nc
 import numpy as np
 import numpy.ma as ma
-import pcraster as pcr
+
+try:
+    print("LUE is USED.")
+    import luepcr as pcr
+except:
+    import pcraster as pcr		
 
 import logging
 
