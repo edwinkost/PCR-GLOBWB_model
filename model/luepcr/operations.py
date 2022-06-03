@@ -169,5 +169,9 @@ def cellvalue(arg1, arg2):
     return [arg1, "dummy"]
 
 
+def maptotal(arg):
+    return 0.0
+
+
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
