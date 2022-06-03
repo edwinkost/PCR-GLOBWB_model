@@ -175,8 +175,8 @@ def maptotal(arg):
 
 
 def sin(arg):
-    print(arg)
-    return lfr.sin(arg)
+    if type(arg) == float: return lfr.sin(spatial(arg))
+    if type(arg) == lfr.PartitionedArray_float32_2: return lfr.sin(arg)
 
 
 # to create an array with a value:
