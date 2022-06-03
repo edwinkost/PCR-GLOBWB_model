@@ -22,7 +22,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import pcraster as pcr
+# ~ import pcraster as pcr
+sys.path.append("..")
+import luepcr as pcr
+print("LUE is USED.")
+# ~ try:
+    # ~ import luepcr as pcr
+    # ~ print("LUE is USED.")
+# ~ except:
+    # ~ import pcraster as pcr		
+
+
 import math
 
 import virtualOS as vos
