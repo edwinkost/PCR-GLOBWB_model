@@ -93,7 +93,7 @@ def setclone(arg):
     # ~ pcr.setclone(5, 4, 3, 2, 1)
 
     # Set the actual clone
-    pcr.setclone(arg)
+    setclone(arg)
 
 
 def celllength():
