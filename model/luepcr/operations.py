@@ -178,6 +178,26 @@ def sin(arg):
     if type(arg) == float: return lfr.sin(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.sin(arg)
 
+def cos(arg):
+    if type(arg) == float: return lfr.cos(spatial(arg))
+    if type(arg) == lfr.PartitionedArray_float32_2: return lfr.cos(arg)
+
+def tan(arg):
+    if type(arg) == float: return lfr.tan(spatial(arg))
+    if type(arg) == lfr.PartitionedArray_float32_2: return lfr.tan(arg)
+
+def asin(arg):
+    if type(arg) == float: return lfr.asin(spatial(arg))
+    if type(arg) == lfr.PartitionedArray_float32_2: return lfr.asin(arg)
+
+def acos(arg):
+    if type(arg) == float: return lfr.acos(spatial(arg))
+    if type(arg) == lfr.PartitionedArray_float32_2: return lfr.acos(arg)
+
+def atan(arg):
+    if type(arg) == float: return lfr.atan(spatial(arg))
+    if type(arg) == lfr.PartitionedArray_float32_2: return lfr.atan(arg)
+
 def exp(arg):
     return lfr.exp(arg)
 
