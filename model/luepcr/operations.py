@@ -1,9 +1,11 @@
-import numpy as np
 
-# ~ import pcraster as pcr
-from pcraster import setclone
+import pcraster as pcr
+# ~ from pcraster import setclone
 
 import lue.framework as lfr
+
+import numpy as np
+
 
 # hack to just get it working, depend on case study
 # these should be derived eventually
@@ -93,7 +95,7 @@ def setclone(arg):
     # ~ pcr.setclone(5, 4, 3, 2, 1)
 
     # Set the actual clone
-    setclone(arg)
+    pcr.setclone(arg)
 
 
 def celllength():
