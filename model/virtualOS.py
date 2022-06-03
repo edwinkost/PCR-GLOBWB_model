@@ -1604,8 +1604,6 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
     else:
         PCRmap = pcr.spatial(pcr.scalar(float(v)))
     
-    print(PCRmap)
-    
     # make sure that values are in correct format
     if isLddMap == True: PCRmap = pcr.ifthen(pcr.scalar(PCRmap) < 10., PCRmap)
     if isLddMap == True: PCRmap = pcr.ifthen(pcr.scalar(PCRmap) >  0., PCRmap)
@@ -1621,6 +1619,9 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
     del co; del cOut; del err; del warp
     stdout = None; del stdout
     stderr = None; del stderr
+    
+    print(PCRmap)
+    check
     
     #~ pcr.aguila(PCRmap)
     
