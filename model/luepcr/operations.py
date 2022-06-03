@@ -159,6 +159,9 @@ def max(arg1, arg2):
     return ifthenelse(arg1 < arg2, arg1, arg2)
 
 
+def min(arg1, arg2):
+    return ifthenelse(arg1 > arg2, arg1, arg2)
+
 
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
