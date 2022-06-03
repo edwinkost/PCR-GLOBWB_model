@@ -85,6 +85,7 @@ def cover(arg1, arg2):
     return lfr.where(lfr.valid(arg1), arg1, arg2)
 
 def ldd(arg):
+    print(arg)
     return lfr.d8_flow_direction(arg)
 
 # Mimic operations not in LUE
