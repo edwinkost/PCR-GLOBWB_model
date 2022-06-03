@@ -154,23 +154,26 @@ def Scalar():
 
 def boolean(arg):
     print("Note 'pcraster.boolean' is NOT implemented on LUE yet.")
-    print(arg)
     return lfr.valid(arg)
 
 
 def max(arg1, arg2):
+    print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
     return ifthenelse(arg1 < arg2, arg1, arg2)
 
 
 def min(arg1, arg2):
+    print("Note 'pcraster.min' function is PARTIALLY implemented on LUE yet.")
     return ifthenelse(arg1 > arg2, arg1, arg2)
 
 
 def cellvalue(arg1, arg2):
+    print("Note 'pcraster.cellvalue' function is NOT implemented on LUE yet.")
     return [arg1, "dummy"]
 
 
 def maptotal(arg):
+    print("Note 'pcraster.maptotal' function is NOT implemented on LUE yet.")
     return 0.0
 
 
@@ -178,33 +181,42 @@ def sin(arg):
     if type(arg) == float: return lfr.sin(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.sin(arg)
 
+
 def cos(arg):
     if type(arg) == float: return lfr.cos(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.cos(arg)
+
 
 def tan(arg):
     if type(arg) == float: return lfr.tan(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.tan(arg)
 
+
 def asin(arg):
     if type(arg) == float: return lfr.asin(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.asin(arg)
+
 
 def acos(arg):
     if type(arg) == float: return lfr.acos(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.acos(arg)
 
+
 def atan(arg):
     if type(arg) == float: return lfr.atan(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.atan(arg)
 
+
 def abs(arg):
     return lfr.where(lfr.greater_than_equal_to(arg, 0), arg, arg*-1)
+
 
 def exp(arg):
     return lfr.exp(arg)
 
+
 def roundoff(arg):
+    print("Note 'pcraster.roundoff' function is NOT implemented on LUE yet.")
     return arg
 
 
