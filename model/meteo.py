@@ -175,9 +175,11 @@ class Meteo(object):
         self.read_meteo_variable_names(iniItems.meteoOptions)
 
         # latitudes (required for the Hamon and Penman-Monteith method)
-        # ~ self.latitudes = pcr.ycoordinate(pcr.defined(self.cloneMap))
-        # ~ self.latitudes = pcr.ycoordinate(pcr.defined(pcr.boolean(1.0)))
-        self.latitudes = pcr.ycoordinate("dummy")                          # needed to calculate 'referenceETPot'
+        try:
+            self.latitudes = pcr.ycoordinate(pcr.defined(self.cloneMap))
+            self.latitudes = pcr.ycoordinate(pcr.defined(pcr.boolean(1.0)))
+        except:
+            self.latitudes = pcr.ycoordinate("dummy")                          # needed to calculate 'referenceETPot'
 
         # latitudes in radian
         self.latitudes_in_radian = vos.deg2rad(self.latitudes)    
