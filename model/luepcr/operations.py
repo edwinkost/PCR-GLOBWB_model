@@ -121,6 +121,7 @@ def scalar(arg):
     elif type(arg) == int or type(arg) == float:
         return float(arg)
     else:
+        print(arg)
         raise NotImplementedError
 
 
