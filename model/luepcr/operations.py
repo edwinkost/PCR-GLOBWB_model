@@ -128,8 +128,8 @@ def spatial(arg):
         raise NotImplementedError
 
 
-def ycoordinates(arg):
-    print("Note 'pcraster.ycoordinates' function is NOT implemented on LUE yet.")
+def ycoordinate(arg):
+    print("Note 'pcraster.ycoordinate' function is NOT implemented on LUE yet.")
     return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 0.0)
 
 def lddrepair(arg):
