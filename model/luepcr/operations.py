@@ -154,7 +154,11 @@ def Scalar():
 
 def boolean(arg):
     print("Note 'pcraster.boolean' is NOT implemented on LUE yet.")
-    return lfr.valid(arg)
+    if arg == 1.0:
+        return lfr.valid(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 1.0))
+    else:
+        print(arg)
+        raise NotImplementedError
 
 
 def max(arg1, arg2):
