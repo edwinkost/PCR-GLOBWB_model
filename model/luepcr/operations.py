@@ -252,5 +252,15 @@ def roundoff(arg):
     return arg
 
 
+def rounddown(arg):
+    print("Note 'pcraster.rounddown' function is NOT implemented on LUE yet.")
+    return arg
+
+
+def roundup(arg):
+    print("Note 'pcraster.roundup' function is NOT implemented on LUE yet.")
+    return arg
+
+
 # to create an array with a value:
 # tmp = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=7)
