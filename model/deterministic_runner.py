@@ -44,7 +44,7 @@ try:
 except:
     pass		
 
-import oldcalc_framework
+# ~ import oldcalc_framework
 import disclaimer
 
 class DeterministicRunner(DynamicModel):
