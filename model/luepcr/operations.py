@@ -183,6 +183,11 @@ def maptotal(arg):
     return 0.0
 
 
+def report(arg1, arg2):
+    print("Note 'pcraster.report' function is NOT implemented on LUE yet.")
+    pass
+
+
 def sin(arg):
     if type(arg) == float: return lfr.sin(spatial(arg))
     if type(arg) == lfr.PartitionedArray_float32_2: return lfr.sin(arg)
