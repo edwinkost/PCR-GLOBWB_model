@@ -194,10 +194,12 @@ def boolean(arg):
 
 def max(arg1, arg2):
     print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
+    print(type(arg1))
     if type(arg1) == float: 
         lfr_arg1 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg1)
     else:
         lfr_arg1 = arg1
+    print(type(arg2))
     if type(arg2) == float: 
         lfr_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
     else:
