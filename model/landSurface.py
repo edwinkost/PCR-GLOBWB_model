@@ -25,13 +25,13 @@
 import types
 
 # ~ import pcraster as pcr
-# ~ import luepcr as pcr
-# ~ print("LUE is USED.")
-try:
-    import luepcr as pcr
-    print("LUE is USED.")
-except:
-    import pcraster as pcr		
+import luepcr as pcr
+print("LUE is USED.")
+# ~ try:
+    # ~ import luepcr as pcr
+    # ~ print("LUE is USED.")
+# ~ except:
+    # ~ import pcraster as pcr		
 
 import virtualOS as vos
 

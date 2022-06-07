@@ -41,13 +41,13 @@ import logging
 logger = logging.getLogger(__name__)
 
 # ~ import pcraster as pcr
-# ~ import luepcr as pcr
-# ~ print("LUE is USED.")
-try:
-    import luepcr as pcr
-    print("LUE is USED.")
-except:
-    import pcraster as pcr		
+import luepcr as pcr
+print("LUE is USED.")
+# ~ try:
+    # ~ import luepcr as pcr
+    # ~ print("LUE is USED.")
+# ~ except:
+    # ~ import pcraster as pcr		
 
 from ncConverter import *
 
