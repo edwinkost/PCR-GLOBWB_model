@@ -115,8 +115,8 @@ class PCRGlobWB(object):
         # initializing sub modules
         self.meteo = meteo.Meteo(self._configuration,self.landmask,initialState)
         self.landSurface = landSurface.LandSurface(self._configuration,self.landmask,initialState)
-        #~ self.groundwater = groundwater.Groundwater(self._configuration,self.landmask,initialState)
-        #~ self.routing = routing.Routing(self._configuration, initialState, self.lddMap)
+        self.groundwater = groundwater.Groundwater(self._configuration,self.landmask,initialState)
+        self.routing = routing.Routing(self._configuration, initialState, self.lddMap)
  
         # short name for every land cover type (needed for file name)
         self.shortNames = ['f','g','p','n']
@@ -475,9 +475,9 @@ class PCRGlobWB(object):
             #~ landWaterStoresAtBeginning    = self.totalLandWaterStores()    # not including surface water bodies
             #~ surfaceWaterStoresAtBeginning = self.totalSurfaceWaterStores()     
 
-        #~ self.meteo.update(self.routing, self._modelTime)                                         
+        self.meteo.update(self.routing, self._modelTime)                                         
 
-        self.meteo.update(None, self._modelTime)                                         
+        # ~ self.meteo.update(None, self._modelTime)                                         
 
         #~ self.landSurface.update(self.meteo, self.groundwater, self.routing, self._modelTime)      
 
