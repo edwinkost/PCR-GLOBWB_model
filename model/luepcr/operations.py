@@ -15,11 +15,11 @@ import numpy as np
 # ~ shape2 = 1000
 # ~ cellsize = 100.0
 
-# ~ rows = 4320
-# ~ cols = 2160
-# ~ shape1 = 1000
-# ~ shape2 = 1000
-# ~ cellsize = 5./60.
+rows = 4320
+cols = 2160
+shape1 = 1000
+shape2 = 1000
+cellsize = 5./60.
 
 # ~ rows = 43200
 # ~ cols = 21600
@@ -27,12 +27,11 @@ import numpy as np
 # ~ shape2 = 1000
 # ~ cellsize = 0.5/60.
 
-
-rows = 20000
-cols = 10000
-shape1 = 1000
-shape2 = 1000
-cellsize = 0.5/60.
+# ~ rows = 20000
+# ~ cols = 10000
+# ~ shape1 = 1000
+# ~ shape2 = 1000
+# ~ cellsize = 0.5/60.
 
 array_shape = (rows, cols)
 partition_shape = (shape1, shape2)
@@ -300,7 +299,7 @@ def uniform(arg): # UNDER DEVELOPMENT
     # create a numpy array with uniform distribution 
     numpy_array = 1.0
     missing_value = 1.0
-    return lfr.from_numpy(np.transpose(numpy_array), partition_shape, missing_value)
+    return lfr.uniform(numpy_array, partition_shape, missing_value)
 
 
 # to create an array with a value:
