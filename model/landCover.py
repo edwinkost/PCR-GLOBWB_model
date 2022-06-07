@@ -1171,7 +1171,10 @@ class LandCover(object):
         self.coverFraction = coverFraction
 
         # Edwin added the following line to extend the interception definition.
-        self.interceptCap = pcr.max(interceptCap, self.minInterceptCap) 
+        try:
+            self.interceptCap = pcr.max(interceptCap, self.minInterceptCap) 
+        except:
+            self.interceptCap = pcr.max(pcr.spatial(pcr.scalar(interceptCap)), pcr.spatial(pcr.scalar(self.minInterceptCap))) 
         
         # throughfall = surplus above the interception storage threshold 
         if self.interceptionModuleType == "Modified":
