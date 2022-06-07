@@ -36,6 +36,7 @@ cellsize = 5./60.
 array_shape = (rows, cols)
 partition_shape = (shape1, shape2)
 
+debug = False
 
 # PCRaster ~ LUE
 
@@ -84,7 +85,6 @@ def downstreamdist(arg):
 
 
 def defined(arg):
-    print(arg)
     return lfr.valid(arg)
 
 
@@ -153,42 +153,42 @@ def spatial(arg):
 
 
 def ycoordinate(arg):
-    print("Note 'pcraster.ycoordinate' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.ycoordinate' function is NOT implemented on LUE yet.")
     return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 0.0)
 
 
 def lddrepair(arg):
-    print("Note 'pcraster.lddrepair' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.lddrepair' function is NOT implemented on LUE yet.")
     return ldd(arg)
 
 
 def lddmask(arg1, arg2):
-    print("Note 'pcraster.lddmask' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.lddmask' function is NOT implemented on LUE yet.")
     return lfr.where(arg2, arg1)
 
 
 def ldddist(arg1, arg2, arg3):
-    print("Note 'pcraster.ldddist' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.ldddist' function is NOT implemented on LUE yet.")
     return arg3
 
 
 def numpy2pcr(arg1, arg2, arg3):
-    print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
+    if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
     return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
 
 
 def nominal(arg):
-    print("Note 'pcraster.nominal' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.nominal' function is NOT implemented on LUE yet.")
     return arg
 
 
 def Scalar():
-    print("Note 'pcraster.Scalar' is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.Scalar' is NOT implemented on LUE yet.")
     pass
 
 
 def boolean(arg):
-    print("Note 'pcraster.boolean' is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.boolean' is NOT implemented on LUE yet.")
     if arg == 1.0:
         return lfr.valid(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 1.0))
     elif arg == 0.0:
@@ -198,23 +198,8 @@ def boolean(arg):
         raise NotImplementedError
 
 
-# ~ def max(arg1, arg2):
-    # ~ print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
-    # ~ print(type(arg1))
-    # ~ if type(arg1) == float: 
-        # ~ lfr_arg1 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg1)
-    # ~ else:
-        # ~ lfr_arg1 = arg1
-    # ~ print(type(arg2))
-    # ~ if type(arg2) == float: 
-        # ~ lfr_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
-    # ~ else:
-        # ~ lfr_arg2 = arg2
-    # ~ return lfr.where(lfr.greater_than_equal_to(lfr_arg1, lfr_arg2), lfr_arg1, lfr_arg2)
-
-
 def max(arg1, arg2):
-    print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
+    if debug: print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
     # ~ print(arg1)
     # ~ print(arg2)
     # ~ return lfr.where(lfr.greater_than_equal_to(arg1, arg2), arg1, arg2)
@@ -222,22 +207,22 @@ def max(arg1, arg2):
 
 
 def min(arg1, arg2):
-    print("Note 'pcraster.min' function is PARTIALLY implemented on LUE yet.")
+    if debug: print("Note 'pcraster.min' function is PARTIALLY implemented on LUE yet.")
     return ifthenelse(arg1 > arg2, arg2, arg1)
 
 
 def cellvalue(arg1, arg2):
-    print("Note 'pcraster.cellvalue' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.cellvalue' function is NOT implemented on LUE yet.")
     return [arg1, "dummy"]
 
 
 def maptotal(arg):
-    print("Note 'pcraster.maptotal' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.maptotal' function is NOT implemented on LUE yet.")
     return 0.0
 
 
 def report(arg1, arg2):
-    print("Note 'pcraster.report' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.report' function is NOT implemented on LUE yet.")
     pass
 
 
@@ -280,17 +265,17 @@ def exp(arg):
 
 
 def roundoff(arg):
-    print("Note 'pcraster.roundoff' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.roundoff' function is NOT implemented on LUE yet.")
     return arg
 
 
 def rounddown(arg):
-    print("Note 'pcraster.rounddown' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.rounddown' function is NOT implemented on LUE yet.")
     return arg
 
 
 def roundup(arg):
-    print("Note 'pcraster.roundup' function is NOT implemented on LUE yet.")
+    if debug: print("Note 'pcraster.roundup' function is NOT implemented on LUE yet.")
     return arg
 
 
