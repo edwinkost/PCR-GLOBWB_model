@@ -27,7 +27,15 @@ import calendar
 import math
 
 from pcraster.framework import *
-import pcraster as pcr
+
+# ~ import pcraster as pcr
+# ~ import luepcr as pcr
+# ~ print("LUE is USED.")
+try:
+    import luepcr as pcr
+    print("LUE is USED.")
+except:
+    import pcraster as pcr		
 
 import logging
 logger = logging.getLogger(__name__)
@@ -85,7 +93,7 @@ class Meteo(object):
             self.avgAnnualTemperature      = iniConditions['meteo']['avgAnnualTemperature']
             self.avgAnnualDiurnalDeltaTemp = iniConditions['meteo']['avgAnnualDiurnalDeltaTemp']
 
-        
+        l
         # make sure the following values cannot be negative
         self.avgAnnualPrecipitation    = pcr.ifthen(self.landmask, pcr.max(0., pcr.cover(self.avgAnnualPrecipitation,    0.0)))
         self.avgAnnualDiurnalDeltaTemp = pcr.ifthen(self.landmask, pcr.max(0., pcr.cover(self.avgAnnualDiurnalDeltaTemp, 0.0)))
@@ -167,7 +175,13 @@ class Meteo(object):
         self.read_meteo_variable_names(iniItems.meteoOptions)
 
         # latitudes (required for the Hamon and Penman-Monteith method)
-        self.latitudes = pcr.ycoordinate(pcr.defined(self.cloneMap)) # needed to calculate 'referenceETPot'
+        try:
+            self.latitudes = pcr.ycoordinate(pcr.defined(self.cloneMap))
+            self.latitudes = pcr.ycoordinate(pcr.defined(pcr.boolean(1.0)))
+        except:
+            self.latitudes = pcr.ycoordinate("dummy")                          # needed to calculate 'referenceETPot'
+
+        # latitudes in radian
         self.latitudes_in_radian = vos.deg2rad(self.latitudes)    
         
         # initiate shortwave radiation class, required for the Bristow-Campbell method

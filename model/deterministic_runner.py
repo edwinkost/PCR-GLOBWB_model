@@ -38,6 +38,12 @@ from pcrglobwb import PCRGlobWB
 import logging
 logger = logging.getLogger(__name__)
 
+try:
+    print("LUE is USED.")
+    from lue.framework import runtime_scope
+except:
+    pass		
+
 import oldcalc_framework
 import disclaimer
 
@@ -48,7 +54,7 @@ class DeterministicRunner(DynamicModel):
 
         self.modelTime = modelTime        
         self.model = PCRGlobWB(configuration, modelTime, initialState)
-        self.reporting = Reporting(configuration, self.model, modelTime)
+        # ~ self.reporting = Reporting(configuration, self.model, modelTime)
         
     def initial(self): 
         pass
@@ -67,7 +73,25 @@ class DeterministicRunner(DynamicModel):
         # do any needed reporting for this time step        
         #~ self.reporting.report()
 
+
 def main():
+    with_lue = True
+    if with_lue:
+        main_with_lue()
+    else:   
+        main_without_lue()
+
+
+@runtime_scope
+def main_with_lue():
+    main_with_and_without_lue()
+
+
+def main_without_lue():
+    main_with_and_without_lue()
+
+
+def main_with_and_without_lue():
 
     # print disclaimer
     disclaimer.print_disclaimer()
