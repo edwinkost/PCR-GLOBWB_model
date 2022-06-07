@@ -157,6 +157,11 @@ def numpy2pcr(arg1, arg2, arg3):
     return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
 
 
+def nominal(arg):
+    print("Note 'pcraster.nominal' function is NOT implemented on LUE yet.")
+    return arg
+
+
 def Scalar():
     print("Note 'pcraster.Scalar' is NOT implemented on LUE yet.")
     pass
