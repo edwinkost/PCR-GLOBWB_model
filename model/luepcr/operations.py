@@ -156,9 +156,8 @@ def boolean(arg):
     print("Note 'pcraster.boolean' is NOT implemented on LUE yet.")
     if arg == 1.0:
         return lfr.valid(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 1.0))
-        # ~ return lfr.create_array(array_shape, partition_shape, np.dtype(np.bool_), fill_value = 1.0)
     elif arg == 0.0:
-        return lfr.create_array(array_shape, partition_shape, np.dtype(np.unit8), fill_value = 0)
+        return lfr.valid(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 1.0))
     else:
         print(arg)
         raise NotImplementedError
