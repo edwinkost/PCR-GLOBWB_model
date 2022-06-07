@@ -211,7 +211,7 @@ def max(arg1, arg2):
     print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
     # ~ print(arg1)
     # ~ print(arg2)
-    return lfr.where(lfr.greater_than_equal_to(arg1, arg2), arg1, arg2)
+    # ~ return lfr.where(lfr.greater_than_equal_to(arg1, arg2), arg1, arg2)
     return ifthenelse(arg1 > arg2, arg1, arg2)
 
 
