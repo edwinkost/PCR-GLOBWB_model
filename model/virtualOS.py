@@ -45,13 +45,13 @@ import numpy as np
 import numpy.ma as ma
 
 # ~ import pcraster as pcr
-import luepcr as pcr
-print("LUE is USED.")
-# ~ try:
-    # ~ import luepcr as pcr
-    # ~ print("LUE is USED.")
-# ~ except:
-    # ~ import pcraster as pcr		
+# ~ import luepcr as pcr
+# ~ print("LUE is USED.")
+try:
+    import luepcr as pcr
+    print("LUE is USED.")
+except:
+    import pcraster as pcr		
 
 import logging
 
