@@ -1120,7 +1120,9 @@ class LandCover(object):
                                             currTimeStep.fulldate, useDoy = 'daily_seasonal',\
                                             cloneMapFileName = self.cloneMap), 0.0)
         self.inputCropKC = cropKC                                               # This line is needed for debugging. (Can we remove this?)
-        self.cropKC = pcr.max(cropKC, self.minCropKC)                                
+        self.cropKC = pcr.max(cropKC, self.minCropKC)
+        
+        check                                
 
         # calculate potential ET (unit: m/day)
         self.totalPotET = pcr.ifthen(self.landmask,\
