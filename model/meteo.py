@@ -1042,7 +1042,10 @@ class Meteo(object):
                                       # ~ cloneMapFileName = self.cloneMap,\
                                       # ~ LatitudeLongitude = True)
 
-        self.precipitation = vos.netcdf2PCRobjClone(\
+        if self.iniItems.meteoOptions["RANDOM_VALUE_FOR_P_AND_T" == "True":
+            self.precipitation = 1.00
+        else:
+            self.precipitation = vos.netcdf2PCRobjClone(\
                                       netcdf_file_name, "automatic",\
                                       str(currTimeStep.fulldate), 
                                       useDoy = method_for_time_index,
@@ -1096,7 +1099,10 @@ class Meteo(object):
                                       # ~ cloneMapFileName = self.cloneMap,\
                                       # ~ LatitudeLongitude = True)
 
-        self.temperature = vos.netcdf2PCRobjClone(\
+        if self.iniItems.meteoOptions["RANDOM_VALUE_FOR_P_AND_T" == "True":
+            self.temperature = 1.00
+        else:
+            self.temperature = vos.netcdf2PCRobjClone(\
                                       netcdf_file_name, "automatic",\
                                       str(currTimeStep.fulldate), 
                                       useDoy = method_for_time_index,
