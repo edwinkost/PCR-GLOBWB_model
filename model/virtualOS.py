@@ -2025,8 +2025,9 @@ def regridData2FinerGrid(rescaleFac,coarse,MV):
         return coarse
     nr,nc = np.shape(coarse)
     
-    fine= np.zeros(nr*nc*rescaleFac*rescaleFac).reshape(nr*rescaleFac,nc*rescaleFac) + MV
+    # ~ fine= np.zeros(nr*nc*rescaleFac*rescaleFac).reshape(nr*rescaleFac,nc*rescaleFac) + MV
     
+    fine= np.zeros(nr*nc*rescaleFac*rescaleFac).reshape(nr*rescaleFac,nc*rescaleFac, dtype = np.float32) + MV
  
     ii = -1
     nrF,ncF = np.shape(fine)
