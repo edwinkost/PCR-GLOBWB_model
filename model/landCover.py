@@ -1471,12 +1471,19 @@ class LandCover(object):
             self.effSatUpp = pcr.cover(self.effSatUpp, 1.0)
             self.effSatLow = pcr.cover(self.effSatLow, 1.0)
             
+            # ~ # matricSuction (m)
+            # ~ self.matricSuctionUpp = self.parameters.airEntryValueUpp*\
+             # ~ (pcr.max(0.01,self.effSatUpp)**-self.parameters.poreSizeBetaUpp)
+            # ~ self.matricSuctionLow = self.parameters.airEntryValueLow*\
+             # ~ (pcr.max(0.01,self.effSatLow)**-self.parameters.poreSizeBetaLow)       # PSI1= PSI_A1[TYPE]*max(0.01,THEFF1)**-BCH1[TYPE]; 
+                                                                                    # ~ # PSI2= PSI_A2[TYPE]*max(0.01,THEFF2)**-BCH2[TYPE]; 
+
             # matricSuction (m)
             self.matricSuctionUpp = self.parameters.airEntryValueUpp*\
-             (pcr.max(0.01,self.effSatUpp)**-self.parameters.poreSizeBetaUpp)
+             (pcr.max(0.01,self.effSatUpp)**(self.parameters.poreSizeBetaUpp*-1.0))
             self.matricSuctionLow = self.parameters.airEntryValueLow*\
-             (pcr.max(0.01,self.effSatLow)**-self.parameters.poreSizeBetaLow)       # PSI1= PSI_A1[TYPE]*max(0.01,THEFF1)**-BCH1[TYPE]; 
-                                                                                    # PSI2= PSI_A2[TYPE]*max(0.01,THEFF2)**-BCH2[TYPE]; 
+             (pcr.max(0.01,self.effSatLow)**(self.parameters.poreSizeBetaLow*-1.0))     # PSI1= PSI_A1[TYPE]*max(0.01,THEFF1)**-BCH1[TYPE]; 
+                                                                                        # PSI2= PSI_A2[TYPE]*max(0.01,THEFF2)**-BCH2[TYPE]; 
 
             # kUnsat (m.day-1): unsaturated hydraulic conductivity
             #~ KUnSatUpp = pcr.max(0.,pcr.max(self.parameters.THEFF1_50,\
