@@ -142,6 +142,11 @@ def lddrepair(arg):
     return ldd(arg)
 
 
+def lddmask(arg1, arg2):
+    print("Note 'pcraster.lddmask' function is NOT implemented on LUE yet.")
+    return lfr.where(arg2, arg1)
+
+
 def numpy2pcr(arg1, arg2, arg3):
     print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
     return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
