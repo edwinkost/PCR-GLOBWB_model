@@ -1375,13 +1375,21 @@ class LandCover(object):
             prevSnowFreeWater = self.snowFreeWater
 
         # changes in snow cover: - melt ; + gain in snow or refreezing
+        # ~ deltaSnowCover = \
+            # ~ pcr.ifthenelse(meteo.temperature <= self.freezingT, \
+            # ~ self.refreezingCoeff*self.snowFreeWater, \
+           # ~ -pcr.min(self.snowCoverSWE, \
+                    # ~ pcr.max(meteo.temperature - self.freezingT, 0.0) * \
+                    # ~ self.degreeDayFactor)*1.0*1.0)                      # DSC[TYPE] = if(TA<=TT,CFR*SCF_L[TYPE],
+                                                                        # ~ #                      -min(SC_L[TYPE],max(TA-TT,0)*CFMAX*Duration*timeslice()))
         deltaSnowCover = \
             pcr.ifthenelse(meteo.temperature <= self.freezingT, \
             self.refreezingCoeff*self.snowFreeWater, \
-           -pcr.min(self.snowCoverSWE, \
+            pcr.min(self.snowCoverSWE, \
                     pcr.max(meteo.temperature - self.freezingT, 0.0) * \
-                    self.degreeDayFactor)*1.0*1.0)                      # DSC[TYPE] = if(TA<=TT,CFR*SCF_L[TYPE],
+                    self.degreeDayFactor)*-1.0*1.0*1.0)                 # DSC[TYPE] = if(TA<=TT,CFR*SCF_L[TYPE],
                                                                         #                      -min(SC_L[TYPE],max(TA-TT,0)*CFMAX*Duration*timeslice()))
+
         #~ deltaSnowCover = \
             #~ pcr.ifthenelse(meteo.temperature > self.freezingT, -pcr.min(self.snowCoverSWE, \
                                                                 #~ pcr.max(meteo.temperature - self.freezingT, 0.0) * \
