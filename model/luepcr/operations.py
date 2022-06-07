@@ -194,7 +194,15 @@ def boolean(arg):
 
 def max(arg1, arg2):
     print("Note 'pcraster.max' function is PARTIALLY implemented on LUE yet.")
-    return ifthenelse(arg1 < arg2, arg1, arg2)
+    if type(arg1) == float: 
+        lfr_arg1 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg1)
+    else:
+        lfr_arg1 = arg1
+    if type(arg2) == float: 
+        lfr_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
+    else:
+        lfr_arg2 = arg2
+    return ifthenelse(lfr_arg1 < lfr_arg2, lfr_arg1, lfr_arg2)
 
 
 def min(arg1, arg2):
@@ -268,6 +276,14 @@ def rounddown(arg):
 def roundup(arg):
     print("Note 'pcraster.roundup' function is NOT implemented on LUE yet.")
     return arg
+
+
+def uniform(arg): # UNDER DEVELOPMENT
+    
+    # create a numpy array with uniform distribution 
+    numpy_array = 1.0
+    missing_value = 1.0
+    return lfr.from_numpy(np.transpose(numpy_array), partition_shape, missing_value)
 
 
 # to create an array with a value:
