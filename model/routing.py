@@ -390,8 +390,11 @@ class Routing(object):
         except:    
             pass # We have to use 'try/except' because 'pcr.mapmaximum' cannot handle scalar value
 
-        # for netcdf reporting, we have to make sure that timestepsToAvgDischarge is spatial and scalar (especially while performing pcr2numpy operations)
-        self.timestepsToAvgDischarge = pcr.spatial(pcr.scalar(self.timestepsToAvgDischarge))
+
+        # ~ # - disactivate due to LUE development - #
+        # ~ # for netcdf reporting, we have to make sure that timestepsToAvgDischarge is spatial and scalar (especially while performing pcr2numpy operations)
+        # ~ self.timestepsToAvgDischarge = pcr.spatial(pcr.scalar(self.timestepsToAvgDischarge))
+
         self.timestepsToAvgDischarge = pcr.ifthen(self.landmask, self.timestepsToAvgDischarge)
 
         # Initial conditions needed for water bodies:
