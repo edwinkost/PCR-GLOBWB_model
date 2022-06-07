@@ -121,11 +121,14 @@ def scalar(arg):
     elif type(arg) == int or type(arg) == float:
         return float(arg)
     else:
-        try:
-            return arg
-        except:
-            print(arg)
-            raise NotImplementedError
+        print(arg)
+        raise NotImplementedError
+    # ~ else:
+        # ~ try:
+            # ~ return arg
+        # ~ except:
+            # ~ print(arg)
+            # ~ raise NotImplementedError
 
 
 def spatial(arg):
