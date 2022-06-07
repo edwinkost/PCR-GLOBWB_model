@@ -21,6 +21,12 @@ shape1 = 1000
 shape2 = 1000
 cellsize = 5./60.
 
+rows = 43200
+cols = 21600
+shape1 = 1000
+shape2 = 1000
+cellsize = 0.5/60.
+
 array_shape = (rows, cols)
 partition_shape = (shape1, shape2)
 
