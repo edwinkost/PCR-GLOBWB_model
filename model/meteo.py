@@ -1043,7 +1043,7 @@ class Meteo(object):
                                       # ~ LatitudeLongitude = True)
 
         if self.iniItems.meteoOptions["RANDOM_VALUE_FOR_P_AND_T"] == "True":
-            self.precipitation = 1.00
+            self.precipitation = pcr.spatial(pcr.scalar(1.00))
         else:
             self.precipitation = vos.netcdf2PCRobjClone(\
                                       netcdf_file_name, "automatic",\
@@ -1100,7 +1100,7 @@ class Meteo(object):
                                       # ~ LatitudeLongitude = True)
 
         if self.iniItems.meteoOptions["RANDOM_VALUE_FOR_P_AND_T"] == "True":
-            self.temperature = 1.00
+            self.temperature = pcr.spatial(pcr.scalar(1.00))
         else:
             self.temperature = vos.netcdf2PCRobjClone(\
                                       netcdf_file_name, "automatic",\
