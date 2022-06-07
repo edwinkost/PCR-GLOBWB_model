@@ -204,12 +204,12 @@ def max(arg1, arg2):
         lfr_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
     else:
         lfr_arg2 = arg2
-    return ifthenelse(lfr_arg1 < lfr_arg2, lfr_arg1, lfr_arg2)
+    return ifthenelse(lfr_arg1 > lfr_arg2, lfr_arg1, lfr_arg2)
 
 
 def min(arg1, arg2):
     print("Note 'pcraster.min' function is PARTIALLY implemented on LUE yet.")
-    return ifthenelse(arg1 > arg2, arg1, arg2)
+    return ifthenelse(arg1 > arg2, arg2, arg1)
 
 
 def cellvalue(arg1, arg2):
