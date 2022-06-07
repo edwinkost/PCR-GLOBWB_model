@@ -147,6 +147,11 @@ def lddmask(arg1, arg2):
     return lfr.where(arg2, arg1)
 
 
+def ldddist(arg1, arg2, arg3):
+    print("Note 'pcraster.ldddist' function is NOT implemented on LUE yet.")
+    return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg3)
+
+
 def numpy2pcr(arg1, arg2, arg3):
     print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
     return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
