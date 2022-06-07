@@ -77,24 +77,8 @@ class DeterministicRunner(DynamicModel):
         #~ self.reporting.report()
 
 
-def main():
-    with_lue = True
-    if with_lue:
-        main_with_lue()
-    else:   
-        main_without_lue()
-
-
 @runtime_scope
-def main_with_lue():
-    main_with_and_without_lue()
-
-
-def main_without_lue():
-    main_with_and_without_lue()
-
-
-def main_with_and_without_lue():
+def main():
 
     # print disclaimer
     disclaimer.print_disclaimer()
