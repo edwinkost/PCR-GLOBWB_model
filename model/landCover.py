@@ -2221,8 +2221,10 @@ class LandCover(object):
 
             # reduce the fossil irrigation and livestock demands with enough supply of non fossil groundwater (in order to minimize unrealistic areas of fossil groundwater abstraction)
             # - supply from the average recharge (baseflow) and non fossil groundwater allocation 
-            nonFossilGroundwaterSupply = pcr.max(pcr.max(0.0, routing.avgBaseflow) / routing.cellArea, \
-                                                 groundwater.avgNonFossilAllocationShort, groundwater.avgNonFossilAllocation)  
+            # ~ nonFossilGroundwaterSupply = pcr.max(pcr.max(0.0, routing.avgBaseflow) / routing.cellArea, \
+                                                 # ~ groundwater.avgNonFossilAllocationShort, groundwater.avgNonFossilAllocation)  
+            nonFossilGroundwaterSupply = pcr.max(pcr.max(pcr.max(0.0, routing.avgBaseflow) / routing.cellArea, \
+                                                 groundwater.avgNonFossilAllocationShort), groundwater.avgNonFossilAllocation)  
             # - irrigation supply from the non fossil groundwater
             nonFossilIrrigationGroundwaterSupply  = nonFossilGroundwaterSupply * vos.getValDivZero(remainingIrrigationLivestock, remainingTotalDemand)
             # - the corrected/reduced irrigation and livestock demand
