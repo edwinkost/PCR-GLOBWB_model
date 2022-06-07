@@ -122,7 +122,7 @@ def scalar(arg):
         return float(arg)
     else:
         try:
-        return float(arg)
+            return arg
         except:
             print(arg)
             raise NotImplementedError
