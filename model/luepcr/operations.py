@@ -9,17 +9,17 @@ import numpy as np
 
 # hack to just get it working, depend on case study
 # these should be derived eventually
-rows = 87600
-cols = 84000
-shape1 = 1000
-shape2 = 1000
-cellsize = 100.0
+# ~ rows = 87600
+# ~ cols = 84000
+# ~ shape1 = 1000
+# ~ shape2 = 1000
+# ~ cellsize = 100.0
 
-rows = 4320
-cols = 2160
-shape1 = 1000
-shape2 = 1000
-cellsize = 5./60.
+# ~ rows = 4320
+# ~ cols = 2160
+# ~ shape1 = 1000
+# ~ shape2 = 1000
+# ~ cellsize = 5./60.
 
 rows = 43200
 cols = 21600
