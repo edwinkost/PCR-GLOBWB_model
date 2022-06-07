@@ -149,7 +149,7 @@ def lddmask(arg1, arg2):
 
 def ldddist(arg1, arg2, arg3):
     print("Note 'pcraster.ldddist' function is NOT implemented on LUE yet.")
-    return lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg3)
+    return arg3
 
 
 def numpy2pcr(arg1, arg2, arg3):
