@@ -294,12 +294,8 @@ def roundup(arg):
     return arg
 
 
-def uniform(arg): # UNDER DEVELOPMENT
-    
-    # create a numpy array with uniform distribution 
-    numpy_array = 1.0
-    missing_value = 1.0
-    return lfr.uniform(numpy_array, partition_shape, missing_value)
+def uniform(whatever, min_value = 0.0, max_value = 1.0): 
+    return lfr.uniform(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=0.0), min_value, max_value)
 
 
 # to create an array with a value:
