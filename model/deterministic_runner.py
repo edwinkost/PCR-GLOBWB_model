@@ -78,7 +78,7 @@ class DeterministicRunner(DynamicModel):
 
 
 def main():
-    with_lue = False
+    with_lue = True
     if with_lue:
         main_with_lue()
     else:   
