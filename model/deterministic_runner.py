@@ -42,7 +42,9 @@ try:
     print("LUE is USED.")
     from lue.framework import runtime_scope
 except:
-    pass		
+    def runtime_scope():
+        print("LUE is NOT USED.")
+        pass		
 
 import oldcalc_framework
 import disclaimer
@@ -82,7 +84,7 @@ def main():
         main_without_lue()
 
 
-# ~ @runtime_scope
+@runtime_scope
 def main_with_lue():
     main_with_and_without_lue()
 
