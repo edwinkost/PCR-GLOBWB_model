@@ -495,6 +495,8 @@ class PCRGlobWB(object):
             # ~ # disactivate due to LUE
             # ~ logger.info("Saving/dumping states to pcraster maps for time %s to the directory %s", self._modelTime, self._configuration.endStateDir)
             # ~ self.dumpState(self._configuration.endStateDir)
+            pass
+            
 
         # calculating and dumping some monthly values for the purpose of online coupling with MODFLOW:
         if self._configuration.online_coupling_between_pcrglobwb_and_modflow:
@@ -517,7 +519,10 @@ class PCRGlobWB(object):
             # - this is only needed for runs with merging and modflow processes
             # - for a spinUpRun, merging will be skipped
             if self.spinUpRun is not None and self.spinUpRun == False:
-                filename = self._configuration.mapsDir + "/pcrglobwb_files_for_" + str(self._modelTime.fulldate)+"_are_ready.txt"
-                if os.path.exists(filename): os.remove(filename)
-                open(filename, "w").close()    
+
+                # ~ # disactivate due to LUE
+                # ~ filename = self._configuration.mapsDir + "/pcrglobwb_files_for_" + str(self._modelTime.fulldate)+"_are_ready.txt"
+                # ~ if os.path.exists(filename): os.remove(filename)
+                # ~ open(filename, "w").close()
+                pass    
 
