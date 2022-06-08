@@ -78,12 +78,6 @@ class DeterministicRunner(DynamicModel):
 
 
 def main():
-    model_run()
-    print('End of model run.')
-
-
-@runtime_scope
-def model_run():
 
     # print disclaimer
     disclaimer.print_disclaimer()
@@ -112,6 +106,15 @@ def model_run():
         configuration.main_output_directory = output_directory
         configuration.globalOptions['outputDir'] = output_directory
         configuration.set_configuration()
+
+    logger.info('Starting the model run')
+    model_run()
+    logger.info('End of the model run')
+
+
+@runtime_scope
+def model_run(configuration):
+
     
     # timeStep info: year, month, day, doy, hour, etc
     currTimeStep = ModelTime() 
