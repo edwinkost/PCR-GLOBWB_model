@@ -77,8 +77,14 @@ class DeterministicRunner(DynamicModel):
         #~ self.reporting.report()
 
 
-@runtime_scope
 def main():
+    logger.info('Starting model run.')
+    model_run()
+    logger.info('End of model run.')
+
+
+@runtime_scope
+def model_run():
 
     # print disclaimer
     disclaimer.print_disclaimer()
