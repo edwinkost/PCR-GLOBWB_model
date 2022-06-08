@@ -108,7 +108,7 @@ def main():
         configuration.set_configuration()
 
     logger.info('Starting the model run')
-    model_run()
+    model_run(configuration)
     logger.info('End of the model run')
 
 
