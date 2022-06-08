@@ -39,8 +39,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 try:
-    print("LUE is USED.")
     from lue.framework import runtime_scope
+    print("LUE is USED.")
 except:
     def runtime_scope(function):
         print("LUE is NOT USED.")
