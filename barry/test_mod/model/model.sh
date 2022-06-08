@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-
 # Change these for your specific setup.
 
 #~ # In Kor's development environment:
@@ -39,31 +38,12 @@ function run_on_snellius_node()
     nr_cpus_per_task=16
     nr_localities=$(expr $nr_cluster_nodes \* $nr_numa_nodes)
 
-#~     # Start a cooperating set of processes:
-#~     python /sw/arch/Centos8/EB_production/2021/software/HPX/1.7.1-foss-2021a/bin/hpxrun.py \
-#~         --parcelport=mpi \
-#~         --runwrapper=mpi \
-#~         --localities=$nr_localities \
-#~         --thread=$nr_cpus_per_task \
-#~         --verbose \
-#~         `which python` -- \
-#~             /home/edwin/github/edwinkost/PCR-GLOBWB_model/example_lue/example_from_kor/hello_lue.py \
-#~                 6000,4000 1000,1000 \
-#~                 --hpx:print-bind
-
-#~     # Start a cooperating set of processes:
-#~     python /home/edwin/github/edwinkost/PCR-GLOBWB_model/example_lue/example_from_kor/hello_lue.py \
-#~                 6000,4000 1000,1000 \
-#~                 --hpx:print-bind
-
     # Start a cooperating set of processes:
-    python /home/jaarsveldb/lue/PCR-GLOBWB_model/barry/hamonETPfunctions_lue.py \
-                6000,4000 1000,1000 \
-                --hpx:print-bind
+    python /home/jaarsveldb/lue/PCR-GLOBWB_model/barry/test_mod/model/model.py
 
 }
 
-
+#
 function run_on_snellius_partition()
 {
     nr_cluster_nodes=$1

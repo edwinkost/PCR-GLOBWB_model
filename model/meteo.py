@@ -3,24 +3,7 @@
 #
 # PCR-GLOBWB (PCRaster Global Water Balance) Global Hydrological Model
 #
-# Copyright (C) 2016, Edwin H. Sutanudjaja, Rens van Beek, Niko Wanders, Yoshihide Wada, 
-# Joyce H. C. Bosmans, Niels Drost, Ruud J. van der Ent, Inge E. M. de Graaf, Jannis M. Hoch, 
-# Kor de Jong, Derek Karssenberg, Patricia López López, Stefanie Peßenteiner, Oliver Schmitz, 
-# Menno W. Straatsma, Ekkamol Vannametee, Dominik Wisser, and Marc F. P. Bierkens
-# Faculty of Geosciences, Utrecht University, Utrecht, The Netherlands
-#
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# LUE IMPLIMENTATIN 
 
 import os
 import calendar
@@ -310,8 +293,6 @@ class Meteo(object):
             if factor_var_name in meteoOptions:
                 vars(self)[factor_var_name] = pcr.cover(vos.readPCRmapClone(meteoOptions[factor_var_name], self.cloneMap, self.tmpDir, self.inputDir), 1.0)
         
-
-
     def read_meteo_variable_names(self, meteoOptions):
 
         if 'precipitationVariableName' in meteoOptions: self.preVarName      = meteoOptions['precipitationVariableName']
@@ -1162,5 +1143,3 @@ class Meteo(object):
                 # apply conversion factor and constant
                 vars(self)[meteo_var_name] = vars(self)['consta_for_' + meteo_var_name] + \
                                              vars(self)['factor_for_' + meteo_var_name] * vars(self)[meteo_var_name]                                                   
-
-        # ~ pcr.aguila(self.relative_humidity)

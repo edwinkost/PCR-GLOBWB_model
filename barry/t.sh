@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-
 # Change these for your specific setup.
 
 #~ # In Kor's development environment:
