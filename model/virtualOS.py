@@ -43,7 +43,15 @@ import glob
 import netCDF4 as nc
 import numpy as np
 import numpy.ma as ma
-import pcraster as pcr
+
+# ~ import pcraster as pcr
+# ~ import luepcr as pcr
+# ~ print("LUE is USED.")
+try:
+    import luepcr as pcr
+    print("LUE is USED.")
+except:
+    import pcraster as pcr		
 
 import logging
 
@@ -66,6 +74,7 @@ netcdf_suffixes = ('.nc4','.nc')
 
 # maximum number of tries for reading files:
 max_num_of_tries = 5
+max_num_of_tries = 2
 # ~ # - set it to infinity - NOT RECOMMENDED
 # ~ max_num_of_tries = float("inf")
 
@@ -1614,6 +1623,8 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
     del co; del cOut; del err; del warp
     stdout = None; del stdout
     stderr = None; del stderr
+    
+    print(PCRmap)
     
     #~ pcr.aguila(PCRmap)
     

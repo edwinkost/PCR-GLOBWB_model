@@ -23,7 +23,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import types
-import pcraster as pcr
+
+# ~ import pcraster as pcr
+# ~ import luepcr as pcr
+# ~ print("LUE is USED.")
+try:
+    import luepcr as pcr
+    print("LUE is USED.")
+except:
+    import pcraster as pcr		
+
 import virtualOS as vos
 
 import logging
@@ -116,6 +125,9 @@ class LandSurface(object):
         # cellArea (unit: m2)
         self.cellArea = vos.readPCRmapClone(iniItems.routingOptions['cellAreaMap'], \
                                             self.cloneMap, self.tmpDir, self.inputDir)
+        print("CHECK")
+        print(self.landmask)
+        print(self.cellArea)
         self.cellArea = pcr.ifthen(self.landmask, self.cellArea)
         
         # number of soil layers:
@@ -797,15 +809,18 @@ class LandSurface(object):
                 self.landCoverObj[coverType].naturalFracVegCover = \
                 self.landCoverObj[coverType].fracVegCover
         #
-        # check and make sure that totalArea = 1.0 for all cells
-        totalArea = pristineAreaFrac
-        totalArea = pcr.ifthen(self.landmask,totalArea)
-        totalArea = pcr.cover(totalArea, 1.0)
-        check_map = totalArea - pcr.scalar(1.0)
-        a,b,c = vos.getMinMaxMean(check_map)
-        threshold = 1e-4
-        if abs(a) > threshold or abs(b) > threshold:
-            logger.error("total of 'Natural Area' fractions is not equal to 1.0 ... Min %f Max %f Mean %f" %(a,b,c)) 
+
+        # ~ # - disactivate due to LUE development - #
+        # ~ # check and make sure that totalArea = 1.0 for all cells
+        # ~ totalArea = pristineAreaFrac
+        # ~ totalArea = pcr.ifthen(self.landmask,totalArea)
+        # ~ totalArea = pcr.cover(totalArea, 1.0)
+        # ~ check_map = totalArea - pcr.scalar(1.0)
+        # ~ a,b,c = vos.getMinMaxMean(check_map)
+        # ~ threshold = 1e-4
+        # ~ if abs(a) > threshold or abs(b) > threshold:
+            # ~ logger.error("total of 'Natural Area' fractions is not equal to 1.0 ... Min %f Max %f Mean %f" %(a,b,c)) 
+
 
     def scaleModifiedLandCoverFractions(self): 
         ''' rescales the land cover fractions with irrigation areas'''

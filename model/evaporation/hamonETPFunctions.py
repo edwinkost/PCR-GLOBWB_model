@@ -22,7 +22,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import pcraster as pcr
+import sys
+
+# ~ import pcraster as pcr
+sys.path.append("..")
+# ~ import luepcr as pcr
+# ~ print("LUE is USED.")
+try:
+    import luepcr as pcr
+    print("LUE is USED.")
+except:
+    import pcraster as pcr		
+
+
 import math
 
 import virtualOS as vos
@@ -44,9 +56,12 @@ def HamonPotET(airT,doy,lat):
     # Note that all following functions use trigonometric function in degres.
     
     reset_globaloption_to_radians = False
-    if float(pcr.sin(90.0)) < 1.0: 
-        pcr.setglobaloption("degrees")
-        reset_globaloption_to_radians = True
+    
+    # - DISACTIVATE due to LUE developement
+    # ~ if float(pcr.sin(90.0)) < 1.0: 
+        # ~ pcr.setglobaloption("degrees")
+        # ~ reset_globaloption_to_radians = True
+    # - DISACTIVATE due to LUE developement
          
     rhoSat =  2.167 * satPressure (airT) / (airT + 273.15)
     
