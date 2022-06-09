@@ -17,8 +17,8 @@ import numpy as np
 
 rows = 4320
 cols = 2160
-shape1 = 300
-shape2 = 300
+shape1 = 1000
+shape2 = 1000
 cellsize = 5./60.
 
 # ~ rows = 43200
