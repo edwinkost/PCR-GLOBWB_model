@@ -15,17 +15,23 @@ import numpy as np
 # ~ shape2 = 1000
 # ~ cellsize = 100.0
 
-rows = 4320
-cols = 2160
-shape1 = 1000
-shape2 = 1000
-cellsize = 5./60.
+#~ rows = 4320
+#~ cols = 2160
+#~ shape1 = 1000
+#~ shape2 = 1000
+#~ cellsize = 5./60.
 
 rows = 4320
 cols = 2160
-shape1 = 50
-shape2 = 50
+shape1 = 1500
+shape2 = 1500
 cellsize = 5./60.
+
+#~ rows = 4320
+#~ cols = 2160
+#~ shape1 = 50
+#~ shape2 = 50
+#~ cellsize = 5./60.
 
 # ~ rows = 43200
 # ~ cols = 21600
