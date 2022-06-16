@@ -292,7 +292,8 @@ def roundup(arg):
 
 
 def pcr2numpy(arg1, arg2):
-    return lfr.to_numpy(arg1, arg2)
+    if debug: print("Note 'pcraster.pcr2numpy' function is PARTIALLY implemented on LUE yet.")
+    return lfr.to_numpy(lfr.cover(arg1, 0.0), arg2)
 
 
 def uniform(whatever, min_value = 0.0, max_value = 1.0): 
