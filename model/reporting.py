@@ -422,9 +422,6 @@ class Reporting(object):
         # runoff (m) from land surface - not including local changes in water bodies
         self.runoff = self.directRunoff + self.interflowTotal + self.baseflow
         
-        # discharge (unit: m3/s)
-        self.discharge = self._model.routing.disChanWaterBody
-
         # soil moisture state from (approximately) the first 5 cm soil  
         if self._model.landSurface.numberOfSoilLayers == 3:
             self.storUppSurface   = self._model.landSurface.storUpp000005    # unit: m
