@@ -57,7 +57,7 @@ class DeterministicRunner(DynamicModel):
 
         self.modelTime = modelTime        
         self.model = PCRGlobWB(configuration, modelTime, initialState)
-        # ~ self.reporting = Reporting(configuration, self.model, modelTime)
+        self.reporting = Reporting(configuration, self.model, modelTime)
         
     def initial(self): 
         pass
