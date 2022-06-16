@@ -68,10 +68,10 @@ class PCR2netCDF():
         # Let users decide what their preference regarding latitude order. 
         self.netcdf_y_orientation_follow_cf_convention = False
         if 'netcdf_y_orientation_follow_cf_convention' in list(iniItems.reportingOptions.keys()) and\
-        # ~ iniItems.reportingOptions['netcdf_y_orientation_follow_cf_convention'] == "True":
-        # ~ msg = "Latitude (y) orientation for output netcdf files start from the bottom to top."
-        # ~ self.netcdf_y_orientation_follow_cf_convention = True
-        # ~ self.latitudes  = np.unique(pcr.pcr2numpy(pcr.ycoordinate(cloneMap), vos.MV))
+            iniItems.reportingOptions['netcdf_y_orientation_follow_cf_convention'] == "True":
+            msg = "Latitude (y) orientation for output netcdf files start from the bottom to top."
+            self.netcdf_y_orientation_follow_cf_convention = True
+            self.latitudes  = np.unique(pcr.pcr2numpy(pcr.ycoordinate(cloneMap), vos.MV))
         
         # set the general netcdf attributes (based on the information given in the ini/configuration file) 
         self.set_general_netcdf_attributes(iniItems, specificAttributeDictionary)
