@@ -427,9 +427,7 @@ class Reporting(object):
             self.storUppSurface   = self._model.landSurface.storUpp000005    # unit: m
             self.satDegUppSurface = self._model.landSurface.satDegUpp000005  # unit: percentage
         
-        # fraction of surface water bodies.
-        self.dynamicFracWat = self._model.routing.dynamicFracWat
-        
+       
         if self._model.landSurface.numberOfSoilLayers == 3:
             self.storUpp000005  = self._model.landSurface.storUpp000005
             self.storUpp005030  = self._model.landSurface.storUpp005030
@@ -453,6 +451,7 @@ class Reporting(object):
         #~ if self._modelTime.timeStepPCR == 1:
             #~ # recession coefficient (day-1)
             #~ pcr.report(pcr.ifthen(self._model.routing.landmask, self._model.groundwater.recessionCoeff), self.configuration.mapsDir + "/globalalpha.map")
+
 
     def report_forcing_for_debugging(self):
 
