@@ -367,23 +367,29 @@ class Reporting(object):
 
     def post_processing(self):
 
-        self.basic_post_processing() 
-        self.additional_post_processing()
-        #-RvB 23/02/2017: post-processing for the eartH2Observe project
-        self.e2o_post_processing()
+        # reporting for lue only
+        self.precipitation  = pcr.ifthen(self._model.routing.landmask, self._model.meteo.precipitation) 
+        self.temperature    = pcr.ifthen(self._model.routing.landmask, self._model.meteo.temperature)
+        self.referencePotET = pcr.ifthen(self._model.routing.landmask, self._model.meteo.referencePotET) 
+
         
-        # reporting, post-processing for the Ulysses project
-        self.ulysses_post_processing()
-                
-        if self.debug_to_version_one:
-            if self._modelTime.timeStepPCR == 1: self.report_static_maps_for_debugging()
-            self.report_forcing_for_debugging()
-            self.report_vegetation_phenology_for_debugging()
-        
-        # saving some model paramaters that are constant over time
-        if self._modelTime.timeStepPCR == 1:
-            # recession coefficient (day-1)
-            pcr.report(pcr.ifthen(self._model.routing.landmask, self._model.groundwater.recessionCoeff), self.configuration.mapsDir + "/globalalpha.map")
+        #~ self.basic_post_processing() 
+        #~ self.additional_post_processing()
+        #~ #-RvB 23/02/2017: post-processing for the eartH2Observe project
+        #~ self.e2o_post_processing()
+        #~ 
+        #~ # reporting, post-processing for the Ulysses project
+        #~ self.ulysses_post_processing()
+                #~ 
+        #~ if self.debug_to_version_one:
+            #~ if self._modelTime.timeStepPCR == 1: self.report_static_maps_for_debugging()
+            #~ self.report_forcing_for_debugging()
+            #~ self.report_vegetation_phenology_for_debugging()
+        #~ 
+        #~ # saving some model paramaters that are constant over time
+        #~ if self._modelTime.timeStepPCR == 1:
+            #~ # recession coefficient (day-1)
+            #~ pcr.report(pcr.ifthen(self._model.routing.landmask, self._model.groundwater.recessionCoeff), self.configuration.mapsDir + "/globalalpha.map")
 
     def report_forcing_for_debugging(self):
 
