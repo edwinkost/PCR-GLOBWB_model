@@ -291,6 +291,10 @@ def roundup(arg):
     return arg
 
 
+def pcr2numpy(arg1, arg2):
+    return lfr.to_numpy(arg1, arg2)
+
+
 def uniform(whatever, min_value = 0.0, max_value = 1.0): 
     return lfr.uniform(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=0.0), min_value, max_value)
 
