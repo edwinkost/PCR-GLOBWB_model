@@ -370,7 +370,73 @@ class Reporting(object):
         # reporting for lue only
         self.precipitation  = pcr.ifthen(self._model.routing.landmask, self._model.meteo.precipitation) 
         self.temperature    = pcr.ifthen(self._model.routing.landmask, self._model.meteo.temperature)
-        self.referencePotET = pcr.ifthen(self._model.routing.landmask, self._model.meteo.referencePotET) 
+        self.referencePotET = pcr.ifthen(self._model.routing.landmask, self._model.meteo.referencePotET)
+        
+        # potential and actual evaporation from land surface part (m)
+        self.totalLandSurfacePotET = self._model.landSurface.totalPotET 
+        self.totLandSurfaceActuaET = self._model.landSurface.actualET
+        #
+        self.fractionLandSurfaceET = vos.getValDivZero(self.totLandSurfaceActuaET,\
+                                                       self.totalLandSurfacePotET,\
+                                                       vos.smallNumber)
+        
+        self.interceptStor = self._model.landSurface.interceptStor
+
+        self.snowCoverSWE  = self._model.landSurface.snowCoverSWE
+        self.snowFreeWater = self._model.landSurface.snowFreeWater
+
+        self.topWaterLayer = self._model.landSurface.topWaterLayer
+        self.storUppTotal  = self._model.landSurface.storUppTotal
+        self.storLowTotal  = self._model.landSurface.storLowTotal
+        
+        self.interceptEvap        = self._model.landSurface.interceptEvap
+        self.actSnowFreeWaterEvap = self._model.landSurface.actSnowFreeWaterEvap
+        self.topWaterLayerEvap    = self._model.landSurface.openWaterEvap
+        self.actBareSoilEvap      = self._model.landSurface.actBareSoilEvap
+        
+        self.actTranspiTotal      = self._model.landSurface.actTranspiTotal
+        self.actTranspiUppTotal   = self._model.landSurface.actTranspiUppTotal
+        self.actTranspiLowTotal   = self._model.landSurface.actTranspiLowTotal
+                                  
+        self.directRunoff         = self._model.landSurface.directRunoff
+        self.interflowTotal       = self._model.landSurface.interflowTotal
+        
+        self.infiltration         = self._model.landSurface.infiltration
+        self.gwRecharge           = self._model.landSurface.gwRecharge
+        self.gwNetCapRise         = pcr.ifthenelse(self._model.landSurface.gwRecharge < 0.0, self.gwRecharge*(-1.0), 0.0)
+        
+        # water demand (m)
+        self.irrGrossDemand       = self._model.landSurface.irrGrossDemand    
+        self.nonIrrGrossDemand    = self._model.landSurface.nonIrrGrossDemand
+        self.totalGrossDemand     = self._model.landSurface.totalPotentialGrossDemand
+        
+        self.satDegUpp            = self._model.landSurface.satDegUppTotal
+        self.satDegLow            = self._model.landSurface.satDegLowTotal
+
+        self.satDegTotal          = self._model.landSurface.satDegTotal
+        
+        self.storGroundwater      = self._model.groundwater.storGroundwater
+        
+        self.baseflow             = self._model.groundwater.baseflow
+
+        # runoff (m) from land surface - not including local changes in water bodies
+        self.runoff = self.directRunoff + self.interflowTotal + self.baseflow
+        
+        # discharge (unit: m3/s)
+        self.discharge = self._model.routing.disChanWaterBody
+
+        # soil moisture state from (approximately) the first 5 cm soil  
+        if self._model.landSurface.numberOfSoilLayers == 3:
+            self.storUppSurface   = self._model.landSurface.storUpp000005    # unit: m
+            self.satDegUppSurface = self._model.landSurface.satDegUpp000005  # unit: percentage
+        
+        # fraction of surface water bodies.
+        self.dynamicFracWat = self._model.routing.dynamicFracWat
+        
+        if self._model.landSurface.numberOfSoilLayers == 3:
+            self.storUpp000005  = self._model.landSurface.storUpp000005
+            self.storUpp005030  = self._model.landSurface.storUpp005030
+            self.storLow030150  = self._model.landSurface.storLow030150
 
         
         #~ self.basic_post_processing() 
