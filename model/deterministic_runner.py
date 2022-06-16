@@ -74,7 +74,7 @@ class DeterministicRunner(DynamicModel):
         
 
         # do any needed reporting for this time step        
-        #~ self.reporting.report()
+        self.reporting.report()
 
 
 def main():
