@@ -186,7 +186,8 @@ def ldddist(arg1, arg2, arg3):
 
 def numpy2pcr(arg1, arg2, arg3):
     if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
-    return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
+    #~ return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
+    return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape)
 
 
 def nominal(arg):
@@ -292,8 +293,7 @@ def roundup(arg):
 
 
 def pcr2numpy(arg1, arg2):
-    if debug: print("Note 'pcraster.pcr2numpy' function is PARTIALLY implemented on LUE yet.")
-    return lfr.to_numpy(lfr.cover(arg1, 0.0), arg2)
+    return lfr.to_numpy(arg1, arg2)
 
 
 def uniform(whatever, min_value = 0.0, max_value = 1.0): 
