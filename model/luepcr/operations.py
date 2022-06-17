@@ -195,7 +195,9 @@ def aguila(arg1):
     check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, 1e20)
     
     # ~ pcr_aguila(check_pcraster)
-    pcraster_call.aguila(check_pcraster)
+    pcraster_call.report(check_pcraster, "check.map")
+    os.system("aguila check.map")
+    # ~ pcraster_call.aguila(check_pcraster)
 
 
 def numpy2pcr(arg1, arg2, arg3):
