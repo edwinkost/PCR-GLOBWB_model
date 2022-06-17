@@ -5,7 +5,7 @@ from pcraster import numpy2pcr as pcr_numpy2pcr
 from pcraster import aguila as pcr_aguila
 from pcraster import Scalar as pcr_Scalar
 
-# ~ import pcraster
+import pcraster as pcraster_call
 
 import lue.framework as lfr
 
@@ -194,7 +194,8 @@ def aguila(arg1):
     check_np       = np.transpose(lfr.to_numpy(arg1, 1e20))
     check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, 1e20)
     
-    pcr_aguila(check_pcraster)
+    # ~ pcr_aguila(check_pcraster)
+    pcraster_call.aguila(check_pcraster)
 
 
 def numpy2pcr(arg1, arg2, arg3):
