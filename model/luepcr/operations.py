@@ -199,6 +199,8 @@ def numpy2pcr(arg1, arg2, arg3):
     check_pcraster = pcr_nump2pcr(pcraster.Scalar, check_np, arg3)
     
     pcraster.aguila(check_pcraster)
+    input("Press Enter to continue...")
+    
 
     return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
 
