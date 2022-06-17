@@ -199,7 +199,7 @@ def numpy2pcr(arg1, arg2, arg3):
     check_np       = lfr.to_numpy(check_lfr, arg3)
     check_pcraster = pcr_nump2pcr(pcraster_Scalar, check_np, arg3)
     
-    pcraster.aguila(check_pcraster)
+    pcr_aguila(check_pcraster)
     input("Press Enter to continue...")
     
 
