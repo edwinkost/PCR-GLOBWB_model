@@ -191,7 +191,7 @@ def ldddist(arg1, arg2, arg3):
 def aguila(arg1):
     if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
 
-    check_np       = np.transpose(lfr.to_numpy(arg1, partition_shape, 1e20))
+    check_np       = np.transpose(lfr.to_numpy(arg1, 1e20))
     check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, 1e20)
     
     pcr_aguila(check_pcraster)
