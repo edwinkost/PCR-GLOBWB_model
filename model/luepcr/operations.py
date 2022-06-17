@@ -188,20 +188,28 @@ def ldddist(arg1, arg2, arg3):
     if debug: print("Note 'pcraster.ldddist' function is NOT implemented on LUE yet.")
     return arg3
 
+def aguila(arg1):
+    if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
+
+    check_np       = np.transpose(lfr.to_numpy(arg1, 1e20))
+    check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, 1e20)
+    
+    pcr_aguila(check_pcraster)
+
 
 def numpy2pcr(arg1, arg2, arg3):
     if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
+
     #~ return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
     #~ return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape)
     # ~ return cover(lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape), 0.0)
     
-    check_lfr      = lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
-    check_np       = np.transpose(lfr.to_numpy(check_lfr, arg3))
-    check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, arg3)
+    # ~ check_lfr      = lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
+    # ~ check_np       = np.transpose(lfr.to_numpy(check_lfr, arg3))
+    # ~ check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, arg3)
     
-    pcr_aguila(check_pcraster)
-    input("Press Enter to continue...")
-    
+    # ~ pcr_aguila(check_pcraster)
+    # ~ input("Press Enter to continue...")
 
     return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
 

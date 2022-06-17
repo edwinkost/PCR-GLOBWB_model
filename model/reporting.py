@@ -375,6 +375,9 @@ class Reporting(object):
         # potential and actual evaporation from land surface part (m)
         self.totalLandSurfacePotET = self._model.landSurface.totalPotET 
         self.totLandSurfaceActuaET = self._model.landSurface.actualET
+        
+        pcr.aguila(self.totalLandSurfacePotET)
+        
         #
         self.fractionLandSurfaceET = vos.getValDivZero(self.totLandSurfaceActuaET,\
                                                        self.totalLandSurfacePotET,\
