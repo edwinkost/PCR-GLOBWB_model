@@ -1,7 +1,7 @@
 
 # ~ import pcraster as pcr
 from pcraster import setclone as pcr_setclone
-# ~ from pcraster import nump2pcr as pcr_nump2pcr
+from pcraster import numpy2pcr as pcr_numpy2pcr
 # ~ from pcraster import aguila as pcr_aguila
 # ~ from pcraster import Scalar as pcr_Scalar
 
