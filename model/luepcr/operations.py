@@ -1,6 +1,10 @@
 
 # ~ import pcraster as pcr
-from pcraster import setclone as pcrsetclone
+from pcraster import setclone as pcr_setclone
+from pcraster import nump2pcr as pcr_nump2pcr
+from pcraster import aguila as pcr_aguila
+
+import pcraster
 
 import lue.framework as lfr
 
@@ -128,7 +132,7 @@ def setclone(arg):
     # ~ pcr.setclone(5, 4, 3, 2, 1)
 
     # Set the actual clone
-    pcrsetclone(arg)
+    pcr_setclone(arg)
 
 
 def celllength():
@@ -188,7 +192,15 @@ def numpy2pcr(arg1, arg2, arg3):
     if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
     #~ return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
     #~ return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape)
-    return cover(lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape), 0.0)
+    # ~ return cover(lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape), 0.0)
+    
+    check_lfr      = lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
+    check_np       = lfr.to_numpy(check_lfr, arg3)
+    check_pcraster = pcr_nump2pcr(pcraster.Scalar, check_np, arg3)
+    
+    pcraster.aguila(check_pcraster)
+
+    return lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
 
 
 def nominal(arg):
