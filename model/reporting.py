@@ -376,9 +376,8 @@ class Reporting(object):
         self.totalLandSurfacePotET = self._model.landSurface.totalPotET 
         self.totLandSurfaceActuaET = self._model.landSurface.actualET
         
-        # ~ pcr.aguila(self.totalLandSurfacePotET)
+        pcr.aguila(self.totalLandSurfacePotET)
         
-        #
         self.fractionLandSurfaceET = vos.getValDivZero(self.totLandSurfaceActuaET,\
                                                        self.totalLandSurfacePotET,\
                                                        vos.smallNumber)
