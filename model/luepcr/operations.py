@@ -3,7 +3,7 @@
 from pcraster import setclone as pcr_setclone
 from pcraster import numpy2pcr as pcr_numpy2pcr
 # ~ from pcraster import aguila as pcr_aguila
-# ~ from pcraster import Scalar as pcr_Scalar
+from pcraster import Scalar as pcr_Scalar
 
 # ~ import pcraster
 
@@ -197,7 +197,7 @@ def numpy2pcr(arg1, arg2, arg3):
     
     check_lfr      = lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
     check_np       = lfr.to_numpy(check_lfr, arg3)
-    check_pcraster = pcr_numpy2pcr(pcraster_Scalar, check_np, arg3)
+    check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, arg3)
     
     pcr_aguila(check_pcraster)
     input("Press Enter to continue...")
