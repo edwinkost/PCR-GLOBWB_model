@@ -11,6 +11,8 @@ import lue.framework as lfr
 
 import numpy as np
 
+import os
+
 
 # hack to just get it working, depend on case study
 # these should be derived eventually
