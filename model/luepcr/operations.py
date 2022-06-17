@@ -196,7 +196,7 @@ def numpy2pcr(arg1, arg2, arg3):
     # ~ return cover(lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape), 0.0)
     
     check_lfr      = lfr.from_numpy(np.transpose(np.float32(arg2)), partition_shape, arg3)
-    check_np       = lfr.to_numpy(check_lfr, arg3)
+    check_np       = np.transpose(lfr.to_numpy(check_lfr, arg3))
     check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, arg3)
     
     pcr_aguila(check_pcraster)
