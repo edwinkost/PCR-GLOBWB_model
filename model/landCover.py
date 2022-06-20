@@ -3744,6 +3744,7 @@ class LandCover(object):
         self.irrGrossDemand            = pcr.scalar(0.0)
         self.reducedCapRise            = pcr.scalar(0.0)
         self.actSurfaceWaterAbstract   = pcr.scalar(0.0)
+        self.allocSurfaceWaterAbstract = pcr.scalar(0.0)
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
