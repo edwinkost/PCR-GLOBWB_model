@@ -3761,8 +3761,9 @@ class LandCover(object):
         self.totalPotentialMaximumIrrGrossDemandPaddy    = pcr.scalar(0.0)
         self.totalPotentialMaximumIrrGrossDemandNonPaddy = pcr.scalar(0.0)
         
-        self.domesticWaterWithdrawal = pcr.scalar(0.0)
-        self.industryWaterWithdrawal = pcr.scalar(0.0)
+        self.domesticWaterWithdrawal  = pcr.scalar(0.0)
+        self.industryWaterWithdrawal  = pcr.scalar(0.0)
+        self.livestockWaterWithdrawal = pcr.scalar(0.0)
         
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
