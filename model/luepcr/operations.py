@@ -126,7 +126,7 @@ def cover(arg1, arg2):
         spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
     else:    
         spatial_arg2 = arg2
-    print("this")
+    # ~ print("this")
     aguila(spatial_arg2)
     cover_map = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
     cover_map = lfr.where(lfr.equal_to(cover_map, MV), spatial_arg2, arg1)
