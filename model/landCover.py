@@ -2924,7 +2924,8 @@ class LandCover(object):
                      pcr.min(1.0, vos.getValDivZero(pcr.max(0.0, self.storLow + self.percUpp), ADJUST, vos.smallNumber, 0.0)),0.0)
 
             print("check 2")
-            pcr.aguila(self.interflow)
+
+            # ~ pcr.aguila(self.interflow)
             pcr.aguila(ADJUST)
             
             # ~ check = pcr.defined(ADJUST)
