@@ -1133,6 +1133,7 @@ class LandCover(object):
                                 pcr.ifthen(self.landmask,\
                                 self.totalPotET - self.potBareSoilEvap))
     
+        # ~ print("CHECK")
         # ~ pcr.aguila(self.totalPotET)
         # ~ pcr.aguila(self.potBareSoilEvap)
         # ~ pcr.aguila(self.potTranspiration)
@@ -1254,6 +1255,9 @@ class LandCover(object):
         # update actual evaporation (after interceptEvap) 
         self.actualET  = 0. # interceptEvap is the first flux in ET 
         self.actualET += self.interceptEvap
+
+
+        # ~ print("CHECK")
 
         # ~ pcr.aguila(self.throughfall)
         # ~ pcr.aguila(self.snowfall)
@@ -1445,6 +1449,8 @@ class LandCover(object):
 
         # update actual evaporation (after evaporation from snowFreeWater) 
         self.actualET += self.actSnowFreeWaterEvap                      # EACT_L[TYPE]= EACT_L[TYPE]+ES_a[TYPE];
+
+        # ~ print("CHECK")
 
         # ~ pcr.aguila(self.snowfall)
         # ~ pcr.aguila(self.liquidPrecip)
@@ -1639,6 +1645,8 @@ class LandCover(object):
                         
         # RvB: initialize satAreaFrac        
         self.satAreaFrac = None
+
+        # ~ print("CHECK")
 
         # ~ pcr.aguila(self.readAvlWater)
         # ~ pcr.aguila(self.gradientUppLow)
@@ -2582,6 +2590,8 @@ class LandCover(object):
         # update top water layer after openWaterEvap
         self.topWaterLayer = pcr.max(0.,self.topWaterLayer - self.openWaterEvap)
         
+        # ~ print("CHECK")
+
         # ~ pcr.aguila(self.topWaterLayer)
         # ~ pcr.aguila(self.potBareSoilEvap)
         # ~ pcr.aguila(self.potTranspiration)
@@ -2814,6 +2824,8 @@ class LandCover(object):
                               self.parameters.interflowConcTime*percToInterflow  +\
               (pcr.scalar(1.)-self.parameters.interflowConcTime)*self.interflow, 0.0)
             
+        # ~ print("CHECK")
+
         # ~ pcr.aguila(self.interflow)
         
         if self.numberOfLayers == 3:
@@ -3799,12 +3811,13 @@ class LandCover(object):
                    self.estimateTranspirationAndBareSoilEvap()
         
         # ~ print("CHECK")
+
         # ~ pcr.aguila(self.actBareSoilEvap)
         # ~ pcr.aguila(self.actTranspiUpp)
         # ~ pcr.aguila(self.actTranspiLow)
         
         # estimate percolation and capillary rise, as well as interflow
-        self.estimateSoilFluxes(capRiseFrac,groundwater)
+        self.estimateSoilFluxes(capRiseFrac, groundwater)
 
         # all fluxes are limited to available (source) storage
         if self.name.startswith('irr') and self.includeIrrigation:
@@ -3812,6 +3825,12 @@ class LandCover(object):
             #~ self.scaleAllFluxes(groundwater)
         else:    
             self.scaleAllFluxes(groundwater)
+
+        print("CHECK")
+
+        pcr.aguila(self.actBareSoilEvap)
+        pcr.aguila(self.actTranspiUpp)
+        pcr.aguila(self.actTranspiLow)
 
         # update all soil states (including get final/corrected fluxes) 
         self.updateSoilStates()
