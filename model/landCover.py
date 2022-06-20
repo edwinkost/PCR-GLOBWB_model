@@ -3753,8 +3753,11 @@ class LandCover(object):
         self.totalGroundwaterAllocation       = pcr.scalar(0.0)
         self.reducedCapRise                   = pcr.scalar(0.0)
         
-        self.totalPotentialMaximumGrossDemand    = pcr.scalar(0.0)
-        self.totalPotentialMaximumIrrGrossDemand = pcr.scalar(0.0)
+        self.totalPotentialMaximumGrossDemand            = pcr.scalar(0.0)
+        self.totalPotentialMaximumNonIrrGrossDemand      = pcr.scalar(0.0)
+        self.totalPotentialMaximumIrrGrossDemand         = pcr.scalar(0.0)
+        self.totalPotentialMaximumIrrGrossDemand         = pcr.scalar(0.0)
+        self.totalPotentialMaximumIrrGrossDemandNonPaddy = pcr.scalar(0.0)
         
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
