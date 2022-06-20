@@ -122,7 +122,9 @@ class Routing(object):
         else:       
            self.landmask = pcr.defined(self.lddMap)
         self.landmask = pcr.ifthen(pcr.defined(self.lddMap), self.landmask)
-        self.landmask = pcr.cover(self.landmask, pcr.boolean(0))   
+
+        # - DISACTIVATED DUE TO LUE
+        # ~ self.landmask = pcr.cover(self.landmask, pcr.boolean(0))   
 
         # ldd mask 
         self.lddMap = pcr.lddmask(self.lddMap, self.landmask)
