@@ -2814,6 +2814,8 @@ class LandCover(object):
                               self.parameters.interflowConcTime*percToInterflow  +\
               (pcr.scalar(1.)-self.parameters.interflowConcTime)*self.interflow, 0.0)
             
+        pcr.aguila(self.interflow)
+        
         if self.numberOfLayers == 3:
 
             # - percolation from storUpp000005 to storUpp005030 (m)

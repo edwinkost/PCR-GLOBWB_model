@@ -64,7 +64,8 @@ filecache = dict()
 
 # Global variables:
 MV = 1e20
-smallNumber = 1E-39
+smallNumber = 1e-20
+# ~ smallNumber = 1E-39
 
 # and set pi
 pi = math.pi
