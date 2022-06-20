@@ -1,0 +1,26 @@
+
+
+#LUE RUN
+. /home/edwin/load_pcrglobwb_lue_develop.sh
+. /home/jaarsveldb/lue_split/model_lue.sh
+
+
+
+#PCRASTER RUN#
+. /home/edwin/load_all_default.sh
+. /home/jaarsveldb/lue_split/model_pcr.sh
+
+. /home/edwin/load_all_default.sh && . /home/jaarsveldb/lue_split/model_pcr.sh
+
+##########################################################################################
+. /home/edwin/load_all_default.sh && . /home/jaarsveldb/lue_split/model_pcr.sh
+
+execution
+
+. /home/edwin/load_pcrglobwb_lue_develop.sh && . /home/jaarsveldb/lue_split/model_lue.sh
+. /home/jaarsveldb/lue_split/model_lue.sh
+
+
+
+
+
