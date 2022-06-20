@@ -1653,7 +1653,6 @@ class LandCover(object):
                                    groundwater_pumping_region_ids,regionalAnnualGroundwaterAbstractionLimit):
 
         # irrigation water demand (unit: m/day) for paddy and non-paddy
-        self.irrGrossDemand = pcr.scalar(0.)
         if (self.name == 'irrPaddy' or self.name == 'irr_paddy') and self.includeIrrigation:
             self.irrGrossDemand = \
                   pcr.ifthenelse(self.cropKC > 0.75, \
@@ -3742,11 +3741,19 @@ class LandCover(object):
         self.totalPotentialGrossDemand = pcr.scalar(0.0)
         self.nonIrrGrossDemand         = pcr.scalar(0.0)
         self.irrGrossDemand            = pcr.scalar(0.0)
-        self.reducedCapRise            = pcr.scalar(0.0)
-        self.actSurfaceWaterAbstract   = pcr.scalar(0.0)
-        self.allocSurfaceWaterAbstract = pcr.scalar(0.0)
+
         self.desalinationAbstraction   = pcr.scalar(0.0)
         self.desalinationAllocation    = pcr.scalar(0.0)
+        self.actSurfaceWaterAbstract   = pcr.scalar(0.0)
+        self.allocSurfaceWaterAbstract = pcr.scalar(0.0)
+        self.nonFossilGroundwaterAbs   = pcr.scalar(0.0) 
+        self.allocNonFossilGroundwater = pcr.scalar(0.0)
+        self.fossilGroundwaterAbstr    = pcr.scalar(0.0)
+        self.fossilGroundwaterAlloc    = pcr.scalar(0.0)
+
+        self.reducedCapRise            = pcr.scalar(0.0)
+
+
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
