@@ -3756,7 +3756,7 @@ class LandCover(object):
         self.totalPotentialMaximumGrossDemand            = pcr.scalar(0.0)
         self.totalPotentialMaximumNonIrrGrossDemand      = pcr.scalar(0.0)
         self.totalPotentialMaximumIrrGrossDemand         = pcr.scalar(0.0)
-        self.totalPotentialMaximumIrrGrossDemand         = pcr.scalar(0.0)
+        self.totalPotentialMaximumIrrGrossDemandPaddy    = pcr.scalar(0.0)
         self.totalPotentialMaximumIrrGrossDemandNonPaddy = pcr.scalar(0.0)
         
         # - the following is disactivated due to LUE development
