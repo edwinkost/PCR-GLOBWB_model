@@ -3741,6 +3741,8 @@ class LandCover(object):
         self.totalPotentialGrossDemand        = pcr.scalar(0.0)
         self.nonIrrGrossDemand                = pcr.scalar(0.0)
         self.irrGrossDemand                   = pcr.scalar(0.0)
+        self.irrGrossDemandPaddy              = pcr.scalar(0.0)
+        self.irrGrossDemandNonPaddy           = pcr.scalar(0.0)
         self.desalinationAbstraction          = pcr.scalar(0.0)
         self.desalinationAllocation           = pcr.scalar(0.0)
         self.actSurfaceWaterAbstract          = pcr.scalar(0.0)
