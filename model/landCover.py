@@ -1640,7 +1640,8 @@ class LandCover(object):
         # RvB: initialize satAreaFrac        
         self.satAreaFrac = None
 
-        pcr.aguila(self.readAvlWater)
+        # ~ pcr.aguila(self.readAvlWater)
+        pcr.aguila(self.gradientUppLow)
 
     def calculateWaterDemand(self, nonIrrGrossDemandDict, \
                                    swAbstractionFractionDict, \
