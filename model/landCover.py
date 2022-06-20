@@ -3751,8 +3751,11 @@ class LandCover(object):
         self.fossilGroundwaterAlloc           = pcr.scalar(0.0)
         self.totalGroundwaterAbstraction      = pcr.scalar(0.0)
         self.totalGroundwaterAllocation       = pcr.scalar(0.0)
-        self.totalPotentialMaximumGrossDemand = pcr.scalar(0.0)
         self.reducedCapRise                   = pcr.scalar(0.0)
+        
+        self.totalPotentialMaximumGrossDemand    = pcr.scalar(0.0)
+        self.totalPotentialMaximumIrrGrossDemand = pcr.scalar(0.0)
+        
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
