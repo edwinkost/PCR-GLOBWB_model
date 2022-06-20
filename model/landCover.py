@@ -3739,9 +3739,11 @@ class LandCover(object):
         
         # calculate water demand (including partitioning to different source)
         # - initial values
-        self.nonIrrGrossDemand = pcr.scalar(0.0)
-        self.irrGrossDemand = pcr.scalar(0.0)
-        self.reducedCapRise = pcr.scalar(0.0)
+        self.totalPotentialGrossDemand = pcr.scalar(0.0)
+        self.nonIrrGrossDemand         = pcr.scalar(0.0)
+        self.irrGrossDemand            = pcr.scalar(0.0)
+        self.reducedCapRise            = pcr.scalar(0.0)
+        # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
                                   # ~ allocSegments, currTimeStep,\
