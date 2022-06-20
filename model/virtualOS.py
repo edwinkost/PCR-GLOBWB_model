@@ -63,9 +63,9 @@ logger = logging.getLogger(__name__)
 filecache = dict()
 
 # Global variables:
-MV = 1e20
-smallNumber = 1.0e-20
-# ~ smallNumber = 1.0e-39
+MV = 1.0e20
+# ~ smallNumber = 1.0e-20
+smallNumber = 1.0e-39
 
 # and set pi
 pi = math.pi
