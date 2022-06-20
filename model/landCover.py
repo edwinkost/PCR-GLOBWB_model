@@ -1133,6 +1133,10 @@ class LandCover(object):
                                 pcr.ifthen(self.landmask,\
                                 self.totalPotET - self.potBareSoilEvap))
     
+        pcr.aguila(self.totalPotET)
+        pcr.aguila(self.potBareSoilEvap)
+        pcr.aguila(self.potTranspiration)
+
         if self.debugWaterBalance:
             vos.waterBalanceCheck([self.totalPotET],\
                                   [self.potBareSoilEvap, self.potTranspiration],\
