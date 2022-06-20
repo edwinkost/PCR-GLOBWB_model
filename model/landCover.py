@@ -1255,14 +1255,14 @@ class LandCover(object):
         self.actualET  = 0. # interceptEvap is the first flux in ET 
         self.actualET += self.interceptEvap
 
-        pcr.aguila(self.throughfall)
-        pcr.aguila(self.snowfall)
-        pcr.aguila(self.liquidPrecip)
+        # ~ pcr.aguila(self.throughfall)
+        # ~ pcr.aguila(self.snowfall)
+        # ~ pcr.aguila(self.liquidPrecip)
 
-        pcr.aguila(meteo.precipitation)
-        pcr.aguila(self.throughfall)
-        pcr.aguila(self.interceptEvap)
-        pcr.aguila(self.interceptStor)
+        # ~ pcr.aguila(meteo.precipitation)
+        # ~ pcr.aguila(self.throughfall)
+        # ~ pcr.aguila(self.interceptEvap)
+        # ~ pcr.aguila(self.interceptStor)
 
         if self.debugWaterBalance:
             vos.waterBalanceCheck([self.throughfall],\
@@ -1445,6 +1445,15 @@ class LandCover(object):
 
         # update actual evaporation (after evaporation from snowFreeWater) 
         self.actualET += self.actSnowFreeWaterEvap                      # EACT_L[TYPE]= EACT_L[TYPE]+ES_a[TYPE];
+
+        pcr.aguila(self.snowfall)
+        pcr.aguila(self.liquidPrecip)
+        pcr.aguila(self.netLqWaterToSoil)
+        pcr.aguila(self.actSnowFreeWaterEvap)
+        pcr.aguila(self.snowCoverSWE)
+        pcr.aguila(self.snowFreeWater)
+        pcr.aguila(deltaSnowCover)
+        
 
         if self.debugWaterBalance:
             vos.waterBalanceCheck([self.snowfall, self.liquidPrecip],
