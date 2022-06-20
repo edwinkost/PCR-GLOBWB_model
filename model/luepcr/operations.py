@@ -121,25 +121,25 @@ def ifthenelse(arg1, arg2, arg3):
     return lfr.where(arg1, arg2, arg3)
 
 
-# ~ def cover(arg1, arg2):
-    # ~ if type(arg2) == float:
-        # ~ spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
-        # ~ return lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
-    # ~ else:    
-        # ~ return lfr.where(lfr.valid(arg1), arg1, arg2)
-
 def cover(arg1, arg2):
     if type(arg2) == float:
         spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
-        test = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
-        print("this")
-        # ~ aguila(test)
-        return lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
+        return ifthenelse(defined(arg1), arg1, spatial_arg2)
     else:    
-        test = lfr.where(lfr.valid(arg1), arg1, arg2)
-        print(arg2)
+        return ifthenelse(defined(arg1), arg1, arg2)
+
+# ~ def cover(arg1, arg2):
+    # ~ if type(arg2) == float:
+        # ~ spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
+        # ~ test = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
+        # ~ print("this")
         aguila(test)
-        return lfr.where(lfr.valid(arg1), arg1, arg2)
+        # ~ return lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
+    # ~ else:    
+        # ~ test = lfr.where(lfr.valid(arg1), arg1, arg2)
+        # ~ print(arg2)
+        # ~ aguila(test)
+        # ~ return lfr.where(lfr.valid(arg1), arg1, arg2)
 
 
 def ldd(arg):
