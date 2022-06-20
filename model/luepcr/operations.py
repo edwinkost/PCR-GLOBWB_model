@@ -137,6 +137,7 @@ def cover(arg1, arg2):
         return lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
     else:    
         test = lfr.where(lfr.valid(arg1), arg1, arg2)
+        print(arg2)
         aguila(test)
         return lfr.where(lfr.valid(arg1), arg1, arg2)
 
