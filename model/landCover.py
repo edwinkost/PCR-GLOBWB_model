@@ -2563,7 +2563,7 @@ class LandCover(object):
         # remainingPotETP = self.totalPotET                              # DW, RvB, and YW use self.totalPotETP
         
         # openWaterEvap is ONLY for evaporation from paddy field areas
-        self.openWaterEvap = pcr.spatial(pcr.scalar(0.))
+        self.openWaterEvap = pcr.spatial(pcr.scalar(0.0))
 
         if self.name == 'irrPaddy' or self.name == "irr_paddy":  # only open water evaporation from the paddy field
             self.openWaterEvap = \
@@ -2581,6 +2581,11 @@ class LandCover(object):
 
         # update top water layer after openWaterEvap
         self.topWaterLayer = pcr.max(0.,self.topWaterLayer - self.openWaterEvap)
+        
+        pcr.aguila(self.topWaterLayer)
+        pcr.aguila(self.potBareSoilEvap)
+        pcr.aguila(self.potTranspiration)
+        
         
     def calculateInfiltration(self):
 
