@@ -2814,7 +2814,7 @@ class LandCover(object):
                               self.parameters.interflowConcTime*percToInterflow  +\
               (pcr.scalar(1.)-self.parameters.interflowConcTime)*self.interflow, 0.0)
             
-        pcr.aguila(self.interflow)
+        # ~ pcr.aguila(self.interflow)
         
         if self.numberOfLayers == 3:
 
