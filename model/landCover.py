@@ -1641,7 +1641,7 @@ class LandCover(object):
         self.satAreaFrac = None
 
         # ~ pcr.aguila(self.readAvlWater)
-        pcr.aguila(self.gradientUppLow)
+        # ~ pcr.aguila(self.gradientUppLow)
 
     def calculateWaterDemand(self, nonIrrGrossDemandDict, \
                                    swAbstractionFractionDict, \
@@ -3737,12 +3737,12 @@ class LandCover(object):
         # readily available water within the root zone.
         self.getSoilStates()
         
-        # calculate water demand (including partitioning to different source)
-        self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
-                                  groundwater, routing, \
-                                  allocSegments, currTimeStep,\
-                                  desalinationWaterUse,\
-                                  groundwater_pumping_region_ids,regionalAnnualGroundwaterAbstractionLimit)
+        # ~ # calculate water demand (including partitioning to different source)
+        # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
+                                  # ~ groundwater, routing, \
+                                  # ~ allocSegments, currTimeStep,\
+                                  # ~ desalinationWaterUse,\
+                                  # ~ groundwater_pumping_region_ids,regionalAnnualGroundwaterAbstractionLimit)
 
         # calculate openWaterEvap: open water evaporation from the paddy field, 
         # and update topWaterLayer after openWaterEvap.  
