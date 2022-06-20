@@ -1133,9 +1133,9 @@ class LandCover(object):
                                 pcr.ifthen(self.landmask,\
                                 self.totalPotET - self.potBareSoilEvap))
     
-        pcr.aguila(self.totalPotET)
-        pcr.aguila(self.potBareSoilEvap)
-        pcr.aguila(self.potTranspiration)
+        # ~ pcr.aguila(self.totalPotET)
+        # ~ pcr.aguila(self.potBareSoilEvap)
+        # ~ pcr.aguila(self.potTranspiration)
 
         if self.debugWaterBalance:
             vos.waterBalanceCheck([self.totalPotET],\
@@ -1254,6 +1254,15 @@ class LandCover(object):
         # update actual evaporation (after interceptEvap) 
         self.actualET  = 0. # interceptEvap is the first flux in ET 
         self.actualET += self.interceptEvap
+
+        pcr.aguila(self.throughfall)
+        pcr.aguila(self.snowfall)
+        pcr.aguila(self.liquidPrecip)
+
+        pcr.aguila(meteo.precipitation)
+        pcr.aguila(self.throughfall)
+        pcr.aguila(self.interceptEvap)
+        pcr.aguila(self.interceptStor)
 
         if self.debugWaterBalance:
             vos.waterBalanceCheck([self.throughfall],\
