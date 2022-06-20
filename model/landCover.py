@@ -3738,24 +3738,21 @@ class LandCover(object):
         
         # calculate water demand (including partitioning to different source)
         # - initial values
-        self.totalPotentialGrossDemand   = pcr.scalar(0.0)
-        self.nonIrrGrossDemand           = pcr.scalar(0.0)
-        self.irrGrossDemand              = pcr.scalar(0.0)
-									     
-        self.desalinationAbstraction     = pcr.scalar(0.0)
-        self.desalinationAllocation      = pcr.scalar(0.0)
-        self.actSurfaceWaterAbstract     = pcr.scalar(0.0)
-        self.allocSurfaceWaterAbstract   = pcr.scalar(0.0)
-        self.nonFossilGroundwaterAbs     = pcr.scalar(0.0) 
-        self.allocNonFossilGroundwater   = pcr.scalar(0.0)
-        self.fossilGroundwaterAbstr      = pcr.scalar(0.0)
-        self.fossilGroundwaterAlloc      = pcr.scalar(0.0)
-        self.totalGroundwaterAbstraction = pcr.scalar(0.0)
-        self.totalGroundwaterAllocation  = pcr.scalar(0.0)
-
-        self.reducedCapRise              = pcr.scalar(0.0)
-
-
+        self.totalPotentialGrossDemand        = pcr.scalar(0.0)
+        self.nonIrrGrossDemand                = pcr.scalar(0.0)
+        self.irrGrossDemand                   = pcr.scalar(0.0)
+        self.desalinationAbstraction          = pcr.scalar(0.0)
+        self.desalinationAllocation           = pcr.scalar(0.0)
+        self.actSurfaceWaterAbstract          = pcr.scalar(0.0)
+        self.allocSurfaceWaterAbstract        = pcr.scalar(0.0)
+        self.nonFossilGroundwaterAbs          = pcr.scalar(0.0) 
+        self.allocNonFossilGroundwater        = pcr.scalar(0.0)
+        self.fossilGroundwaterAbstr           = pcr.scalar(0.0)
+        self.fossilGroundwaterAlloc           = pcr.scalar(0.0)
+        self.totalGroundwaterAbstraction      = pcr.scalar(0.0)
+        self.totalGroundwaterAllocation       = pcr.scalar(0.0)
+        self.totalPotentialMaximumGrossDemand = pcr.scalar(0.0)
+        self.reducedCapRise                   = pcr.scalar(0.0)
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
