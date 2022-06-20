@@ -3796,10 +3796,10 @@ class LandCover(object):
             self.actBareSoilEvap, self.actTranspiUpp000005, self.actTranspiUpp005030, self.actTranspiLow030150 = \
                    self.estimateTranspirationAndBareSoilEvap()
         
-        print("CHECK")
-        pcr.aguila(self.actBareSoilEvap)
-        pcr.aguila(self.actTranspiUpp)
-        pcr.aguila(self.actTranspiLow)
+        # ~ print("CHECK")
+        # ~ pcr.aguila(self.actBareSoilEvap)
+        # ~ pcr.aguila(self.actTranspiUpp)
+        # ~ pcr.aguila(self.actTranspiLow)
         
         # estimate percolation and capillary rise, as well as interflow
         self.estimateSoilFluxes(capRiseFrac,groundwater)
