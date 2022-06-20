@@ -155,8 +155,8 @@ def cellarea():
 def scalar(arg):
     if type(arg) == lfr.PartitionedArray_float32_2:
         return arg
-    elif type(arg) == lfr.PartitionedArray_uint8_2:
-        return arg
+    # ~ elif type(arg) == lfr.PartitionedArray_uint8_2:
+        # ~ return arg
     elif type(arg) == int or type(arg) == float:
         return float(arg)
     else:

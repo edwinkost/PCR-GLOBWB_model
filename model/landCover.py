@@ -3751,6 +3751,7 @@ class LandCover(object):
         self.fossilGroundwaterAbstr      = pcr.scalar(0.0)
         self.fossilGroundwaterAlloc      = pcr.scalar(0.0)
         self.totalGroundwaterAbstraction = pcr.scalar(0.0)
+        self.totalGroundwaterAllocation  = pcr.scalar(0.0)
 
         self.reducedCapRise              = pcr.scalar(0.0)
 
