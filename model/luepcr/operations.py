@@ -16,8 +16,8 @@ import os
 import random
 
 # Global variables:
-MV = 1e20
-smallNumber = 1E-39
+MV = 1.0e20
+smallNumber = 1.0e-39
 
 
 # hack to just get it working, depend on case study
