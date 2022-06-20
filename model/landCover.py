@@ -2918,7 +2918,13 @@ class LandCover(object):
             ADJUST = pcr.ifthenelse(ADJUST>0.0, \
                      pcr.min(1.0,pcr.max(0.0, self.storLow + \
                                               self.percUpp)/ADJUST),0.)
+            print("check 2")
+            pcr.aguila(ADJUST)
+            
             ADJUST = pcr.cover(ADJUST, 0.0)
+
+            pcr.aguila(ADJUST)
+
             self.percLow       = ADJUST*self.percLow
             self.actTranspiLow = ADJUST*self.actTranspiLow
             self.interflow     = ADJUST*self.interflow                      
