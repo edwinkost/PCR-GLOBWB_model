@@ -245,7 +245,9 @@ def max(arg1, arg2):
 
 def min(arg1, arg2):
     if debug: print("Note 'pcraster.min' function is PARTIALLY implemented on LUE yet.")
-    return ifthenelse(arg1 > arg2, arg2, arg1)
+    if type(arg1) == float: spatial_arg1 = spatial(arg1) 
+    if type(arg2) == float: spatial_arg1 = spatial(arg2) 
+    return ifthenelse(spatial_arg1 > spatial_arg2, spatial_arg2, spatial_arg1)
 
 
 def cellvalue(arg1, arg2):
