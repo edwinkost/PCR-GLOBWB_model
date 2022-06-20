@@ -3737,7 +3737,9 @@ class LandCover(object):
         # readily available water within the root zone.
         self.getSoilStates()
         
-        # ~ # calculate water demand (including partitioning to different source)
+        # calculate water demand (including partitioning to different source)
+        # - initial values
+        self.irrGrossDemand = pcr.scalar(0.)
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
                                   # ~ allocSegments, currTimeStep,\
