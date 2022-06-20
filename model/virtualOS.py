@@ -63,7 +63,7 @@ logger = logging.getLogger(__name__)
 filecache = dict()
 
 # Global variables:
-MV = 1.0e20
+MV = -9999.99
 # ~ smallNumber = 1.0e-20
 smallNumber = 1.0e-39
 

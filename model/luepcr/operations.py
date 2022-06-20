@@ -16,7 +16,7 @@ import os
 import random
 
 # Global variables:
-MV = 1.0e20
+MV = -9999.99
 smallNumber = 1.0e-39
 
 
