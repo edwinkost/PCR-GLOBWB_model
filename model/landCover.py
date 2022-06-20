@@ -2921,7 +2921,7 @@ class LandCover(object):
                                               # ~ self.percUpp)/ADJUST),0.)
             
             ADJUST = pcr.ifthenelse(ADJUST > 0.0, \
-                     pcr.min(1.0, vos.getValDivZero(pcr.max(0.0, self.storLow + self.percUpp), ADJUST, vos.smallNumber, 0.0)),0.0)
+                     pcr.min(1.0, vos.getValDivZero(pcr.max(0.0, self.storLow + self.percUpp), ADJUST, vos.smallNumber, 0.0)), 0.0)
 
             print("check 2")
 
@@ -2931,7 +2931,7 @@ class LandCover(object):
             # ~ check = pcr.defined(ADJUST)
             # ~ pcr.aguila(check)
             
-            ADJUST5 = pcr.cover(ADJUST, pcr.spatial(pcr.scalar(0.0)))
+            ADJUST5 = pcr.cover(ADJUST, 0.0)
 
             pcr.aguila(ADJUST5)
 
