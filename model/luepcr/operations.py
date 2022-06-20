@@ -13,6 +13,10 @@ import numpy as np
 
 import os
 
+# Global variables:
+MV = 1e20
+smallNumber = 1E-39
+
 
 # hack to just get it working, depend on case study
 # these should be derived eventually
@@ -183,24 +187,13 @@ def lddrepair(arg):
 
 def lddmask(arg1, arg2):
     if debug: print("Note 'pcraster.lddmask' function is NOT implemented on LUE yet.")
-    return lfr.where(arg2, arg1)
+    # ~ return lfr.where(arg2, arg1)
+    return lfr.where(defined(arg2), arg1)
 
 
 def ldddist(arg1, arg2, arg3):
     if debug: print("Note 'pcraster.ldddist' function is NOT implemented on LUE yet.")
     return arg3
-
-def aguila(arg1):
-    if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
-
-    check_np       = np.transpose(lfr.to_numpy(arg1, 1e20))
-    check_pcraster = pcr_numpy2pcr(pcr_Scalar, check_np, 1e20)
-    
-    # ~ pcr_aguila(check_pcraster)
-    pcraster_call.report(check_pcraster, "check.map")
-    os.system("aguila check.map")
-    # ~ pcraster_call.aguila(check_pcraster)
-
 
 def numpy2pcr(arg1, arg2, arg3):
     if debug: print("Note 'pcraster.numpy2pcr' function is PARTIALLY implemented on LUE yet.")
@@ -327,6 +320,26 @@ def pcr2numpy(arg1, arg2):
 
 def uniform(whatever, min_value = 0.0, max_value = 1.0): 
     return lfr.uniform(lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value=0.0), min_value, max_value)
+
+def get_random_word(wordLen):
+    word = ''
+    for i in range(wordLen):
+        word += random.choice('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789')
+    return word
+
+def aguila(arg1):
+    if debug: print("Note 'pcraster.aguila' function is PARTIALLY implemented on LUE yet.")
+
+    check_np        = np.transpose(lfr.to_numpy(arg1, MV))
+    check_pcraster  = pcr_numpy2pcr(pcr_Scalar, check_np, MV)
+    
+    pcrmap_tmp_file = get_random_word(8) + ".map" 
+    
+    pcraster_call.report(check_pcraster, pcrmap_tmp_file)
+    cmd = "aguila " + pcrmap_tmp_file 
+    os.system(cmd)
+    cmd = "rm " + pcrmap_tmp_file 
+    os.system(cmd)
 
 
 # to create an array with a value:
