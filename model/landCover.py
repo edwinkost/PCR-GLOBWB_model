@@ -2915,9 +2915,14 @@ class LandCover(object):
 
             # scale fluxes (for Low)
             ADJUST = self.actTranspiLow + self.percLow + self.interflow
+
+            # ~ ADJUST = pcr.ifthenelse(ADJUST>0.0, \
+                     # ~ pcr.min(1.0,pcr.max(0.0, self.storLow + \
+                                              # ~ self.percUpp)/ADJUST),0.)
+            
             ADJUST = pcr.ifthenelse(ADJUST>0.0, \
-                     pcr.min(1.0,pcr.max(0.0, self.storLow + \
-                                              self.percUpp)/ADJUST),0.)
+                     pcr.min(1.0, vos.getValDivZero(pcr.max(0.0, self.storLow + self.percUpp), ADJUST, vos.smallNumber, 0.0)),0.)
+
             print("check 2")
             pcr.aguila(ADJUST)
             
