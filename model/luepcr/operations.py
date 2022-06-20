@@ -124,9 +124,11 @@ def ifthenelse(arg1, arg2, arg3):
 def cover(arg1, arg2):
     if type(arg2) == float:
         spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
-        return ifthenelse(defined(arg1), arg1, spatial_arg2)
     else:    
-        return ifthenelse(defined(arg1), arg1, arg2)
+        spatial_arg2 = arg2
+    cover = ifthenelse(defined(arg1), arg1, spatial_arg2)
+    cover = ifthenelse(cover == MV, spatial_arg2, cover)
+    return cover
 
 # ~ def cover(arg1, arg2):
     # ~ if type(arg2) == float:
