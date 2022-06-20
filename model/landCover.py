@@ -2927,8 +2927,8 @@ class LandCover(object):
             pcr.aguila(self.interflow)
             pcr.aguila(ADJUST)
             
-            check = pcr.defined(ADJUST)
-            pcr.aguila(check)
+            # ~ check = pcr.defined(ADJUST)
+            # ~ pcr.aguila(check)
             
             ADJUST = pcr.cover(ADJUST, pcr.spatial(pcr.scalar(0.0)))
 
