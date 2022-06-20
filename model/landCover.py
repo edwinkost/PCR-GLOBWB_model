@@ -3765,6 +3765,8 @@ class LandCover(object):
         self.industryWaterWithdrawal  = pcr.scalar(0.0)
         self.livestockWaterWithdrawal = pcr.scalar(0.0)
         
+        self.nonIrrReturnFlow         = pcr.scalar(0.0)
+        
         # - the following is disactivated due to LUE development
         # ~ self.calculateWaterDemand(nonIrrGrossDemandDict, swAbstractionFractionDict, \
                                   # ~ groundwater, routing, \
