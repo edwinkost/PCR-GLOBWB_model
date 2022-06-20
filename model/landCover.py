@@ -1446,13 +1446,13 @@ class LandCover(object):
         # update actual evaporation (after evaporation from snowFreeWater) 
         self.actualET += self.actSnowFreeWaterEvap                      # EACT_L[TYPE]= EACT_L[TYPE]+ES_a[TYPE];
 
-        pcr.aguila(self.snowfall)
-        pcr.aguila(self.liquidPrecip)
-        pcr.aguila(self.netLqWaterToSoil)
-        pcr.aguila(self.actSnowFreeWaterEvap)
-        pcr.aguila(self.snowCoverSWE)
-        pcr.aguila(self.snowFreeWater)
-        pcr.aguila(deltaSnowCover)
+        # ~ pcr.aguila(self.snowfall)
+        # ~ pcr.aguila(self.liquidPrecip)
+        # ~ pcr.aguila(self.netLqWaterToSoil)
+        # ~ pcr.aguila(self.actSnowFreeWaterEvap)
+        # ~ pcr.aguila(self.snowCoverSWE)
+        # ~ pcr.aguila(self.snowFreeWater)
+        # ~ pcr.aguila(deltaSnowCover)
         
 
         if self.debugWaterBalance:
@@ -1638,7 +1638,9 @@ class LandCover(object):
                         pcr.max(self.maxRootDepth-self.parameters.thickUpp005030,0.))
                         
         # RvB: initialize satAreaFrac        
-        self.satAreaFrac= None
+        self.satAreaFrac = None
+
+        pcr.aguila(self.readAvlWater)
 
     def calculateWaterDemand(self, nonIrrGrossDemandDict, \
                                    swAbstractionFractionDict, \
