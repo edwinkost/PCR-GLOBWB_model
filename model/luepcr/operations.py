@@ -128,8 +128,9 @@ def cover(arg1, arg2):
         spatial_arg2 = arg2
     # ~ print("this")
     # ~ aguila(spatial_arg2)
-    cover_map = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
-    cover_map = lfr.where(cover_map < 10.0, cover_map, spatial_arg2)
+    # ~ cover_map = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
+    cover_map = lfr.where(lfr.valid(arg1) == 1, arg1, spatial_arg2)
+    # ~ cover_map = lfr.where(cover_map < 10.0, cover_map, spatial_arg2)
     print(cover_map)
     return cover_map
 
