@@ -2930,9 +2930,9 @@ class LandCover(object):
             # ~ check = pcr.defined(ADJUST)
             # ~ pcr.aguila(check)
             
-            ADJUST = pcr.cover(ADJUST, pcr.spatial(pcr.scalar(0.0)))
+            ADJUST5 = pcr.cover(ADJUST, pcr.spatial(pcr.scalar(0.0)))
 
-            pcr.aguila(ADJUST)
+            pcr.aguila(ADJUST5)
 
             self.percLow       = ADJUST*self.percLow
             self.actTranspiLow = ADJUST*self.actTranspiLow
