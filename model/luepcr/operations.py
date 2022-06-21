@@ -122,7 +122,10 @@ def ifthenelse(arg1, arg2, arg3):
 
 
 def cover(arg1, arg2, check_with_aguila = False):
-    if check_with_aguila: aguila(arg1)
+    if check_with_aguila:
+        print("before cover")
+        aguila(arg1)
+        print("after cover")
         check = lfr.where(lfr.valid(arg1), arg1, arg2)
         aguila(check)
     return lfr.where(lfr.valid(arg1), arg1, arg2)
