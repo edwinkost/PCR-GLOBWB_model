@@ -132,6 +132,7 @@ def cover(arg1, arg2, check_with_aguila = False):
         print("after cover")
         check_arg1 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 1.5)
         check_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = 0.0)
+        print(arg1)
         print(arg2)
         #~ check = lfr.where(lfr.valid(arg1), check_arg1, check_arg2)
         check = lfr.where(lfr.valid(arg1), arg1, check_arg2)
