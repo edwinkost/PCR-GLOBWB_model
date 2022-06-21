@@ -2925,15 +2925,12 @@ class LandCover(object):
 
             print("check 2")
 
-            # ~ pcr.aguila(self.interflow)
-            pcr.aguila(ADJUST)
-            
             # ~ check = pcr.defined(ADJUST)
             # ~ pcr.aguila(check)
             
-            ADJUST = pcr.cover(ADJUST, 0.0)
+            ADJUST = pcr.cover(ADJUST, 0.0, True)
 
-            pcr.aguila(ADJUST)
+            #~ pcr.aguila(ADJUST)
 
             self.percLow       = ADJUST*self.percLow
             self.actTranspiLow = ADJUST*self.actTranspiLow
