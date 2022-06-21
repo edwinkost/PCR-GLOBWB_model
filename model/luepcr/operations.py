@@ -126,7 +126,7 @@ def cover(arg1, arg2, check_with_aguila = False):
         print("before cover")
         aguila(arg1)
         print("after cover")
-        check = lfr.where(lfr.valid(arg1), arg1, arg2)
+        check = lfr.where(lfr.valid(arg1) == 1, arg1, arg2)
         aguila(check)
     return lfr.where(lfr.valid(arg1), arg1, arg2)
 
