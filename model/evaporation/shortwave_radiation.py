@@ -868,8 +868,8 @@ def main():
     # update the shortwave radiation for the specified date
     sw_rad.update(date, prec_daily, temp_min_daily, temp_max_daily)
 
-    # finally, show the values
-    pcr.aguila(sw_rad.radsw_ext, sw_rad.radsw_act, sw_rad.radsw_act / sw_rad.radsw_ext)
+    #~ # finally, show the values
+    #~ pcr.aguila(sw_rad.radsw_ext, sw_rad.radsw_act, sw_rad.radsw_act / sw_rad.radsw_ext)
 
 if __name__ == "__main__":
 

@@ -385,7 +385,7 @@ class Reporting(object):
         # ~ pcr.aguila(self.totLandSurfaceActuaET)
         # ~ pcr.aguila(self.totalLandSurfacePotET)        
 
-        pcr.aguila(self.fractionLandSurfaceET)
+        #~ pcr.aguila(self.fractionLandSurfaceET)
 
         
         self.interceptStor = self._model.landSurface.interceptStor

@@ -2931,9 +2931,9 @@ class LandCover(object):
             # ~ check = pcr.defined(ADJUST)
             # ~ pcr.aguila(check)
             
-            ADJUST5 = pcr.cover(ADJUST, 0.0)
+            ADJUST = pcr.cover(ADJUST, 0.0)
 
-            pcr.aguila(ADJUST5)
+            pcr.aguila(ADJUST)
 
             self.percLow       = ADJUST*self.percLow
             self.actTranspiLow = ADJUST*self.actTranspiLow
@@ -3842,11 +3842,11 @@ class LandCover(object):
         else:    
             self.scaleAllFluxes(groundwater)
 
-        print("CHECK")
-
-        pcr.aguila(self.actBareSoilEvap)
-        pcr.aguila(self.actTranspiUpp)
-        pcr.aguila(self.actTranspiLow)
+        #~ print("CHECK")
+#~ 
+        #~ pcr.aguila(self.actBareSoilEvap)
+        #~ pcr.aguila(self.actTranspiUpp)
+        #~ pcr.aguila(self.actTranspiLow)
 
         # update all soil states (including get final/corrected fluxes) 
         self.updateSoilStates()

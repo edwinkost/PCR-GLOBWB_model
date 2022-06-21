@@ -122,18 +122,23 @@ def ifthenelse(arg1, arg2, arg3):
 
 
 def cover(arg1, arg2):
-    if type(arg2) == float:
-        spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
-    else:    
-        spatial_arg2 = arg2
-    # ~ print("this")
-    # ~ aguila(spatial_arg2)
-    # ~ cover_map = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
-    cover_map = lfr.where(lfr.valid(arg1) == 1, arg1, spatial_arg2)
-    # ~ cover_map = lfr.where(cover_map < 10.0, cover_map, spatial_arg2)
-    # ~ aguila(cover_map)
-    print(cover_map)
-    return cover_map
+    check = lfr.where(lfr.valid(arg1), arg1, arg2)
+    aguila(check)
+    return lfr.where(lfr.valid(arg1), arg1, arg2)
+
+#~ def cover(arg1, arg2):
+    #~ if type(arg2) == float:
+        #~ spatial_arg2 = lfr.create_array(array_shape, partition_shape, np.dtype(np.float32), fill_value = arg2)
+    #~ else:    
+        #~ spatial_arg2 = arg2
+    #~ # ~ print("this")
+    #~ # ~ aguila(spatial_arg2)
+    #~ # ~ cover_map = lfr.where(lfr.valid(arg1), arg1, spatial_arg2)
+    #~ cover_map = lfr.where(lfr.valid(arg1) == 1, arg1, spatial_arg2)
+    #~ # ~ cover_map = lfr.where(cover_map < 10.0, cover_map, spatial_arg2)
+    #~ # ~ aguila(cover_map)
+    #~ print(cover_map)
+    #~ return cover_map
 
 # ~ def cover(arg1, arg2):
     # ~ if type(arg2) == float:
