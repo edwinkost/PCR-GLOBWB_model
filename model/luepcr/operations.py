@@ -125,8 +125,10 @@ def cover(arg1, arg2, check_with_aguila = False):
     if check_with_aguila:
         print("before cover")
         aguila(arg1)
+        valid_check = lfr.valid(arg1)
+        aguila(valid_check)
         print("after cover")
-        check = lfr.where(lfr.valid(arg1) == 1, arg1, arg2)
+        check = lfr.where(lfr.valid(arg1), 0.0, 2.0)
         aguila(check)
     return lfr.where(lfr.valid(arg1), arg1, arg2)
 
