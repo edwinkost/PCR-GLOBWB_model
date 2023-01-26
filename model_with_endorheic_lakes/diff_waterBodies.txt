@@ -1,0 +1,283 @@
+6,9c6,9
+< # Copyright (C) 2016, Ludovicus P. H. (Rens) van Beek, Edwin H. Sutanudjaja, Yoshihide Wada,
+< # Joyce H. C. Bosmans, Niels Drost, Inge E. M. de Graaf, Kor de Jong, Patricia Lopez Lopez,
+< # Stefanie Pessenteiner, Oliver Schmitz, Menno W. Straatsma, Niko Wanders, Dominik Wisser,
+< # and Marc F. P. Bierkens,
+---
+> # Copyright (C) 2016, Edwin H. Sutanudjaja, Rens van Beek, Niko Wanders, Yoshihide Wada, 
+> # Joyce H. C. Bosmans, Niels Drost, Ruud J. van der Ent, Inge E. M. de Graaf, Jannis M. Hoch, 
+> # Kor de Jong, Derek Karssenberg, Patricia López López, Stefanie Peßenteiner, Oliver Schmitz, 
+> # Menno W. Straatsma, Ekkamol Vannametee, Dominik Wisser, and Marc F. P. Bierkens
+39c39
+<     def __init__(self,iniItems,landmask):
+---
+>     def __init__(self, iniItems, landmask, onlyNaturalWaterBodies = False, lddMap = None):
+46a47,48
+>         
+>         self.iniItems = iniItems
+49,52c51,63
+<         self.lddMap = vos.readPCRmapClone(iniItems.routingOptions['lddMap'],
+<                                               self.cloneMap,self.tmpDir,self.inputDir,True)
+<         self.lddMap = pcr.lddrepair(pcr.ldd(self.lddMap))
+<         self.lddMap = pcr.lddrepair(self.lddMap)
+---
+>         if isinstance(lddMap, types.NoneType):
+>             self.lddMap = vos.readPCRmapClone(iniItems.routingOptions['lddMap'],
+>                                                   self.cloneMap,self.tmpDir,self.inputDir,True)
+>             self.lddMap = pcr.lddrepair(pcr.ldd(self.lddMap))
+>             self.lddMap = pcr.lddrepair(self.lddMap)
+>         else:    
+>             self.lddMap = lddMap
+> 
+>         # the following is needed for a modflowOfflineCoupling run
+>         if 'modflowOfflineCoupling' in iniItems.globalOptions.keys() and iniItems.globalOptions['modflowOfflineCoupling'] == "True" and 'routingOptions' not in iniItems.allSections: 
+>             logger.info("The 'routingOptions' are not defined in the configuration ini file. We will adopt them from the 'modflowParameterOptions'.")
+>             iniItems.routingOptions = iniItems.modflowParameterOptions
+> 
+56c67
+<         if iniItems.routingOptions['debugWaterBalance'] == "False":
+---
+>         if 'debugWaterBalance' in iniItems.routingOptions.keys() and iniItems.routingOptions['debugWaterBalance'] == "False":
+58c69
+< 
+---
+>         
+60c71
+<         self.onlyNaturalWaterBodies = False
+---
+>         self.onlyNaturalWaterBodies = onlyNaturalWaterBodies
+65,69c76
+< 
+<         # RvB Oct 2019: water outlets and endorheic lakes added as default
+<         self.waterBodyOutInp = None
+<         self.endorheicLakesInp = None
+< 
+---
+>         
+78,84d84
+< 
+<             # RvB Oct 2019: water outlets and endorheic lakes added
+<             if 'waterBodyOutInp' in iniItems.routingOptions.keys():
+<                 self.waterBodyOutInp = iniItems.routingOptions['waterBodyOutInp']
+<             if 'endorheicLakes'in iniItems.routingOptions.keys():
+<                 self.endorheicLakes = iniItems.routingOptions['endorheicLakes']
+< 
+95a96
+>         # - default values
+97a99,108
+>         # - from the ini file
+>         if "minResvrFrac" in iniItems.routingOptions.keys():
+>             minResvrFrac = iniItems.routingOptions['minResvrFrac']
+>             self.minResvrFrac = vos.readPCRmapClone(minResvrFrac,
+>                                                     self.cloneMap, self.tmpDir, self.inputDir)
+>         if "maxResvrFrac" in iniItems.routingOptions.keys():
+>             maxResvrFrac = iniItems.routingOptions['maxResvrFrac']
+>             self.maxResvrFrac = vos.readPCRmapClone(maxResvrFrac,
+>                                                     self.cloneMap, self.tmpDir, self.inputDir)
+> 
+100c111,112
+<                                initial_condition_dictionary = None):
+---
+>                                initial_condition_dictionary = None,\
+>                                currTimeStepInDateTimeFormat = False):
+114,115c126,131
+<         date_used = currTimeStep.fulldate
+<         year_used = currTimeStep.year
+---
+>         if currTimeStepInDateTimeFormat:
+>             date_used = currTimeStep
+>             year_used = currTimeStep.year
+>         else:
+>             date_used = currTimeStep.fulldate
+>             year_used = currTimeStep.year
+136,139c152,154
+<         self.waterBodyIds   = pcr.nominal(0)    # waterBody ids
+<         self.waterBodyOut   = pcr.boolean(0)    # waterBody outlets
+<         self.endorheicLakes = pcr.boolean(0)    # endorheic lakes
+<         self.waterBodyArea  = pcr.scalar(0.0)   # waterBody surface areas
+---
+>         self.waterBodyIds  = pcr.nominal(0)    # waterBody ids
+>         self.waterBodyOut  = pcr.boolean(0)    # waterBody outlets
+>         self.waterBodyArea = pcr.scalar(0.)    # waterBody surface areas
+150,154c165
+< 
+<         # RvB: October 2019: this is the original patch by Edwin for
+<         # water bodies with multiple outlets; this has been kept
+<         # but the line has been added where the outlets of endorheic lakes
+<         # are removed.
+---
+>         #
+159,161c170
+<         # water body outlets (correcting outlet positions): these are the default
+<         # outlets to use if no input is provided;
+<         # RvB: October 2019: this is kept to be downwards compatible!
+---
+>         # water body outlets (correcting outlet positions)
+163c172
+<         defaultWaterBodyOut = pcr.ifthen(wbCatchment ==\
+---
+>         self.waterBodyOut = pcr.ifthen(wbCatchment ==\
+166,205c175,184
+<                             self.waterBodyIds)     # = outlet ids   
+<         defaultWaterBodyOut = pcr.ifthen(\
+<                             (pcr.scalar(self.waterBodyIds) > 0.),\
+<                             defaultWaterBodyOut)
+< 
+<         # RvB: October 2019: added the processing of any outlets for endorheic lakes.
+<         # This requires that the actual outlets and information on endorheic lakes are
+<         # read from file.
+< 
+<         # first, read in the outlets if available
+<         if self.useNetCDF:
+<             try:
+<                 self.waterBodyOut = vos.netcdf2PCRobjClone(self.ncFileInp,'waterBodyOut', \
+<                                     date_used, useDoy = 'yearly',\
+<                                     cloneMapFileName = self.cloneMap)
+<                 logger.info("Outlets of water bodies read from netCDF file.")
+<             except:
+<                 # log warning
+<                 logger.warning("Outlets of water bodies have not been read from netCDF.")
+<         elif not self.waterBodyOutInp is None:
+<             self.waterBodyOut = vos.readPCRmapClone(\
+<                 self.waterBodyOutInp+'_'+str(year_used)+".map",\
+<                 self.cloneMap,self.tmpDir,self.inputDir,False,None,True)
+<             logger.info("Outlets of water bodies read from map file.")
+< 
+<         # next, read in the endorheic lakes if available
+<         if self.useNetCDF:
+<             try:
+<                 self.endorheicLakes = vos.netcdf2PCRobjClone(self.ncFileInp,'endorheicLakes', \
+<                                     date_used, useDoy = 'yearly',\
+<                                     cloneMapFileName = self.cloneMap)
+<                 logger.info("Endorheic lakes read from netCDF file.")
+<             except:
+<                 # log warning
+<                 logger.warning("Endorheic lakes have not been read from netCDF.")
+<         elif not self.endorheicLakesInp is None:
+<             self.endorheicLakes = vos.readPCRmapClone(\
+<                 self.endorheicLakesInp+'_'+str(year_used)+".map",\
+<                 self.cloneMap,self.tmpDir,self.inputDir,False,None,True)
+<             logger.info("Information on endorheic lakes read from map file.")
+---
+>                             self.waterBodyIds) # = outlet ids           # This may give more than two outlets, particularly if there are more than one cells that have largest upstream areas      
+>         # - make sure that there is only one outlet for each water body 
+>         self.waterBodyOut = pcr.ifthen(\
+>                             pcr.areaorder(pcr.scalar(self.waterBodyOut), \
+>                             self.waterBodyOut) == 1., self.waterBodyOut)
+>         self.waterBodyOut = pcr.ifthen(\
+>                             pcr.scalar(self.waterBodyIds) > 0.,\
+>                             self.waterBodyOut)
+>         
+>         # TODO: Please also consider endorheic lakes!                    
+207,236c186
+<         # RvB: October, 2019: all information on endorheic lakes and waterbody
+<         # outlets read or prepared; patch all information
+<         # clip the information to the relevant land mask
+<         self.waterBodyIds = pcr.ifthen(pcr.defined(ldd), pcr.nominal(self.waterBodyIds))
+<         self.waterBodyOut = pcr.ifthen(pcr.defined(ldd), pcr.nominal(self.waterBodyOut))
+<         self.endorheicLakes = pcr.ifthen(pcr.defined(ldd), pcr.boolean(self.endorheicLakes))
+< 
+<         # RvB: October, 2019: next: patch outlets and create dummy endorheic lakes
+<         # if not defined
+<         patch_outlets = pcr.ifthenelse((pcr.scalar(self.waterBodyOut) != \
+<                         pcr.scalar(defaultWaterBodyOut)) & \
+<                             (defaultWaterBodyOut != 0), pcr.scalar(1), pcr.scalar(0)) + \
+<                         pcr.ifthenelse((pcr.scalar(self.waterBodyOut) != \
+<                             pcr.scalar(defaultWaterBodyOut)) & \
+<                             (self.waterBodyOut != 0), pcr.scalar(1), pcr.scalar(0))
+<                             
+<         patch_outlets = (pcr.areatotal(patch_outlets, self.waterBodyIds) > 0) & \
+<             pcr.pcrnot(self.endorheicLakes)
+<         patch_outlets = pcr.cover(patch_outlets, 0)
+<         # finally, patch the outlets where the mask is True
+<         self.waterBodyOut = pcr.ifthenelse(patch_outlets, defaultWaterBodyOut, self.waterBodyOut)
+<         
+<         # and add a warning to the logger for any patches!
+<         number_patches = pcr.cellvalue(pcr.maptotal(pcr.scalar(patch_outlets)), 1)[0]
+<         if number_patches > 0:
+<             logger.warning("Correction on the outlet of %d water bodies made that were not identified as endorheic." % number_patches)
+<         
+<         # correcting water body ids; uses the correct outlets where possible, 
+<         # and the default ones in the case of anything else, including
+<         # the endorheic lakes
+---
+>         # correcting water body ids
+239,245c189
+<                             pcr.subcatchment(ldd, \
+<                                 pcr.ifthenelse(patch_outlets, defaultWaterBodyOut, \
+<                                 pcr.ifthenelse(self.waterBodyOut != 0, \
+<                                 self.waterBodyOut, defaultWaterBodyOut))))
+< 
+<         # finally, cover the outlets with zeros
+<         self.waterBodyOut = pcr.cover(self.waterBodyOut, 0)
+---
+>                             pcr.subcatchment(ldd,self.waterBodyOut))
+251,275d194
+<         
+<         # RvB: October 2019: addition to remove the outlets of endorheic lakes
+<         # first expand any endorheic lakes
+<         self.endorheicLakes = pcr.areamaximum(pcr.scalar(self.endorheicLakes), self.waterBodyIds) == 1
+< 
+<         # then, expand the maps to full coverage
+<         self.waterBodyIds = pcr.ifthen(pcr.defined(ldd), \
+<                             pcr.cover(self.waterBodyIds, 0))
+<         self.waterBodyOut = pcr.ifthen(pcr.defined(ldd), \
+<                             pcr.cover(self.waterBodyOut, 0))
+<         self.endorheicLakes   = pcr.ifthen(pcr.defined(ldd), \
+<                             pcr.cover(self.endorheicLakes, 0))
+< 
+<         # next, remove the endorheic lakes
+<         self.waterBodyOut = self.waterBodyOut & \
+<                             pcr.pcrnot(self.endorheicLakes)
+< 
+<         # this is the end of the added read on water body outlets
+<         # with this, all outlets are updated
+<         # RvB: October 2019: endorheic lakes included
+<         
+<         #~ pcr.report(self.waterBodyIds, '/home/beek0120/Projects/PBLModel/analysis/waterbody_id.map')
+<         #~ pcr.report(self.waterBodyOut, '/home/beek0120/Projects/PBLModel/analysis/waterbody_out.map')
+<         #~ pcr.report(defaultWaterBodyOut, '/home/beek0120/Projects/PBLModel/analysis/waterbody_defout.map')
+<         #~ pcr.report(self.endorheicLakes, '/home/beek0120/Projects/PBLModel/analysis/endorheic_lakes.map')
+407c326
+<         if currTimeStep.timeStepPCR == 1:
+---
+>         if initial_condition_dictionary != None and currTimeStep.timeStepPCR == 1:
+411a331
+>         # PS: THIS IS NOT NEEDED FOR OFFLINE MODFLOW RUN! 
+413,415c333,343
+<         self.waterBodyStorage = pcr.cover(self.waterBodyStorage,0.0)
+<         self.avgInflow        = pcr.cover(self.avgInflow ,0.0)
+<         self.avgOutflow       = pcr.cover(self.avgOutflow,0.0)
+---
+>         try:
+>             self.waterBodyStorage = pcr.cover(self.waterBodyStorage,0.0)
+>             self.avgInflow        = pcr.cover(self.avgInflow ,0.0)
+>             self.avgOutflow       = pcr.cover(self.avgOutflow,0.0)
+>             self.waterBodyStorage = pcr.ifthen(self.landmask, self.waterBodyStorage)
+>             self.avgInflow        = pcr.ifthen(self.landmask, self.avgInflow       )
+>             self.avgOutflow       = pcr.ifthen(self.landmask, self.avgOutflow      )
+>         except:
+>             # PS: FOR OFFLINE MODFLOW RUN!
+>             pass
+>         # TODO: Remove try and except    
+424,426d351
+<         self.waterBodyStorage  = pcr.ifthen(self.landmask, self.waterBodyStorage)
+<         self.avgInflow         = pcr.ifthen(self.landmask, self.avgInflow       )
+<         self.avgOutflow        = pcr.ifthen(self.landmask, self.avgOutflow      )
+493a419,422
+>         
+>         self.waterBodyBalance = (pcr.cover(self.inflow/self.waterBodyArea, 0.0) - pcr.cover(self.waterBodyOutflow/self.waterBodyArea,0.0)) -\
+>                                 (pcr.cover(self.waterBodyStorage/self.waterBodyArea,0.0) - pcr.cover(preStorage/self.waterBodyArea,0.0))
+>                                   
+509,510c438,441
+<         # inflowInM3PerSec (m3/s)
+<         inflowInM3PerSec = self.inflow / length_of_time_step
+---
+>         # TODO: Please check whether this inflow term includes evaporation loss?
+>         
+>         # inflowInM3PerSec (m3/s)                                       
+>         self.inflowInM3PerSec = self.inflow / length_of_time_step
+516c447
+<         deltaInflow = inflowInM3PerSec - self.avgInflow  
+---
+>         deltaInflow = self.inflowInM3PerSec - self.avgInflow  
