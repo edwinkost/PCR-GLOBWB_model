@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH -p sen2agri*
+#SBATCH -p sen2agriHi
 
 #SBATCH -A crpmdl
 # #SBATCH --qos=m100_qos_dbg
