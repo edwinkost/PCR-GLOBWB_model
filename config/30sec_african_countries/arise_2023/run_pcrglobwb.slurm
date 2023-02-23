@@ -35,7 +35,7 @@ cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
 
 
 # set the configuration file that we want to run
-PCRGLOBWB_CONFIG_FILE=""
+PCRGLOBWB_CONFIG_FILE="/tank/edwin/github/PCR-GLOBWB_model/config/30sec_african_countries/arise_2023/setup_30sec_agmip_clone_01_version_2021-10-20_on_poly-server.ini"
 
 
 # running pcrglobwb
