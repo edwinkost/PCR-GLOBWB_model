@@ -21,7 +21,7 @@
 # - abandon any existing PYTHONPATH (recommended, if you want to use miniconda or anaconda)
 unset PYTHONPATH
 # - activate my default conda env
-source activate /home/edwinsutanudjaja/opt/miniconda3/envs/pcrglobwb_python3
+source activate /tank/edwin/conda_envs/pcrglobwb_python3_v20220224
 
 
 # unset PCRASTER_NR_WORKER_THREADS (this should be the same as --ntasks)
