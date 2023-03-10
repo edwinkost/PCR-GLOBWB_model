@@ -1061,24 +1061,24 @@ latex_symbol[pcrglobwb_variable_name]      = None
 
 # floodDepth
 pcrglobwb_variable_name = 'floodDepth'
-netcdf_short_name[pcrglobwb_variable_name] = 'flood_innundation_depth'
+netcdf_short_name[pcrglobwb_variable_name] = 'flood_inundation_depth'
 netcdf_unit[pcrglobwb_variable_name]       = 'm'
 netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
 netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
 netcdf_long_name[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]       = None
-comment[pcrglobwb_variable_name]           = 'Flood innundation depth above the channel flood plain. Not including flood overtopping reservoirs and lakes.'
+comment[pcrglobwb_variable_name]           = 'Flood inundation depth above the channel flood plain. Not including flood overtopping reservoirs and lakes.'
 latex_symbol[pcrglobwb_variable_name]      = None
 
 # floodVolume
 pcrglobwb_variable_name = 'floodVolume'
-netcdf_short_name[pcrglobwb_variable_name] = 'flood_innundation_volume'
+netcdf_short_name[pcrglobwb_variable_name] = 'flood_inundation_volume'
 netcdf_unit[pcrglobwb_variable_name]       = 'm3'
 netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
 netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
 netcdf_long_name[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]       = None
-comment[pcrglobwb_variable_name]           = 'Flood innundation volume above the channel storage capacity. Not including flood overtopping reservoirs and lakes.'
+comment[pcrglobwb_variable_name]           = 'Flood inundation volume above the channel storage capacity. Not including flood overtopping reservoirs and lakes.'
 latex_symbol[pcrglobwb_variable_name]      = None
 
 # surfaceWaterLevel

@@ -444,7 +444,7 @@ class Routing(object):
 
         # output: dictionaries kSlope, mInterval, relZ and floodVolume with the keys iCnt (index, dimensionless)
         # - nrZLevels                     : number of intervals/levels
-        # - areaFractions (dimensionless) : percentage/fraction of flooded/innundated area
+        # - areaFractions (dimensionless) : percentage/fraction of flooded/inundated area
         # - relZ (m)                      : relative elevation above floodplain 
         # - floodVolume (m3)              : flood volume above the channel bankfull capacity 
         # - kSlope (dimensionless)        : slope used during the interpolation
@@ -462,7 +462,7 @@ class Routing(object):
             relZFileName = vos.getFullPath(iniItems.routingOptions['relativeElevationFiles'],\
                                            iniItems.globalOptions['inputDir'])
 
-            # a dictionary contains areaFractions (dimensionless): fractions of flooded/innundated areas  
+            # a dictionary contains areaFractions (dimensionless): fractions of flooded/inundated areas  
             areaFractions = list(map(float, str(iniItems.routingOptions['relativeElevationLevels']).split(',')))
             print(areaFractions)
             # number of levels/intervals
@@ -576,7 +576,7 @@ class Routing(object):
 
             # wetted perimeter
             flood_only_wetted_perimeter = self.floodDepth * (2.0) + \
-                                          pcr.max(0.0, self.innundatedFraction*self.cellArea/self.channelLength - self.channelWidth)
+                                          pcr.max(0.0, self.inundatedFraction*self.cellArea/self.channelLength - self.channelWidth)
             channel_only_wetted_perimeter = \
                         pcr.min(self.channelDepth, vos.getValDivZero(self.channelStorage, self.channelLength*self.channelWidth, 0.0)) * 2.0 + \
                         self.channelWidth
@@ -757,7 +757,7 @@ class Routing(object):
             alpha, dischargeInitial = \
                    self.calculate_alpha_and_initial_discharge_for_kinematic_wave(channelStorageForRouting, \
                                                                                  self.water_height, \
-                                                                                 self.innundatedFraction, self.floodDepth)
+                                                                                 self.inundatedFraction, self.floodDepth)
             
             # at the lake/reservoir outlets, use the discharge of water bofy outflow
             waterBodyOutflowInM3PerSec = pcr.cover(
@@ -799,7 +799,7 @@ class Routing(object):
             self.dynamicFracWat = pcr.cover(\
                              pcr.min(1.0, self.WaterBodies.fracWat), 0.0)
             # - fraction of channel (including its excess above bankfull capacity) 
-            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.innundatedFraction)
+            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.inundatedFraction)
             # - maximum value of dynamicFracWat is 1.0
             self.dynamicFracWat = pcr.ifthen(self.landmask, pcr.min(1.0, self.dynamicFracWat))
 
@@ -878,15 +878,15 @@ class Routing(object):
         self.channelFraction = pcr.max(0.0, pcr.min(1.0,\
                                self.channelWidth * self.channelLength / (self.cellArea)))
         
-        # fraction of innundation due to flood (dimensionless) and flood/innundation depth (m)
-        self.innundatedFraction, self.floodDepth = self.returnInundationFractionAndFloodDepth(self.channelStorage)
+        # fraction of inundation due to flood (dimensionless) and flood/inundation depth (m)
+        self.inundatedFraction, self.floodDepth = self.returnInundationFractionAndFloodDepth(self.channelStorage)
                                 
         # fraction of surface water bodies (dimensionless) including lakes and reservoirs
         # - lake and reservoir surface water fraction
         self.dynamicFracWat = pcr.cover(\
                          pcr.min(1.0, self.WaterBodies.fracWat), 0.0)
         # - fraction of channel (including its excess above bankfull capacity) 
-        self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.innundatedFraction)
+        self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.inundatedFraction)
         # - maximum value of dynamicFracWat is 1.0
         self.dynamicFracWat = pcr.ifthen(self.landmask, pcr.min(1.0, self.dynamicFracWat))
         
@@ -1201,13 +1201,13 @@ class Routing(object):
         # return waterBodyStorage to channelStorage  
         self.channelStorage = self.return_water_body_storage_to_channel(self.channelStorage)
 
-    def calculate_alpha_and_initial_discharge_for_kinematic_wave(self, channelStorage, water_height, innundatedFraction, floodDepth): 
+    def calculate_alpha_and_initial_discharge_for_kinematic_wave(self, channelStorage, water_height, inundatedFraction, floodDepth): 
 
         # calculate alpha (dimensionless), which is the roughness coefficient 
         # - for kinewatic wave (see: http://pcraster.geo.uu.nl/pcraster/4.0.0/doc/manual/op_kinematic.html)
         # - based on wetted area (m2) and wetted perimeter (m), as well as self.beta (dimensionless)
         # - assuming rectangular channel
-        # - flood innundated areas with 
+        # - flood inundated areas with 
 
         # channel wetted area (m2)
         # - the minimum wetted area is: water height x channel width (Edwin introduce this) 
@@ -1218,7 +1218,7 @@ class Routing(object):
 
         # wetted perimeter
         flood_only_wetted_perimeter = floodDepth * (2.0) + \
-                                      pcr.max(0.0, innundatedFraction*self.cellArea/self.channelLength - self.channelWidth)
+                                      pcr.max(0.0, inundatedFraction*self.cellArea/self.channelLength - self.channelWidth)
         channel_only_wetted_perimeter = \
                     pcr.min(self.channelDepth, vos.getValDivZero(channelStorage, self.channelLength*self.channelWidth, 0.0)) * 2.0 + \
                     self.channelWidth
@@ -1269,7 +1269,7 @@ class Routing(object):
         
         if self.floodPlain:
             
-            # return flood fraction and flood/innundation depth above the flood plain
+            # return flood fraction and flood/inundation depth above the flood plain
             floodFraction, floodDepth = self.returnInundationFractionAndFloodDepth(channelStorage)
             
             # wetted perimeter
@@ -1303,10 +1303,10 @@ class Routing(object):
         
     def returnInundationFractionAndFloodDepth(self, channelStorage):
         
-        # flood/innundation depth above the flood plain (unit: m)
+        # flood/inundation depth above the flood plain (unit: m)
         floodDepth = 0.0
         
-        # channel and flood innundated fraction (dimensionless, the minimum value is channelFraction)
+        # channel and flood inundated fraction (dimensionless, the minimum value is channelFraction)
         inundatedFraction = self.channelFraction
         
         if self.floodPlain:
@@ -1318,7 +1318,7 @@ class Routing(object):
             # - return the flooded fraction and the associated water height
             # - using a logistic smoother near intersections (K&K, 2007)
         
-            # flood/innundation/excess volume (excess above the bankfull capacity, unit: m3)
+            # flood/inundation/excess volume (excess above the bankfull capacity, unit: m3)
             excessVolume = pcr.max(0.0, channelStorage - self.channelStorageCapacity)
             
             # find the match on the basis of the shortest distance 
@@ -1530,7 +1530,7 @@ class Routing(object):
             alpha, dischargeInitial = \
                    self.calculate_alpha_and_initial_discharge_for_kinematic_wave(channelStorageForRouting, \
                                                                                  self.water_height, \
-                                                                                 self.innundatedFraction, self.floodDepth)
+                                                                                 self.inundatedFraction, self.floodDepth)
             
             # discharge (m3/s) based on kinematic wave approximation
             #~ logger.debug('start pcr.kinematic')
@@ -1592,7 +1592,7 @@ class Routing(object):
             self.dynamicFracWat = pcr.cover(\
                              pcr.min(1.0, self.WaterBodies.fracWat), 0.0)
             # - fraction of channel (including its excess above bankfull capacity) 
-            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.innundatedFraction)
+            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.inundatedFraction)
             # - maximum value of dynamicFracWat is 1.0
             self.dynamicFracWat = pcr.ifthen(self.landmask, pcr.min(1.0, self.dynamicFracWat))
 
@@ -1757,7 +1757,7 @@ class Routing(object):
             alpha, dischargeInitial = \
                    self.calculate_alpha_and_initial_discharge_for_kinematic_wave(channelStorageForRouting, \
                                                                                  self.water_height, \
-                                                                                 self.innundatedFraction, self.floodDepth)
+                                                                                 self.inundatedFraction, self.floodDepth)
             
             #~ # for lakes and reservoir cells, set discharge estimate (dischargeInitial) to zero
             #~ dischargeInitial = pcr.cover(\
@@ -1868,7 +1868,7 @@ class Routing(object):
             self.dynamicFracWat = pcr.cover(\
                              pcr.min(1.0, self.WaterBodies.fracWat), 0.0)
             # - fraction of channel (including its excess above bankfull capacity) 
-            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.innundatedFraction)
+            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.inundatedFraction)
             # - maximum value of dynamicFracWat is 1.0
             self.dynamicFracWat = pcr.ifthen(self.landmask, pcr.min(1.0, self.dynamicFracWat))
 
@@ -2067,7 +2067,7 @@ class Routing(object):
             alpha, dischargeInitial = \
                    self.calculate_alpha_and_initial_discharge_for_kinematic_wave(channelStorageForRouting, \
                                                                                  self.water_height, \
-                                                                                 self.innundatedFraction, self.floodDepth) 
+                                                                                 self.inundatedFraction, self.floodDepth) 
 
             # for lakes and reservoir outlet cells, set discharge estimate (dischargeInitial) to waterBodyOutflowInM3PerSec
             dischargeInitial = pcr.cover(\
@@ -2126,7 +2126,7 @@ class Routing(object):
             self.dynamicFracWat = pcr.cover(\
                              pcr.min(1.0, self.WaterBodies.fracWat), 0.0)
             # - fraction of channel (including its excess above bankfull capacity) 
-            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.innundatedFraction)
+            self.dynamicFracWat += pcr.max(0.0, 1.0 - self.dynamicFracWat) * pcr.max(self.channelFraction, self.inundatedFraction)
             # - maximum value of dynamicFracWat is 1.0
             self.dynamicFracWat = pcr.ifthen(self.landmask, pcr.min(1.0, self.dynamicFracWat))
 

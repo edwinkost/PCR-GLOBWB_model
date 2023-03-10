@@ -904,7 +904,7 @@ class Reporting(object):
         # NOTE (RvB, 12/07): the following has been changed to get the actual flood volume and depth;
         # because the waterBodyIDs get covered by zeroes, values for all areas are returned as zero
         #
-        # flood innundation depth (unit: m) above the floodplain
+        # flood inundation depth (unit: m) above the floodplain
         #~ if self._model.routing.floodPlain:\
            #~ self.floodDepth = pcr.ifthen(self._model.routing.landmask, \
                       #~ pcr.ifthenelse(pcr.cover(pcr.scalar(self._model.routing.WaterBodies.waterBodyIds), 0.0) > 0.0, 0.0,
@@ -916,7 +916,7 @@ class Reporting(object):
                       #~ pcr.ifthenelse(pcr.cover(pcr.scalar(self._model.routing.WaterBodies.waterBodyIds), 0.0) > 0.0, 0.0, \
                       #~ pcr.max(0.0, self._model.routing.channelStorage - self._model.routing.channelStorageCapacity)))
         #              
-        # flood innundation depth (unit: m) above the floodplain
+        # flood inundation depth (unit: m) above the floodplain
         self.floodDepth = pcr.ifthen(self._model.routing.landmask, pcr.spatial(pcr.scalar(0.0)))
         if self._model.routing.floodPlain:
            self.floodDepth = pcr.ifthen(self._model.routing.landmask, \
