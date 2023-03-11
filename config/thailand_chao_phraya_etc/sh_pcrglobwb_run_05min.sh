@@ -10,7 +10,7 @@ INI_FOLDER=$(pwd)
 
 
 # configuration (.ini) file
-INI_FILE=${INI_FOLDER}/"setup_05min_thailand_kinematicwave_develop.ini"
+INI_FILE=${INI_FOLDER}/"setup_05min_thailand_develop.ini"
 
 
 # starting and end dates
@@ -21,7 +21,7 @@ END_DATE="2019-12-31"
 
 
 # location/folder, where you will store output files of your 
-MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/thailand_05min/version_20230311_kinematic_wave/"
+MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/thailand_05min/version_20230311_accutraveltime/"
 
 
 # meteorological forcing files
