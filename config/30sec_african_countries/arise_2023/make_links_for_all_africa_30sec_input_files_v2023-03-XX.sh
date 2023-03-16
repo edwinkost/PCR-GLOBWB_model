@@ -43,23 +43,23 @@ ln -s ${inputDir}/global_30sec/landSurface/soil/impeded_drainage/global_30sec_im
 
 ln -s ${inputDir}/global_30min_from_gmd_paper_input/waterUse/irrigation/irrigation_efficiency/efficiency.nc
 
-#~ # OLD WATER DEMAN FILES domestic, industrial and livestock water demand data (unit must be in m.day-1)
-#~ domesticWaterDemandFile  = global_05min_from_gmd_paper_input/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc
-#~ industryWaterDemandFile  = global_05min_from_gmd_paper_input/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc
-#~ livestockWaterDemandFile = global_05min_from_gmd_paper_input/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc
+# OLD WATER DEMAN FILES domestic, industrial and livestock water demand data (unit must be in m.day-1)
+ln -s ${inputDir}/global_05min_from_gmd_paper_input/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc
+ln -s ${inputDir}/global_05min_from_gmd_paper_input/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc
+ln -s ${inputDir}/global_05min_from_gmd_paper_input/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc
 
 # - the following water demand files were used for the Aqueduct runs
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demand_historical_1960-2019.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demand_ssp1_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demand_ssp2_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demand_ssp3_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demand_ssp5_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demand_historical_1960-2019.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demand_ssp1_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demand_ssp2_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demand_ssp3_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demand_ssp5_2000-2100.nc
-ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/livestock_water_demand_05min.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demands/domestic_water_demand_historical_1960-2019.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demands/domestic_water_demand_ssp1_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demands/domestic_water_demand_ssp2_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demands/domestic_water_demand_ssp3_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/domestic_water_demands/domestic_water_demand_ssp5_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demands/industry_water_demand_historical_1960-2019.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demands/industry_water_demand_ssp1_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demands/industry_water_demand_ssp2_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demands/industry_water_demand_ssp3_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/industry_water_demands/industry_water_demand_ssp5_2000-2100.nc
+ln -s ${inputDir}/global_05min/waterUse/waterDemand/version_2021-09-13/livestock_water_demands/livestock_water_demand_05min.nc
 
 
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/waterUse/desalination/desalination_water_version_april_2015.nc
