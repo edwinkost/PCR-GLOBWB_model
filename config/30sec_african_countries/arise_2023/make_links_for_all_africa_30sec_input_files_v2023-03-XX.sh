@@ -13,6 +13,7 @@ ln -s ${inputDir}/africa_30sec/cloneMaps/version_2020-XX-XX clone_maps
 ln -s ${inputDir}/global_30sec/landSurface/topography/merit_dem_processed/version_2021-02-XX/maps_covered_with_zero/dem_average_topography_parameters_30sec_february_2021_global_covered_with_zero.nc
 
 ln -s ${inputDir}/global_30sec/meteo/unique_ids/unique_ids_150_arcsec_correct_lats.nc
+ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/uniqueIds_30min.nc
 
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/temperature_slope.nc                                                                     
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/precipitation_slope.nc                                                                   
