@@ -21,8 +21,6 @@ ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/temperature_correl.nc                                                                     
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/precipitation_correl.nc                                                                   
 
-ln -s ${inputDir}/global_05min/meteo/downscaling_from_30min/uniqueIds_30min.nc
-
 ln -s ${inputDir}/global_30sec/landSurface/topography/merit_dem_processed/version_2021-02-XX/maps_covered_with_zero/topography_parameters_30sec_february_2021_global_covered_with_zero.nc
 
 ln -s ${inputDir}/africa_30sec/landSurface/soil/soilgrids/version_2021-02-XX/layerDepth_average_1_africa_30sec.nc
