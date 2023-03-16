@@ -1,9 +1,12 @@
 
-# -- on eejit
-inputDir="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/"
+set -x
 
 mkdir /scratch/depfg/sutan101/data/pcrglobwb_input_arise/version_2023-03-16_africa-30sec_links
 cd /scratch/depfg/sutan101/data/pcrglobwb_input_arise/version_2023-03-16_africa-30sec_links
+
+# -- on eejit
+inputDir="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/"
+
 
 ln -s ${inputDir}/africa_30sec/cloneMaps/version_2020-XX-XX clone_maps
 
@@ -16,6 +19,8 @@ ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min
                                                                                                                                                                  
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/temperature_correl.nc                                                                     
 ln -s ${inputDir}/global_05min_from_gmd_paper_input/meteo/downscaling_from_30min/precipitation_correl.nc                                                                   
+
+ln -s ${inputDir}/global_05min/meteo/downscaling_from_30min/uniqueIds_30min.nc
 
 ln -s ${inputDir}/global_30sec/landSurface/topography/merit_dem_processed/version_2021-02-XX/maps_covered_with_zero/topography_parameters_30sec_february_2021_global_covered_with_zero.nc
 
@@ -126,3 +131,5 @@ ln -s ${inputDir}/global_30sec/landSurface/topography/merit_dem_processed/versio
 ln -s ${inputDir}/global_30min_from_gmd_paper_input/routing/kc_surface_water/cropCoefficientForOpenWater.nc
 
 ln -s ${inputDir}/africa_30sec/routing/surface_water_bodies/version_20200525/lakes_and_reservoirs_30sec_africa_version_may_2020.nc
+
+set +x
