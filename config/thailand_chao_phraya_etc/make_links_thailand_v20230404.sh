@@ -8,7 +8,8 @@ INPUT_DIR="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/"
 ln -s ${INPUT_DIR}/thailand_30sec/cloneMaps
 
 # meteo
-ln -s /scratch/depfg/sutan101/data/isimip_forcing/isimip3a_version_2021-09-XX/copied_on_2021-09-XX/GSWP3-W5E5/merged/w5e5_1979-2019_with_climatology_on_1978 meteo_w5e5/
+
+ln -s /scratch/depfg/sutan101/data/isimip_forcing/isimip3a_version_2021-09-XX/copied_on_2021-09-XX/GSWP3-W5E5/merged/w5e5_1979-2019_with_climatology_on_1978 meteo_w5e5
 
 # initial conditions:
 ln -s ${INPUT_DIR}/thailand_30sec/initialConditions
@@ -37,11 +38,12 @@ ln -s ${INPUT_DIR}/global_30sec/landSurface/soil/impeded_drainage/global_30sec_i
 
 ln -s ${INPUT_DIR}/global_30min_from_gmd_paper_input/waterUse/irrigation/irrigation_efficiency/efficiency.nc
 
-ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc
-ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc
-ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc
+#~ ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/waterDemand/domestic/domestic_water_demand_version_april_2015.nc
+#~ ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/waterDemand/industry/industry_water_demand_version_april_2015.nc
+#~ ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/waterDemand/livestock/livestock_water_demand_version_april_2015.nc
+#~ ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/desalination/desalination_water_version_april_2015.nc
 
-ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/desalination/desalination_water_version_april_2015.nc
+
 
 ln -s ${INPUT_DIR}/global_05min_from_gmd_paper_input/waterUse/abstraction_zones/abstraction_zones_60min_05min.nc
 
