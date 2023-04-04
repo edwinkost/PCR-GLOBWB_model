@@ -1,6 +1,6 @@
 
-mkdir /scratch/depfg/sutan101/data/pcrglobwb_input_arise/input_for_thailand_30sec_v20240404/
-cd    /scratch/depfg/sutan101/data/pcrglobwb_input_arise/input_for_thailand_30sec_v20240404/
+mkdir /scratch/depfg/sutan101/data/pcrglobwb_input_arise/input_for_thailand_30sec_v20230404/
+cd    /scratch/depfg/sutan101/data/pcrglobwb_input_arise/input_for_thailand_30sec_v20230404/
 
 INPUT_DIR="/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/"
 
