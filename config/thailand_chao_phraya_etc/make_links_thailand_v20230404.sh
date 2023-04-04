@@ -81,7 +81,6 @@ ln -s ${INPUT_DIR}/global_30sec/routing/cell_area/cdo_grid_area_30sec_map_correc
 ln -s ${INPUT_DIR}/global_30sec/routing/channel_properties/version_2021-02-XX/maps_covered_with_zero/channel_gradient_channel_parameters_30sec_february_2021_global_covered_with_zero.nc
 ln -s ${INPUT_DIR}/global_30sec/routing/channel_properties/version_2021-02-XX/maps_covered_with_zero/bankfull_depth_channel_parameters_30sec_february_2021_global_covered_with_zero.nc
 ln -s ${INPUT_DIR}/global_30sec/routing/channel_properties/version_2021-02-XX/maps_covered_with_zero/bankfull_width_channel_parameters_30sec_february_2021_global_covered_with_zero.nc
-ln -s ${INPUT_DIR}/global_30sec/routing/channel_properties/version_2021-02-XX/maps_covered_with_zero/bankfull_width_channel_parameters_30sec_february_2021_global_covered_with_zero.nc
 ln -s ${INPUT_DIR}/global_30min_from_gmd_paper_input/routing/kc_surface_water/cropCoefficientForOpenWater.nc
 ln -s ${INPUT_DIR}/thailand_30sec/routing/surface_water_bodies/south-east-asia_india_version_2023-03-23/lakes_and_reservoirs_30sec_sea_india_version_20230323.nc
 
