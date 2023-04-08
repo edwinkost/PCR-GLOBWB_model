@@ -62,9 +62,9 @@ ln -s ${INPUT_DIR}/global_30min_from_gmd_paper_input/waterUse/source_partitionin
 #~ ln -s ${INPUT_DIR}/global_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_cover_fraction.nc
 
 # thailand 30 sec vegetation phenology for non irrigation land cover
-ln -s ${INPUT_DIR}/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_crop_coefficient_sea_india.nc.nc
-ln -s ${INPUT_DIR}/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_intercept_capacity_sea_india.nc.nc
-ln -s ${INPUT_DIR}/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_cover_fraction_sea_india.nc.nc
+ln -s ${INPUT_DIR}/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_crop_coefficient_sea_india.nc
+ln -s ${INPUT_DIR}/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_intercept_capacity_sea_india.nc
+ln -s ${INPUT_DIR}/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX/composite-short-n-tall_cover_fraction_sea_india.nc
 
 #~ sutan101@node032.cluster:/scratch/depfg/sutan101/data/pcrglobwb_input_arise/develop/thailand_30sec/landSurface/landCover/naturalVegetationAndRainFedCrops_version_2021-02-XX$ ls -lah *
 #~ -rw-r--r-- 1 sutan101 depfg  13G Apr  8 16:11 composite-short-n-tall_cover_fraction_sea_india.nc
