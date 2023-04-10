@@ -5,7 +5,7 @@ conda activate pcrglobwb_python3
 
 # set the PCR-GLOBWB configuration (.ini) file
 # - do not forget to adjust the settings, e.g. inputDir, outputDir, cloneMap, etc. 
-CONFIG_INI_FILE="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/thailand_chao_phraya_etc/setup_30sec_thailand_v20230409.ini
+CONFIG_INI_FILE="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/thailand_chao_phraya_etc/setup_30sec_thailand_v20230409.ini"
 
 # go to the folder that contains PCR-GLOBWB scripts
 cd /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/
