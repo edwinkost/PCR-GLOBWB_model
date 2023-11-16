@@ -74,7 +74,7 @@ python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE}
 -rpetff      ${REF_POT_ET_FORCING_FILE} \
 -misf        ${MAIN_INITIAL_STATE_FOLDER} \
 -dfis        ${DATE_FOR_INITIAL_STATES} \
--bfexp       ${BASEFLOW_EXP} \
+-bfexp       ${BASEFLOW_EXPONENT} \
 -log10mfksat ${LOG_10_MULTIPLIER_FOR_KSAT} \
 &
 
