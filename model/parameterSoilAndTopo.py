@@ -27,6 +27,10 @@ import os
 import pcraster as pcr
 import virtualOS as vos
 
+import logging
+logger = logging.getLogger(__name__)
+
+
 class SoilAndTopoParameters(object):
 
     def __init__(self, iniItems, landmask):
