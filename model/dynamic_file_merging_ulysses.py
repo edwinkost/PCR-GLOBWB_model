@@ -324,13 +324,14 @@ def main():
     
     # modify ini file and return it in a new location 
     if "-mod" in sys.argv:
-        iniFileName = modify_ini_file(original_ini_file = iniFileName, \
-                                      system_argument = sys.argv)
+        # replace the configuration file based on the system arguments that are given
+        iniFileName   = modify_ini_file(original_ini_file = iniFileName,
+                                        system_argument   = sys.argv)
 
     # debug option
     debug_mode = False
-    if len(sys.argv) > 2:
-        if sys.argv[2] == "debug" or sys.argv[2] == "debug_parallel": debug_mode = True
+    if len(sys.argv) > 2: 
+        if sys.argv[2] == "debug" or sys.argv[2] == "debug_parallel" or sys.argv[2] == "debug-parallel": debug_mode = True
     
     # object to handle configuration/ini file
     configuration = Configuration(iniFileName = iniFileName, \
