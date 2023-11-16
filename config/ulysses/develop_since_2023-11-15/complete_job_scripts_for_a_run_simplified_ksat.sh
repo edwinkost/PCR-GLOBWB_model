@@ -47,5 +47,5 @@ echo $SPINUP
 echo $FIRST
 
 sleep 3
-squeue -u sutan101
+squeue
 
