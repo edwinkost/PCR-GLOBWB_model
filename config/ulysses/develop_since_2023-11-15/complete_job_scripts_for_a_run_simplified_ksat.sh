@@ -27,7 +27,7 @@ INITIAL_DATE="1981-12-31"
 SUB_OUT_DIR=${MAIN_OUTPUT_DIR}/_spinup/with_1981/
 
 # - for testing
-NUM_OF_YEARS_FOR_SPINUP="25"
+NUM_OF_YEARS_FOR_SPINUP="0"
 STA_DATE="1981-12-29"
 
 # - start the run
