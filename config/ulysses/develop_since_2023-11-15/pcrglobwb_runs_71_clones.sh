@@ -92,7 +92,7 @@ python3 dynamic_file_merging_ulysses.py ${INI_FILE} \
 -rpetff      ${REF_POT_ET_FORCING_FILE} \
 -misf        ${MAIN_INITIAL_STATE_FOLDER} \
 -dfis        ${DATE_FOR_INITIAL_STATES} \
--bfexp       ${BASEFLOW_EXP} \
+-bfexp       ${BASEFLOW_EXPONENT} \
 -log10mfksat ${LOG_10_MULTIPLIER_FOR_KSAT} \
 &
 
