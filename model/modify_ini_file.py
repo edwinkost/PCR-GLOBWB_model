@@ -13,7 +13,7 @@ from six.moves.configparser import RawConfigParser as ConfigParser
 import disclaimer
 
 def modify_ini_file(original_ini_file,
-                    system_argument
+                    system_argument,
                     script_for_merging = False): 
 
     # created by Edwin H. Sutanudjaja on August 2020 for the Ulysses project
