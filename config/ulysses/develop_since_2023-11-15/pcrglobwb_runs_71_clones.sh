@@ -66,14 +66,14 @@ do
 CLONE_CODE=${i}
 python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE} \
 -mod         ${MAIN_OUTPUT_DIRECTORY} \
--sd          ${STARTING_DATE   } \
+-sd          ${STARTING_DATE} \
 -ed          ${END_DATE} \
 -noyfsu      ${NUM_OF_YEARS_FOR_SPINUP} \
 -pff         ${PRECIPITATION_FORCING_FILE} \
 -tff         ${TEMPERATURE_FORCING_FILE} \
 -rpetff      ${REF_POT_ET_FORCING_FILE} \
--misf        ${MAIN_INITIAL_STATE_FOLDER  } \
--dfis        ${DATE_FOR_INITIAL_STATES  } \
+-misf        ${MAIN_INITIAL_STATE_FOLDER} \
+-dfis        ${DATE_FOR_INITIAL_STATES} \
 -bfexp       ${BASEFLOW_EXP} \
 -log10mfksat ${LOG_10_MULTIPLIER_FOR_KSAT} \
 -noyfsu      ${NUM_OF_YEARS_FOR_SPINUP} \
@@ -85,14 +85,14 @@ done
 # merging process
 python3 dynamic_file_merging_ulysses.py ${INI_FILE} \
 -mod         ${MAIN_OUTPUT_DIRECTORY} \
--sd          ${STARTING_DATE   } \
+-sd          ${STARTING_DATE} \
 -ed          ${END_DATE} \
 -noyfsu      ${NUM_OF_YEARS_FOR_SPINUP} \
 -pff         ${PRECIPITATION_FORCING_FILE} \
 -tff         ${TEMPERATURE_FORCING_FILE} \
 -rpetff      ${REF_POT_ET_FORCING_FILE} \
--misf        ${MAIN_INITIAL_STATE_FOLDER  } \
--dfis        ${DATE_FOR_INITIAL_STATES  } \
+-misf        ${MAIN_INITIAL_STATE_FOLDER} \
+-dfis        ${DATE_FOR_INITIAL_STATES} \
 -bfexp       ${BASEFLOW_EXP} \
 -log10mfksat ${LOG_10_MULTIPLIER_FOR_KSAT} \
 -noyfsu      ${NUM_OF_YEARS_FOR_SPINUP} \
