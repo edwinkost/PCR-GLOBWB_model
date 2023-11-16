@@ -8,6 +8,8 @@ import datetime
 import glob
 import shutil
 
+from six.moves.configparser import RawConfigParser as ConfigParser
+
 import disclaimer
 
 def modify_ini_file(original_ini_file,
