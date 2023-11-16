@@ -45,6 +45,101 @@ class SoilAndTopoParameters(object):
         
         self.readTopo(iniItems, optionDict)
         self.readSoil(iniItems, optionDict)
+        
+        # option to adjust soil parameter values
+        if 'prefactorOptions' in iniItems.allSections:
+            self.adusting_parameters(iniItems, optionDict)
+
+    def adusting_parameters(self, configuration, optionDict): 
+
+        logger.info("Adjusting some model parameters based on given values in the ini/configuration file.")
+
+        # saving these pre-multipliers to the log file:
+        msg  = "\n" 
+        msg += "\n" 
+        msg += "Multiplier values used: "+"\n" 
+        msg += "For kSat (log-scale)           : " + str(configuration.prefactorOptions['log_10_multiplier_for_kSat'   ]) + "\n"
+        msg += "For storCap                    : " + str(configuration.prefactorOptions['linear_multiplier_for_storCap']) + "\n"
+        logger.info(msg)
+        # - also to a txt file 
+        f = open("multiplier.txt","w") # this will be stored in the "map" folder of the 'outputDir' (as we set the current working directory to this "map" folder, see configuration.py)
+        f.write(msg)
+        f.close()
+
+        # read multipliers
+        # - linear scale
+        linear_multiplier_for_storCap = pcr.ifthen(self.landmask, pcr.cover(vos.readPCRmapClone(configuration.prefactorOptions['linear_multiplier_for_storCap'], self.cloneMap, self.tmpDir, self.inputDir), 1.0))
+        # - log scale
+        log_10_multiplier_for_kSat    = pcr.ifthen(self.landmask, pcr.cover(vos.readPCRmapClone(configuration.prefactorOptions['log_10_multiplier_for_kSat']   , self.cloneMap, self.tmpDir, self.inputDir), 0.0))
+        # -- convert log scale factors to linear ones 
+        linear_multiplier_for_kSat    = 10**(log_10_multiplier_for_kSat)
+
+
+        # to which land cover type the adjustment will be applied (default is for all land cover types)
+        cover_type_name = "all_default"
+        if optionDict is not None: cover_type_name = str(optionDict["name"]) 
+        
+            
+        # applying the multipliers
+        # - for 2 layer model
+        if self.model.landSurface.numberOfSoilLayers == 2:
+
+            # "kSat"
+            self.kSatUpp = self.kSatUpp * linear_multiplier_for_kSat
+            self.kSatLow = self.kSatLow * linear_multiplier_for_kSat 
+            # - report the maps - this will be on the folder 'map' of the outputDir
+            pcraster_filename = "kSatUpp" + "_" + cover_type_name + ".map" 
+            pcr.report(self.kSatUpp, pcraster_filename)
+            pcraster_filename = "kSatLow" + "_" + cover_type_name + ".map" 
+            pcr.report(self.kSatLow, pcraster_filename)
+            
+            # "storCap"
+            self.storCapUpp = self.storCapUpp * linear_multiplier_for_storCap
+            self.storCapLow = self.storCapLow * linear_multiplier_for_storCap
+            # - report the maps - this will be on the folder 'map' of the outputDir
+            pcraster_filename = "storCapUpp" + "_" + cover_type_name + ".map" 
+            pcr.report(self.storCapUpp, pcraster_filename)
+            pcraster_filename = "storCapLow" + "_" + cover_type_name + ".map" 
+            pcr.report(self.storCapLow, pcraster_filename)
+        
+        # applying the multipliers
+        # - for 3 layer model
+        if self.model.landSurface.numberOfSoilLayers == 3:
+
+            # "kSat"
+            self.kSatUpp000005 = self.kSatUpp000005 * linear_multiplier_for_kSat
+            self.kSatUpp005030 = self.kSatUpp005030 * linear_multiplier_for_kSat
+            self.kSatLow030150 = self.kSatLow030150 * linear_multiplier_for_kSat 
+            # - report the maps - this will be on the folder 'map' of the outputDir
+            pcraster_filename = "kSatUpp000005" + "_" + cover_type_name + ".map" 
+            pcr.report(self.kSatUpp000005, pcraster_filename)
+            pcraster_filename = "kSatUpp005030" + "_" + cover_type_name + ".map" 
+            pcr.report(self.kSatUpp005030, pcraster_filename)
+            pcraster_filename = "kSatLow030150" + "_" + cover_type_name + ".map" 
+            pcr.report(self.kSatLow030150, pcraster_filename)
+
+            # "storCap"
+            self.storCapUpp000005 = self.storCapUpp000005 * linear_multiplier_for_storCap
+            self.storCapUpp005030 = self.storCapUpp005030 * linear_multiplier_for_storCap
+            self.storCapLow030150 = self.storCapLow030150 * linear_multiplier_for_storCap
+            # - report the maps - this will be on the folder 'map' of the outputDir
+            pcraster_filename = "storCapUpp000005" + "_" + cover_type_name + ".map" 
+            pcr.report(self.storCapUpp000005, pcraster_filename)
+            pcraster_filename = "storCapUpp005030" + "_" + cover_type_name + ".map" 
+            pcr.report(self.storCapUpp005030, pcraster_filename)
+            pcraster_filename = "storCapLow030150" + "_" + cover_type_name + ".map" 
+            pcr.report(self.storCapLow030150, pcraster_filename)
+
+        # re-calculate rootZoneWaterStorageCap as the consequence of the modification of "storCap"
+        # This is WMAX in the oldcalc script.
+        if self.model.landSurface.numberOfSoilLayers == 2:
+            self.rootZoneWaterStorageCap = self.storCapUpp + self.storCapLow
+        if self.model.landSurface.numberOfSoilLayers == 3:
+            self.rootZoneWaterStorageCap = self.storCapUpp000005 + self.storCapUpp005030 + self.storCapLow030150
+        # - report the map
+        pcraster_filename = "rootZoneWaterStorageCap"+ "_" + cover_type_name + ".map" 
+        pcr.report(self.rootZoneWaterStorageCap, pcraster_filename)
+
 
     def readTopo(self, iniItems, optionDict):
 
@@ -95,7 +190,7 @@ class SoilAndTopoParameters(object):
                 vars(self)[var] = pcr.cover(vars(self)[var], 0.0)
                 if i > 0: vars(self)[var] = pcr.max(vars(self)[var], vars(self)[dzRel[i-1]])
 
-    def readSoilMapOfFAO(self, iniItems, optionDict = None):
+    def read_soil_maps(self, iniItems, optionDict = None):
 
         # a dictionary/section of options that will be used
         if optionDict == None: optionDict = iniItems.landSurfaceOptions
@@ -304,6 +399,10 @@ class SoilAndTopoParameters(object):
                                            self.storCapUpp005030 + \
                                            self.storCapLow030150
 
+        # INTRODUCE YOUR MULTIPLIER HERE!!
+        
+
+
     def readSoil(self, iniItems, optionDict = None):
 
         # a dictionary/section of options that will be used
@@ -329,8 +428,8 @@ class SoilAndTopoParameters(object):
                 vars(self)[var] = vos.readPCRmapClone(input,self.cloneMap,\
                                                             self.tmpDir,self.inputDir)
         
-        # read soil parameter based on the FAO soil map:
-        self.readSoilMapOfFAO(iniItems, optionDict)                                 
+        # read soil parameters based on the soil maps
+        self.read_soil_maps(iniItems, optionDict)                                 
        
         # assign Campbell's (1974) beta coefficient, as well as degree 
         # of saturation at field capacity and corresponding unsaturated hydraulic conductivity
