@@ -84,7 +84,7 @@ class DeterministicRunner(DynamicModel):
 
         # clone map 
         self.clone_map = self.configuration.mergingOutputOptions['cloneMap']
-        pcr.setclone(clone_map)
+        pcr.setclone(self.clone_map)
         
         
 
