@@ -21,7 +21,7 @@ SUB_JOBNAME=${JOBNAME}_spinup_26years_with_1981
 SUB_INIFILE=${SPINUP_RUN_INI}
 STA_DATE="1981-01-01"
 END_DATE="1981-12-31"
-INITIAL_FOLD="NONE"
+INITIAL_FOLD="/projects/0/dfguu/users/edwin/data/pcrglobwb_input_ulysses/initial_conditions/from_runs_created_in_january_2021/"
 INITIAL_DATE="1981-12-31"
 SUB_OUT_DIR=${MAIN_OUTPUT_DIR}/_spinup/with_1981/
 # - start the run
