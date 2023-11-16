@@ -13,7 +13,8 @@ from six.moves.configparser import RawConfigParser as ConfigParser
 import disclaimer
 
 def modify_ini_file(original_ini_file,
-                    system_argument): 
+                    system_argument
+                    script_for_merging = False): 
 
     # created by Edwin H. Sutanudjaja on August 2020 for the Ulysses project
     
@@ -55,15 +56,20 @@ def modify_ini_file(original_ini_file,
                  
                  # parallel option
                  this_run_is_part_of_a_set_of_parallel_run = False    
-                 if system_argument[2] == "parallel" or system_argument[2] == "debug_parallel": this_run_is_part_of_a_set_of_parallel_run = True
+                 if system_argument[2] == "parallel" or system_argument[2] == "debug_parallel" or system_argument[2] == "debug-parallel": this_run_is_part_of_a_set_of_parallel_run = True
                  
                  # for a parallel run (usually at the resolutions of 6 or 5 arcmins, or higher), we assign the following based on the clone number/code:
-                 if this_run_is_part_of_a_set_of_parallel_run:
+                 if this_run_is_part_of_a_set_of_parallel_run and script_for_merging == False:
 
                      # set the output directory for every clone
                      clone_code = "M%07i" %int(str(sys.argv[3])) 
                      assigned_string = assigned_string + "/" + clone_code + "/"
 
+                     output_dir      = assigned_string
+
+                 if this_run_is_part_of_a_set_of_parallel_run and script_for_merging == True:
+
+                     assigned_string = assigned_string + "/global/"
                      output_dir      = assigned_string
 	    
              file_ini_content = file_ini_content.replace(ini_variables[var], assigned_string)

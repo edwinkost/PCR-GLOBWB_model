@@ -317,8 +317,9 @@ def main():
     # modify ini file and return it in a new location 
     if "-mod" in sys.argv:
         # replace the configuration file based on the system arguments that are given
-        iniFileName   = modify_ini_file(original_ini_file = iniFileName,
-                                        system_argument   = sys.argv)
+        iniFileName   = modify_ini_file(original_ini_file  = iniFileName,
+                                        system_argument    = sys.argv
+                                        script_for_merging = True)
 
     # debug option
     debug_mode = False
