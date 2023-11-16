@@ -67,7 +67,7 @@ def modify_ini_file(original_ini_file,
 
                      output_dir      = assigned_string
 
-                 if this_run_is_part_of_a_set_of_parallel_run and script_for_merging == True:
+                 if script_for_merging == True:
 
                      assigned_string = assigned_string + "/global/"
                      output_dir      = assigned_string
