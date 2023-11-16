@@ -13,18 +13,18 @@
 set -x
 
 # get the aguments
-INI_FILE=$1
-MAIN_OUTPUT_DIR=$2
-STARTING_DATE=$3
-END_DATE=$4
-MAIN_INITIAL_STATE_FOLDER=$5
-DATE_FOR_INITIAL_STATES=$6
-PRECIPITATION_FORCING_FILE=$7
-TEMPERATURE_FORCING_FILE=$8
-REF_POT_ET_FORCING_FILE=$9
-BASEFLOW_EXPONENT=${10}
-LOG_10_MULTIPLIER_FOR_KSAT={11}
-NUM_OF_YEARS_FOR_SPINUP={12}
+INI_FILE=$1                          
+MAIN_OUTPUT_DIRECTORY=$2             
+STARTING_DATE=$3                     
+END_DATE=$4                          
+MAIN_INITIAL_STATE_FOLDER=$5         
+DATE_FOR_INITIAL_STATES=$6           
+PRECIPITATION_FORCING_FILE=$7        
+TEMPERATURE_FORCING_FILE=$8          
+REF_POT_ET_FORCING_FILE=$9           
+BASEFLOW_EXPONENT=${10}              
+LOG_10_MULTIPLIER_FOR_KSAT=${11}     
+NUM_OF_YEARS_FOR_SPINUP=${12}        
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/model/"
 
@@ -76,7 +76,6 @@ python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE}
 -dfis        ${DATE_FOR_INITIAL_STATES} \
 -bfexp       ${BASEFLOW_EXP} \
 -log10mfksat ${LOG_10_MULTIPLIER_FOR_KSAT} \
--noyfsu      ${NUM_OF_YEARS_FOR_SPINUP} \
 &
 
 done
@@ -95,7 +94,6 @@ python3 dynamic_file_merging_ulysses.py ${INI_FILE} \
 -dfis        ${DATE_FOR_INITIAL_STATES} \
 -bfexp       ${BASEFLOW_EXP} \
 -log10mfksat ${LOG_10_MULTIPLIER_FOR_KSAT} \
--noyfsu      ${NUM_OF_YEARS_FOR_SPINUP} \
 &
 
 wait
