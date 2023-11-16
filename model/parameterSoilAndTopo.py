@@ -86,7 +86,7 @@ class SoilAndTopoParameters(object):
             
         # applying the multipliers
         # - for 2 layer model
-        if self.numberOfSoilLayers == 2:
+        if self.numberOfLayers == 2:
 
             # "kSat"
             self.kSatUpp = self.kSatUpp * linear_multiplier_for_kSat
@@ -108,7 +108,7 @@ class SoilAndTopoParameters(object):
         
         # applying the multipliers
         # - for 3 layer model
-        if self.numberOfSoilLayers == 3:
+        if self.numberOfLayers == 3:
 
             # "kSat"
             self.kSatUpp000005 = self.kSatUpp000005 * linear_multiplier_for_kSat
@@ -136,9 +136,9 @@ class SoilAndTopoParameters(object):
 
         # re-calculate rootZoneWaterStorageCap as the consequence of the modification of "storCap"
         # This is WMAX in the oldcalc script.
-        if self.numberOfSoilLayers == 2:
+        if self.numberOfLayers == 2:
             self.rootZoneWaterStorageCap = self.storCapUpp + self.storCapLow
-        if self.numberOfSoilLayers == 3:
+        if self.numberOfLayers == 3:
             self.rootZoneWaterStorageCap = self.storCapUpp000005 + self.storCapUpp005030 + self.storCapLow030150
         # - report the map
         pcraster_filename = "rootZoneWaterStorageCap"+ "_" + cover_type_name + ".map" 
