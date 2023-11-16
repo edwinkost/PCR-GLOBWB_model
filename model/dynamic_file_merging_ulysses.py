@@ -335,8 +335,7 @@ def main():
     
     # object to handle configuration/ini file
     configuration = Configuration(iniFileName = iniFileName, \
-                                  debug_mode = debug_mode, \
-                                  steady_state_only = steady_state_only)      
+                                  debug_mode = debug_mode)      
 
     # timeStep info: year, month, day, doy, hour, etc
     currTimeStep = ModelTime() 
