@@ -4,8 +4,8 @@
 
 #SBATCH -p genoa
 
-#~ #SBATCH -t 119:59:00
-#SBATCH -t 59:00
+#SBATCH -t 119:59:00
+#~ #SBATCH -t 59:00
 
 #SBATCH -J pgb_uly_spinup_and_actual_runs
 

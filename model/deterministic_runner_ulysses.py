@@ -148,12 +148,9 @@ def main():
     
     # for a parallel run (e.g. usually for 5min and 6min runs), we assign a specific directory based on the clone number/code:
     if this_run_is_part_of_a_set_of_parallel_run:
-        # modfiying outputDir, clone-map landmask, etc (based on the given system arguments)
+        # modfiying clone-map landmask, etc (based on the given system arguments)
         # - clone code in string
         clone_code = str(sys.argv[3])
-        # - output folder
-        output_folder_with_clone_code = "M%07i" %int(clone_code)
-        configuration.globalOptions['outputDir'] += "/" + output_folder_with_clone_code 
         # - clone map
         configuration.globalOptions['cloneMap'] = configuration.globalOptions['cloneMap'] %(int(clone_code))
         # - landmask for model calculation
@@ -163,6 +160,10 @@ def main():
         if configuration.reportingOptions['landmask_for_reporting'] != "None":
             configuration.reportingOptions['landmask_for_reporting'] = configuration.reportingOptions['landmask_for_reporting'] %(int(clone_code))
 
+        # ~ # Note that output folder is set on modify_ini_file.py
+        # ~ # - output folder
+        # ~ output_folder_with_clone_code = "M%07i" %int(clone_code)
+        # ~ configuration.globalOptions['outputDir'] += "/" + output_folder_with_clone_code 
 
     # set configuration
     configuration.set_configuration(system_arguments = sys.argv)
