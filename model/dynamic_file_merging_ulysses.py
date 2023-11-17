@@ -120,7 +120,7 @@ class DeterministicRunner(DynamicModel):
             # - for Ulysses: 
             # example: python3 merge_pcraster_maps_6_arcmin_ulysses.py ${END_DATE} ${MAIN_OUTPUT_DIR} states 2 Global 71 False
             cmd =     'python3 '+ self.configuration.path_of_this_module + "/merge_pcraster_maps_6_arcmin_ulysses.py " + str(self.modelTime.fulldate) + " " +\
-                                                                                                                         str(self.configuration.main_output_directory)+"/ states 32 "+\
+                                                                                                                         str(self.configuration.main_output_directory)+"/../ states 32 "+\
                                                                                                                          str("Global 71 False")
             msg = "Using the following command line: " + cmd
             logger.info(msg)
@@ -180,7 +180,7 @@ class DeterministicRunner(DynamicModel):
             
             # - for Ulysses:
             # example: python3 merge_netcdf_6_arcmin_ulysses.py ${MAIN_OUTPUT_DIR} ${MAIN_OUTPUT_DIR}/global/netcdf outDailyTotNC ${STARTING_DATE} ${END_DATE} ulyssesQrRunoff,ulyssesDischarge NETCDF4 False 12 Global default_lats
-            cmd =     'python3 '+ self.configuration.path_of_this_module + "/merge_netcdf_6_arcmin_ulysses.py " + str(self.configuration.main_output_directory) + " " +\
+            cmd =     'python3 '+ self.configuration.path_of_this_module + "/merge_netcdf_6_arcmin_ulysses.py " + str(self.configuration.main_output_directory) + "/../ " +\
                                                                                                                   str(self.configuration.main_output_directory) + "/global/netcdf/ "+\
                                                                                                                   str(nc_report_type)  + " " +\
                                                                                                                   str(start_date) + " " +\
