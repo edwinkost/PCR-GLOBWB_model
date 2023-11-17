@@ -12,7 +12,7 @@ BFEXPON="1.50"
 SPINUP_RUN_INI="setup_6arcmin_ulysses_develop_since_2023-11.ini"
 WARMED_RUN_INI="setup_6arcmin_ulysses_develop_since_2023-11.ini" 
 
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_ksat_november_2023_5/"${JOBNAME}
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_ksat_2023-11-17/"${JOBNAME}
 
 set -x
 
