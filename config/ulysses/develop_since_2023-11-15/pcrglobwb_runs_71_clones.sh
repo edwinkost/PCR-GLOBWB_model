@@ -98,3 +98,4 @@ python3 dynamic_file_merging_ulysses.py ${INI_FILE} \
 
 wait
 
+exit

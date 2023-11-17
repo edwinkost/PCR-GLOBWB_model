@@ -67,3 +67,5 @@ bash pcrglobwb_runs_71_clones.sh ${INI_FILE} ${MAIN_OUTPUT_DIR} ${STARTING_DATE}
 sleep 30
 
 set +x
+
+exit
