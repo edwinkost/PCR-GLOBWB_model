@@ -164,7 +164,7 @@ class DeterministicRunner(DynamicModel):
         # make an empty file indicating that merging process is done 
         if self.modelTime.isLastDayOfMonth() or self.modelTime.isLastDayOfYear():
 
-            outputDirectory = str(self.configuration.main_output_directory) + "/global/maps/"
+            outputDirectory = str(self.configuration.main_output_directory) + "/maps/"
             if os.path.exists(outputDirectory) == False: os.makedirs(outputDirectory) 
             filename = outputDirectory + "/merged_files_for_" + str(self.modelTime.fulldate)+"_are_ready.txt"
             if os.path.exists(filename): os.remove(filename)
@@ -216,7 +216,7 @@ class DeterministicRunner(DynamicModel):
         
         
         for clone_area in clone_areas:
-            status_file = str(self.configuration.main_output_directory) + "/" +str(clone_area) + "/maps/pcrglobwb_files_for_" + str(self.modelTime.fulldate) + "_are_ready.txt"
+            status_file = str(self.configuration.main_output_directory) + "/../" +str(clone_area) + "/maps/pcrglobwb_files_for_" + str(self.modelTime.fulldate) + "_are_ready.txt"
             msg = 'Waiting for the file: '+status_file
             if self.count_check == 1: logger.info(msg)
             if self.count_check < 7:
