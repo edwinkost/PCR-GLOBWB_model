@@ -110,8 +110,8 @@ class DeterministicRunner(DynamicModel):
         msg = 'Waiting for the file: ' + status_file
         if self.count_check == 1: logger.info(msg)
         if self.count_check < 7:
-            logger.debug(msg)			# INACTIVATE THIS AS THIS MAKE A HUGE DEBUG (dbg) FILE
-            self.count_check += 1
+            # ~ logger.debug(msg)			# INACTIVATE THIS AS THIS MAKE A HUGE DEBUG (dbg) FILE
+            self.count_check = self.count_check + 1
         status = os.path.exists(status_file)
         if status == False: return status	
         if status: self.count_check = 0            

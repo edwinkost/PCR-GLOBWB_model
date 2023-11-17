@@ -95,6 +95,7 @@ class DeterministicRunner(DynamicModel):
             pcrglobwb_is_ready = False
             self.count_check = 0
             while pcrglobwb_is_ready == False:
+                self.count_check = 0
                 if datetime.datetime.now().second == 14 or\
                    datetime.datetime.now().second == 29 or\
                    datetime.datetime.now().second == 34 or\
@@ -219,7 +220,7 @@ class DeterministicRunner(DynamicModel):
             if self.count_check == 1: logger.info(msg)
             if self.count_check < 7:
                 #~ logger.debug(msg)		# INACTIVATE THIS AS THIS MAKE A HUGE DEBUG (dbg) FILE
-                self.count_check += 1
+                self.count_check = self.count_check + 1
             status = os.path.exists(status_file)
             if status == False: return status
             if status: self.count_check = 0            
