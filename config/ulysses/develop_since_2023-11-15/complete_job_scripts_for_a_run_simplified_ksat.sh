@@ -12,7 +12,7 @@ BFEXPON="1.50"
 SPINUP_RUN_INI="setup_6arcmin_ulysses_develop_since_2023-11.ini"
 WARMED_RUN_INI="setup_6arcmin_ulysses_develop_since_2023-11.ini" 
 
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_test_ksat_november_2023/"${JOBNAME}
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_ksat_november_2023_5/"${JOBNAME}
 
 set -x
 
@@ -26,9 +26,13 @@ INITIAL_FOLD="/projects/0/dfguu/users/edwin/data/pcrglobwb_input_ulysses/initial
 INITIAL_DATE="1981-12-31"
 SUB_OUT_DIR=${MAIN_OUTPUT_DIR}/_spinup/with_1981/
 
-# - for testing
-NUM_OF_YEARS_FOR_SPINUP="0"
-STA_DATE="1981-12-29"
+#~ # - for testing
+#~ NUM_OF_YEARS_FOR_SPINUP="0"
+#~ STA_DATE="1981-12-29"
+
+#~ # - for testing with 5 year spinup
+#~ NUM_OF_YEARS_FOR_SPINUP="5"
+#~ STA_DATE="1981-01-01"
 
 # - start the run
 SPINUP=$(sbatch -J "${SUB_JOBNAME}" --export INI_FILE="${SUB_INIFILE}",MAIN_OUTPUT_DIR="${SUB_OUT_DIR}",STARTING_DATE="${STA_DATE}",END_DATE="${END_DATE}",MAIN_INITIAL_STATE_FOLDER="${INITIAL_FOLD}",DATE_FOR_INITIAL_STATES="${INITIAL_DATE}",BASEFLOW_EXPONENT="${BFEXPON}",LOG_10_MULTIPLIER_FOR_KSAT="${LOGKSAT}",NUM_OF_YEARS_FOR_SPINUP="${NUM_OF_YEARS_FOR_SPINUP}" job_script_sbatch_pcrglobwb_template.sh | sed 's/Submitted batch job //')
