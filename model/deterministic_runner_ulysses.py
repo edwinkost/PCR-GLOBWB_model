@@ -93,8 +93,8 @@ class DeterministicRunner(DynamicModel):
             
             # wait until merged files are ready
             merged_files_are_ready = False
+            self.count_check = 0
             while merged_files_are_ready == False:
-                self.count_check = 0
                 if datetime.datetime.now().second == 14 or\
                    datetime.datetime.now().second == 29 or\
                    datetime.datetime.now().second == 34 or\
@@ -110,7 +110,7 @@ class DeterministicRunner(DynamicModel):
         msg = 'Waiting for the file: ' + status_file
         if self.count_check == 1: logger.info(msg)
         if self.count_check < 7:
-            # ~ logger.debug(msg)			# INACTIVATE THIS AS THIS MAKE A HUGE DEBUG (dbg) FILE
+            logger.debug(msg)			# INACTIVATE THIS AS THIS MAKE A HUGE DEBUG (dbg) FILE
             self.count_check = self.count_check + 1
         status = os.path.exists(status_file)
         if status == False: return status	
