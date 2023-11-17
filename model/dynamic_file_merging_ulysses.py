@@ -181,7 +181,7 @@ class DeterministicRunner(DynamicModel):
             # - for Ulysses:
             # example: python3 merge_netcdf_6_arcmin_ulysses.py ${MAIN_OUTPUT_DIR} ${MAIN_OUTPUT_DIR}/global/netcdf outDailyTotNC ${STARTING_DATE} ${END_DATE} ulyssesQrRunoff,ulyssesDischarge NETCDF4 False 12 Global default_lats
             cmd =     'python3 '+ self.configuration.path_of_this_module + "/merge_netcdf_6_arcmin_ulysses.py " + str(self.configuration.main_output_directory) + "/../ " +\
-                                                                                                                  str(self.configuration.main_output_directory) + "/global/netcdf/ "+\
+                                                                                                                  str(self.configuration.main_output_directory) + "/../global/netcdf/ "+\
                                                                                                                   str(nc_report_type)  + " " +\
                                                                                                                   str(start_date) + " " +\
                                                                                                                   str(end_date)   + " " +\
