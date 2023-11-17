@@ -101,8 +101,6 @@ class DeterministicRunner(DynamicModel):
                    datetime.datetime.now().second == 49:\
                    pcrglobwb_is_ready = self.check_pcrglobwb_status()
                 
-            pietje
-            
             # merging netcdf files at daily resolution
             start_date = '%04i-%02i-01' %(self.modelTime.year, self.modelTime.month)             # TODO: Make it flexible for a run starting not on the 1st January.
             end_date   = self.modelTime.fulldate
