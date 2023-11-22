@@ -15,7 +15,7 @@
 # send mail to this address
 #SBATCH --mail-user=edwinkost@gmail.com
 
-#SBATCH --export INI_FILE=setup_6arcmin.ini,MAIN_OUTPUT_DIR="/scratch/pcrglobwb_ulysses_reference_runs/test/",STARTING_DATE="1981-01-01",END_DATE="2000-12-31",MAIN_INITIAL_STATE_FOLDER="/scratch/spinup/global/states/",DATE_FOR_INITIAL_STATES="1981-12-31",BASEFLOW_EXPONENT="1.0",LOG_10_MULTIPLIER_FOR_KSAT="0.0",NUM_OF_YEARS_FOR_SPINUP="0.0"
+#SBATCH --export INI_FILE=setup_6arcmin.ini,MAIN_OUTPUT_DIR="/scratch/pcrglobwb_ulysses_reference_runs/test/",STARTING_DATE="1981-01-01",END_DATE="2000-12-31",MAIN_INITIAL_STATE_FOLDER="/scratch/spinup/global/states/",DATE_FOR_INITIAL_STATES="1981-12-31",BASEFLOW_EXPONENT="1.0",LOG_10_MULTIPLIER_FOR_KSAT="0.0",NUM_OF_YEARS_FOR_SPINUP="0.0",LOG_10_MULTIPLIER_FOR_RECESSION_COEFF=0.0
 
 set -x
 
