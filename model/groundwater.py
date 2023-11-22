@@ -159,26 +159,26 @@ class Groundwater(object):
 
 
         #####################################################################################################################################################
-        # try to assign the reccesion coefficient (unit: day-1) from the netcdf file of groundwaterPropertiesNC
-        try:
-            if groundwaterPropertiesNC == "None":
-                self.recessionCoeff = None
-            else:
-                msg = "The 'recessionCoeff' will be obtained from the file: " + groundwaterPropertiesNC
-                logger.info(msg)
-                self.recessionCoeff = vos.netcdf2PCRobjCloneWithoutTime(\
-                                      groundwaterPropertiesNC,'recessionCoeff',\
-                                      cloneMapFileName = self.cloneMap)
-        except:
+        # assign the reccesion coefficient (unit: day-1) from the netcdf file of groundwaterPropertiesNC
+        if ((groundwaterPropertiesNC != "None") and ('recessionCoeff' not in list(iniItems.groundwaterOptions.keys()))) or\:
+           (('recessionCoeff' in list(iniItems.groundwaterOptions.keys())) and iniItems.groundwaterOptions['recessionCoeff'] == "None"):
+            msg = "The 'recessionCoeff' will be obtained from the file: " + groundwaterPropertiesNC
+            logger.info(msg)
+            self.recessionCoeff = vos.netcdf2PCRobjCloneWithoutTime(\
+                                  groundwaterPropertiesNC,'recessionCoeff',\
+                                  cloneMapFileName = self.cloneMap)
+        else:
             self.recessionCoeff = None
-            msg = "The 'recessionCoeff' cannot be read from the file: " + groundwaterPropertiesNC
-            logger.warning(msg)
-        # TODO: Remove try and except !!!    
+            if iniItems.groundwaterOptions['recessionCoeff'] != "None":
+                msg = "The 'recessionCoeff' cannot be read from the file: " + groundwaterPropertiesNC
+                logger.warning(msg)
+
 
         # assign the reccession coefficient based on the given pcraster file
         if 'recessionCoeff' in list(iniItems.groundwaterOptions.keys()):
             if iniItems.groundwaterOptions['recessionCoeff'] != "None":\
                self.recessionCoeff = vos.readPCRmapClone(iniItems.groundwaterOptions['recessionCoeff'],self.cloneMap,self.tmpDir,self.inputDir)
+
 
         # calculate the reccession coefficient based on the given parameters
         if (
@@ -195,6 +195,7 @@ class Groundwater(object):
             else:
                 topoPropertiesNC = vos.getFullPath(iniItems.landSurfaceOptions['topographyNC'],self.inputDir)
                 aquiferWidth = vos.netcdf2PCRobjCloneWithoutTime(topoPropertiesNC,'slopeLength',self.cloneMap)
+            
             # covering aquiferWidth with its maximum value
             aquiferWidth = pcr.ifthen(self.landmask, pcr.cover(aquiferWidth, pcr.mapmaximum(aquiferWidth)))
 
@@ -203,7 +204,7 @@ class Groundwater(object):
                                                                     self.cloneMap,self.tmpDir,self.inputDir)
 
             # calculate recessionCoeff (unit; day-1)
-            self.recessionCoeff = (math.pi**2.) * aquiferThicknessForRecessionCoeff / \
+            self.recessionCoeff = (math.pi**2.) * self.kSatAquifer * aquiferThicknessForRecessionCoeff / \
                                   (4.*self.specificYield*(aquiferWidth**2.))
 
         # assign the reccession coefficient based on the given pcraster file
@@ -211,6 +212,9 @@ class Groundwater(object):
             if iniItems.groundwaterOptions['recessionCoeff'] != "None":\
                self.recessionCoeff = vos.readPCRmapClone(iniItems.groundwaterOptions['recessionCoeff'],self.cloneMap,self.tmpDir,self.inputDir)
 
+        # option to adjust recession coefficient parameters
+        self.adusting_recession_parameters(configuration = iniItems)
+        
         # minimum and maximum values for groundwater recession coefficient (day-1)
         self.recessionCoeff = pcr.cover(self.recessionCoeff,0.00)
         self.recessionCoeff = pcr.min(0.9999,self.recessionCoeff)
@@ -406,6 +410,36 @@ class Groundwater(object):
 
         # initiate old style reporting (this is useful for debugging)
         self.initiate_old_style_groundwater_reporting(iniItems)
+
+
+    def adusting_recession_parameters(self, configuration): 
+
+        logger.info("Adjusting groundwater recession parameter(s) based on given values in the ini/configuration file.")
+
+        # saving these pre-multipliers to the log file:
+        msg  = "\n" 
+        msg += "\n" 
+        msg += "Multiplier values used: "+"\n" 
+        msg += "For recessionCoeff (log-scale) : " + str(configuration.prefactorOptions['log_10_multiplier_for_recessionCoeff']) + "\n"
+        logger.info(msg)
+        # - also to a txt file 
+        multiplier_txt_file_name = "multipliers_for_groundwater_recession_parameters_" + cover_type_name + ".txt"
+        #   this will be stored in the "maps" folder of the 'outputDir' (as we set the current working directory to this "maps" folder, see configuration.py)
+        f = open(multiplier_txt_file_name, "w")
+        f.write(msg)
+        f.close()
+
+        # option to use the square root of default value of groundwater recession coefficient
+        if configuration.prefactorOptions['log_10_multiplier_for_recessionCoeff'] == "SQUARE_ROOT"
+            self.recessionCoeff = self.recessionCoeff**(0.5)
+        else:
+            # read multipliers
+            # - log scale
+            log_10_multiplier_for_recessionCoeff = pcr.ifthen(self.landmask, pcr.cover(vos.readPCRmapClone(configuration.prefactorOptions['log_10_multiplier_for_recessionCoeff'], self.cloneMap, self.tmpDir, self.inputDir), 0.0))
+            # -- convert log scale factors to linear ones 
+            linear_multiplier_for_recessionCoeff = 10**(log_10_multiplier_for_recessionCoeff)
+            self.recessionCoeff = linear_multiplier_for_recessionCoeff * self.recessionCoeff
+
 
     def initiate_old_style_groundwater_reporting(self,iniItems):
 

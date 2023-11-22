@@ -58,6 +58,10 @@ class SoilAndTopoParameters(object):
 
         logger.info("Adjusting some model parameters based on given values in the ini/configuration file.")
 
+        # to which land cover type the adjustment will be applied (default is for all land cover types)
+        cover_type_name = "all_default"
+        if optionDict is not None: cover_type_name = str(optionDict["name"]) 
+
         # saving these pre-multipliers to the log file:
         msg  = "\n" 
         msg += "\n" 
@@ -66,7 +70,9 @@ class SoilAndTopoParameters(object):
         msg += "For storCap                    : " + str(configuration.prefactorOptions['linear_multiplier_for_storCap']) + "\n"
         logger.info(msg)
         # - also to a txt file 
-        f = open("multiplier.txt","w") # this will be stored in the "map" folder of the 'outputDir' (as we set the current working directory to this "map" folder, see configuration.py)
+        multiplier_txt_file_name = "multipliers_for_soil_and_topo_parameters_" + cover_type_name + ".txt"
+        #   this will be stored in the "maps" folder of the 'outputDir' (as we set the current working directory to this "maps" folder, see configuration.py)
+        f = open(multiplier_txt_file_name, "w")
         f.write(msg)
         f.close()
 
@@ -79,11 +85,6 @@ class SoilAndTopoParameters(object):
         linear_multiplier_for_kSat    = 10**(log_10_multiplier_for_kSat)
 
 
-        # to which land cover type the adjustment will be applied (default is for all land cover types)
-        cover_type_name = "all_default"
-        if optionDict is not None: cover_type_name = str(optionDict["name"]) 
-        
-            
         # applying the multipliers
         # - for 2 layer model
         if self.numberOfLayers == 2:
