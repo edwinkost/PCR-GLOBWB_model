@@ -7,4 +7,6 @@ bash complete_job_scripts_for_a_run_simplified_recessionCoef.sh "reccf10.0" "1.0
 bash complete_job_scripts_for_a_run_simplified_recessionCoef.sh "reccf50.0" "1.69897000434"
 bash complete_job_scripts_for_a_run_simplified_recessionCoef.sh "reccfsqrt" "SQUARE_ROOT"
 
+#~ bash complete_job_scripts_for_a_run_simplified_recessionCoef.sh "reccf1.00" "0.0"
+
 set +x
