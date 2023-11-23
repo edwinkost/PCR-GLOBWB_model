@@ -430,7 +430,7 @@ class Groundwater(object):
         f.close()
 
         # option to use the square root of default value of groundwater recession coefficient
-        if configuration.prefactorOptions['log_10_multiplier_for_recessionCoeff'] == "SQUARE_ROOT"
+        if configuration.prefactorOptions['log_10_multiplier_for_recessionCoeff'] == "SQUARE_ROOT":
             self.recessionCoeff = self.recessionCoeff**(0.5)
         else:
             # read multipliers
