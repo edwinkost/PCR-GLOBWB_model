@@ -423,7 +423,7 @@ class Groundwater(object):
         msg += "For recessionCoeff (log-scale) : " + str(configuration.prefactorOptions['log_10_multiplier_for_recessionCoeff']) + "\n"
         logger.info(msg)
         # - also to a txt file 
-        multiplier_txt_file_name = "multipliers_for_groundwater_recession_parameters_" + cover_type_name + ".txt"
+        multiplier_txt_file_name = "multipliers_for_groundwater_recession_parameters.txt"
         #   this will be stored in the "maps" folder of the 'outputDir' (as we set the current working directory to this "maps" folder, see configuration.py)
         f = open(multiplier_txt_file_name, "w")
         f.write(msg)
