@@ -160,7 +160,7 @@ class Groundwater(object):
 
         #####################################################################################################################################################
         # assign the reccesion coefficient (unit: day-1) from the netcdf file of groundwaterPropertiesNC
-        if ((groundwaterPropertiesNC != "None") and ('recessionCoeff' not in list(iniItems.groundwaterOptions.keys()))) or\:
+        if ((groundwaterPropertiesNC != "None") and ('recessionCoeff' not in list(iniItems.groundwaterOptions.keys()))) or\
            (('recessionCoeff' in list(iniItems.groundwaterOptions.keys())) and iniItems.groundwaterOptions['recessionCoeff'] == "None"):
             msg = "The 'recessionCoeff' will be obtained from the file: " + groundwaterPropertiesNC
             logger.info(msg)
