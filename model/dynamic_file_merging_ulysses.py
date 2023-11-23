@@ -110,7 +110,7 @@ class DeterministicRunner(DynamicModel):
         # ~ if self.modelTime.isLastDayOfYear():
         # - for Ulysses we have to do it on every month
         if self.modelTime.isLastDayOfYear() or \
-          (self.modelTime.isLastDayOfMonth() and self.configuration.reportingOptions["save_monthly_end_states"] == "True"):
+          (self.modelTime.isLastDayOfMonth() and ("save_monthly_end_states" in self.configuration.reportingOptions.keys() and self.configuration.reportingOptions["save_monthly_end_states"] == "True")):
 
             msg = "Merging pcraster map files belonging to initial conditions."
             logger.info(msg)
