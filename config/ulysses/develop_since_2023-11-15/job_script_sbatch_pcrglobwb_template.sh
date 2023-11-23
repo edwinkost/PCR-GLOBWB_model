@@ -54,6 +54,9 @@ BASEFLOW_EXPONENT=${BASEFLOW_EXPONENT}
 # log 10 multiplier for ksat
 LOG_10_MULTIPLIER_FOR_KSAT=${LOG_10_MULTIPLIER_FOR_KSAT}
 
+# log 10 multiplier for recession coefficient
+LOG_10_MULTIPLIER_FOR_RECESSION_COEFF=${LOG_10_MULTIPLIER_FOR_RECESSION_COEFF}
+
 # go to the folder that contain the bash script that will be submitted using aprun
 # - using the folder that contain this job script 
 #~ cd ${PBS_O_WORKDIR}
