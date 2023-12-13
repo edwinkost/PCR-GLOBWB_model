@@ -52,7 +52,11 @@ class SoilAndTopoParameters(object):
         
         # option to adjust soil parameter values
         if 'prefactorOptions' in iniItems.allSections:
-            self.adusting_parameters(iniItems, optionDict)
+            if (\
+                'log_10_multiplier_for_kSat'    in iniItems.prefactorOptions.keys() or\
+                'linear_multiplier_for_storCap' in iniItems.prefactorOptions.keys()
+                ): 
+                self.adusting_parameters(iniItems, optionDict)
 
     def adusting_parameters(self, configuration, optionDict): 
 
