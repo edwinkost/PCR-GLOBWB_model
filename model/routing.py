@@ -321,6 +321,12 @@ class Routing(object):
         if 'maxFloodDepth' in list(iniItems.routingOptions.keys()):
             self.maxFloodDepth = vos.readPCRmapClone(iniItems.routingOptions['maxFloodDepth'], self.cloneMap, self.tmpDir, self.inputDir)
         
+
+        # the following options are needed to cover runoff and open water evaporation fields with zero if there are missing values in meteo forcing data (e.g. required by Ulysses project that somehow masked out lakes, etc)
+        self.cover_runoff_and_open_water_evaporation = False
+            if "cover_runoff_and_open_water_evaporation" in iniItems.routingOptions.keys():   
+                if iniItems.routingOptions["cover_runoff_and_open_water_evaporation"] == "True": self.cover_runoff_and_open_water_evaporation = True
+
         # initiate old style reporting                                  # This is still very useful during the 'debugging' process. 
         self.initiate_old_style_routing_reporting(iniItems)
 
@@ -1002,6 +1008,10 @@ class Routing(object):
         
         # evaporation (m) from water bodies                             
         self.waterBodyEvaporation = volLocEvapWaterBody / self.cellArea
+        
+        # the following option may be needed to cover runoff and open water evaporation fields with zero particularly if there are missing values in meteo forcing data (e.g. required by Ulysses project that somehow masked out lakes, etc)        
+        if self.cover_runoff_and_open_water_evaporation: self.waterBodyEvaporation = pcr.ifthen(self.landmask, pcr.cover(self.waterBodyEvaporation, 0.0))
+        
         self.waterBodyEvaporation = pcr.ifthen(self.landmask, self.waterBodyEvaporation)
 
     def calculate_exchange_to_groundwater(self,groundwater,currTimeStep):
@@ -1074,6 +1084,9 @@ class Routing(object):
         # runoff from landSurface cells (unit: m/day)
         self.runoff = landSurface.landSurfaceRunoff +\
                       groundwater.baseflow   
+        
+        # the following option may be needed to cover runoff and open water evaporation fields with zero particularly if there are missing values in meteo forcing data (e.g. required by Ulysses project that somehow masked out lakes, etc)        
+        if self.cover_runoff_and_open_water_evaporation: self.runoff = pcr.ifthen(self.landmask, pcr.cover(self.runoff, 0.0))
         
         # update channelStorage (unit: m3) after runoff
         self.channelStorage += self.runoff * self.cellArea
