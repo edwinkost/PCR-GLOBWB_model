@@ -324,8 +324,8 @@ class Routing(object):
 
         # the following options are needed to cover runoff and open water evaporation fields with zero if there are missing values in meteo forcing data (e.g. required by Ulysses project that somehow masked out lakes, etc)
         self.cover_runoff_and_open_water_evaporation = False
-            if "cover_runoff_and_open_water_evaporation" in iniItems.routingOptions.keys():   
-                if iniItems.routingOptions["cover_runoff_and_open_water_evaporation"] == "True": self.cover_runoff_and_open_water_evaporation = True
+        if "cover_runoff_and_open_water_evaporation" in iniItems.routingOptions.keys():   
+            if iniItems.routingOptions["cover_runoff_and_open_water_evaporation"] == "True": self.cover_runoff_and_open_water_evaporation = True
 
         # initiate old style reporting                                  # This is still very useful during the 'debugging' process. 
         self.initiate_old_style_routing_reporting(iniItems)
