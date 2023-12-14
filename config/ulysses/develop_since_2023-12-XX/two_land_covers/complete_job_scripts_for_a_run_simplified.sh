@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JOBNAME="2lcs_test"
+JOBNAME="2LCs_test"
 LOGRECF="SQUARE_ROOT"
 
 #~ JOBNAME=$1
