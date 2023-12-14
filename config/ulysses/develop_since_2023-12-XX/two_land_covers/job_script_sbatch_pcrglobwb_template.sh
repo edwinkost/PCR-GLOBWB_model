@@ -9,6 +9,7 @@
 
 # on eejit
 #SBATCH -n 128
+#SBATCH -p defq
 #SBATCH --exclusive
 
 #SBATCH -J pgb_uly_spinup_and_actual_runs
