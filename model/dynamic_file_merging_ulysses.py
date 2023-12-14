@@ -75,7 +75,8 @@ class DeterministicRunner(DynamicModel):
         
 
         # clone map 
-        self.clone_map = self.configuration.mergingOutputOptions['cloneMap']
+        self.clone_map = vos.getFullPath(self.configuration.mergingOutputOptions['cloneMap'], \
+                                         self.configuration.globalOptions['inputDir'])
         pcr.setclone(self.clone_map)
         
         
