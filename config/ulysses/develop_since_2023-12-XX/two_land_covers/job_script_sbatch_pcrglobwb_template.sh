@@ -1,10 +1,10 @@
 #!/bin/bash 
 #SBATCH -N 1
 
-# on snellius
-#SBATCH -n 96
-#SBATCH -p genoa
-#SBATCH -t 119:59:00
+#~ # on snellius
+#~ #SBATCH -n 96
+#~ #SBATCH -p genoa
+#~ #SBATCH -t 119:59:00
 #~ #SBATCH -t 59:00
 
 # on eejit
