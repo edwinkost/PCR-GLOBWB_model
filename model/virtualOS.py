@@ -727,7 +727,7 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
             except:
                 msg = "The date "+str(date.year)+"-"+str(date.month)+"-"+str(date.day)+" 00:00:00 is NOT available. The 'exact' option CANNOT be used while selecting netcdf time."
                 logger.debug(msg)
-                if useDoy == "daily":
+                if useDoy == "daily" or useDoy == "daily_per_monthly_file":
                     idx = nc.date2index(date, f.variables['time'], calendar = f.variables['time'].calendar, \
                                         select = 'after')
                     msg  = "\n"
