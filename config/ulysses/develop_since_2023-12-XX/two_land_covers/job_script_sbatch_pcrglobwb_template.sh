@@ -8,9 +8,9 @@
 #~ #SBATCH -t 59:00
 
 # on eejit
-#SBATCH -n 128
+#SBATCH -n 96
 #SBATCH -p defq
-#~ #SBATCH --exclusive
+#SBATCH --exclusive
 
 #SBATCH -J pgb_uly_spinup_and_actual_runs
 
