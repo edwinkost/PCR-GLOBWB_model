@@ -1,16 +1,16 @@
 #!/bin/bash 
 #SBATCH -N 1
 
-#~ # on snellius
-#~ #SBATCH -n 96
-#~ #SBATCH -p genoa
-#~ #SBATCH -t 119:59:00
+# on snellius
+#SBATCH -n 96
+#SBATCH -p genoa
+#SBATCH -t 119:59:00
 #~ #SBATCH -t 59:00
 
-# on eejit
-#SBATCH -n 96
-#SBATCH -p defq
-#SBATCH --exclusive
+#~ # on eejit
+#~ #SBATCH -n 96
+#~ #SBATCH -p defq
+#~ #SBATCH --exclusive
 
 #SBATCH -J pgb_uly_spinup_and_actual_runs
 
@@ -28,8 +28,7 @@ set -x
 #~ INI_FILE=${PBS_O_WORKDIR}/"setup_6arcmin_uly-et0_gmd-lcv_on_cca_with_initial_states.ini"
 #~ INI_FILE=${PBS_O_WORKDIR}/${INI_FILE}
 #~ INI_FILE=${SLURM_SUBMIT_DIR}/${INI_FILE}
-#~ INI_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-11-15/"
-INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/"
+INI_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/four_land_covers/"
 INI_FILE=${INI_FOLDER}/${INI_FILE}
 
 # set the output folder
@@ -44,9 +43,6 @@ MAIN_INITIAL_STATE_FOLDER=${MAIN_INITIAL_STATE_FOLDER}
 DATE_FOR_INITIAL_STATES=${DATE_FOR_INITIAL_STATES}
 
 # set the forcing files
-#~ PRECIPITATION_FORCING_FILE="/scratch/mo/nest/ulysses/data/meteo/era5land/2000/01/precipitation_daily_01_2000.nc"
-#~ TEMPERATURE_FORCING_FILE="/scratch/mo/nest/ulysses/data/meteo/era5land/2000/01/tavg_01_2000.nc"
-#~ REF_POT_ET_FORCING_FILE="/scratch/mo/nest/ulysses/data/meteo/era5land/2000/01/pet_01_2000.nc"
 PRECIPITATION_FORCING_FILE="NONE"
 TEMPERATURE_FORCING_FILE="NONE"
 REF_POT_ET_FORCING_FILE="NONE"
