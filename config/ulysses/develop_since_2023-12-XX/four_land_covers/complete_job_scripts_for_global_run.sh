@@ -10,7 +10,7 @@ BFEXPON="1.50"
 LOG_10_MULTIPLIER_FOR_KSAT="0.0"
 
 SPINUP_RUN_INI="setup_6arcmin_ulysses_4LCs_version_2023-12-25.ini"
-WARMED_RUN_INI="setup_6arcmin_ulysses_2LCs_version_2023-12-25.ini" 
+WARMED_RUN_INI="setup_6arcmin_ulysses_4LCs_version_2023-12-25.ini" 
 
 MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_2023-12-25/four_land_covers/"${JOBNAME}
 
