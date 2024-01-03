@@ -29,7 +29,7 @@ export PCRASTER_NR_WORKER_THREADS=48
 INI_FILE=${INI_FILE}
 
 # set the output folder
-MAIN_OUTPUT_DIR=${MAIN_OUTPUT_DIR}
+MAIN_OUTPUT_DIRECTORY=${MAIN_OUTPUT_DIRECTORY}
 
 # set the starting and end simulation dates
 STARTING_DATE=${STARTING_DATE}
