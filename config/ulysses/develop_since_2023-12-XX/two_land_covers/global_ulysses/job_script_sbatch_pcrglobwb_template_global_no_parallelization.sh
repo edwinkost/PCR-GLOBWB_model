@@ -21,8 +21,8 @@ module load Miniconda3/4.12.0
 unset PYTHONPATH
 # - activate conda env for pcrglobwb
 source activate /home/hydrowld/.conda/envs/pcrglobwb_python3_2023-10-31
-# - use 48 workers
-export PCRASTER_NR_WORKER_THREADS=48
+#~ # - use 48 workers
+#~ export PCRASTER_NR_WORKER_THREADS=48
 
 
 # set the configuration file (.ini) that will be used
