@@ -9,8 +9,7 @@
 
 #SBATCH -J pgb_ulysses
 
-#SBATCH --export \
-MAIN_INPUT_DIRECTORY="/scratch-shared/edwin/pcrglobwb_input_ulysses_v202312XX/develop_edwin/",\
+#SBATCH --export MAIN_INPUT_DIRECTORY="/scratch-shared/edwin/pcrglobwb_input_ulysses_v202312XX/develop_edwin/",\
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/model/",\
 INI_FILE="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/setup_6arcmin_ulysses_2LCs_version_2023-12-14_finalize_global.ini",\
 MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_2023-12-25_global_two_landcovers/2000-01-01_to_2000-01-31/",\
