@@ -2,7 +2,7 @@
 #SBATCH -N 1
 
 # on snellius
-#SBATCH -n 64
+#SBATCH -n 32
 #SBATCH -p genoa
 #~ #SBATCH -t 119:59:00
 #SBATCH -t 59:00
@@ -21,10 +21,11 @@ module load Miniconda3/4.12.0
 unset PYTHONPATH
 # - activate conda env for pcrglobwb
 source activate /home/hydrowld/.conda/envs/pcrglobwb_python3_2023-10-31
-# - use 32 workers
-export PCRASTER_NR_WORKER_THREADS=32
-# - you may have to activate the following
-export OPENBLAS_NUM_THREADS=1
+
+#~ # - use 32 workers
+#~ export PCRASTER_NR_WORKER_THREADS=32
+#~ # - you may have to activate the following
+#~ export OPENBLAS_NUM_THREADS=1
 
 # set the configuration file (.ini) that will be used
 INI_FILE=${INI_FILE}
