@@ -63,7 +63,7 @@ for I_MONTH in {3..12..1}
 
 do
 MONTH=${I_MONTH}
-if [$MONTH -lt 10]
+if [${I_MONTH} < 10]
 then
      MONTH="0"${I_MONTH}
 fi
@@ -75,43 +75,43 @@ DATE_FOR_INITIAL_STATES=${END_DATE}
 # - starting and end dates
 STARTING_DATE=${YEAR}"-"${MONTH}"-01"
 
-if [$MONTH -eq 3]
+if [$MONTH = "03"]
 then
 END_DATE=31
 fi
-if [$MONTH -eq 4]
+if [$MONTH = "04"]
 then
 END_DATE=31
 fi
-if [$MONTH -eq 5]
+if [$MONTH = "05"]
 then
 END_DATE=31
 fi
-if [$MONTH -eq 6]
+if [$MONTH = "06"]
 then
 END_DATE=30
 fi
-if [$MONTH -eq 7]
+if [$MONTH = "07"]
 then
 END_DATE=31
 fi
-if [$MONTH -eq 8]
+if [$MONTH = "08"]
 then
 END_DATE=31
 fi
-if [$MONTH -eq 9]
+if [$MONTH = "09"]
 then
 END_DATE=30
 fi
-if [$MONTH -eq 10]
+if [$MONTH = "10"]
 then
 END_DATE=31
 fi
-if [$MONTH -eq 11]
+if [$MONTH = "11"]
 then
 END_DATE=30
 fi
-if [$MONTH -eq 12]
+if [$MONTH = "12"]
 then
 END_DATE=31
 fi
