@@ -26,7 +26,7 @@ MAIN_INPUT_DIRECTORY="/ec/fws4/sb/project/C3SHydroGL/edwin/pcrglobwb_input_ulyss
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/ec/fws4/sb/project/C3SHydroGL/edwin/github/edwinkost/PCR-GLOBWB_model/model/"
 
 # - pcrglobwb configuration file
-INI_FILE="/home/cyes/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/global_ulysses/setup_6arcmin_ulysses_2LCs_version_2023-12-14_finalize_global_clean.ini"
+INI_FILE="/home/cyes/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/global_ulysses/setup_6arcmin_ulysses_2LCs_version_2023-12-31_finalize_global_clean.ini"
 
 # - pcrglobwb output folder
 MAIN_OUTPUT_DIRECTORY="/ec/fws4/sb/project/C3SHydroGL/edwin/pcrglobwb_ulysses_v2023-12-31_test_output/1981-01-01_to_1981-01-31/"
