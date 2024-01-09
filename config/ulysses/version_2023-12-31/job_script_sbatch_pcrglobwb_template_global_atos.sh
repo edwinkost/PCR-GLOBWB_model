@@ -22,11 +22,11 @@
 # - pcrglobwb input folder (containing model parameters, etc)
 MAIN_INPUT_DIRECTORY="/ec/fws4/sb/project/C3SHydroGL/edwin/pcrglobwb_input_ulysses_v202312XX/pcrglobwb_ulysses_input_files_v2023-12-31/"
 
-# - the folder that contains the pcrglobwb python script
-PCRGLOBWB_MODEL_SCRIPT_FOLDER="/ec/fws4/sb/project/C3SHydroGL/edwin/github/edwinkost/PCR-GLOBWB_model/model/"
+# - the folder that contains the pcrglobwb python scripts
+PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/gitlab/ulysses/ulysses_pgb_source/model/"
 
 # - pcrglobwb configuration file
-INI_FILE="/home/cyes/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/global_ulysses/setup_6arcmin_ulysses_2LCs_version_2023-12-31_finalize_global_clean.ini"
+INI_FILE="/home/cyes/gitlab/ulysses/ulysses_pgb_source/config/ulysses/version_2023-12-31/setup_6arcmin_ulysses_2LCs_version_2023-12-31_finalize_global_clean.ini"
 
 # - pcrglobwb output folder
 MAIN_OUTPUT_DIRECTORY="/ec/fws4/sb/project/C3SHydroGL/edwin/pcrglobwb_ulysses_v2023-12-31_test_output/1981-01-01_to_1981-01-31/"
