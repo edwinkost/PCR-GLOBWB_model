@@ -10,7 +10,8 @@
 
 #SBATCH --time=04:00:00
 
-#SBATCH --account=c3s432l3
+#~ # somehow I cannot activate the following
+#~ #SBATCH --account=c3s432l3
 
 #~ #SBATCH --output=/ec/fws4/sb/project/C3SHydroGL/edwin/tmp/pcrglobwb_slurm_output.out
 
