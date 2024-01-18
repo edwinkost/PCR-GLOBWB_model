@@ -446,6 +446,10 @@ ncores = min(len(netcdfList), max_number_of_cores)
 areas = str(sys.argv[10])
 if areas == "Global":
     areas = ['M%02d'%i for i in range(1,54,1)]
+elif areas == "Global53ExceptM28M29":
+    areas = ['M%02d'%i for i in range(1,54,1)]
+    areas.remove("M28")
+    areas.remove("M29")
 elif areas == "Global_Uly_but_53":
     areas = ['M%07d'%i for i in range(1,54,1)]
 else:
