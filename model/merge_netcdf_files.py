@@ -473,7 +473,8 @@ elif areas == "GlobalUlysses":
     areas = ['M%07d'%i for i in range(1,72,1)]
 elif areas == "Global53ExceptM28M29":
     areas = ['M%02d'%i for i in range(1,54,1)]
-    areas.remove("M28","M29")
+    areas.remove("M28")
+    areas.remove("M29")
 elif areas == "Global53":
     areas = ['M%02d'%i for i in range(1,54,1)]
 else:
