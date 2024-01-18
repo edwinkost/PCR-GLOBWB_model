@@ -1,4 +1,5 @@
 #!/bin/bash 
+
 #SBATCH -N 1
 
 # on snellius
@@ -28,7 +29,7 @@ END_YEAR=${END_YEAR}
 
 INPUT_DIR="/gpfs/work4/0/einf6448/users/dgraham/DynQual_DO_GFDL_SSP3RCP7/${START_YEAR}-${END_YEAR}/"
 
-OUTPUT_DIR="/scratch-shared/edwinoxy/dynqual_dgraham/ssp370/${START_YEAR}-${END_YEAR}/"
+OUTPUT_DIR="/scratch-shared/edwinoxy/dynqual_dgraham/ssp370/gfdl/${START_YEAR}-${END_YEAR}/"
 
 mkdir -p ${OUTPUT_DIR}
 
