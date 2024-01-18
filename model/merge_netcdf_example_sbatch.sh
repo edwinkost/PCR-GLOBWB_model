@@ -6,7 +6,7 @@ INPUT_DIR="/gpfs/work4/0/einf6448/users/dgraham/DynQual_DO_GFDL_SSP3RCP7/2091-21
 
 OUTPUT_DIR="/scratch-shared/edwinoxy/test_merging/"
 
-python merge_netcdf_files.py ${INPUT_DIR} ${OUTPUT_DIR} outDailyTotNC 1981-01-01 1981-12-31 discharge,waterTemp NETCDF4 True 1 Global defined -180 180 -90 90 0.083333333333333333333333
+python merge_netcdf_files.py ${INPUT_DIR} ${OUTPUT_DIR} outDailyTotNC 1981-01-01 1981-12-31 discharge,waterTemp NETCDF4 True 1 Global53 defined -180 180 -90 90 0.083333333333333333333333
 
 #~ edwinoxy@tcn531.local.snellius.surf.nl:/gpfs/work4/0/einf6448/users/dgraham/DynQual_DO_GFDL_SSP3RCP7/2091-2100$ ls -lah M53/netcdf/
 #~ total 5.8G
