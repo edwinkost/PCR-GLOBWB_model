@@ -8,7 +8,7 @@ OUTPUT_DIR="/scratch-shared/edwinoxy/test_merging/"
 
 #~ python merge_netcdf_files.py ${INPUT_DIR} ${OUTPUT_DIR} outDailyTotNC 2091-01-01 2100-12-31 discharge,waterTemp NETCDF4 True 1 Global53ExceptM28M29 defined -180 180 -90 90 0.083333333333333333333333
 
-python merge_netcdf.py ${INPUT_DIR} ${OUTPUT_DIR} outDailyTotNC 2091-01-01 2100-12-31 discharge,waterTemp NETCDF4 True 1 Global53ExceptM28M29 defined -180 180 -90 90 0.083333333333333333333333
+python merge_netcdf.py ${INPUT_DIR} ${OUTPUT_DIR} outDailyTotNC 2091-01-01 2100-12-31 discharge,waterTemp NETCDF4 True 1 Global
 
 
 #~ edwinoxy@tcn531.local.snellius.surf.nl:/gpfs/work4/0/einf6448/users/dgraham/DynQual_DO_GFDL_SSP3RCP7/2091-2100$ ls -lah M53/netcdf/
