@@ -421,7 +421,7 @@ latMin          = np.double( -90.0 + deltaLat / 2)
 latMax          = np.double(  90.0 - deltaLat / 2)
 lonMin          = np.double(-180.0 + deltaLon / 2)
 lonMax          = np.double( 180.0 - deltaLon / 2)
-													 )
+
 # input directory:
 inputDirRoot = sys.argv[1] 
 
