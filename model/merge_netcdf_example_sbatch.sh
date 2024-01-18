@@ -32,7 +32,7 @@ OUTPUT_DIR="/scratch-shared/edwinoxy/dynqual_dgraham/ssp370/${START_YEAR}-${END_
 
 mkdir -p ${OUTPUT_DIR}
 
-for i in {${START_YEAR}..${END_YEAR}}
+for i in $(eval echo "{${START_YEAR}..${END_YEAR}}")
 
 do
 
