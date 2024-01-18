@@ -483,10 +483,10 @@ if sys.argv[11] == "defined":
 
     deltaLat        = np.double(deltaString)
     deltaLon        = np.double(deltaString)
-    lonMin          = np.double(lonMinString + deltaLon / 2)
-    lonMax          = np.double(lonMaxString - deltaLon / 2)
-    latMin          = np.double(latMinString + deltaLat / 2)
-    latMax          = np.double(latMaxString - deltaLat / 2)
+    lonMin          = np.double(np.double(lonMinString) + deltaLon / 2)
+    lonMax          = np.double(np.double(lonMaxString) - deltaLon / 2)
+    latMin          = np.double(np.double(latMinString) + deltaLat / 2)
+    latMax          = np.double(np.double(latMaxString) - deltaLat / 2)
 
 
 #~ # for testing, we use only a single core
