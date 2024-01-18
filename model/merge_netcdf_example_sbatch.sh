@@ -19,6 +19,10 @@
 
 set -x
 
+# load modules on snellius
+. /home/edwin/load_all_default.sh
+
+
 START_YEAR=${START_YEAR}
 END_YEAR=${END_YEAR}
 
