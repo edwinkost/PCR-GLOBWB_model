@@ -266,14 +266,14 @@ def mergeNetCDF(inputTuple):
     latMax = round(latMax, 2)
     latMin = round(latMin, 2)
     
-    # ~ longitudes= np.arange(lonMin,lonMax+deltaLon,deltaLon)
-    # ~ latitudes=  np.arange(latMax,latMin-deltaLat,-deltaLat)
+    longitudes= np.arange(lonMin,lonMax+deltaLon,deltaLon)
+    latitudes=  np.arange(latMax,latMin-deltaLat,-deltaLat)
 
-    number_of_cols = int(round((lonMax+deltaLon - lonMin)/deltaLon))
-    number_of_rows = int(round((latMax - latMin+deltaLat)/deltaLat))
+    # ~ number_of_cols = int(round((lonMax+deltaLon - lonMin)/deltaLon))
+    # ~ number_of_rows = int(round((latMax - latMin+deltaLat)/deltaLat))
     
-    longitudes= np.linspace(lonMin, lonMax+deltaLon, number_of_cols)
-    latitudes=  np.linspace(latMax, latMin-deltaLat, number_of_rows)
+    # ~ longitudes= np.linspace(lonMin, lonMax+deltaLon, number_of_cols)
+    # ~ latitudes=  np.linspace(latMax, latMin-deltaLat, number_of_rows)
 
     uniqueTimes= uniqueTimes.tolist()
 
