@@ -1746,6 +1746,7 @@ class LandCover(object):
         nonIrrGrossDemandDict['potential_demand']['livestock'] = pcr.ifthenelse(self.fracVegCover > 0.0, nonIrrGrossDemandDict['potential_demand']['livestock'], 0.0)
         
         vos.plot_variable_for_lue(nonIrrGrossDemandDict['potential_demand']['domestic'], "after")
+        vos.plot_variable_for_lue(self.fracVegCover, "frac_cover")
 
         # non irrigation water demand, including the livestock (not limited by available water)
         self.nonIrrGrossDemand = nonIrrGrossDemandDict['potential_demand']['domestic'] +\
