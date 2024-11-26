@@ -1264,10 +1264,10 @@ class LandCover(object):
                                   True,\
                                   currTimeStep.fulldate,threshold=1e-4)
 
-        vos.plot_variable_for_lue(self.throughfall      , "throughfall")
-        vos.plot_variable_for_lue(self.interceptEvap    , "interceptEvap")
-        vos.plot_variable_for_lue(self.snowfall         , "snowfall")
-        pietje
+        # ~ vos.plot_variable_for_lue(self.throughfall      , "throughfall")
+        # ~ vos.plot_variable_for_lue(self.interceptEvap    , "interceptEvap")
+        # ~ vos.plot_variable_for_lue(self.snowfall         , "snowfall")
+        # ~ pietje
 
 
     def interceptionUpdateOriginalVersion(self,meteo,currTimeStep):
@@ -3739,6 +3739,11 @@ class LandCover(object):
         self.irrigationTranspirationDeficit = 0.0
         if self.name.startswith('irr'): self.irrigationTranspirationDeficit = pcr.max(0.0, self.potTranspiration - self.actTranspiTotal)
         
+        vos.plot_variable_for_lue(netLqWaterToSoil      , "netLqWaterToSoil")
+        vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
+        vos.plot_variable_for_lue(self.satExcess        , "satExcess")
+        pietje
+
         if self.debugWaterBalance:
             #
             vos.waterBalanceCheck([netLqWaterToSoil    ,\
