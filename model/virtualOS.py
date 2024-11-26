@@ -2799,8 +2799,10 @@ def plot_variable_for_lue(pcr_variable, filename = None, clonemap = None):
     
     # converting to a pcraster and using only   
     cmd = 'pcrcalc ' + filename + '.map = "if(abs(' + filename + ') ge 0.0, ' + filename + ')"'
+    print(cmd)
     os.system(cmd)
     cmd = 'mapattr -s -P yb2t ' + filename + '.map'
+    print(cmd)
     os.system(cmd)
     
     cmd = 'aguila ' + str(filename) + '.map' 
