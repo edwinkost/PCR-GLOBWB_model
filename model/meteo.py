@@ -1044,6 +1044,9 @@ class Meteo(object):
                                       useDoy = method_for_time_index,
                                       cloneMapFileName = self.cloneMap,\
                                       LatitudeLongitude = True)
+                                      
+        vos.plot_variable_for_lue(self.precipitation, "precipitation")
+        pietje
 
         #-----------------------------------------------------------------------
         # NOTE: RvB 13/07/2016 added to automatically update precipitation              
