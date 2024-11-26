@@ -212,7 +212,11 @@ class Groundwater(object):
                self.recessionCoeff = vos.readPCRmapClone(iniItems.groundwaterOptions['recessionCoeff'],self.cloneMap,self.tmpDir,self.inputDir)
 
         # option to adjust recession coefficient parameters
-        self.adusting_recession_parameters(configuration = iniItems)
+        try:
+            self.adusting_recession_parameters(configuration = iniItems)
+        except:
+            pass
+        # TODO: Remove this try and except    
         
         # minimum and maximum values for groundwater recession coefficient (day-1)
         self.recessionCoeff = pcr.cover(self.recessionCoeff,0.00)
