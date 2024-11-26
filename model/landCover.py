@@ -1452,6 +1452,11 @@ class LandCover(object):
                                    True,\
                                    currTimeStep.fulldate,threshold=5e-4)
 
+        vos.plot_variable_for_lue(self.netLqWaterToSoil, "netLqWaterToSoil")
+        vos.plot_variable_for_lue(self.snowCoverSWE    , "snowCoverSWE")
+        vos.plot_variable_for_lue(self.snowFreeWater   , "snowFreeWater")
+        pietje
+
     def getSoilStates(self):
 
         if self.numberOfLayers == 2: 
