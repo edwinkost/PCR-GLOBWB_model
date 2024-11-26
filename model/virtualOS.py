@@ -2806,6 +2806,7 @@ def plot_variable_for_lue(pcr_variable, filename = None, clonemap = None):
     os.system(cmd)
     
     cmd = 'aguila ' + str(filename) + '.map' 
+    print(cmd)
     os.system(cmd)
     
     cmd = 'rm ' + str(filename) + "*"
