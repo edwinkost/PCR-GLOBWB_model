@@ -1729,6 +1729,9 @@ class LandCover(object):
             # irrigation demand is only calculated for areas with fracVegCover > 0                   # DO WE NEED THIS ? 
             self.irrGrossDemand = pcr.ifthenelse(self.fracVegCover >  0.0, self.irrGrossDemand, 0.0)
 
+        vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
+        pietje
+
         # total irrigation gross demand (m) per cover types (not limited by available water)
         self.totalPotentialMaximumIrrGrossDemandPaddy    = 0.0
         self.totalPotentialMaximumIrrGrossDemandNonPaddy = 0.0
@@ -3747,10 +3750,10 @@ class LandCover(object):
         self.irrigationTranspirationDeficit = 0.0
         if self.name.startswith('irr'): self.irrigationTranspirationDeficit = pcr.max(0.0, self.potTranspiration - self.actTranspiTotal)
         
-        vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
-        vos.plot_variable_for_lue(self.satExcess        , "satExcess")
-        vos.plot_variable_for_lue(self.directRunoff     , "directRunoff")
-        pietje
+        # ~ vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
+        # ~ vos.plot_variable_for_lue(self.satExcess        , "satExcess")
+        # ~ vos.plot_variable_for_lue(self.directRunoff     , "directRunoff")
+        # ~ pietje
 
         if self.debugWaterBalance:
             #
