@@ -1137,6 +1137,9 @@ class LandCover(object):
                                   True,\
                                   currTimeStep.fulldate,threshold=5e-4)
 
+        vos.plot_variable_for_lue(self.totalPotET, "totalPotET")
+        pietje
+
     def interceptionUpdate(self, meteo, currTimeStep):
         
         if self.debugWaterBalance:
