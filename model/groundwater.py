@@ -741,10 +741,6 @@ class Groundwater(object):
         self.storGroundwater = self.storGroundwater
         self.baseflow = self.baseflow
         
-        vos.plot_variable_for_lue(self.baseflow, "baseflow")
-        
-        pietje
-
         if currTimeStep.day == 1 and currTimeStep.timeStepPCR > 1:
 
             # for online coupling, we will read files from pcraster maps, using the previous day values
@@ -827,6 +823,10 @@ class Groundwater(object):
         self.storGroundwater  = pcr.max(0.,\
                                 self.storGroundwater - self.baseflow)
         # PS: baseflow must be calculated at the end (to ensure the availability of storGroundwater to support nonFossilGroundwaterAbs)
+
+        vos.plot_variable_for_lue(self.baseflow, "baseflow")
+        pietje
+
 
         
         # fossil groundwater abstraction:
