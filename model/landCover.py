@@ -1823,7 +1823,6 @@ class LandCover(object):
         vos.plot_variable_for_lue(self.totalPotentialGrossDemand  , "totalPotentialGrossDemand")
         vos.plot_variable_for_lue(satisfiedIrrigationDemand  , "satisfiedIrrigationDemand")
 
-        pietje
 
 
         # total remaining gross demand (m/day) after desalination
