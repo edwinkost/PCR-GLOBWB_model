@@ -824,10 +824,8 @@ class Groundwater(object):
                                 self.storGroundwater - self.baseflow)
         # PS: baseflow must be calculated at the end (to ensure the availability of storGroundwater to support nonFossilGroundwaterAbs)
 
-        vos.plot_variable_for_lue(self.baseflow, "baseflow")
-        pietje
-
-
+        # ~ vos.plot_variable_for_lue(self.baseflow, "baseflow")
+        # ~ pietje
         
         # fossil groundwater abstraction:
         self.fossilGroundwaterAbstr = landSurface.fossilGroundwaterAbstr
