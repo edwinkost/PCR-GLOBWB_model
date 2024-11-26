@@ -1137,11 +1137,10 @@ class LandCover(object):
                                   True,\
                                   currTimeStep.fulldate,threshold=5e-4)
 
-        vos.plot_variable_for_lue(self.totalPotET, "totalPotET")
-        vos.plot_variable_for_lue(self.potBareSoilEvap,  "potBareSoilEvap")
-        vos.plot_variable_for_lue(self.potTranspiration, "potTranspiration")
-
-        pietje
+        # ~ vos.plot_variable_for_lue(self.totalPotET, "totalPotET")
+        # ~ vos.plot_variable_for_lue(self.potBareSoilEvap,  "potBareSoilEvap")
+        # ~ vos.plot_variable_for_lue(self.potTranspiration, "potTranspiration")
+        # ~ pietje
 
     def interceptionUpdate(self, meteo, currTimeStep):
         
@@ -1264,6 +1263,12 @@ class LandCover(object):
                                   'interceptStor',\
                                   True,\
                                   currTimeStep.fulldate,threshold=1e-4)
+
+        vos.plot_variable_for_lue(self.throughfall      , "throughfall")
+        vos.plot_variable_for_lue(self.interceptEvap    , "interceptEvap")
+        vos.plot_variable_for_lue(self.snowfall         , "snowfall")
+        pietje
+
 
     def interceptionUpdateOriginalVersion(self,meteo,currTimeStep):
         
