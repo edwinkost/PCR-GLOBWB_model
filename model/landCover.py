@@ -1812,7 +1812,9 @@ class LandCover(object):
         satisfiedLivestockDemand  = pcr.max(0.0, satisfiedNonIrrDemand - satisfiedDomesticDemand - satisfiedIndustryDemand)
 
 
-        vos.plot_variable_for_lue(satisfiedIrrigationDemand, "satisfiedIrrigationDemand")
+        vos.plot_variable_for_lue(self.desalinationAllocation, "desalinationAllocation")
+        vos.plot_variable_for_lue(satisfiedIrrigationDemand  , "satisfiedIrrigationDemand")
+        pietje
 
 
         # total remaining gross demand (m/day) after desalination
