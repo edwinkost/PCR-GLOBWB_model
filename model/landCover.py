@@ -1624,7 +1624,7 @@ class LandCover(object):
                                    groundwater_pumping_region_ids,regionalAnnualGroundwaterAbstractionLimit):
 
         # irrigation water demand (unit: m/day) for paddy and non-paddy
-        self.irrGrossDemand = pcr.scalar(0.)
+        self.irrGrossDemand = pcr.spatial(pcr.scalar(0.))
         if (self.name == 'irrPaddy' or self.name == 'irr_paddy') and self.includeIrrigation:
             self.irrGrossDemand = \
                   pcr.ifthenelse(self.cropKC > 0.75, \
