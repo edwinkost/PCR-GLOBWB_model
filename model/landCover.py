@@ -1536,8 +1536,8 @@ class LandCover(object):
                         pcr.max(self.maxRootDepth-self.parameters.thickUpp,0.))      # Edwin modified this line. Edwin uses soil thickness thickUpp & thickLow (instead of storCapUpp & storCapLow). 
                                                                                      # And Rens support this. 
 
-        vos.plot_variable_for_lue(self.readAvlWater, "readAvlWater")
-        pietje
+        # ~ vos.plot_variable_for_lue(self.readAvlWater, "readAvlWater")
+        # ~ pietje
 
         if self.numberOfLayers == 3: 
 
