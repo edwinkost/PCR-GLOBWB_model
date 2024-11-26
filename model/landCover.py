@@ -1813,7 +1813,9 @@ class LandCover(object):
 
 
         vos.plot_variable_for_lue(self.desalinationAllocation, "desalinationAllocation")
+        vos.plot_variable_for_lue(self.totalPotentialGrossDemand  , "totalPotentialGrossDemand")
         vos.plot_variable_for_lue(satisfiedIrrigationDemand  , "satisfiedIrrigationDemand")
+
         pietje
 
 
