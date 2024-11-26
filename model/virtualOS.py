@@ -2798,7 +2798,7 @@ def plot_variable_for_lue(pcr_variable, filename = None, clonemap = None):
     pcr.report(pcr_variable, filename)
     
     # converting to a pcraster and using only   
-    cmd = 'pcrcalc ' + filename + '.map = "if(abs(' + filename + ') gt 1E-99 , ' + filename + ')"'
+    cmd = 'pcrcalc ' + filename + '.map = "if(abs(' + filename + ') ge 0.0, ' + filename + ')"'
     os.system(cmd)
     cmd = 'mapattr -s -P yb2t ' + filename + '.map'
     os.system(cmd)
