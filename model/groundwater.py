@@ -740,6 +740,10 @@ class Groundwater(object):
         self.relativeGroundwaterHead = self.relativeGroundwaterHead
         self.storGroundwater = self.storGroundwater
         self.baseflow = self.baseflow
+        
+        vos.plot_variable_for_lue(self.baseflow, "baseflow")
+        
+        pietje
 
         if currTimeStep.day == 1 and currTimeStep.timeStepPCR > 1:
 

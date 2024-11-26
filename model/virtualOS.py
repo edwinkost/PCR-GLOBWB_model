@@ -2791,6 +2791,24 @@ def plot_variable(pcr_variable, filename = None):
     cmd = 'rm '+str(filename)
     os.system(cmd)
 
+def plot_variable_for_lue(pcr_variable, filename = None, clonemap = None):
+
+    if filename == None: filename = get_random_word(8) + ".tif"
+    
+    pcr.report(pcr_variable, filename)
+    
+    # converting to a pcraster and using only   
+    cmd = 'pcrcalc ' + filename + '.map = "if(abs(' + filename + ') gt 1E-99 , ' + filename + ')"'
+    os.system(cmd)
+    cmd = 'mapattr -s -P yb2t ' + filename + '.map'
+    os.system(cmd)
+    
+    cmd = 'aguila ' + str(filename) + '.map' 
+    os.system(cmd)
+    
+    cmd = 'rm ' + str(filename) + "*"
+    os.system(cmd)
+
 # conversions to and from radians
 def deg2rad(a):
     
