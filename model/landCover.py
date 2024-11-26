@@ -3741,6 +3741,7 @@ class LandCover(object):
         
         vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
         vos.plot_variable_for_lue(self.satExcess        , "satExcess")
+        vos.plot_variable_for_lue(self.directRunoff     , "directRunoff")
         pietje
 
         if self.debugWaterBalance:
