@@ -1748,6 +1748,8 @@ class LandCover(object):
                                  nonIrrGrossDemandDict['potential_demand']['industry'] +\
                                  nonIrrGrossDemandDict['potential_demand']['livestock']
                                  
+        vos.plot_variable_for_lue(self.nonIrrGrossDemand, "nonIrrGrossDemand")
+
         # total irrigation and livestock demand (not limited by available water)
         totalIrrigationLivestockDemand = self.irrGrossDemand + nonIrrGrossDemandDict['potential_demand']['livestock']
         
