@@ -2791,7 +2791,7 @@ def plot_variable(pcr_variable, filename = None):
     cmd = 'rm '+str(filename)
     os.system(cmd)
 
-def plot_variable_for_lue(pcr_variable, filename = None, clonemap = None):
+def plot_variable_for_lue(pcr_variable, filename = None, remove_file = True):
 
     if filename == None: filename = get_random_word(8) + ".tif"
     
@@ -2812,8 +2812,9 @@ def plot_variable_for_lue(pcr_variable, filename = None, clonemap = None):
     print(cmd)
     os.system(cmd)
     
-    cmd = 'rm ' + str(filename) + "*"
-    os.system(cmd)
+    if remove_file:
+        cmd = 'rm ' + str(filename) + "*"
+        os.system(cmd)
 
 # conversions to and from radians
 def deg2rad(a):

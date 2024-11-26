@@ -1738,15 +1738,15 @@ class LandCover(object):
         if self.name == 'irrPaddy' or self.name == 'irr_paddy': self.totalPotentialMaximumIrrGrossDemandPaddy = self.irrGrossDemand
         if self.name == 'irrNonPaddy' or self.name == 'irr_non_paddy' or self.name == 'irr_non_paddy_crops': self.totalPotentialMaximumIrrGrossDemandNonPaddy = self.irrGrossDemand
 
-        vos.plot_variable_for_lue(nonIrrGrossDemandDict['potential_demand']['domestic'], "before")
+        vos.plot_variable_for_lue(nonIrrGrossDemandDict['potential_demand']['domestic'], "before", False)
 
         # non irrigation demand is only calculated for areas with fracVegCover > 0                   # DO WE NEED THIS ?
-        nonIrrGrossDemandDict['potential_demand']['domestic']  = pcr.ifthenelse(pcr.cover(self.fracVegCover, 0.0) > 0.0, nonIrrGrossDemandDict['potential_demand']['domestic'] , pcr.scalar(0.0)) 
+        nonIrrGrossDemandDict['potential_demand']['domestic']  = pcr.ifthenelse(self.fracVegCover > 0.0, nonIrrGrossDemandDict['potential_demand']['domestic'] , pcr.scalar(0.0)) 
         nonIrrGrossDemandDict['potential_demand']['industry']  = pcr.ifthenelse(self.fracVegCover > 0.0, nonIrrGrossDemandDict['potential_demand']['industry'] , 0.0)
         nonIrrGrossDemandDict['potential_demand']['livestock'] = pcr.ifthenelse(self.fracVegCover > 0.0, nonIrrGrossDemandDict['potential_demand']['livestock'], 0.0)
         
-        vos.plot_variable_for_lue(nonIrrGrossDemandDict['potential_demand']['domestic'], "after")
-        vos.plot_variable_for_lue(self.fracVegCover, "frac_cover")
+        vos.plot_variable_for_lue(self.fracVegCover, "frac_cover", False)
+        vos.plot_variable_for_lue(nonIrrGrossDemandDict['potential_demand']['domestic'], "after", False)
 
         # non irrigation water demand, including the livestock (not limited by available water)
         self.nonIrrGrossDemand = nonIrrGrossDemandDict['potential_demand']['domestic'] +\
