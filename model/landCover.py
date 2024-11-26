@@ -3739,7 +3739,6 @@ class LandCover(object):
         self.irrigationTranspirationDeficit = 0.0
         if self.name.startswith('irr'): self.irrigationTranspirationDeficit = pcr.max(0.0, self.potTranspiration - self.actTranspiTotal)
         
-        vos.plot_variable_for_lue(netLqWaterToSoil      , "netLqWaterToSoil")
         vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
         vos.plot_variable_for_lue(self.satExcess        , "satExcess")
         pietje
