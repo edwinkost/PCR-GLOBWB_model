@@ -1138,6 +1138,9 @@ class LandCover(object):
                                   currTimeStep.fulldate,threshold=5e-4)
 
         vos.plot_variable_for_lue(self.totalPotET, "totalPotET")
+        vos.plot_variable_for_lue(self.potBareSoilEvap,  "potBareSoilEvap")
+        vos.plot_variable_for_lue(self.potTranspiration, "potTranspiration")
+
         pietje
 
     def interceptionUpdate(self, meteo, currTimeStep):
