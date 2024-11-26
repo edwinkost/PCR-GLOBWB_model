@@ -708,9 +708,6 @@ class Groundwater(object):
                                                 self.storGroundwaterFossil)
         pcr.report(self.storGroundwaterFossil, "initial_fossil_gw_water.map")                                        
 
-        vos.plot_variable_for_lue(self.storGroundwater, "S3")
-        pietje
-
     def perturb(self, name, **parameters):
 
         if name == "groundwater":
@@ -797,6 +794,9 @@ class Groundwater(object):
         self.surfaceWaterInf  = routing.riverbedExchange/\
                                 routing.cellArea               # unit: m
         self.storGroundwater += self.surfaceWaterInf
+
+        vos.plot_variable_for_lue(self.storGroundwater, "S3")
+        pietje
 
         # get net recharge (percolation-capRise) and update storage:
         self.storGroundwater  = pcr.max(0.,\
