@@ -1729,8 +1729,8 @@ class LandCover(object):
             # irrigation demand is only calculated for areas with fracVegCover > 0                   # DO WE NEED THIS ? 
             self.irrGrossDemand = pcr.ifthenelse(self.fracVegCover >  0.0, self.irrGrossDemand, 0.0)
 
-        vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
-        pietje
+        # ~ vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
+        # ~ pietje
 
         # total irrigation gross demand (m) per cover types (not limited by available water)
         self.totalPotentialMaximumIrrGrossDemandPaddy    = 0.0
@@ -2368,6 +2368,10 @@ class LandCover(object):
         # irrigation water demand (excluding livestock) limited to available/allocated water (unit: m/day)
         self.irrGrossDemand = satisfiedIrrigationDemand                                  # not including livestock 
         
+        vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
+        pietje
+
+
         # irrigation gross demand (m) per cover type (limited by available water)
         self.irrGrossDemandPaddy    = 0.0
         self.irrGrossDemandNonPaddy = 0.0
