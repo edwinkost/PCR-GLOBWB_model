@@ -2381,8 +2381,8 @@ class LandCover(object):
         # irrigation water demand (excluding livestock) limited to available/allocated water (unit: m/day)
         self.irrGrossDemand = satisfiedIrrigationDemand                                  # not including livestock 
         
-        vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
-        pietje
+        # ~ vos.plot_variable_for_lue(self.irrGrossDemand   , "irrGrossDemand")
+        # ~ pietje
 
 
         # irrigation gross demand (m) per cover type (limited by available water)
