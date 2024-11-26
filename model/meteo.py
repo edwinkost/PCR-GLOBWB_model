@@ -106,9 +106,6 @@ class Meteo(object):
         # TODO: Check whether we have missing values for zero values (if yes, we have to do the following)
         # ~ self.avgAnnualTemperature = pcr.ifthen(self.landmask, pcr.cover(self.avgAnnualTemperature, 0.0)))
 
-        vos.plot_variable_for_lue(self.avgAnnualTemperature, "avgAnnualTemperature")
-        pietje
-
     def __init__(self,iniItems,landmask,spinUp):
         object.__init__(self)
 
