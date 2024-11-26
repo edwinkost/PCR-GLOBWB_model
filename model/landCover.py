@@ -1452,10 +1452,10 @@ class LandCover(object):
                                    True,\
                                    currTimeStep.fulldate,threshold=5e-4)
 
-        vos.plot_variable_for_lue(self.netLqWaterToSoil, "netLqWaterToSoil")
-        vos.plot_variable_for_lue(self.snowCoverSWE    , "snowCoverSWE")
-        vos.plot_variable_for_lue(self.snowFreeWater   , "snowFreeWater")
-        pietje
+        # ~ vos.plot_variable_for_lue(self.netLqWaterToSoil, "netLqWaterToSoil")
+        # ~ vos.plot_variable_for_lue(self.snowCoverSWE    , "snowCoverSWE")
+        # ~ vos.plot_variable_for_lue(self.snowFreeWater   , "snowFreeWater")
+        # ~ pietje
 
     def getSoilStates(self):
 
@@ -1535,6 +1535,9 @@ class LandCover(object):
                         pcr.min(self.parameters.thickLow,\
                         pcr.max(self.maxRootDepth-self.parameters.thickUpp,0.))      # Edwin modified this line. Edwin uses soil thickness thickUpp & thickLow (instead of storCapUpp & storCapLow). 
                                                                                      # And Rens support this. 
+
+        vos.plot_variable_for_lue(self.readAvlWater, "readAvlWater")
+        pietje
 
         if self.numberOfLayers == 3: 
 
