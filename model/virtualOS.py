@@ -40,6 +40,8 @@ import types
 import calendar
 import glob
 
+import lue.framework as lfr
+
 import netCDF4 as nc
 import numpy as np
 import numpy.ma as ma
@@ -2795,10 +2797,13 @@ def plot_variable_for_lue(pcr_variable, filename = None, remove_file = True):
 
     if filename == None: filename = get_random_word(8) + ".tif"
     
-    pcr.report(pcr_variable, filename)
+    # ~ pcr.report(pcr_variable, filename)
+    
+    written = lfr.to_gdal(pcr_variable, filename)
+    written.wait()
     
     os.system("pwd")
-    os.system("sleep 1s")
+    # ~ os.system("sleep 1s")
 
     # converting to a pcraster and using only   
     cmd = 'pcrcalc ' + filename + '.map = "if(abs(' + filename + ') ge 0.0, ' + filename + ')"'
