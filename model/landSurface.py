@@ -1446,12 +1446,15 @@ class LandSurface(object):
         # first, we set all aggregated values/variables to zero: 
         for var in self.aggrVars: vars(self)[var] = pcr.scalar(0.0)
         #
+        print("start debugging")
         # get or calculate the values of all aggregated values/variables
         for coverType in self.coverTypes:
             # calculate the aggregrated or global landSurface values: 
             for var in self.aggrVars:
                 vars(self)[var] += \
                      self.landCoverObj[coverType].fracVegCover * vars(self.landCoverObj[coverType])[var]
+            vos.plot_variable_for_lue(vars(self)[var], var)
+            
                      
         # total storages (unit: m3) in the entire landSurface module
         if self.numberOfSoilLayers == 2: self.totalSto = \
