@@ -311,8 +311,10 @@ class Meteo(object):
         for meteo_var_name in self.extra_meteo_var_names:
             # constant
             consta_var_name = 'consta_for_' + meteo_var_name
+            vars(self)[consta_var_name]     = pcr.spatial(0.0)
             vars(self)[consta_var_name]     = pcr.spatial(pcr.scalar(0.0))
-            if consta_var_name in meteoOptions:
+            if consta_var_name in meteoOp
+            tions:
                 vars(self)[consta_var_name] = pcr.cover(vos.readPCRmapClone(meteoOptions[consta_var_name], self.cloneMap, self.tmpDir, self.inputDir), 0.0)
             # factor
             factor_var_name = 'factor_for_' + meteo_var_name
