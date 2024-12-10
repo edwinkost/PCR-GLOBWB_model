@@ -39,10 +39,10 @@ import evaporation.ref_pot_et_penman_monteith as penman_monteith
 import evaporation.shortwave_radiation as sw_rad
 
 
-def spatial(input):
-    return input
+# ~ def spatial(input):
+    # ~ return input
     
-pcr.spatial = spatial
+# ~ pcr.spatial = spatial
 
 class Meteo(object):
 
