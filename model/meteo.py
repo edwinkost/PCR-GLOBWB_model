@@ -38,6 +38,12 @@ import evaporation.hamonETPFunctions as hamon_et0
 import evaporation.ref_pot_et_penman_monteith as penman_monteith
 import evaporation.shortwave_radiation as sw_rad
 
+
+def spatial(input):
+    return input
+    
+pcr.spatial = spatial
+
 class Meteo(object):
 
     def getState(self):
@@ -311,7 +317,6 @@ class Meteo(object):
         for meteo_var_name in self.extra_meteo_var_names:
             # constant
             consta_var_name = 'consta_for_' + meteo_var_name
-            vars(self)[consta_var_name]     = pcr.scalar(0.0)
             vars(self)[consta_var_name]     = pcr.spatial(pcr.scalar(0.0))
             if consta_var_name in meteoOptions:
                 vars(self)[consta_var_name] = pcr.cover(vos.readPCRmapClone(meteoOptions[consta_var_name], self.cloneMap, self.tmpDir, self.inputDir), 0.0)
