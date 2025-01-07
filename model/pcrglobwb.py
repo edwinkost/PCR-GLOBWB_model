@@ -55,7 +55,6 @@ import routing
     # ~ written.wait()
     
     # ~ os.system("pwd")
-    os.system("sleep 1s")
 
     # ~ # converting to a pcraster and using only   
     # ~ cmd = 'pcrcalc ' + filename + ' = "if(abs(' + filename_tif + ') ge 0.0, ' + filename_tif + ')"'
