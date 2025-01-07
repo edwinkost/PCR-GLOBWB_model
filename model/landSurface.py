@@ -1453,7 +1453,7 @@ class LandSurface(object):
             for var in self.aggrVars:
                 vars(self)[var] += \
                      self.landCoverObj[coverType].fracVegCover * vars(self.landCoverObj[coverType])[var]
-            vos.plot_variable_for_lue(vars(self)[var], var)
+            # ~ vos.plot_variable_for_lue(vars(self)[var], var)
             
                      
         # total storages (unit: m3) in the entire landSurface module
