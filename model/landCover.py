@@ -3544,6 +3544,8 @@ class LandCover(object):
             # groundwater recharge (positive indicating downward direction)
             self.gwRecharge = self.percLow - self.capRiseLow
         
+            vos.plot_variable_for_lue(self.gwRecharge, "recharge_lc")
+
             # the following variables introduced for the comparison with threeLayer model output                        
             self.storUppTotal       = self.storUpp
             self.storLowTotal       = self.storLow
