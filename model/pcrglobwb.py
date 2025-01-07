@@ -65,6 +65,8 @@ def pcr_report(pcr_variable, filename, remove_file = True):
     print(cmd)
     os.system(cmd)
     
+    pietje
+    
     if remove_file:
         cmd = 'rm ' + str(filename_tif)
         os.system(cmd)
