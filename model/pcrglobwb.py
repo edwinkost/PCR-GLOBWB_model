@@ -45,6 +45,8 @@ import routing
     
 # ~ pcr.setclone = setclone
 
+import lue.framework as lfr
+
 def pcr_report(pcr_variable, filename, remove_file = True):
 
     filename_tif = filename + ".tif"
