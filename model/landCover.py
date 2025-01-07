@@ -2770,7 +2770,7 @@ class LandCover(object):
             vos.plot_variable_for_lue(self.kUnsatLow, "kUnsatLow", False)
             vos.plot_variable_for_lue(self.parameters.kUnsatAtFieldCapLow, "kUnsatAtFieldCapLow", False)
            
-            vos.plot_variable_for_lue(pcr.sqrt(pcr.spatial(4.0)), "sqrt_test", False)
+            vos.plot_variable_for_lue(pcr.sqrt(pcr.spatial(0.01)), "sqrt_test", False)
             
             vos.plot_variable_for_lue(self.percLow, "percLow_1_lc", False)
             
