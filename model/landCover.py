@@ -2768,6 +2768,9 @@ class LandCover(object):
                                                                             # original Rens's line:
                                                                             #    P2_L[TYPE] = min(KTHEFF2,sqrt(KTHEFF2*KTHEFF2_FC[TYPE]))*Duration*timeslice()
             vos.plot_variable_for_lue(self.kUnsatLow, "kUnsatLow", False)
+            vos.plot_variable_for_lue(self.parameters.kUnsatAtFieldCapLow, "kUnsatAtFieldCapLow", False)
+           
+            
             vos.plot_variable_for_lue(self.percLow, "percLow_1_lc", False)
             
             pietje
