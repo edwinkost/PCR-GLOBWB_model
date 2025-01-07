@@ -795,17 +795,17 @@ class Groundwater(object):
                                 routing.cellArea               # unit: m
         self.storGroundwater += self.surfaceWaterInf
 
-        vos.plot_variable_for_lue(self.storGroundwater, "S3_before")
+        # ~ vos.plot_variable_for_lue(self.storGroundwater, "S3_before")
 
         # get net recharge (percolation-capRise) and update storage:
         self.storGroundwater  = pcr.max(0.,\
                                 self.storGroundwater + landSurface.gwRecharge)
 
-        vos.plot_variable_for_lue(landSurface.gwRecharge, "recharge")
+        # ~ vos.plot_variable_for_lue(landSurface.gwRecharge, "recharge")
 
-        vos.plot_variable_for_lue(self.storGroundwater, "S3_after")
+        # ~ vos.plot_variable_for_lue(self.storGroundwater, "S3_after")
 
-        pietje
+        # ~ pietje
 
         # non fossil groundwater abstraction
         self.nonFossilGroundwaterAbs = landSurface.nonFossilGroundwaterAbs
