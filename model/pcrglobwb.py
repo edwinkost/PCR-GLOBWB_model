@@ -45,33 +45,33 @@ import routing
     
 # ~ pcr.setclone = setclone
 
-import lue.framework as lfr
+# ~ import lue.framework as lfr
 
-def pcr_report(pcr_variable, filename, remove_file = True):
+# ~ def pcr_report(pcr_variable, filename, remove_file = True):
 
-    filename_tif = filename + ".tif"
+    # ~ filename_tif = filename + ".tif"
     
-    written = lfr.to_gdal(pcr_variable, filename_tif)
-    written.wait()
+    # ~ written = lfr.to_gdal(pcr_variable, filename_tif)
+    # ~ written.wait()
     
-    os.system("pwd")
-    # ~ os.system("sleep 1s")
+    # ~ os.system("pwd")
+    os.system("sleep 1s")
 
-    # converting to a pcraster and using only   
-    cmd = 'pcrcalc ' + filename + ' = "if(abs(' + filename_tif + ') ge 0.0, ' + filename_tif + ')"'
-    print(cmd)
-    os.system(cmd)
-    cmd = 'mapattr -s -P yb2t ' + filename
-    print(cmd)
-    os.system(cmd)
+    # ~ # converting to a pcraster and using only   
+    # ~ cmd = 'pcrcalc ' + filename + ' = "if(abs(' + filename_tif + ') ge 0.0, ' + filename_tif + ')"'
+    # ~ print(cmd)
+    # ~ os.system(cmd)
+    # ~ cmd = 'mapattr -s -P yb2t ' + filename
+    # ~ print(cmd)
+    # ~ os.system(cmd)
     
-    pietje
+    # ~ pietje
     
-    if remove_file:
-        cmd = 'rm ' + str(filename_tif)
-        os.system(cmd)
+    # ~ if remove_file:
+        # ~ cmd = 'rm ' + str(filename_tif)
+        # ~ os.system(cmd)
 
-pcr.report = pcr_report
+# ~ pcr.report = pcr_report
 
 
 import logging
@@ -177,6 +177,9 @@ class PCRGlobWB(object):
              str(variable)+"_"+
              specific_date_string+".map",\
              outputDirectory)
+            
+            vos.plot_variable_for_lue(map, variable)
+             
         
         landSurfaceState = state['landSurface']
         for coverType, coverTypeState in list(landSurfaceState.items()):
