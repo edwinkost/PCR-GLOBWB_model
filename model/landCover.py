@@ -3554,10 +3554,10 @@ class LandCover(object):
             self.gwRecharge = self.percLow - self.capRiseLow
         
 
-            vos.plot_variable_for_lue(self.percLow,    "percLow_lc")
-            vos.plot_variable_for_lue(self.capRiseLow, "capRiseLow_lc")
+            # ~ vos.plot_variable_for_lue(self.percLow,    "percLow_lc")
+            # ~ vos.plot_variable_for_lue(self.capRiseLow, "capRiseLow_lc")
 
-            vos.plot_variable_for_lue(self.gwRecharge, "recharge_lc")
+            # ~ vos.plot_variable_for_lue(self.gwRecharge, "recharge_lc")
 
             # the following variables introduced for the comparison with threeLayer model output                        
             self.storUppTotal       = self.storUpp
