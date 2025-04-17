@@ -43,7 +43,7 @@ END_DATE="2024-12-31"
 
 
 # location/folder, where you will store output files of your 
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_wmo_run/version20250417"
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_wmo_run/version20250417/"
 
 
 # meteorological forcing files - DEFINED IN THE CONFIGURATION FILE
@@ -61,7 +61,7 @@ NUMBER_OF_SPINUP_YEARS="25"
 
 
 # location of your pcrglobwb model scripts
-PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model_branch_wmo_2024_run/"
+PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model_branch_wmo_2024_run/model/"
 
 
 # load the conda enviroment and other things
