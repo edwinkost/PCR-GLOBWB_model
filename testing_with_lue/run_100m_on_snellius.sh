@@ -23,7 +23,7 @@ libtcmalloc=$(find $EBROOTGPERFTOOLS -name libtcmalloc_minimal.so.4)
 
 pcrglobwb_runner="/home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner_lue.py"
 pcrglobwb_ini="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_100m_for_lue_experiment_vdevelop.ini"
-pcrglobwb_debug_mode="debug"
+pcrglobwb_debug_mode="nodebug"
 
 #~ output_dir="/scratch/depfg/sutan101/test_lue_experiment/100m/"
 #~ clone_map="/scratch/depfg/sutan101/clone_map_for_lue/ldd_africa_3sec.map"
@@ -60,10 +60,10 @@ LUE_PCRASTER_PROVIDER_NAME=lue \
          --output_dir ${output_dir} \
          --clone_map ${clone_map} \
          --ldd_map ${ldd_map} \
-         --hpx:threads=1 \
+         --hpx:threads=12 \
          --lue:count=1 \
-         --lue:nr_workers=1 \
-         --lue:array_shape="100,200" \
+         --lue:nr_workers=12 \
+         --lue:array_shape="1000,2000" \
          --lue:partition_shape="100,200" \
          --lue:centre="43800,42000" \
          --lue:result=${output_dir}/"lue_experiment.txt" \
