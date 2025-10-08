@@ -132,7 +132,7 @@ class PCRGlobWB(object):
         self.meteo = meteo.Meteo(self._configuration,self.landmask,initialState)
         self.landSurface = landSurface.LandSurface(self._configuration,self.landmask,initialState)
         self.groundwater = groundwater.Groundwater(self._configuration,self.landmask,initialState)
-        self.routing = routing.Routing(self._configuration, initialState, self.lddMap)
+        self.routing = routing.Routing(self._configuration, initialState, self.lddMap, self.landmask)
  
         # short name for every land cover type (needed for file name)
         self.shortNames = ['f','g','p','n']

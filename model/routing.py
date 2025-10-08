@@ -78,7 +78,7 @@ class Routing(object):
 
         return result
 
-    def __init__(self, iniItems, initialConditions, lddMap):
+    def __init__(self, iniItems, initialConditions, lddMap, landmask):
         object.__init__(self)
 
         self.lddMap = lddMap
@@ -87,6 +87,7 @@ class Routing(object):
         self.tmpDir = iniItems.tmpDir
         self.inputDir = iniItems.globalOptions['inputDir']
 
+        self.landmask = landmask
         if pcr.provider_name == "lue" and iniItems.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
 
         # option to activate water balance check
