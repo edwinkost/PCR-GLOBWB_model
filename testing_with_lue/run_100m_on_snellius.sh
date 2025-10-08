@@ -8,7 +8,7 @@ set -eu
 
 module load 2024 
 module load PCRaster/4.4.2-foss-2024a
-module load netcdf4-python
+module load netcdf4-python/1.7.1.post2-foss-2024a
 module load LUE/development-foss-2024a
 
 
