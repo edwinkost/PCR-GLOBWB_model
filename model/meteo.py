@@ -121,6 +121,8 @@ class Meteo(object):
            self.cloneMap,self.tmpDir,self.inputDir)
         # NOTE: To ensure water belance consistency during meteo downscaling, perhaps we should not mask out during the calculation process ! (yet, we still have to mask out for reporting and during initial conditions reading) 
 
+        if pcr.provider_name == "lue" and configuration.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
+
         # option to ignore snow (temperature will be set to 25 deg C if this option is activated)
         self.ignore_snow = False
         if 'ignoreSnow' in list(iniItems.meteoOptions.keys()) and iniItems.meteoOptions['ignoreSnow'] == "True":

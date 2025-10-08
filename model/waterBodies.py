@@ -46,6 +46,8 @@ class WaterBodies(object):
         self.inputDir = iniItems.globalOptions['inputDir']
         self.landmask = landmask
         
+        if pcr.provider_name == "lue" and configuration.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
+
         self.iniItems = iniItems
                 
         # ~ # Read the ldd map. - Why do we need this?

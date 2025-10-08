@@ -58,7 +58,10 @@ class DeterministicRunner(pcrfw.DynamicModel):
         
         pcrfw.DynamicModel.__init__(self)
 
-        if pcr.provider_name == "lue":
+        self.lue_scalability_experiment = False
+        if configuration.globalOptions['lue_scalability_experiment'] == "True": self.lue_scalability_experiment = True
+
+        if pcr.provider_name == "lue" and self.lue_scalability_experiment:
 	    
             pcr.setclone(configuration.cloneMap)
 
@@ -77,9 +80,6 @@ class DeterministicRunner(pcrfw.DynamicModel):
         
 
         # skip any reporting during LUE scalability experiment
-        self.lue_scalability_experiment = False
-        if configuration.globalOptions['lue_scalability_experiment'] == "True": self.lue_scalability_experiment = True
-        
         if self.lue_scalability_experiment is False: self.reporting = Reporting(configuration, self.model, modelTime)
         
     def initial(self): 

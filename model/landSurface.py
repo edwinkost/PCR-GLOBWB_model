@@ -110,6 +110,8 @@ class LandSurface(object):
         self.inputDir = iniItems.globalOptions['inputDir']
         self.landmask = landmask
         
+        if pcr.provider_name == "lue" and configuration.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
+
         # make iniItems available for the other methods/functions:
         self.iniItems = iniItems
 
