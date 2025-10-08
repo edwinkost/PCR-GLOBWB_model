@@ -46,7 +46,7 @@ class WaterBodies(object):
         self.inputDir = iniItems.globalOptions['inputDir']
         self.landmask = landmask
         
-        if pcr.provider_name == "lue" and configuration.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
+        if pcr.provider_name == "lue" and iniItems.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
 
         self.iniItems = iniItems
                 

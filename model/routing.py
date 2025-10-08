@@ -87,7 +87,7 @@ class Routing(object):
         self.tmpDir = iniItems.tmpDir
         self.inputDir = iniItems.globalOptions['inputDir']
 
-        if pcr.provider_name == "lue" and configuration.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
+        if pcr.provider_name == "lue" and iniItems.globalOptions['lue_scalability_experiment'] == "True": self.cloneMap = self.landmask
 
         # option to activate water balance check
         self.debugWaterBalance = True
