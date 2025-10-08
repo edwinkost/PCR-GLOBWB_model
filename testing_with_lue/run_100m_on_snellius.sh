@@ -61,7 +61,7 @@ LUE_PCRASTER_PROVIDER_NAME=lue \
          --clone_map ${clone_map} \
          --ldd_map ${ldd_map} \
          --hpx:threads=12 \
-         --lue:count=1 \
+         --lue:count=3 \
          --lue:nr_workers=12 \
          --lue:array_shape="1000,2000" \
          --lue:partition_shape="100,200" \
