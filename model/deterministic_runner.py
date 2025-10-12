@@ -62,6 +62,8 @@ class DeterministicRunner(pcrfw.DynamicModel):
         self.model.read_forcings()
         state = self.model.update(report_water_balance=True)
         
+        check = pcr.mapmaximum(state).future.get()
+        print(check)
 
         #do any needed reporting for this time step        
         self.reporting.report()
