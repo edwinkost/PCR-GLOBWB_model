@@ -140,7 +140,7 @@ def main():
     dynamic_framework = pcrfw.DynamicFramework(deterministic_runner,currTimeStep.nrOfTimeSteps)
     dynamic_framework.setQuiet(True)
     if pcr.provider_name == "lue":
-        dynamic_framework.run(rate_limit=2)
+        dynamic_framework.run(rate_limit=7)
     else:
         dynamic_framework.run()
 

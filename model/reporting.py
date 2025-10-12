@@ -1048,8 +1048,6 @@ class Reporting(object):
 
                 short_name = varDicts.netcdf_short_name[var]
                 
-                print(self.__getattribute__(var).future())
-                
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTot_output.nc",\
