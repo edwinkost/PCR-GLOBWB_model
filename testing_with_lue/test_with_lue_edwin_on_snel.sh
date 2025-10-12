@@ -30,7 +30,7 @@ set -eu
 #~ module load PCRaster/4.4.1-foss-2023a-Python-3.11.3
 #~ module load netcdf4-python
 #~ module load LUE/development-foss-2023a
-module load LUE/0.3.9-foss-2023a
+#~ module load LUE/0.3.9-foss-2023a
 
 # on snellius
 module load 2024 
