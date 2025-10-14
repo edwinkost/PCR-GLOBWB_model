@@ -58,9 +58,14 @@ libtcmalloc=$(find $EBROOTGPERFTOOLS -name libtcmalloc_minimal.so.4)
 
 LD_PRELOAD=$libtcmalloc \
 LUE_PCRASTER_PROVIDER_NAME=lue \
-#~ LUE_PARTITION_SHAPE="13,17" \
      python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_on_velocity_for_lue_on_snel.ini debug \
-         --hpx:threads=1
+         --hpx:threads=16
+
+#~ LD_PRELOAD=$libtcmalloc \
+#~ LUE_PCRASTER_PROVIDER_NAME=lue \
+#~ LUE_PARTITION_SHAPE="13,17" \
+     #~ python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_on_velocity_for_lue_on_snel.ini debug \
+         #~ --hpx:threads=1
 
 #~ # Run this script with PCRaster package in environment. This should work:
 #~ # python -c "import pcraster, lue.framework.pcraster_provider"
