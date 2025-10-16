@@ -191,6 +191,8 @@ def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
     if sameClone == False:
 
         factor = int(round(float(cellsizeInput)/float(cellsizeClone)))
+        
+        factor = max(1, factor)
 
         # crop to cloneMap:
         minX    = min(abs(f.variables['lon'][:] - (xULClone + 0.5*cellsizeInput))) # ; print(minX)
