@@ -26,12 +26,11 @@
 
 set -eu
 
-module load foss2023a
-module load PCRaster/4.4.1-foss-2023a-Python-3.11.3
-module load netcdf4-python
-module load LUE/development-foss-2023a
-#~ module load LUE/0.3.9-foss-2023a
-
+# on snellius
+module load 2024 
+module load PCRaster/4.4.2-foss-2024a
+module load netcdf4-python/1.7.1.post2-foss-2024a
+module load LUE/development-foss-2024a
 
 # Run this script with LUE package in environment. This should work:
 # python -c "import lue"
@@ -42,13 +41,6 @@ LD_PRELOAD=$libtcmalloc \
 LUE_PCRASTER_PROVIDER_NAME=lue \
 LUE_PARTITION_SHAPE="180,180" \
      python \
-     /home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py \
-     /home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_on_velocity_for_lue.ini debug \
+    /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py \
+    /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_on_velocity_for_lue_on_snel.ini debug \
          --hpx:threads=4
-
-
-#~ # Run this script with PCRaster package in environment. This should work:
-#~ # python -c "import pcraster, lue.framework.pcraster_provider"
-
-#~ LUE_PCRASTER_PROVIDER_NAME=pcraster \
-     #~ python /home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_on_velocity_for_lue.ini debug
