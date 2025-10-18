@@ -341,6 +341,8 @@ class Routing(object):
         # initiate old style reporting                                  # This is still very useful during the 'debugging' process. 
         self.initiate_old_style_routing_reporting(iniItems)
 
+        self.maxiumNumberOfSubTimeSteps = int(iniItems.routingOptions['maxiumNumberOfSubTimeSteps'])
+
     def getICs(self,iniItems,iniConditions = None):
 
         if iniConditions == None:
@@ -739,6 +741,8 @@ class Routing(object):
             # TODO LUE support cellvalue, or calc with scalars
             number_of_loops = max(1.0, pcr.mapmaximum(number_of_sub_time_steps).future.get())     # minimum number of sub_time_steps = 1 
         number_of_loops = int(max(self.limit_num_of_sub_time_steps, number_of_loops))
+        
+        number_of_loops = min(self.maxiumNumberOfSubTimeSteps, number_of_loops)
         
         # actual length of sub-time step (s)
         length_of_sub_time_step = vos.secondsPerDay() / number_of_loops
