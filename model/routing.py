@@ -106,7 +106,7 @@ class Routing(object):
         if "skip_ldd_repair_and_ldd_mask" in iniItems.routingOptions.keys() and iniItems.routingOptions["skip_ldd_repair_and_ldd_mask"] == "True":
             skip_ldd_repair_and_ldd_mask = True
         if skip_ldd_repair_and_ldd_mask:    
-             if configuration.routingOptions['lddMap'] == "5":
+            if configuration.routingOptions['lddMap'] == "5":
                 self.lddMap = pcr.ldd(5)
             else:   
                 lddMap_file = vos.getFullPath(inputPath        = configuration.routingOptions['lddMap'],\

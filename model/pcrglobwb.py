@@ -58,13 +58,13 @@ class PCRGlobWB(object):
         if "skip_ldd_repair_and_ldd_mask" in configuration.routingOptions.keys() and configuration.routingOptions["skip_ldd_repair_and_ldd_mask"] == "True":
             skip_ldd_repair_and_ldd_mask = True
         if skip_ldd_repair_and_ldd_mask:    
-            if configuration.routingOptions['lddMap'] != "5":
+            if configuration.routingOptions['lddMap'] == "5":
+                self.lddMap = pcr.ldd(5)
+            else:   
                 lddMap_file = vos.getFullPath(inputPath        = configuration.routingOptions['lddMap'],\
                                               absolutePath     = configuration.globalOptions['inputDir'],\
                                               completeFileName = True) 
                 self.lddMap = pcr.readmap(lddMap_file)
-            else:   
-                self.lddMap = pcr.ldd(5)
         else:
             self.lddMap = vos.readPCRmapClone(\
                       configuration.routingOptions['lddMap'],
