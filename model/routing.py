@@ -103,20 +103,20 @@ class Routing(object):
 
         # Read the ldd map.
         skip_ldd_repair_and_ldd_mask = False
-        if "skip_ldd_repair_and_ldd_mask" in iniItems.routingOptions.keys() and iniItems.routingOptions["skip_ldd_repair_and_ldd_mask"] == "True":
+        if "skip_ldd_repair_and_ldd_mask" in configuration.routingOptions.keys() and configuration.routingOptions["skip_ldd_repair_and_ldd_mask"] == "True":
             skip_ldd_repair_and_ldd_mask = True
-        if skip_ldd_repair_and_ldd_mask:    
+        if skip_ldd_repair_and_ldd_mask:
             if configuration.routingOptions['lddMap'] == "5":
                 self.lddMap = pcr.ldd(5)
-            else:
+            else:   
                 lddMap_file = vos.getFullPath(inputPath        = configuration.routingOptions['lddMap'],\
                                               absolutePath     = configuration.globalOptions['inputDir'],\
                                               completeFileName = True) 
                 self.lddMap = pcr.readmap(lddMap_file)
-       else:
+        else:
             self.lddMap = vos.readPCRmapClone(\
-                      iniItems.routingOptions['lddMap'],
-                      iniItems.cloneMap,iniItems.tmpDir, iniItems.globalOptions['inputDir'], True)
+                      configuration.routingOptions['lddMap'],
+                      configuration.cloneMap,configuration.tmpDir, configuration.globalOptions['inputDir'], True)
             # ensure ldd map is correct, and actually of type "ldd"
             self.lddMap = pcr.lddrepair(pcr.ldd(self.lddMap))
  
