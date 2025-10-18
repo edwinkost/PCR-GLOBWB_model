@@ -59,7 +59,7 @@ class PCRGlobWB(object):
             skip_ldd_repair_and_ldd_mask = True
         if skip_ldd_repair_and_ldd_mask:
             if configuration.routingOptions['lddMap'] == "5":
-                self.lddMap = pcr.ldd(5)
+                self.lddMap = pcr.spatial(pcr.ldd(5))
             else:   
                 lddMap_file = vos.getFullPath(inputPath        = configuration.routingOptions['lddMap'],\
                                               absolutePath     = configuration.globalOptions['inputDir'],\
