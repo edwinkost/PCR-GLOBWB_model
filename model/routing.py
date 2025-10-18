@@ -107,7 +107,7 @@ class Routing(object):
             skip_ldd_repair_and_ldd_mask = True
         if skip_ldd_repair_and_ldd_mask:    
             if iniItems.routingOptions['lddMap'] == "5":
-                self.lddMap = pcr.ldd(5)
+                self.lddMap = pcr.spatial(pcr.ldd(5))
             else:
                 lddMap_file = vos.getFullPath(inputPath        = iniItems.routingOptions['lddMap'],\
                                               absolutePath     = iniItems.globalOptions['inputDir'],\
