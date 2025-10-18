@@ -106,11 +106,14 @@ class Routing(object):
         if "skip_ldd_repair_and_ldd_mask" in iniItems.routingOptions.keys() and iniItems.routingOptions["skip_ldd_repair_and_ldd_mask"] == "True":
             skip_ldd_repair_and_ldd_mask = True
         if skip_ldd_repair_and_ldd_mask:    
-            lddMap_file = vos.getFullPath(inputPath        = iniItems.routingOptions['lddMap'],\
-                                          absolutePath     = iniItems.globalOptions['inputDir'],\
-                                          completeFileName = True) 
-            self.lddMap = pcr.readmap(lddMap_file)
-        else:
+             if configuration.routingOptions['lddMap'] == "5":
+                self.lddMap = pcr.ldd(5)
+            else:   
+                lddMap_file = vos.getFullPath(inputPath        = configuration.routingOptions['lddMap'],\
+                                              absolutePath     = configuration.globalOptions['inputDir'],\
+                                              completeFileName = True) 
+                self.lddMap = pcr.readmap(lddMap_file)
+       else:
             self.lddMap = vos.readPCRmapClone(\
                       iniItems.routingOptions['lddMap'],
                       iniItems.cloneMap,iniItems.tmpDir, iniItems.globalOptions['inputDir'], True)
