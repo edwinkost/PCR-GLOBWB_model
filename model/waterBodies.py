@@ -208,25 +208,6 @@ class WaterBodies(object):
                                                                       completeFileName = True)
                 self.waterBodyIds = pcr.readmap(file_for_correct_water_body_ids)
                 
-                # ~ pietje
-
-            file_for_correct_water_body_ids     = vos.getFullPath(inputPath        = self.iniItems.routingOptions['correct_water_body_ids'],\
-                                                                  absolutePath     = self.iniItems.globalOptions['inputDir'],\
-                                                                  completeFileName = True)
-            self.waterBodyIds = pcr.readmap(file_for_correct_water_body_ids)
-            
-                file_for_correct_water_body_outlets = vos.getFullPath(inputPath        = self.iniItems.routingOptions['correct_water_body_outlets'],\
-                                                                      absolutePath     = self.iniItems.globalOptions['inputDir'],\
-                                                                      completeFileName = True)
-                self.waterBodyOut = pcr.readmap(file_for_correct_water_body_outlets)
-			    
-                file_for_correct_water_body_ids     = vos.getFullPath(inputPath        = self.iniItems.routingOptions['correct_water_body_ids'],\
-                                                                      absolutePath     = self.iniItems.globalOptions['inputDir'],\
-                                                                      completeFileName = True)
-                self.waterBodyIds = pcr.readmap(file_for_correct_water_body_ids)
-                
-                # ~ pietje
-
             else:
                 pass
             
