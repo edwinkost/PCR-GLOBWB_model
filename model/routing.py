@@ -108,7 +108,7 @@ class Routing(object):
         if skip_ldd_repair_and_ldd_mask:    
             if configuration.routingOptions['lddMap'] == "5":
                 self.lddMap = pcr.ldd(5)
-            else:   
+            else:
                 lddMap_file = vos.getFullPath(inputPath        = configuration.routingOptions['lddMap'],\
                                               absolutePath     = configuration.globalOptions['inputDir'],\
                                               completeFileName = True) 
