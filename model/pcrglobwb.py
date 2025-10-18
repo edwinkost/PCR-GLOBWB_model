@@ -57,7 +57,7 @@ class PCRGlobWB(object):
         skip_ldd_repair_and_ldd_mask = False
         if "skip_ldd_repair_and_ldd_mask" in configuration.routingOptions.keys() and configuration.routingOptions["skip_ldd_repair_and_ldd_mask"] == "True":
             skip_ldd_repair_and_ldd_mask = True
-        if skip_ldd_repair_and_ldd_mask:    
+        if skip_ldd_repair_and_ldd_mask:
             if configuration.routingOptions['lddMap'] == "5":
                 self.lddMap = pcr.ldd(5)
             else:   
