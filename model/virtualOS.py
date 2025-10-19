@@ -1855,12 +1855,20 @@ def getMapAttributesALL(cloneMap,arcDegree=True):
     # n = gc.collect() ; del gc.garbage[:] ; n = None ; del n
     # return mapAttr 
 
+    # ~ return {
+        # ~ 'cellsize': 0.5,
+        # ~ 'rows'    : 360,
+        # ~ 'cols'    : 720,
+        # ~ 'xUL'     : -180,
+        # ~ 'yUL'     : 90,
+    # ~ }
+
     return {
-        'cellsize': 0.5,
-        'rows'    : 360,
-        'cols'    : 720,
-        'xUL'     : -180,
-        'yUL'     : 90,
+        'cellsize': 0.00833333333333333333333333,
+        'rows'    : 9000,
+        'cols'    : 9600,
+        'xUL'     : -19,
+        'yUL'     : 39,
     }
 
 
