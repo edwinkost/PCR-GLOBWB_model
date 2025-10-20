@@ -1047,7 +1047,7 @@ class Reporting(object):
                                                  vars(self)[var])
 
                 # ~ wait = (pcr.mapminimum(pcr.abs(vars(self)[var]))).future.get()
-                wait = (pcr.mapminimum((vars(self)[var]))).future.get()
+                # ~ wait = (pcr.mapminimum((vars(self)[var]))).future.get()
                 
                 short_name = varDicts.netcdf_short_name[var]
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
