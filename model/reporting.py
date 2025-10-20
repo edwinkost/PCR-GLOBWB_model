@@ -1064,7 +1064,7 @@ class Reporting(object):
                                             str(var)+\
                                             "_dailyTot_output.nc",\
                                             short_name,\
-                  pcr.pcr2numpy(vars(self)[var],vos.MV),\
+                  pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
                                             timeStamp)
 
 
