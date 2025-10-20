@@ -1049,14 +1049,14 @@ class Reporting(object):
                 # ~ wait = (pcr.mapminimum(pcr.abs(vars(self)[var]))).future.get()
                 # ~ wait = (pcr.mapminimum((vars(self)[var]))).future.get()
                 # ~ wait = (pcr.windowminimum(pcr.spatial(pcr.scalar(1.0)), pcr.clone().cellSize())).future()
-                wait = (pcr.windowminimum((vars(self)[var]), pcr.clone().cellSize())).future()
+                # ~ wait = (pcr.windowminimum((vars(self)[var]), pcr.clone().cellSize())).future()
 
                 short_name = varDicts.netcdf_short_name[var]
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTot_output.nc",\
                                             short_name,\
-                  pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
+                  pcr.pcr2numpy(self.__getattribute__(var).future(),vos.MV),\
                                             timeStamp)
 
         # writing monthly output to netcdf files
