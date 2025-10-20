@@ -43,6 +43,12 @@ LUE_PARTITION_SHAPE="180,180" \
      python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_snel_test.ini debug \
          --hpx:threads=4
 
+LD_PRELOAD=$libtcmalloc \
+LUE_PCRASTER_PROVIDER_NAME=lue \
+LUE_PARTITION_SHAPE="25,50" \
+     python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/setup_30min_snel_test.ini debug \
+         --hpx:threads=24
+
 #~ LD_PRELOAD=$libtcmalloc \
 #~ LUE_PCRASTER_PROVIDER_NAME=lue \
 #~ LUE_PARTITION_SHAPE="360,720" \
