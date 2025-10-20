@@ -1046,7 +1046,7 @@ class Reporting(object):
                     vars(self)[var] = pcr.ifthen(self.landmask_for_reporting, \
                                                  vars(self)[var])
 
-                wait = (pcr.spatial(vars(self)[var])).future.get()
+                wait = (pcr.mapminimum(vars(self)[var])).future.get()
                 
                 short_name = varDicts.netcdf_short_name[var]
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
