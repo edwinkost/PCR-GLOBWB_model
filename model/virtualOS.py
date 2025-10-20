@@ -1838,11 +1838,12 @@ def isLastDayOfMonth(date):
 
 def getMapAttributesALL(cloneMap,arcDegree=True):
     # TODO Create LUE equivalent for this, using lue.gdal?
-    # cOut,err = subprocess.Popen(str('mapattr -p %s ' %(cloneMap)), stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
-
+    
+    cOut,err = subprocess.Popen(str('mapattr -p %s ' %(cloneMap)), stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
     if err !=None or cOut == b"":  # []:
         print("Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? ")
         sys.exit()
+
     cellsize = float(cOut.split()[7])
     if arcDegree == True: cellsize = round(cellsize * 360000.)/360000.
     mapAttr = {'cellsize': float(cellsize)        ,\
