@@ -1059,12 +1059,12 @@ class Reporting(object):
                   # ~ pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
                                             # ~ timeStamp)
 
-                vars(self)[var] = vars(self)[var].future().get()
+                wait = (pcr.mapminimum((vars(self)[var]))).future.get()
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTot_output.nc",\
                                             short_name,\
-                  pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
+                  pcr.pcr2numpy(vars(self)[var],vos.MV),\
                                             timeStamp)
 
 
