@@ -1052,12 +1052,21 @@ class Reporting(object):
                 # ~ wait = (pcr.windowminimum((vars(self)[var]), pcr.clone().cellSize())).future()
 
                 short_name = varDicts.netcdf_short_name[var]
+                # ~ self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
+                                            # ~ str(var)+\
+                                            # ~ "_dailyTot_output.nc",\
+                                            # ~ short_name,\
+                  # ~ pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
+                                            # ~ timeStamp)
+
+                vars(self)[var] = vars(self)[var].future()
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTot_output.nc",\
                                             short_name,\
-                  pcr.pcr2numpy(self.__getattribute__(var),vos.MV).future(),\
+                  pcr.pcr2numpy(vars(self)[var],vos.MV),\
                                             timeStamp)
+
 
         # writing monthly output to netcdf files
         # - cummulative
