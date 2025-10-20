@@ -1840,20 +1840,20 @@ def getMapAttributesALL(cloneMap,arcDegree=True):
     # TODO Create LUE equivalent for this, using lue.gdal?
     # cOut,err = subprocess.Popen(str('mapattr -p %s ' %(cloneMap)), stdout=subprocess.PIPE,stderr=open(os.devnull),shell=True).communicate()
 
-    # if err !=None or cOut == b"":  # []:
-    #     print("Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? ")
-    #     sys.exit()
-    # cellsize = float(cOut.split()[7])
-    # if arcDegree == True: cellsize = round(cellsize * 360000.)/360000.
-    # mapAttr = {'cellsize': float(cellsize)        ,\
-    #            'rows'    : float(cOut.split()[3]) ,\
-    #            'cols'    : float(cOut.split()[5]) ,\
-    #            'xUL'     : float(cOut.split()[17]),\
-    #            'yUL'     : float(cOut.split()[19])}
-    # co = None; cOut = None; err = None
-    # del co; del cOut; del err
-    # n = gc.collect() ; del gc.garbage[:] ; n = None ; del n
-    # return mapAttr 
+    if err !=None or cOut == b"":  # []:
+        print("Something wrong with mattattr in virtualOS, maybe clone Map does not exist ? ")
+        sys.exit()
+    cellsize = float(cOut.split()[7])
+    if arcDegree == True: cellsize = round(cellsize * 360000.)/360000.
+    mapAttr = {'cellsize': float(cellsize)        ,\
+               'rows'    : float(cOut.split()[3]) ,\
+               'cols'    : float(cOut.split()[5]) ,\
+               'xUL'     : float(cOut.split()[17]),\
+               'yUL'     : float(cOut.split()[19])}
+    co = None; cOut = None; err = None
+    del co; del cOut; del err
+    n = gc.collect() ; del gc.garbage[:] ; n = None ; del n
+    return mapAttr 
 
     # ~ return {
         # ~ 'cellsize': 0.5,
@@ -1863,13 +1863,13 @@ def getMapAttributesALL(cloneMap,arcDegree=True):
         # ~ 'yUL'     : 90,
     # ~ }
 
-    return {
-        'cellsize': 0.00833333333333333333333333,
-        'rows'    : 9000,
-        'cols'    : 9600,
-        'xUL'     : -19,
-        'yUL'     : 39,
-    }
+    # ~ return {
+        # ~ 'cellsize': 0.00833333333333333333333333,
+        # ~ 'rows'    : 9000,
+        # ~ 'cols'    : 9600,
+        # ~ 'xUL'     : -19,
+        # ~ 'yUL'     : 39,
+    # ~ }
 
 
 def getMapAttributes(cloneMap,attribute,arcDegree=True):
