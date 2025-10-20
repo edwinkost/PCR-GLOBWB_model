@@ -341,7 +341,13 @@ class Routing(object):
         # initiate old style reporting                                  # This is still very useful during the 'debugging' process. 
         self.initiate_old_style_routing_reporting(iniItems)
 
+        # maximum number of sub time steps for kinematic wave
         self.maxiumNumberOfSubTimeSteps = int(iniItems.routingOptions['maxiumNumberOfSubTimeSteps'])
+
+        # allowing negative storage due to evaporation processes
+        self.allow_negative_storage_due_to_evaporation = False
+        if "allow_negative_storage_due_to_evaporation" in list(iniItems.routingOptions['allow_negative_storage_due_to_evaporation'].keys()):
+            self.allow_negative_storage_due_to_evaporation = iniItems.routingOptions['allow_negative_storage_due_to_evaporation'] == "True"
 
     def getICs(self,iniItems,iniConditions = None):
 
@@ -1020,9 +1026,13 @@ class Routing(object):
         # evaporation volume from water bodies (m3)
         # - not limited to available channelStorage 
         volLocEvapWaterBody = self.waterBodyPotEvap * self.cellArea
-        # - limited to available channelStorage
-        volLocEvapWaterBody = pcr.min(\
-                              pcr.max(0.0,self.channelStorage), volLocEvapWaterBody)
+        
+        if self.allow_negative_storage_due_to_evaporation == False:
+            # - limited to available channelStorage
+            volLocEvapWaterBody = pcr.min(\
+                                  pcr.max(0.0,self.channelStorage), volLocEvapWaterBody)
+		else:
+		    pass
 
         # update channelStorage (m3) after evaporation from water bodies
         self.channelStorage = self.channelStorage -\
