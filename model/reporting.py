@@ -1048,6 +1048,7 @@ class Reporting(object):
 
                 short_name = varDicts.netcdf_short_name[var]
                 
+                vars(self)[var] = vars(self)[var].future.get()
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTot_output.nc",\
@@ -1079,6 +1080,7 @@ class Reporting(object):
 
                     short_name = varDicts.netcdf_short_name[var]
 
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                                "_monthTot_output.nc",\
@@ -1114,6 +1116,8 @@ class Reporting(object):
                                                  self._modelTime.day  
 
                     short_name = varDicts.netcdf_short_name[var]
+
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                                str(var)+\
                                                "_monthAvg_output.nc",\
@@ -1129,6 +1133,8 @@ class Reporting(object):
                 if self._modelTime.endMonth == True: 
 
                     short_name = varDicts.netcdf_short_name[var]
+
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                                str(var)+\
                                                "_monthEnd_output.nc",\
@@ -1159,6 +1165,8 @@ class Reporting(object):
                 if self._modelTime.endMonth == True: 
 
                     short_name = varDicts.netcdf_short_name[var]
+
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                                "_monthMax_output.nc",\
@@ -1189,6 +1197,7 @@ class Reporting(object):
                 if self._modelTime.endYear == True: 
 
                     short_name = varDicts.netcdf_short_name[var]
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                                str(var)+\
                                                "_annuaTot_output.nc",\
@@ -1224,6 +1233,7 @@ class Reporting(object):
                                                  self._modelTime.doy  
 
                     short_name = varDicts.netcdf_short_name[var]
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                                str(var)+\
                                                "_annuaAvg_output.nc",\
@@ -1239,6 +1249,7 @@ class Reporting(object):
                 if self._modelTime.endYear == True:
 
                     short_name = varDicts.netcdf_short_name[var]
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                                str(var)+\
                                                "_annuaEnd_output.nc",\
@@ -1269,6 +1280,7 @@ class Reporting(object):
                 if self._modelTime.endYear == True: 
 
                     short_name = varDicts.netcdf_short_name[var]
+                    vars(self)[var] = vars(self)[var].future.get()
                     self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                                "_annuaMax_output.nc",\
@@ -1295,6 +1307,7 @@ class Reporting(object):
 
                 short_name = "upstream_average_" + varDicts.netcdf_short_name[var]
                 
+                vars(self)[var] = vars(self)[var].future.get()
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTotUpsAvg_output.nc",\
