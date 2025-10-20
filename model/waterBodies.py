@@ -172,6 +172,11 @@ class WaterBodies(object):
         self.fracWat = pcr.max(0.0, self.fracWat)
         self.fracWat = pcr.min(1.0, self.fracWat)
         
+        if "fracWaterInpStatic" in list(self.iniItems.routingOptions.keys()):
+            fracWaterInpStatic = vos.readPCRmapClone(self.iniItems.routingOptions["fracWaterInpStatic"],
+                                                     self.cloneMap, self.tmpDir, self.inputDir)
+            self.fracWat = pcr.ifthen(self.landmask, fracWaterInpStatic)
+            
         self.waterBodyIds  = pcr.spatial(pcr.nominal(0))    # waterBody ids
         self.waterBodyOut  = pcr.spatial(pcr.boolean(0))    # waterBody outlets
         self.waterBodyArea = pcr.spatial(pcr.scalar(0.))    # waterBody surface areas
