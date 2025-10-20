@@ -1056,7 +1056,7 @@ class Reporting(object):
                                             str(var)+\
                                             "_dailyTot_output.nc",\
                                             short_name,\
-                  pcr.pcr2numpy(self.__getattribute__(var).future(),vos.MV),\
+                  pcr.pcr2numpy(self.__getattribute__(var),vos.MV).future(),\
                                             timeStamp)
 
         # writing monthly output to netcdf files
