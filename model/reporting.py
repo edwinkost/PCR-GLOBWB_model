@@ -1052,7 +1052,6 @@ class Reporting(object):
                 # ~ wait = (pcr.windowminimum((vars(self)[var]), pcr.clone().cellSize())).future()
 
                 short_name = varDicts.netcdf_short_name[var]
-                print(short_name)
                 self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             str(var)+\
                                             "_dailyTot_output.nc",\
@@ -1060,6 +1059,7 @@ class Reporting(object):
                   pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
                                             timeStamp)
 
+                # ~ print(short_name)
                 # ~ wait = (pcr.mapminimum((vars(self)[var]))).future.get()
                 # ~ self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
                                             # ~ str(var)+\
