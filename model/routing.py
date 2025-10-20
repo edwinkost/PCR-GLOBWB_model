@@ -346,7 +346,7 @@ class Routing(object):
 
         # allowing negative storage due to evaporation processes
         self.allow_negative_storage_due_to_evaporation = False
-        if "allow_negative_storage_due_to_evaporation" in list(iniItems.routingOptions['allow_negative_storage_due_to_evaporation'].keys()):
+        if "allow_negative_storage_due_to_evaporation" in list(iniItems.routingOptions.keys()):
             self.allow_negative_storage_due_to_evaporation = iniItems.routingOptions['allow_negative_storage_due_to_evaporation'] == "True"
 
     def getICs(self,iniItems,iniConditions = None):
