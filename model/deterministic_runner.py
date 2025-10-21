@@ -142,7 +142,7 @@ def main():
     dynamic_framework.setQuiet(True)
 
     if pcr.provider_name == "lue":
-        dynamic_framework.run(rate_limit=5)
+        dynamic_framework.run(rate_limit=2)
     else:
         dynamic_framework.run()
 
