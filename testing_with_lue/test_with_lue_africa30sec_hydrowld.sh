@@ -1,7 +1,7 @@
 set -eu
 
 # on snellius
-export MODULEPATH=/home/hydrowld/.local/easybuild/RHEL9/2024/modulefiles/all/:$MODULEPATH
+export MODULEPATH=/home/edwin/.local/easybuild/RHEL9/2024/modulefiles/all/:$MODULEPATH
 module load 2024 
 module load PCRaster/4.4.2-foss-2024a
 module load netcdf4-python/1.7.1.post2-foss-2024a
