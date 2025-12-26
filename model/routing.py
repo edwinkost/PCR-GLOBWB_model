@@ -2173,8 +2173,8 @@ class Routing(object):
 
                 self.subDischarge = pcr.kinematic(self.lddMap, pcr.spatial(dischargeInitial),
                                                   pcr.spatial(0.0), 
-                                                  alpha, self.beta, \
-                                                  1, length_of_sub_time_step, self.channelLength)
+                                                  pcr.spatial(alpha), pcr.spatial(self.beta), \
+                                                  1, length_of_sub_time_step, pcr.spatial(self.channelLength))
 
 
             self.subDischarge = pcr.max(0.0, pcr.cover(self.subDischarge, 0.0))
