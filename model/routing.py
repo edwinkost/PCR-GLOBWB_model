@@ -2171,7 +2171,7 @@ class Routing(object):
                 alpha_hack = 0.5 * (pcr.mapminimum(alpha).future.get() + pcr.mapmaximum(alpha).future.get())
                 alpha = alpha_hack
 
-                self.subDischarge = pcr.kinematic(self.lddMap, dischargeInitial,
+                self.subDischarge = pcr.kinematic(self.lddMap, pcr.spatial(dischargeInitial),
                                                   pcr.spatial(0.0), 
                                                   alpha, self.beta, \
                                                   1, length_of_sub_time_step, self.channelLength)
