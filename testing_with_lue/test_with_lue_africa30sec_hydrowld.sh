@@ -18,11 +18,17 @@ libtcmalloc=$(find $EBROOTGPERFTOOLS -name libtcmalloc_minimal.so.4)
      #~ python /home/hydrowld/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/hydrowld/github/edwinkost/PCR-GLOBWB_model/config/lue/30sec_africa_vdevelop.ini debug \
          #~ --hpx:threads=96
 
+#~ LD_PRELOAD=$libtcmalloc \
+#~ LUE_PCRASTER_PROVIDER_NAME=lue \
+#~ LUE_PARTITION_SHAPE="600,600" \
+     #~ python /home/hydrowld/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/hydrowld/github/edwinkost/PCR-GLOBWB_model/config/lue/30sec_africa_vdevelop.ini debug \
+         #~ --hpx:threads=72
+
 LD_PRELOAD=$libtcmalloc \
 LUE_PCRASTER_PROVIDER_NAME=lue \
 LUE_PARTITION_SHAPE="600,600" \
      python /home/hydrowld/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/hydrowld/github/edwinkost/PCR-GLOBWB_model/config/lue/30sec_africa_vdevelop.ini debug \
-         --hpx:threads=72
+         --hpx:threads=48
 
 #~ LD_PRELOAD=$libtcmalloc \
 #~ LUE_PCRASTER_PROVIDER_NAME=lue \
