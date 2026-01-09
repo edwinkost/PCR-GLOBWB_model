@@ -1390,7 +1390,12 @@ class Reporting(object):
         thickness_low = self._model.landSurface.soil_topo_parameters['default'].thickLow
         self.ulyssesSM = (self.ulyssesSMUpp * thickness_upp + self.ulyssesSMLow * thickness_low) / (thickness_upp + thickness_low)
 
-
+        # root zone swi at one metter (-)
+        # - rzswi_one_meter = (sm_upp + sm_low*(1.0-thick_upp)/(thick_low)) / ((vmc_sat_upp-vmc_res_upp)*(thick_upp) + (vmc_sat_low-vmc_res_low)*(1.0-thick_upp)) 
+        rzswi_one_meter = (self.ulyssesSMUpp + self.ulyssesSMLow*(1.0-thickness_upp)/(thickness_low)) /\
+                          ((theta_sat_upp-theta_res_upp)*(thickness_upp) + (theta_sat_low-theta_res_low)*(1.0-thickness_upp)))
+        self.ulysses_rzswi_one_meter = rzswi_one_meter
+        
         # Qr: total runoff (report in kg m-2 s-1)
         # - land only, not including local changes in water body
         self.ulyssesQrRunoff = - self._model.routing.runoff / 86.4 
@@ -1401,5 +1406,5 @@ class Reporting(object):
         # TWS (kg m-2)
         self.ulyssesTWS = self.totalWaterStorageThickness * 1000. 
 
-        # extra variable for ILAMB evaluation
+        # extra variable for ILAMB evaluation (binary)
         self.ulyssesSnowFraction = pcr.ifthenelse(self.ulyssesSWE > 0.0, pcr.scalar(1.0), pcr.scalar(0.0))
