@@ -1392,7 +1392,7 @@ class Reporting(object):
 
         # root zone swi at one metter (- or m3.m-3)
         # - rzswi_one_meter = (sm_upp + sm_low*(1.0-thick_upp)/(thick_low)) / ((vmc_sat_upp-vmc_res_upp)*(thick_upp) + (vmc_sat_low-vmc_res_low)*(1.0-thick_upp)) 
-        rzswi_one_meter = (self.ulyssesSMUpp + self.ulyssesSMLow*(1.0-thickness_upp)/(thickness_low)) / ((theta_sat_upp-theta_res_upp)*(thickness_upp) + (theta_sat_low-theta_res_low)*(1.0-thickness_upp)))
+        rzswi_one_meter = (self.ulyssesSMUpp + self.ulyssesSMLow*(1.0-thickness_upp)/(thickness_low)) / ((theta_sat_upp-theta_res_upp)*(thickness_upp) + (theta_sat_low-theta_res_low)*(1.0-thickness_upp))
         self.ulysses_rzswi_one_meter = rzswi_one_meter
         
         # Qr: total runoff (report in kg m-2 s-1)
