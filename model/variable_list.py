@@ -1905,6 +1905,17 @@ description[pcrglobwb_variable_name]               ='total_thickness_of_water_st
 comment[pcrglobwb_variable_name]                   = description[pcrglobwb_variable_name]
 latex_symbol[pcrglobwb_variable_name]              = None
 
+# ulysses_rzswi_one_meter
+pcrglobwb_variable_name                            = 'ulysses_rzswi_one_meter'
+netcdf_short_name[pcrglobwb_variable_name]         = 'rzswi_one_meter'
+netcdf_long_name[pcrglobwb_variable_name]          = 'rzswi_one_meter'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'ulysses_rzswi_one_meter'
+netcdf_unit[pcrglobwb_variable_name]               = 'm3.m-3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+description[pcrglobwb_variable_name]               ='ulysses_rzswi_one_meter'
+comment[pcrglobwb_variable_name]                   = description[pcrglobwb_variable_name]
+latex_symbol[pcrglobwb_variable_name]              = None
 
 
 #############################################################################################################
