@@ -343,7 +343,7 @@ class Configuration(object):
         # ~ # go to pcraster maps directory (so all pcr.report files will be saved in this directory) 
         # ~ os.chdir(self.mapsDir)
 
-        # turned off for Ulysses/WaterSIS projects, to allow relative paths to relative root - TODO: Make this optional via the configuration .ini file. 
+        # turned off for Ulysses/WaterSIS projects, in order to allow relative paths to relative root - TODO: Make this optional via the configuration .ini file. 
         # os.chdir(self.mapsDir)
 
 
