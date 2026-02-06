@@ -1378,9 +1378,8 @@ class Reporting(object):
                                                  vars(self)[var])
 
                 # calculate upstream average
-                if vars(self)[var+'dailyTotUpsAvg'] is not None:
-                    vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
-                                                       self.upstream_area
+                vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
+                                                   self.upstream_area
 
                 # accumulating
                 vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
@@ -1416,9 +1415,8 @@ class Reporting(object):
                                                      vars(self)[var])
 
                     # calculate upstream average
-                    if vars(self)[var+'dailyTotUpsAvg'] is not None:
-                        vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
-                                                           self.upstream_area
+                    vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
+                                                       self.upstream_area
 
                     # accumulating
                     vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
