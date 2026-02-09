@@ -1397,8 +1397,8 @@ class Reporting(object):
                        vos.MV),timeStamp)
         #
         # - average
-        if self.outMonthAvgNC[0] != "None":
-            for var in self.outMonthAvgNC:
+        if self.outMonthAvgUpsAvgNC[0] != "None":
+            for var in self.outMonthAvgUpsAvgNC:
 
                 # only if a accumulator variable has not been defined: 
                 if var not in self.outMonthTotUpsAvgNC: 
