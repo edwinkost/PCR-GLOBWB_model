@@ -1167,8 +1167,8 @@ class LandCover(object):
                        vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
 		    
                     # calculate upstream average
-                    vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
-                                                       self.upstream_area
+                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                                                        self.upstream_area
 		    
                     # accumulating
                     vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
@@ -1198,8 +1198,8 @@ class LandCover(object):
                            vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
 		    
                         # calculate upstream average
-                        vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
-                                                           self.upstream_area
+                        vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                                                            self.upstream_area
 					    
                         # accumulating
                         vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
