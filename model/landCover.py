@@ -260,10 +260,16 @@ class LandCover(object):
         # for reporting: output in netCDF files:
         self.report = True
         try:
+
             self.outDailyTotNC = self.iniItemsLC['outDailyTotNC'].split(",")
             self.outMonthTotNC = self.iniItemsLC['outMonthTotNC'].split(",")
             self.outMonthAvgNC = self.iniItemsLC['outMonthAvgNC'].split(",")
             self.outMonthEndNC = self.iniItemsLC['outMonthEndNC'].split(",")
+            
+            self.outDailyTotUpsAvgNC = self.iniItemsLC['outDailyTotUpsAvgNC'].split(",")
+            self.outMonthTotUpsAvgNC = self.iniItemsLC['outMonthTotUpsAvgNC'].split(",") 
+            self.outMonthAvgUpsAvgNC = self.iniItemsLC['outMonthAvgUpsAvgNC'].split(",")
+
         except:
             self.report = False
         if self.report:
@@ -312,6 +318,33 @@ class LandCover(object):
                                      str(self.iniItemsLC['name']) + "_" + \
                                                 "monthEnd.nc",\
                                                     var,"undefined")
+
+            # -- daily upsteam average (through LDD)
+            if self.outDailyTotUpsAvgNC[0] != "None":    
+                for var in self.outDailyTotUpsAvgNC:
+                    self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
+                                     str(var) + "_" + \
+                                     str(self.iniItemsLC['name']) + "_" + \
+                                     "dailyTotUpsAvg_output.nc",\
+                                     "upstream_average_" + var,"undefined")
+
+            # -- monthly total upsteam average (through LDD)
+            if self.outMonthTotUpsAvgNC[0] != "None":    
+                for var in self.outMonthTotUpsAvgNC:
+                    self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
+                                     str(var) + "_" + \
+                                     str(self.iniItemsLC['name']) + "_" + \
+                                     "monthTotUpsAvg_output.nc",\
+                                     "upstream_average_" + var,"undefined")
+		    
+            # -- monthly average upsteam average (through LDD)
+            if self.outMonthAvgUpsAvgNC[0] != "None":    
+                for var in self.outMonthAvgUpsAvgNC:
+                    self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
+                                     str(var) + "_" + \
+                                     str(self.iniItemsLC['name']) + "_" + \
+                                     "monthAvgUpsAvg_output.nc",\
+                                     "upstream_average_" + var,"undefined")
 
 
     def updateIrrigationWaterEfficiency(self,currTimeStep):
@@ -1098,6 +1131,93 @@ class LandCover(object):
                                          var,\
                           pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
                                          timeStamp,currTimeStep.monthIdx-1)
+
+            # upsteam average (through LDD)
+            # -- calculate upstream area
+            if timeStepPCR == 1: self.upstream_area = pcr.catchmenttotal(routing.cellArea, routing.lddMap)
+
+            # -- daily upsteam average (through LDD)
+            if self.outDailyTotUpsAvgNC[0] != "None":
+		    
+                for var in self.outDailyTotUpsAvgNC:
+		    
+                    # calculate upstream average
+                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                                                        self.upstream_area
+
+                    self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
+                                     str(var) + "_" + \
+                                     str(self.iniItemsLC['name']) + "_" + \
+                                     "dailyTotUpsAvg.nc",\
+                                     "upstream_average_"+var,\
+                      pcr.pcr2numpy(self.__getattribute__(var+'DailyTotUpsAvg'),vos.MV),\
+                                     timeStamp,timestepPCR-1)
+
+
+            # -- monthly upsteam average (through LDD)
+
+            # - cummulative
+            if self.outMonthTotUpsAvgNC[0] != "None":
+                for var in self.outMonthTotUpsAvgNC:
+		    
+                    # introduce variables at the beginning of simulation or
+                    #     reset variables at the beginning of the month
+                    if timeStepPCR == 1 or \
+                       currTimeStep.day == 1:\
+                       vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
+		    
+                    # calculate upstream average
+                    vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
+                                                       self.upstream_area
+		    
+                    # accumulating
+                    vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
+		    
+                    # reporting at the end of the month:
+                    if currTimeStep.endMonth == True: 
+
+                        self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
+                                         str(var) + "_" + \
+                                         str(self.iniItemsLC['name']) + "_" + \
+                                         "monthTotUpsAvg.nc",\
+                                         "upstream_average_"+var,\
+                          pcr.pcr2numpy(self.__getattribute__(var+'MonthTotUpsAvg'),vos.MV),\
+                                         timeStamp,timestepPCR-1)
+
+            # - average
+            if self.outMonthAvgUpsAvgNC[0] != "None":
+                for var in self.outMonthAvgUpsAvgNC:
+		    
+                    # only if a accumulator variable has not been defined: 
+                    if var not in self.outMonthTotUpsAvgNC: 
+		    
+                        # introduce accumulator at the beginning of simulation or
+                        #     reset accumulator at the beginning of the month
+                        if timeStepPCR == 1 or \
+                           currTimeStep.day == 1:\
+                           vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
+		    
+                        # calculate upstream average
+                        vars(self)[var+'dailyTotUpsAvg'] = pcr.catchmenttotal(vars(self)[var] * self._model.routing.cellArea, self._model.routing.lddMap) /\
+                                                           self.upstream_area
+					    
+                        # accumulating
+                        vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
+		    
+                    # calculating average & reporting at the end of the month:
+                    if currTimeStep.endMonth == True:
+		    
+                        vars(self)[var+'MonthAvgUpsAvg'] = vars(self)[var+'MonthTotUpsAvg']/\
+                                                           currTimeStep.day  
+		    
+                        self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
+                                         str(var) + "_" + \
+                                         str(self.iniItemsLC['name']) + "_" + \
+                                         "monthAvgUpsAvg.nc",\
+                                         "upstream_average_"+var,\
+                          pcr.pcr2numpy(self.__getattribute__(var+'MonthAvgUpsAvg'),vos.MV),\
+                                         timeStamp,timestepPCR-1)
+
 
 
     def getPotET(self, meteo, currTimeStep):
