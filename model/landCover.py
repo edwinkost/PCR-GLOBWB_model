@@ -1171,7 +1171,7 @@ class LandCover(object):
                                                         self.upstream_area
 		    
                     # accumulating
-                    vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
+                    vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'DailyTotUpsAvg']
 		    
                     # reporting at the end of the month:
                     if currTimeStep.endMonth == True: 
@@ -1202,7 +1202,7 @@ class LandCover(object):
                                                             self.upstream_area
 					    
                         # accumulating
-                        vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'dailyTotUpsAvg']
+                        vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'DailyTotUpsAvg']
 		    
                     # calculating average & reporting at the end of the month:
                     if currTimeStep.endMonth == True:
