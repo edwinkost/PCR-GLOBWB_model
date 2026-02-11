@@ -1162,7 +1162,7 @@ class LandCover(object):
 		    
                     # introduce variables at the beginning of simulation or
                     #     reset variables at the beginning of the month
-                    if timeStepPCR == 1 or \
+                    if timestepPCR == 1 or \
                        currTimeStep.day == 1:\
                        vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
 		    
