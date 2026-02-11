@@ -1134,7 +1134,7 @@ class LandCover(object):
 
             # upsteam average (through LDD)
             # -- calculate upstream area
-            if timeStepPCR == 1: self.upstream_area = pcr.catchmenttotal(routing.cellArea, routing.lddMap)
+            if timestepPCR == 1: self.upstream_area = pcr.catchmenttotal(routing.cellArea, routing.lddMap)
 
             # -- daily upsteam average (through LDD)
             if self.outDailyTotUpsAvgNC[0] != "None":
@@ -1182,7 +1182,7 @@ class LandCover(object):
                                          "monthTotUpsAvg.nc",\
                                          "upstream_average_"+var,\
                           pcr.pcr2numpy(self.__getattribute__(var+'MonthTotUpsAvg'),vos.MV),\
-                                         timeStamp,timestepPCR-1)
+                                         timeStamp,currTimeStep.monthIdx-1)
 
             # - average
             if self.outMonthAvgUpsAvgNC[0] != "None":
@@ -1216,7 +1216,7 @@ class LandCover(object):
                                          "monthAvgUpsAvg.nc",\
                                          "upstream_average_"+var,\
                           pcr.pcr2numpy(self.__getattribute__(var+'MonthAvgUpsAvg'),vos.MV),\
-                                         timeStamp,timestepPCR-1)
+                                         timeStamp,currTimeStep.monthIdx-1)
 
 
 
