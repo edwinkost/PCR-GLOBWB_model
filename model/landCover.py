@@ -325,7 +325,7 @@ class LandCover(object):
                     self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
                                      str(var) + "_" + \
                                      str(self.iniItemsLC['name']) + "_" + \
-                                     "dailyTotUpsAvg_output.nc",\
+                                     "dailyTotUpsAvg.nc",\
                                      "upstream_average_" + var,"undefined")
 
             # -- monthly total upsteam average (through LDD)
@@ -334,7 +334,7 @@ class LandCover(object):
                     self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
                                      str(var) + "_" + \
                                      str(self.iniItemsLC['name']) + "_" + \
-                                     "monthTotUpsAvg_output.nc",\
+                                     "monthTotUpsAvg.nc",\
                                      "upstream_average_" + var,"undefined")
 		    
             # -- monthly average upsteam average (through LDD)
@@ -343,7 +343,7 @@ class LandCover(object):
                     self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
                                      str(var) + "_" + \
                                      str(self.iniItemsLC['name']) + "_" + \
-                                     "monthAvgUpsAvg_output.nc",\
+                                     "monthAvgUpsAvg.nc",\
                                      "upstream_average_" + var,"undefined")
 
 
