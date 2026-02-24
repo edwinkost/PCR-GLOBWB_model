@@ -1591,12 +1591,13 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
                                                        varName = "automatic",\
                                                        cloneMapFileName = cloneMapFileName)
             except:
-                # read netcdf file with time
-                PCRmap = netcdf2PCRobjClone(ncFile = v,\
-                                            varName = "automatic",\
-                                            dateInput = None,\
-                                            useDoy = None, \
-                                            cloneMapFileName = cloneMapFileName)
+                # ~ # read netcdf file with time
+                # ~ PCRmap = netcdf2PCRobjClone(ncFile = v,\
+                                            # ~ varName = "automatic",\
+                                            # ~ dateInput = None,\
+                                            # ~ useDoy = None, \
+                                            # ~ cloneMapFileName = cloneMapFileName)
+                pass
 
         else:
             
