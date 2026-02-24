@@ -138,6 +138,8 @@ class SoilAndTopoParameters(object):
                     vars(self)[var] = pcr.cover(vars(self)[var],
                                       pcr.windowaverage(vars(self)[var], 1.00))
 
+                pcr.aguila(vars(self)[var])
+                
                 vars(self)[var] = pcr.cover(vars(self)[var], 0.0)
 
         else:
