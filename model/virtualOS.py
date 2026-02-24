@@ -1597,7 +1597,10 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
                                             # ~ dateInput = None,\
                                             # ~ useDoy = None, \
                                             # ~ cloneMapFileName = cloneMapFileName)
-                pass
+
+                PCRmap = netcdf2PCRobjCloneWithoutTime(ncFile = v,\
+                                                       varName = "automatic",\
+                                                       cloneMapFileName = cloneMapFileName)
 
         else:
             
