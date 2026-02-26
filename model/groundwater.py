@@ -405,7 +405,7 @@ class Groundwater(object):
         self.getICs(iniItems,spinUp)
 
         # initiate old style reporting (this is useful for debugging)
-        self.initiate_old_style_groundwater_reporting(iniItems,routing)
+        self.initiate_old_style_groundwater_reporting(iniItems)
 
     def initiate_old_style_groundwater_reporting(self,iniItems):
 
@@ -705,7 +705,7 @@ class Groundwater(object):
         self.calculate_statistics(routing)
 
         # old-style reporting
-        self.old_style_groundwater_reporting(currTimeStep)              # TODO: remove this one
+        self.old_style_groundwater_reporting(currTimeStep,routing)              # TODO: remove this one
 
     def update_with_MODFLOW(self,landSurface,routing,currTimeStep):
 
