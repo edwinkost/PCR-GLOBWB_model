@@ -2574,4 +2574,5 @@ class Routing(object):
                                          "monthAvgUpsAvg.nc",\
                                          "upstream_average_"+var,\
                           pcr.pcr2numpy(self.__getattribute__(var+'MonthAvgUpsAvg'),vos.MV),\
+                                         timeStamp,currTimeStep.monthIdx-1)
 
