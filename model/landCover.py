@@ -1057,8 +1057,8 @@ class LandCover(object):
 
         # soil properties values - hack needed only for the GLORIF
         if self.numberOfSoilLayers == 2:
-            self.airEntryUpp        = pcr.ifthen(self.landmask, self.parameters.airEntryUpp       )
-            self.airEntryLow        = pcr.ifthen(self.landmask, self.parameters.airEntryLow       )
+            self.airEntryUpp        = pcr.ifthen(self.landmask, self.parameters.airEntryValueUpp  )
+            self.airEntryLow        = pcr.ifthen(self.landmask, self.parameters.airEntryValueLow  )
             self.poreSizeBetaUpp    = pcr.ifthen(self.landmask, self.parameters.poreSizeBetaUpp   )
             self.poreSizeBetaLow    = pcr.ifthen(self.landmask, self.parameters.poreSizeBetaLow   )
             self.kSatUpp            = pcr.ifthen(self.landmask, self.parameters.kSatUpp           )
