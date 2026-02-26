@@ -2298,6 +2298,8 @@ class Routing(object):
             self.outDailyTotUpsAvgNC = iniItems.routingOptions['outDailyTotUpsAvgNC'].split(",")
             self.outMonthTotUpsAvgNC = iniItems.routingOptions['outMonthTotUpsAvgNC'].split(",") 
             self.outMonthAvgUpsAvgNC = iniItems.routingOptions['outMonthAvgUpsAvgNC'].split(",")
+            
+            pietje
 
         except:
             self.report = False
