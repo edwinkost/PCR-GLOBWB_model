@@ -2492,3 +2492,86 @@ class Routing(object):
                           pcr2numpy(self.__getattribute__(var),vos.MV),\
                                          timeStamp,currTimeStep.annuaIdx-1)
 
+
+            # upsteam average (through LDD)
+            # -- calculate upstream area
+            if timestepPCR == 1: self.upstream_area = pcr.catchmenttotal(routing.cellArea, routing.lddMap)
+
+            # -- daily upsteam average (through LDD)
+            if self.outDailyTotUpsAvgNC[0] != "None":
+		    
+                for var in self.outDailyTotUpsAvgNC:
+		    
+                    # calculate upstream average
+                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                                                        self.upstream_area
+
+                    self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
+                                     str(var) + "_" + \
+                                     "dailyTotUpsAvg.nc",\
+                                     "upstream_average_"+var,\
+                      pcr.pcr2numpy(self.__getattribute__(var+'DailyTotUpsAvg'),vos.MV),\
+                                     timeStamp,timestepPCR-1)
+
+
+            # -- monthly upsteam average (through LDD)
+
+            # - cummulative
+            if self.outMonthTotUpsAvgNC[0] != "None":
+                for var in self.outMonthTotUpsAvgNC:
+		    
+                    # introduce variables at the beginning of simulation or
+                    #     reset variables at the beginning of the month
+                    if timestepPCR == 1 or \
+                       currTimeStep.day == 1:\
+                       vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
+		    
+                    # calculate upstream average
+                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                                                        self.upstream_area
+		    
+                    # accumulating
+                    vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'DailyTotUpsAvg']
+		    
+                    # reporting at the end of the month:
+                    if currTimeStep.endMonth == True: 
+
+                        self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
+                                         str(var) + "_" + \
+                                         "monthTotUpsAvg.nc",\
+                                         "upstream_average_"+var,\
+                          pcr.pcr2numpy(self.__getattribute__(var+'MonthTotUpsAvg'),vos.MV),\
+                                         timeStamp,currTimeStep.monthIdx-1)
+
+            # - average
+            if self.outMonthAvgUpsAvgNC[0] != "None":
+                for var in self.outMonthAvgUpsAvgNC:
+		    
+                    # only if a accumulator variable has not been defined: 
+                    if var not in self.outMonthTotUpsAvgNC: 
+		    
+                        # introduce accumulator at the beginning of simulation or
+                        #     reset accumulator at the beginning of the month
+                        if timestepPCR == 1 or \
+                           currTimeStep.day == 1:\
+                           vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
+		    
+                        # calculate upstream average
+                        vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                                                            self.upstream_area
+					    
+                        # accumulating
+                        vars(self)[var+'MonthTotUpsAvg'] += vars(self)[var+'DailyTotUpsAvg']
+		    
+                    # calculating average & reporting at the end of the month:
+                    if currTimeStep.endMonth == True:
+		    
+                        vars(self)[var+'MonthAvgUpsAvg'] = vars(self)[var+'MonthTotUpsAvg']/\
+                                                           currTimeStep.day  
+		    
+                        self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
+                                         str(var) + "_" + \
+                                         "monthAvgUpsAvg.nc",\
+                                         "upstream_average_"+var,\
+                          pcr.pcr2numpy(self.__getattribute__(var+'MonthAvgUpsAvg'),vos.MV),\
+
