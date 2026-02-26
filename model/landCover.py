@@ -1055,7 +1055,10 @@ class LandCover(object):
                   self.storUpp000005 + self.storUpp005030 + self.satDegLow030150, self.parameters.storCapUpp000005 + self.parameters.storCapUpp005030 + self.parameters.storCapLow030150,\
                   vos.smallNumber, 0.0))
 
-        # soil properties values - hack needed only for the GLORIF
+        # soil topo properties values - hack needed only for the GLORIF
+        self.slopeLength        = pcr.ifthen(self.landmask, self.parameters.slopeLength)
+        self.percolationImp     = pcr.ifthen(self.landmask, self.parameters.percolationImp)
+
         if self.numberOfSoilLayers == 2:
             self.airEntryUpp        = pcr.ifthen(self.landmask, self.parameters.airEntryValueUpp  )
             self.airEntryLow        = pcr.ifthen(self.landmask, self.parameters.airEntryValueLow  )
@@ -1067,7 +1070,6 @@ class LandCover(object):
             self.resVolMoistContLow = pcr.ifthen(self.landmask, self.parameters.resVolMoistContLow)
             self.satVolMoistContUpp = pcr.ifthen(self.landmask, self.parameters.satVolMoistContUpp)
             self.satVolMoistContLow = pcr.ifthen(self.landmask, self.parameters.satVolMoistContLow)
-            self.slopeLength        = pcr.ifthen(self.landmask, self.parameters.slopeLength       )
             self.storCapUpp         = pcr.ifthen(self.landmask, self.parameters.storCapUpp        )
             self.storCapLow         = pcr.ifthen(self.landmask, self.parameters.storCapLow        )
             self.thickUpp           = pcr.ifthen(self.landmask, self.parameters.thickUpp          )
