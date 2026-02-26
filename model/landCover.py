@@ -1055,7 +1055,24 @@ class LandCover(object):
                   self.storUpp000005 + self.storUpp005030 + self.satDegLow030150, self.parameters.storCapUpp000005 + self.parameters.storCapUpp005030 + self.parameters.storCapLow030150,\
                   vos.smallNumber, 0.0))
 
-        
+        # soil properties values - hack needed only for the GLORIF
+        if self.numberOfSoilLayers == 2:
+            self.airEntryUpp        = pcr.ifthen(self.landmask, self.parameters.airEntryUpp       )
+            self.airEntryLow        = pcr.ifthen(self.landmask, self.parameters.airEntryLow       )
+            self.poreSizeBetaUpp    = pcr.ifthen(self.landmask, self.parameters.poreSizeBetaUpp   )
+            self.poreSizeBetaLow    = pcr.ifthen(self.landmask, self.parameters.poreSizeBetaLow   )
+            self.kSatUpp            = pcr.ifthen(self.landmask, self.parameters.kSatUpp           )
+            self.kSatLow            = pcr.ifthen(self.landmask, self.parameters.kSatLow           )
+            self.resVolMoistContUpp = pcr.ifthen(self.landmask, self.parameters.resVolMoistContUpp)
+            self.resVolMoistContLow = pcr.ifthen(self.landmask, self.parameters.resVolMoistContLow)
+            self.satVolMoistContUpp = pcr.ifthen(self.landmask, self.parameters.satVolMoistContUpp)
+            self.satVolMoistContLow = pcr.ifthen(self.landmask, self.parameters.satVolMoistContLow)
+            self.slopeLength        = pcr.ifthen(self.landmask, self.parameters.slopeLength       )
+            self.storCapUpp         = pcr.ifthen(self.landmask, self.parameters.storCapUpp        )
+            self.storCapLow         = pcr.ifthen(self.landmask, self.parameters.storCapLow        )
+            self.thickUpp           = pcr.ifthen(self.landmask, self.parameters.thickUpp          )
+            self.thickLow           = pcr.ifthen(self.landmask, self.parameters.thickLow          )
+
         if self.report == True:
             # writing Output to netcdf files
             # - daily output:
