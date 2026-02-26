@@ -2294,8 +2294,14 @@ class Routing(object):
             self.outAnnuaTotNC = iniItems.routingOptions['outAnnuaTotNC'].split(",")
             self.outAnnuaAvgNC = iniItems.routingOptions['outAnnuaAvgNC'].split(",")
             self.outAnnuaEndNC = iniItems.routingOptions['outAnnuaEndNC'].split(",")
+
+            self.outDailyTotUpsAvgNC = iniItems.routingOptions['outDailyTotUpsAvgNC'].split(",")
+            self.outMonthTotUpsAvgNC = iniItems.routingOptions['outMonthTotUpsAvgNC'].split(",") 
+            self.outMonthAvgUpsAvgNC = iniItems.routingOptions['outMonthAvgUpsAvgNC'].split(",")
+
         except:
             self.report = False
+
         if self.report == True:
             # daily output in netCDF files:
             self.outNCDir  = iniItems.outNCDir
@@ -2363,6 +2369,31 @@ class Routing(object):
                     self.netcdfObj.createNetCDF(str(self.outNCDir)+"/"+ \
                                                 str(var)+"_annuaEnd.nc",\
                                                     var,"undefined")
+
+            # -- daily upsteam average (through LDD)
+            if self.outDailyTotUpsAvgNC[0] != "None":    
+                for var in self.outDailyTotUpsAvgNC:
+                    self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
+                                     str(var) + "_" + \
+                                     "dailyTotUpsAvg.nc",\
+                                     "upstream_average_" + var,"undefined")
+
+            # -- monthly total upsteam average (through LDD)
+            if self.outMonthTotUpsAvgNC[0] != "None":    
+                for var in self.outMonthTotUpsAvgNC:
+                    self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
+                                     str(var) + "_" + \
+                                     "monthTotUpsAvg.nc",\
+                                     "upstream_average_" + var,"undefined")
+		    
+            # -- monthly average upsteam average (through LDD)
+            if self.outMonthAvgUpsAvgNC[0] != "None":    
+                for var in self.outMonthAvgUpsAvgNC:
+                    self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
+                                     str(var) + "_" + \
+                                     "monthAvgUpsAvg.nc",\
+                                     "upstream_average_" + var,"undefined")
+
 
     def old_style_routing_reporting(self,currTimeStep):
 
