@@ -2525,7 +2525,7 @@ class Routing(object):
 
             # upsteam average (through LDD)
             # -- calculate upstream area
-            if timestepPCR == 1: self.upstream_area = pcr.catchmenttotal(routing.cellArea, routing.lddMap)
+            if timestepPCR == 1: self.upstream_area = pcr.catchmenttotal(self.cellArea, self.lddMap)
 
             # -- daily upsteam average (through LDD)
             if self.outDailyTotUpsAvgNC[0] != "None":
@@ -2533,7 +2533,7 @@ class Routing(object):
                 for var in self.outDailyTotUpsAvgNC:
 		    
                     # calculate upstream average
-                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * self.cellArea, self.lddMap) /\
                                                         self.upstream_area
 
                     self.netcdfObj.data2NetCDF(str(self.outNCDir)+ \
@@ -2557,7 +2557,7 @@ class Routing(object):
                        vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
 		    
                     # calculate upstream average
-                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                    vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * self.cellArea, self.lddMap) /\
                                                         self.upstream_area
 		    
                     # accumulating
@@ -2587,7 +2587,7 @@ class Routing(object):
                            vars(self)[var+'MonthTotUpsAvg'] = pcr.scalar(0.0)
 		    
                         # calculate upstream average
-                        vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * routing.cellArea, routing.lddMap) /\
+                        vars(self)[var+'DailyTotUpsAvg'] =  pcr.catchmenttotal(pcr.cover(vars(self)[var], 0.0) * self.cellArea, self.lddMap) /\
                                                             self.upstream_area
 					    
                         # accumulating
