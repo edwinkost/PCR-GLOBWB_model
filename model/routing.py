@@ -2299,8 +2299,6 @@ class Routing(object):
             self.outMonthTotUpsAvgNC = iniItems.routingOptions['outMonthTotUpsAvgNC'].split(",") 
             self.outMonthAvgUpsAvgNC = iniItems.routingOptions['outMonthAvgUpsAvgNC'].split(",")
             
-            pietje
-
         except:
             self.report = False
 
@@ -2373,6 +2371,9 @@ class Routing(object):
                                                     var,"undefined")
 
             # -- daily upsteam average (through LDD)
+            
+            pietje
+            
             if self.outDailyTotUpsAvgNC[0] != "None":    
                 for var in self.outDailyTotUpsAvgNC:
                     self.netcdfObj.createNetCDF(str(self.outNCDir)+"/" + \
