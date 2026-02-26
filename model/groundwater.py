@@ -405,7 +405,7 @@ class Groundwater(object):
         self.getICs(iniItems,spinUp)
 
         # initiate old style reporting (this is useful for debugging)
-        self.initiate_old_style_groundwater_reporting(iniItems)
+        self.initiate_old_style_groundwater_reporting(iniItems,routing)
 
     def initiate_old_style_groundwater_reporting(self,iniItems):
 
@@ -900,7 +900,7 @@ class Groundwater(object):
         self.avgStorGroundwater = pcr.max(0.0, self.avgStorGroundwater)
 
 
-    def old_style_groundwater_reporting(self,currTimeStep):
+    def old_style_groundwater_reporting(self,currTimeStep,routing):
 
         if self.report == True:
             timeStamp = datetime.datetime(currTimeStep.year,\
