@@ -612,7 +612,12 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
             f.variables['lat'] = f.variables['latitude']
             f.variables['lon'] = f.variables['longitude']
         except:
-            pass
+            try: 
+                f.variables['lat'] = f.variables['y']
+                f.variables['lon'] = f.variables['x']
+            except:
+                pass
+            # ~ pass
 
     if varName == "automatic":
         nc_dims = [dim for dim in f.dimensions]
