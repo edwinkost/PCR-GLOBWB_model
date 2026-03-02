@@ -1199,7 +1199,7 @@ class Routing(object):
         ##########################################################################################################################
 
         # calculate the statistics of long and short term flow values
-        self.calculate_statistics(groundwater)
+        self.calculate_statistics(groundwater, meteo)
         
         # return waterBodyStorage to channelStorage  
         self.channelStorage = self.return_water_body_storage_to_channel(self.channelStorage)
@@ -2187,7 +2187,7 @@ class Routing(object):
 
 
 
-    def calculate_statistics(self, groundwater):
+    def calculate_statistics(self, groundwater, landSurface, meteo):
 
         # short term average inflow (m3/s) and long term average outflow (m3/s) from lake and reservoirs
         self.avgInflow  = pcr.ifthen(self.landmask, pcr.cover(self.WaterBodies.avgInflow , 0.0)) 
@@ -2224,6 +2224,17 @@ class Routing(object):
                            deltaAnoBaseflow/\
                            pcr.min(self.maxTimestepsToAvgDischargeLong, self.timestepsToAvgDischarge)                
         self.avgBaseflow = pcr.max(0.0, self.avgBaseflow)
+
+        # long term average precipitation and total potential evaporation
+        anom_long_term_avg_p = meteo.precipitation - self.long_term_avg_p
+        self.long_term_avg_p = self.long_term_avg_p  
+        
+        self.long_term_avg_pet = landSurface.totalPotET + self.waterBodyPotEvap
+        
+        # - calculating aridity index
+        self.aridity_index     = self.long_term_avg_p / self.long_term_avg_pet
+        self.aridity_index_alt = self.long_term_avg_p / (self.long_term_avg_p + self.long_term_avg_pet) 
+
 
     def estimate_discharge_for_environmental_flow(self, channelStorage):
 

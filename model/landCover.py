@@ -1058,7 +1058,6 @@ class LandCover(object):
         # soil topo properties values - hack needed only for the GLORIF
         self.slopeLength        = pcr.ifthen(self.landmask, self.parameters.slopeLength)
         self.percolationImp     = pcr.ifthen(self.landmask, self.parameters.percolationImp)
-
         if self.numberOfSoilLayers == 2:
             self.airEntryUpp        = pcr.ifthen(self.landmask, self.parameters.airEntryValueUpp  )
             self.airEntryLow        = pcr.ifthen(self.landmask, self.parameters.airEntryValueLow  )
