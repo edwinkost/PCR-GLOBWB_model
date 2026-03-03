@@ -964,9 +964,13 @@ class Routing(object):
         # water body balance check
         self.waterBodyBalance = self.WaterBodies.waterBodyBalance
         
-        # flow depth
-        self.flow_depth = self.discharge / self.upstream_area
+        # flow depth (m)
+        if currTimeStep.timestepPCR == 1: self.upstream_area = pcr.ifthen(self.landmask, pcr.catchmenttotal(self.cellArea, self.lddMap))
+        self.flow_depth = self.discharge * 0.0864 / self.upstream_area 
 
+        #~ # estimate groundwater depth
+        #~ self.groundwater_depth_estimate = groundwater.relativeGroundwaterHead + 
+        
         # old-style reporting                             
         self.old_style_routing_reporting(currTimeStep)                 # TODO: remove this one
 
