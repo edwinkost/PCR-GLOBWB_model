@@ -1212,7 +1212,7 @@ class Routing(object):
         ##########################################################################################################################
 
         # calculate the statistics of long and short term flow values
-        self.calculate_statistics(groundwater, meteo)
+        self.calculate_statistics(groundwater, landSurface, meteo)
         
         # return waterBodyStorage to channelStorage  
         self.channelStorage = self.return_water_body_storage_to_channel(self.channelStorage)
@@ -1654,7 +1654,7 @@ class Routing(object):
         self.disChanWaterBody = pcr.max(0.,self.disChanWaterBody)      # reported channel discharge cannot be negative
 
         # calculate the statistics of long and short term flow values
-        self.calculate_statistics(groundwater)
+        self.calculate_statistics(groundwater, landSurface, meteo)
 
 
 
@@ -1932,7 +1932,7 @@ class Routing(object):
         self.disChanWaterBody = pcr.max(0.,self.disChanWaterBody)      # reported channel discharge cannot be negative
 
         # calculate the statistics of long and short term flow values
-        self.calculate_statistics(groundwater)
+        self.calculate_statistics(groundwater, landSurface, meteo)
 
 
 
@@ -2200,7 +2200,7 @@ class Routing(object):
 
 
 
-    def calculate_statistics(self, groundwater = groundwater, landSurface = landSurface, meteo = meteo):
+    def calculate_statistics(self, groundwater, landSurface, meteo):
 
         # short term average inflow (m3/s) and long term average outflow (m3/s) from lake and reservoirs
         self.avgInflow  = pcr.ifthen(self.landmask, pcr.cover(self.WaterBodies.avgInflow , 0.0)) 
