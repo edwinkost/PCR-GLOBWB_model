@@ -965,7 +965,7 @@ class Routing(object):
         self.waterBodyBalance = self.WaterBodies.waterBodyBalance
         
         # flow depth
-        self.flow_depth = self..discharge / self.upstream_area
+        self.flow_depth = self.discharge / self.upstream_area
 
         # old-style reporting                             
         self.old_style_routing_reporting(currTimeStep)                 # TODO: remove this one
