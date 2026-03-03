@@ -965,11 +965,11 @@ class Routing(object):
         self.waterBodyBalance = self.WaterBodies.waterBodyBalance
         
         # flow depth (m)
-        if currTimeStep.timestepPCR == 1: self.upstream_area = pcr.ifthen(self.landmask, pcr.catchmenttotal(self.cellArea, self.lddMap))
+        if currTimeStep.timeStepPCR == 1: self.upstream_area = pcr.ifthen(self.landmask, pcr.catchmenttotal(self.cellArea, self.lddMap))
         self.flow_depth = self.discharge * 0.0864 / self.upstream_area 
 
         # estimate groundwater depth (m)
-        if currTimeStep.timestepPCR == 1:
+        if currTimeStep.timeStepPCR == 1:
             topoPropertiesNC = vos.getFullPath(\
                                self.iniItems.landSurfaceOptions["topographyNC"],
                                self.inputDir)
