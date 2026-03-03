@@ -2200,7 +2200,7 @@ class Routing(object):
 
 
 
-    def calculate_statistics(self, groundwater, landSurface, meteo):
+    def calculate_statistics(self, groundwater = groundwater, landSurface = landSurface, meteo = meteo):
 
         # short term average inflow (m3/s) and long term average outflow (m3/s) from lake and reservoirs
         self.avgInflow  = pcr.ifthen(self.landmask, pcr.cover(self.WaterBodies.avgInflow , 0.0)) 
