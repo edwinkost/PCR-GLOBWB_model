@@ -968,7 +968,7 @@ class Routing(object):
         
         # flow depth (m)
         if currTimeStep.timeStepPCR == 1: self.upstream_area = pcr.ifthen(self.landmask, pcr.catchmenttotal(self.cellArea, self.lddMap))
-        self.flow_depth = self.discharge * 0.0864 / self.upstream_area 
+        self.flow_depth = self.discharge * 86400. / self.upstream_area 
 
         # estimate groundwater depth (m)
         if currTimeStep.timeStepPCR == 1:
