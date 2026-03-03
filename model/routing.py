@@ -968,8 +968,21 @@ class Routing(object):
         if currTimeStep.timestepPCR == 1: self.upstream_area = pcr.ifthen(self.landmask, pcr.catchmenttotal(self.cellArea, self.lddMap))
         self.flow_depth = self.discharge * 0.0864 / self.upstream_area 
 
-        #~ # estimate groundwater depth
-        #~ self.groundwater_depth_estimate = groundwater.relativeGroundwaterHead + 
+        # estimate groundwater depth (m)
+        if currTimeStep.timestepPCR == 1:
+            topoPropertiesNC = vos.getFullPath(\
+                               self.iniItems.landSurfaceOptions["topographyNC"],
+                               self.inputDir)
+            self.dem_average = vos.netcdf2PCRobjCloneWithoutTime(\
+                                 topoPropertiesNC, "dem_average", \
+                                 cloneMapFileName = self.cloneMap)
+            self.dem_average = pcr.ifthen(self.landmask, pcr.cover(self.dem_average, 0.0))
+            self.dem_minimum = vos.netcdf2PCRobjCloneWithoutTime(\
+                                 topoPropertiesNC, "dem_minimum", \
+                                 cloneMapFileName = self.cloneMap)
+            self.dem_minimum = pcr.ifthen(self.landmask, pcr.cover(self.dem_minimum, 0.0))
+
+        self.groundwater_depth_estimate = pcr.ifthen(self.landmask, self.dem_average - (groundwater.relativeGroundwaterHead + self.dem_minimum))
         
         # old-style reporting                             
         self.old_style_routing_reporting(currTimeStep)                 # TODO: remove this one
