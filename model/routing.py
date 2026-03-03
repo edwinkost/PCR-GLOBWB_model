@@ -75,6 +75,9 @@ class Routing(object):
         # This variable needed only for kinematic wave methods (i.e. kinematicWave and simplifiedKinematicWave)
         result['subDischarge']             = self.subDischarge               #  m3/s   ; sub-time step discharge (needed for kinematic wave methods/approaches)
 
+        result['long_term_avg_p']          = self.long_term_avg_p            #  m/day
+        result['long_term_avg_pet']        = self.long_term_avg_pet          #  m/day
+        
         return result
 
     def __init__(self,iniItems,initialConditions,lddMap):
@@ -343,7 +346,10 @@ class Routing(object):
             self.avgDischargeShort       = vos.readPCRmapClone(iniItems.routingOptions['avgDischargeShortIni']       ,self.cloneMap,self.tmpDir,self.inputDir) 
 
             # Initial conditions needed for kinematic wave methods
-            self.subDischarge            = vos.readPCRmapClone(iniItems.routingOptions['subDischargeIni'],self.cloneMap,self.tmpDir,self.inputDir)  
+            self.subDischarge            = vos.readPCRmapClone(iniItems.routingOptions['subDischargeIni'],self.cloneMap,self.tmpDir,self.inputDir)
+            
+            self.long_term_avg_p         = vos.readPCRmapClone(iniItems.routingOptions['long_term_avg_pIni']  , self.cloneMap, self.tmpDir, self.inputDir)
+            self.long_term_avg_pet       = vos.readPCRmapClone(iniItems.routingOptions['long_term_avg_petIni'], self.cloneMap, self.tmpDir, self.inputDir)
 
         else:              
 
@@ -361,6 +367,10 @@ class Routing(object):
             
             self.subDischarge            = iniConditions['routing']['subDischarge']
             
+            self.long_term_avg_p         = iniConditions['routing']['long_term_avg_p']
+            self.long_term_avg_pet       = iniConditions['routing']['long_term_avg_pet']
+
+
         self.channelStorage        = pcr.ifthen(self.landmask, pcr.cover(self.channelStorage,        0.0))
         self.readAvlChannelStorage = pcr.ifthen(self.landmask, pcr.cover(self.readAvlChannelStorage, 0.0))
         self.avgDischarge          = pcr.ifthen(self.landmask, pcr.cover(self.avgDischarge,          0.0))
@@ -406,6 +416,9 @@ class Routing(object):
         self.avgOutflow = pcr.ifthen(self.landmask, pcr.cover(self.avgOutflow, 0.0))
         if self.waterBodyStorage is not None:
             self.waterBodyStorage = pcr.ifthen(self.landmask, pcr.cover(self.waterBodyStorage, 0.0))
+
+        self.long_term_avg_p   = pcr.ifthen(self.landmask, pcr.cover(self.long_term_avg_p  , 0.0))
+        self.long_term_avg_pet = pcr.ifthen(self.landmask, pcr.cover(self.long_term_avg_pet, 0.0))
 
 
     def estimateBankfullDischarge(self, bankfullWidth, factor = 4.8):
@@ -2183,7 +2196,7 @@ class Routing(object):
         self.disChanWaterBody = pcr.max(0.,self.disChanWaterBody)      # reported channel discharge cannot be negative
 
         # calculate the statistics of long and short term flow values
-        self.calculate_statistics(groundwater)
+        self.calculate_statistics(groundwater, landSurface, meteo)
 
 
 
@@ -2225,12 +2238,19 @@ class Routing(object):
                            pcr.min(self.maxTimestepsToAvgDischargeLong, self.timestepsToAvgDischarge)                
         self.avgBaseflow = pcr.max(0.0, self.avgBaseflow)
 
-        # long term average precipitation and total potential evaporation
+        
+        # long term average precipitation
         anom_long_term_avg_p = meteo.precipitation - self.long_term_avg_p
-        self.long_term_avg_p = self.long_term_avg_p  
-        
-        self.long_term_avg_pet = landSurface.totalPotET + self.waterBodyPotEvap
-        
+        self.long_term_avg_p = self.long_term_avg_p +\
+                               anom_long_term_avg_p/\
+                               pcr.min(self.maxTimestepsToAvgDischargeLong, self.timestepsToAvgDischarge)            
+        #
+        # long term total potential evaporation
+        anom_long_term_avg_pet = (landSurface.totalPotET + self.waterBodyPotEvap) - self.long_term_avg_pet
+        self.long_term_avg_pet = self.long_term_avg_pet +\
+                                 anom_long_term_avg_pet/\
+                                 pcr.min(self.maxTimestepsToAvgDischargeLong, self.timestepsToAvgDischarge)
+        #
         # - calculating aridity index
         self.aridity_index     = self.long_term_avg_p / self.long_term_avg_pet
         self.aridity_index_alt = self.long_term_avg_p / (self.long_term_avg_p + self.long_term_avg_pet) 
