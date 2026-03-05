@@ -1132,9 +1132,9 @@ class Meteo(object):
                     netcdf_file_name = self.etpFileNC %(int(currTimeStep.year), int(currTimeStep.month), int(currTimeStep.month), int(currTimeStep.year))
                 except:
                     try:
-                        netcdf_file_name = self.tmpFileNC %(int(currTimeStep.year), int(currTimeStep.month))
+                        netcdf_file_name = self.etpFileNC %(int(currTimeStep.year), int(currTimeStep.month))
                     except:
-                        netcdf_file_name = self.tmpFileNC %(int(currTimeStep.month), int(currTimeStep.year))
+                        netcdf_file_name = self.etpFileNC %(int(currTimeStep.month), int(currTimeStep.year))
                 method_for_time_index = "daily_per_monthly_file"
             
             # method for finding time indexes in the precipitation netdf file:
