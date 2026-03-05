@@ -1015,6 +1015,11 @@ class Meteo(object):
         # reading precipitation:
         netcdf_file_name = self.preFileNC
 
+        # method for finding time indexes in the precipitation netdf file:
+        # - the default one
+        method_for_time_index = None
+        method_for_time_index = "daily"
+
         if ("precipitation_file_per_month" in list(self.iniItems.meteoOptions.keys())) and\
                                                   (self.iniItems.meteoOptions['precipitation_file_per_month'] == "True"):
             try:
@@ -1030,9 +1035,6 @@ class Meteo(object):
             netcdf_file_name = self.preFileNC %(int(currTimeStep.year), int(currTimeStep.year))
 
         # method for finding time indexes in the precipitation netdf file:
-        # - the default one
-        method_for_time_index = None
-        method_for_time_index = "daily"
         # - based on the ini/configuration file (if given)
         if 'time_index_method_for_precipitation_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
                                                            self.iniItems.meteoOptions['time_index_method_for_precipitation_netcdf'] != "None":
@@ -1069,6 +1071,11 @@ class Meteo(object):
         # reading temperature
         netcdf_file_name = self.tmpFileNC
 
+        # method for finding time indexes in the precipitation netdf file:
+        # - the default one
+        method_for_time_index = None
+        method_for_time_index = "daily"
+
         if ("temperature_file_per_month" in list(self.iniItems.meteoOptions.keys())) and\
                                                  (self.iniItems.meteoOptions['temperature_file_per_month'] == "True"):
             try:
@@ -1084,9 +1091,6 @@ class Meteo(object):
             netcdf_file_name = self.tmpFileNC %(int(currTimeStep.year), int(currTimeStep.year))
 
         # method for finding time index in the temperature netdf file:
-        # - the default one
-        method_for_time_index = None
-        method_for_time_index = "daily"
         # - based on the ini/configuration file (if given)
         if 'time_index_method_for_temperature_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
                                                          self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf'] != "None":
@@ -1117,6 +1121,11 @@ class Meteo(object):
             # reading referencePotET
             netcdf_file_name = self.etpFileNC
 		    
+            # method for finding time indexes in the precipitation netdf file:
+            # - the default one
+            method_for_time_index = None
+            method_for_time_index = "daily"
+
             if ("refETPotFileNC_file_per_month" in list(self.iniItems.meteoOptions.keys())) and\
                                                        (self.iniItems.meteoOptions['refETPotFileNC_file_per_month'] == "True"):
                 try:
@@ -1129,9 +1138,6 @@ class Meteo(object):
                 method_for_time_index = "daily_per_monthly_file"
             
             # method for finding time indexes in the precipitation netdf file:
-            # - the default one
-            method_for_time_index = None
-            method_for_time_index = "daily"
             # - based on the ini/configuration file (if given)
             if 'time_index_method_for_ref_pot_et_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
                                                             self.iniItems.meteoOptions['time_index_method_for_ref_pot_et_netcdf'] != "None":

@@ -609,12 +609,12 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
     
     if LatitudeLongitude == True:
         try:
-            f.variables['lat'] = f.variables['latitude']
-            f.variables['lon'] = f.variables['longitude']
+            f.variables['lat'] = f.variables['y']
+            f.variables['lon'] = f.variables['x']
         except:
             try: 
-                f.variables['lat'] = f.variables['y']
-                f.variables['lon'] = f.variables['x']
+                f.variables['lat'] = f.variables['latitude']
+                f.variables['lon'] = f.variables['longitude']
             except:
                 pass
             # ~ pass
@@ -788,15 +788,7 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
         yULClone = attributeClone['yUL']
         # get the attributes of input (netCDF) 
         cellsizeInput = f.variables['lat'][0]- f.variables['lat'][1]
-        
-        print(f.variables['lat'][0])
-        print(f.variables['lat'][1])
-        
-        try:
-            cellsizeInput = float(cellsizeInput)
-        except:
-            cellsizeInput = float(np.average(cellsizeInput))
-        
+        cellsizeInput = float(cellsizeInput)
         rowsInput = len(f.variables['lat'])
         colsInput = len(f.variables['lon'])
         xULInput = f.variables['lon'][0]-0.5*cellsizeInput
