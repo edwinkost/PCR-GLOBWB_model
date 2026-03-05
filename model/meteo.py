@@ -1092,8 +1092,6 @@ class Meteo(object):
                                                          self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf'] != "None":
             method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf']
 
-        pietje
-        
         self.temperature = vos.netcdf2PCRobjClone(\
                                   netcdf_file_name, self.tmpVarName,\
                                   str(currTimeStep.fulldate), 

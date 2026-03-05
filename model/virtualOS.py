@@ -792,7 +792,11 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
         print(f.variables['lat'][0])
         print(f.variables['lat'][1])
         
-        cellsizeInput = float(cellsizeInput)
+        try:
+            cellsizeInput = float(cellsizeInput)
+        except:
+            cellsizeInput = float(np.average(cellsizeInput))
+        
         rowsInput = len(f.variables['lat'])
         colsInput = len(f.variables['lon'])
         xULInput = f.variables['lon'][0]-0.5*cellsizeInput
