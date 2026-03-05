@@ -788,6 +788,10 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
         yULClone = attributeClone['yUL']
         # get the attributes of input (netCDF) 
         cellsizeInput = f.variables['lat'][0]- f.variables['lat'][1]
+        
+        print(f.variables['lat'][0])
+        print(f.variables['lat'][1])
+        
         cellsizeInput = float(cellsizeInput)
         rowsInput = len(f.variables['lat'])
         colsInput = len(f.variables['lon'])
