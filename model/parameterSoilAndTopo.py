@@ -228,8 +228,8 @@ class SoilAndTopoParameters(object):
                     msg = var + " is calculated based on thickness and volumetric mousture contents."
                     logger.info(msg)
                     
-                    if var == 'soilWaterStorageCap1': vars(self)[temp] = self.firstStorDepthInp / (self.satVolMoistContUpp - self.resVolMoistContUpp) 
-                    if var == 'soilWaterStorageCap2': vars(self)[temp] = self.secondStorDepthInp / (self.satVolMoistContLow - self.resVolMoistContLow) 
+                    if var == 'soilWaterStorageCap1': vars(self)[temp] = self.firstStorDepthInp * (self.satVolMoistContUpp - self.resVolMoistContUpp) 
+                    if var == 'soilWaterStorageCap2': vars(self)[temp] = self.secondStorDepthInp * (self.satVolMoistContLow - self.resVolMoistContLow) 
                 
                 else:
 
