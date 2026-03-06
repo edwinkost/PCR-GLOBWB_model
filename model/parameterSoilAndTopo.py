@@ -23,9 +23,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import logging
 
 import pcraster as pcr
 import virtualOS as vos
+
+logger = logging.getLogger(__name__)
 
 class SoilAndTopoParameters(object):
 
