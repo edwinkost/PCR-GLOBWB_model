@@ -216,9 +216,17 @@ class SoilAndTopoParameters(object):
                         'soilWaterStorageCap1','soilWaterStorageCap2'] 
         if optionDict['soilPropertiesNC'] == str(None):
             for var in soilStorages:
+                
                 input = optionDict[str(var)]
                 temp = str(var)+'Inp'
-                vars(self)[temp] = vos.readPCRmapClone(input,\
+                
+                if var in ['soilWaterStorageCap1','soilWaterStorageCap2'] and input.endswith("CALC"):
+
+                    if var == 'soilWaterStorageCap1': vars(self)[temp] = self.firstStorDepthInp / (self.satVolMoistContUpp - self.resVolMoistContUpp) 
+                    if var == 'soilWaterStorageCap2': vars(self)[temp] = self.secondStorDepthInp / (self.satVolMoistContLow - self.resVolMoistContLow) 
+                
+                else:
+                    vars(self)[temp] = vos.readPCRmapClone(input,\
                                             self.cloneMap,
                                             self.tmpDir,self.inputDir)
 
