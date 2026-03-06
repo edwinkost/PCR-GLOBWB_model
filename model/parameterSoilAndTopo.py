@@ -222,10 +222,14 @@ class SoilAndTopoParameters(object):
                 
                 if var in ['soilWaterStorageCap1','soilWaterStorageCap2'] and input.endswith("CALC"):
 
+                    msg = var + " is calculated based on thickness and volumetric mousture contents."
+                    logger.info(msg)
+                    
                     if var == 'soilWaterStorageCap1': vars(self)[temp] = self.firstStorDepthInp / (self.satVolMoistContUpp - self.resVolMoistContUpp) 
                     if var == 'soilWaterStorageCap2': vars(self)[temp] = self.secondStorDepthInp / (self.satVolMoistContLow - self.resVolMoistContLow) 
                 
                 else:
+
                     vars(self)[temp] = vos.readPCRmapClone(input,\
                                             self.cloneMap,
                                             self.tmpDir,self.inputDir)
