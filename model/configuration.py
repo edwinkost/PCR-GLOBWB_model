@@ -340,12 +340,11 @@ class Configuration(object):
             shutil.rmtree(self.mapsDir)
         os.makedirs(self.mapsDir)
         
-        # ~ # go to pcraster maps directory (so all pcr.report files will be saved in this directory) 
-        # ~ os.chdir(self.mapsDir)
-
-        # turned off for Ulysses/WaterSIS projects, in order to allow relative paths to relative root - TODO: Make this optional via the configuration .ini file. 
-        # os.chdir(self.mapsDir)
-
+        # go to pcraster maps directory (so all pcr.report files will be saved in this directory) 
+        if "keep_cwd" in self.globalOptions.keys() and self.globalOptions["keep_cwd"] == "True":
+            pass
+        else:     
+            os.chdir(self.mapsDir)
 
     def repair_ini_key_names(self):
         """
