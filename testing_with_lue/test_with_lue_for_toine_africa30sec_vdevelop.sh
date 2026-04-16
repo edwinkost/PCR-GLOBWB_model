@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#SBATCH --partition=rome
+#SBATCH --partition=genoa
 #SBATCH -N 1
 #SBATCH -n 1
 #SBATCH -c 192
