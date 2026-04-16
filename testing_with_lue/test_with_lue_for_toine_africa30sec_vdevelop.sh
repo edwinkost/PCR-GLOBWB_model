@@ -1,9 +1,19 @@
+#!/usr/bin/env bash
+#SBATCH --partition=rome
+#SBATCH -N 1
+#SBATCH -n 1
+#SBATCH -c 192
+#SBATCH --time=24:00:00
+#SBATCH --job-name test_lue
+#~ #SBATCH -o %x_out.txt
+#~ #SBATCH -e %x_err.txt
+
 set -eu
 
 # on snellius
 
-# - if you are not "edwin" you have to set the MODULEPATH as the following (so that you will load LUE etc compiled by "edwin")
-export MODULEPATH=/home/edwin/.local/easybuild/RHEL9/2025/modulefiles/all/:$MODULEPATH
+#~ # - if you are not "edwin" you have to set the MODULEPATH as the following (so that you will load LUE etc compiled by "edwin")
+#~ export MODULEPATH=/home/edwin/.local/easybuild/RHEL9/2025/modulefiles/all/:$MODULEPATH
 
 # - load LUE etc
 module load 2025 
@@ -20,4 +30,4 @@ LD_PRELOAD=$libtcmalloc \
 LUE_PCRASTER_PROVIDER_NAME=lue \
 LUE_PARTITION_SHAPE="600,600" \
      python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/30sec_africa_v2026develop.ini debug \
-         --hpx:threads=16
+         --hpx:threads=96
