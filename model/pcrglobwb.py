@@ -30,6 +30,8 @@ import gc
 
 from lue.framework.pcraster_provider import pcr
 
+import lue.framework as lfr
+
 import virtualOS as vos
 import meteo
 import landSurface
@@ -532,4 +534,5 @@ class PCRGlobWB(object):
 
         if pcr.provider_name == "lue":
             # TODO LUE: Assuming this is a good "result" of a single update
-            return self.routing.WaterBodies.waterBodyBalance.future()
+            #~ return self.routing.WaterBodies.waterBodyBalance.future()
+            return lfr.as_state(self.routing.WaterBodies.waterBodyBalance)
