@@ -246,7 +246,8 @@ class Routing(object):
                                                self.courantNumber * self.channelLength / design_flood_speed),1)[0]
         else:
             # LUE TODO support cellvalue
-            design_length_of_sub_time_step   = pcr.mapminimum(self.courantNumber * self.channelLength / design_flood_speed).future.get()
+            #~ design_length_of_sub_time_step   = pcr.mapminimum(self.courantNumber * self.channelLength / design_flood_speed).future.get()
+            design_length_of_sub_time_step   = 86400.
         self.limit_num_of_sub_time_steps = np.ceil(
                                            vos.secondsPerDay() / design_length_of_sub_time_step)
         #
@@ -404,7 +405,8 @@ class Routing(object):
                 self.timestepsToAvgDischarge = pcr.mapmaximum(self.timestepsToAvgDischarge)
             else:
                 # LUE TODO: support computing with future<scalar> (the new Scalar type)
-                self.timestepsToAvgDischarge = pcr.mapmaximum(self.timestepsToAvgDischarge).future.get()
+                #~ self.timestepsToAvgDischarge = pcr.mapmaximum(self.timestepsToAvgDischarge).future.get()
+                self.timestepsToAvgDischarge = 365.
         except:    
             pass # We have to use 'try/except' because 'pcr.mapmaximum' cannot handle scalar value
 
@@ -745,7 +747,8 @@ class Routing(object):
             number_of_loops = max(1.0, pcr.cellvalue(pcr.mapmaximum(number_of_sub_time_steps),1)[1])     # minimum number of sub_time_steps = 1 
         else:
             # TODO LUE support cellvalue, or calc with scalars
-            number_of_loops = max(1.0, pcr.mapmaximum(number_of_sub_time_steps).future.get())     # minimum number of sub_time_steps = 1 
+            #~ number_of_loops = max(1.0, pcr.mapmaximum(number_of_sub_time_steps).future.get())     # minimum number of sub_time_steps = 1 
+            number_of_loops = 1.0 
         number_of_loops = int(max(self.limit_num_of_sub_time_steps, number_of_loops))
         
         number_of_loops = min(self.maxiumNumberOfSubTimeSteps, number_of_loops)

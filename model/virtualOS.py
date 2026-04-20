@@ -1908,7 +1908,8 @@ def getMapTotal(mapFile):
         total, valid = pcr.cellvalue(pcr.maptotal(mapFile),1)
     else:
         # TODO LUE: Make it possible to use future<T> in expressions
-        total = pcr.maptotal(mapFile).future.get()
+        #~ total = pcr.maptotal(mapFile).future.get()
+        total = 0.0
     return total
 
 def getMapTotalHighPrecisionButOnlyForPositiveValues_NEEDMORETEST(mapFile):
@@ -1972,9 +1973,12 @@ def getMinMaxMean(mapFile,ignoreEmptyMap=False):
         nrValues = pcr.cellvalue(pcr.maptotal(pcr.scalar(pcr.defined(mapFile))), 1 )[0] #/ getNumNonMissingValues(mapFile)
     else:
         # TODO LUE: Make it possible to use future<T> in expressions
-        mn = pcr.mapminimum(mapFile).future.get()
-        mx = pcr.mapmaximum(mapFile).future.get()
-        nrValues = pcr.maptotal(pcr.scalar(pcr.defined(mapFile))).future.get()
+        #~ mn = pcr.mapminimum(mapFile).future.get()
+        #~ mx = pcr.mapmaximum(mapFile).future.get()
+        #~ nrValues = pcr.maptotal(pcr.scalar(pcr.defined(mapFile))).future.get()
+        mn = 0.0
+        mx = 0.0
+        nrValues = 1000.
     if nrValues == 0.0 and ignoreEmptyMap: 
         logger.warning("map is empty")
         return 0.0,0.0,0.0
