@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #SBATCH --partition=genoa
 #SBATCH -N 1
-#SBATCH -n 192
-#~ #SBATCH -c 192
+#~ #SBATCH -n 192
+#SBATCH -c 192
 #~ #SBATCH --time=24:00:00
 #SBATCH --time=59:00
 #SBATCH --job-name test_lue
@@ -38,6 +38,6 @@ LD_PRELOAD=$libtcmalloc \
 LUE_PCRASTER_PROVIDER_NAME=lue \
 LUE_PARTITION_SHAPE="600,600" \
      python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/30sec_africa_v2026develop.ini debug \
-         #~ --hpx:threads=48 \
+         --hpx:threads=48 \
          --end
          
