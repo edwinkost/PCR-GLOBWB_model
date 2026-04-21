@@ -38,6 +38,7 @@ LD_PRELOAD=$libtcmalloc \
 LUE_PCRASTER_PROVIDER_NAME=lue \
 LUE_PARTITION_SHAPE="600,600" \
      python /home/edwin/github/edwinkost/PCR-GLOBWB_model/model/deterministic_runner.py /home/edwin/github/edwinkost/PCR-GLOBWB_model/config/lue/30sec_africa_v2026develop.ini debug \
-         --hpx:threads=48 \
+         #~ --hpx:threads=48 \
+         --hpx:threads=24 \
          --end
          
