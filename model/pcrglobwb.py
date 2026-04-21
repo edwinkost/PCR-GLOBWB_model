@@ -311,13 +311,11 @@ class PCRGlobWB(object):
                                      pcr.ifthen(self.landmask,self.storageAtFirstDay),
                                      self.routing.cellArea)
             
-            # TODO: Remove this hack related to LUE.
-            msg = 'Delta total storageis not calculated!'
-            # ~ msg = 'Delta total storage days 1 to %i in %i = %e km3 = %e mm'\
-                # ~ % (    int(self._modelTime.doy),\
-                       # ~ int(self._modelTime.year),\
-                       # ~ deltaStorageOneYear/1e9,\
-                       # ~ deltaStorageOneYear*1000/totalCellArea)
+            msg = 'Delta total storage days 1 to %i in %i = %e km3 = %e mm'\
+                % (    int(self._modelTime.doy),\
+                       int(self._modelTime.year),\
+                       deltaStorageOneYear/1e9,\
+                       deltaStorageOneYear*1000/totalCellArea)
 
             logger.info(msg)
 

@@ -60,8 +60,9 @@ class DeterministicRunner(pcrfw.DynamicModel):
         # update model (will pick up current model time from model time object)
         
         self.model.read_forcings()
-        state = self.model.update(report_water_balance=True)
-        
+        # ~ state = self.model.update(report_water_balance=True)
+        state = self.model.update(report_water_balance=False)
+       
 
         #do any needed reporting for this time step        
         self.reporting.report()
