@@ -306,10 +306,13 @@ class PCRGlobWB(object):
                     % (totalCellArea/1e6)
             logger.info(msg)
 
-            deltaStorageOneYear = vos.getMapVolume( \
-                                     pcr.ifthen(self.landmask,landWaterStoresAtBeginning) - \
-                                     pcr.ifthen(self.landmask,self.storageAtFirstDay),
-                                     self.routing.cellArea)
+            # TODO: Remove this hack for LUE
+            deltaStorageOneYear = 0.0
+            # ~ deltaStorageOneYear = vos.getMapVolume( \
+                                     # ~ pcr.ifthen(self.landmask,landWaterStoresAtBeginning) - \
+                                     # ~ pcr.ifthen(self.landmask,self.storageAtFirstDay),
+                                     # ~ self.routing.cellArea)
+            
             msg = 'Delta total storage days 1 to %i in %i = %e km3 = %e mm'\
                 % (    int(self._modelTime.doy),\
                        int(self._modelTime.year),\
