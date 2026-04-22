@@ -219,6 +219,8 @@ class Groundwater(object):
         else:
             minRecessionCoeff = 1.0e-4                                               # This is the minimum value used in Van Beek et al. (2011).
         self.recessionCoeff = pcr.max(minRecessionCoeff,self.recessionCoeff)
+        self.recessionCoeff = self.recessionCoeff**0.5  ### Add by Jen to do the sqrt implementation
+
         #####################################################################################################################################################
 
 
@@ -751,14 +753,15 @@ class Groundwater(object):
                                        self.storGroundwater - self.nonFossilGroundwaterAbs)
 
         
+        
         # groundwater discharge (baseflow) - unit: m.day
         # - baseflow = (1/J)*<S3>*(S3/<S3>)^gamma
-        baseflow = self.recessionCoeff * self.avgStorGroundwater * ((vos.getValDivZero(self.storGroundwater, self.avgStorGroundwater))**self.baseflow_exponent)
+        baseflow = self.recessionCoeff * (self.avgStorGroundwater**1.5) * ((vos.getValDivZero(self.storGroundwater, self.avgStorGroundwater))**self.baseflow_exponent)
         # - use linear reservoir if avgStorGroundwater < 5 mm
-        baseflow = pcr.ifthenelse(self.avgStorGroundwater < 0.005, self.recessionCoeff * self.storGroundwater, baseflow)
+        baseflow = pcr.ifthenelse(self.avgStorGroundwater < 0.005, self.recessionCoeff * (self.storGroundwater**1.5), baseflow)
         #
         # set the minimum value is from the linear reservoir
-        min_baseflow  = self.recessionCoeff * self.storGroundwater
+        min_baseflow  = self.recessionCoeff * (self.storGroundwater**1.5)
         baseflow = pcr.max(min_baseflow, baseflow)
         #
         # make sure that baseflow is always positive 

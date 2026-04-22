@@ -472,6 +472,7 @@ def singleTryNetcdf2PCRobjClone_version_until_2020_07_14(ncFile,\
 
     sameClone = True
     # check whether clone and input maps have the same attributes:
+    print(cloneMapFileName)
     if cloneMapFileName != None:
         # get the attributes of cloneMap
         attributeClone = getMapAttributesALL(cloneMapFileName)
@@ -602,7 +603,7 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
             f.variables['lon'] = f.variables['longitude']
         except:
             pass
-
+    print(f.variables['lat'][:])
     if varName == "automatic":
         nc_dims = [dim for dim in f.dimensions]
         nc_vars = [var for var in f.variables]
@@ -786,16 +787,17 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
 
 
     # check data on dimensions - this correction is needed in case of the WFDEI_Forcing which has includes levels for surface varables (time, height/level, lat, lon)
+    print(int(idx))
     if f.variables[varName].ndim == 4:
         # not standard NC format
         logger.warning('WARNING: the netCDF file %s has an additional dimension for variable %s ; the last two are read as latitude, longitude' % (ncFile, varName))
         # file with additional layer/dimension
-        cropData = f.variables[varName][int(idx),0,:,:]     # still original data
+        cropData = f.variables[varName][int(idx),:,:,0]     # still original data
     else:
         # standard nc file
         cropData = f.variables[varName][int(idx),:,:]       # still original data
 
-
+    print(cropData.shape)
     factor = 1                                 # needed in regridData2FinerGrid
     if sameClone == False:
 
@@ -828,7 +830,7 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
             # not standard NC format
             logger.warning('WARNING: the netCDF file %s has an additional dimension for variable %s ; the last two are read as latitude, longitude' % (ncFile, varName))
             #-file with additional layer
-            cropData = f.variables[varName][int(idx),0,yIdxSta:yIdxEnd,xIdxSta:xIdxEnd]     # selection of original data
+            cropData = f.variables[varName][int(idx),yIdxSta:yIdxEnd,xIdxSta:xIdxEnd,0]     # selection of original data
         else:
             # standard nc file
             cropData = f.variables[varName][int(idx),  yIdxSta:yIdxEnd,xIdxSta:xIdxEnd]       # selection of original data
@@ -856,10 +858,14 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
                   float(specificFillValue))
     else:
         try:
+            print(factor, varName)
+            print(cropData.shape)
             outPCR = pcr.numpy2pcr(pcr.Scalar, \
                   regridData2FinerGrid(factor, cropData, float(f.variables[varName]._FillValue)), \
                   float(f.variables[varName]._FillValue))
         except:
+            print(factor, varName)
+            print(cropData)
             outPCR = pcr.numpy2pcr(pcr.Scalar, \
                   regridData2FinerGrid(factor, cropData, float(f.variables[varName].missing_value)), \
                   float(f.variables[varName].missing_value))
@@ -2019,7 +2025,7 @@ def regridData2FinerGrid(rescaleFac,coarse,MV):
     if rescaleFac ==1:
         return coarse
     nr,nc = np.shape(coarse)
-    
+    print(nr, nc)
     fine= np.zeros(nr*nc*rescaleFac*rescaleFac).reshape(nr*rescaleFac,nc*rescaleFac) + MV
     
  
@@ -2035,6 +2041,7 @@ def regridData2FinerGrid(rescaleFac,coarse,MV):
     nrF = None; ncF = None
     del nrF; del ncF
     n = gc.collect() ; del gc.garbage[:] ; n = None ; del n
+    print("Regrid done")
     return fine
 
 def regridToCoarse(fine,fac,mode,missValue):
@@ -2778,3 +2785,5 @@ def rad2deg(a):
     return a * 180.0 / pi
 
 # julian day and relative julian day
+
+

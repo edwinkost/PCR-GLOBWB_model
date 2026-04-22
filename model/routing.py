@@ -77,9 +77,10 @@ class Routing(object):
 
         return result
 
-    def __init__(self,iniItems,initialConditions,lddMap):
+    def __init__(self,iniItems,initialConditions,lddMap, landSurface):
         object.__init__(self)
 
+        self.landSurface = landSurface
         self.lddMap = lddMap
 
         self.cloneMap = iniItems.cloneMap
@@ -210,8 +211,8 @@ class Routing(object):
         self.gradient = pcr.max(minGradient,\
                         pcr.cover(self.gradient, minGradient))
 
-        # initiate/create WaterBody class
-        self.WaterBodies = waterBodies.WaterBodies(iniItems,self.landmask)
+        # initiate/create WaterBody class!!!!! INIT WATERBODIES!!!
+        self.WaterBodies = waterBodies.WaterBodies(iniItems,self.landmask, self.landSurface)
 
         # crop evaporation coefficient for surface water bodies
         self.no_zero_crop_water_coefficient = True
@@ -329,7 +330,7 @@ class Routing(object):
         if iniConditions == None:
 
             # read initial conditions from pcraster maps listed in the ini file (for the first time step of the model; when the model just starts)
-            
+            print('started reading ini conditions')
             self.timestepsToAvgDischarge = vos.readPCRmapClone(iniItems.routingOptions['timestepsToAvgDischargeIni'] ,self.cloneMap,self.tmpDir,self.inputDir)  
             
             self.channelStorage          = vos.readPCRmapClone(iniItems.routingOptions['channelStorageIni']          ,self.cloneMap,self.tmpDir,self.inputDir)
@@ -831,13 +832,16 @@ class Routing(object):
         #   we have to define initial conditions at the beginning of simulaution, 
         #
         if currTimeStep.timeStepPCR == 1:
+            print(currTimeStep)
             initial_conditions_for_water_bodies = self.getState()
             self.WaterBodies.getParameterFiles(currTimeStep,\
                                                self.cellArea,\
                                                self.lddMap,\
                                                initial_conditions_for_water_bodies)               # the last line is for the initial conditions of lakes/reservoirs
 
-        if (currTimeStep.doy == 1) and (currTimeStep.timeStepPCR > 1):
+        if currTimeStep.timeStepPCR > 1:
+            print(currTimeStep)
+            print("this is time step in routing")
             self.WaterBodies.getParameterFiles(currTimeStep,\
                                                self.cellArea,\
                                                self.lddMap)
@@ -849,7 +853,7 @@ class Routing(object):
         # - this one must be called before updating timestepsToAvgDischarge
         # - estimated based on environmental flow discharge 
         self.downstreamDemand = self.estimate_discharge_for_environmental_flow(self.channelStorage)
-        
+        self.env_flow = self.estimate_discharge_for_environmental_flow(self.channelStorage)
         # get routing/channel parameters/dimensions (based on avgDischarge)
         # and estimating water bodies fraction ; this is needed for calculating evaporation from water bodies
         self.yMean, self.wMean = \
@@ -944,9 +948,20 @@ class Routing(object):
         self.dynamicFracWat_excluding_flooding  = pcr.ifthen(self.landmask, pcr.min(1.0, self.dynamicFracWat_excluding_flooding))
 
         # TODO: Calculate flood fraction 
-
+        #pre_channel = self.channelStorage
         # estimate volume of water that can be extracted for abstraction in the next time step
         self.readAvlChannelStorage = pcr.max(0.0, self.estimate_available_volume_for_abstraction(self.channelStorage))
+        post_channel = self.channelStorage
+        
+        #channel_diff = pre_channel - post_channel
+        #check = pcr.max(pcr.abs(channel_diff))
+        #pcr.report(channel_diff, '/scratch/depfg/steya001/post_channel.map')
+        #value = pcr.cellvalue(check, 1,1)
+        #pcr.report(pre_channel, '/scratch/depfg/steya001/post_channel.map')
+        #pcr.report(post_channel, '/scratch/depfg/steya001/pre_channel.map')
+        #print(value, "channel storage")
+        #if value[0] >0:
+        #    exit()
         
         # water body balance check
         self.waterBodyBalance = self.WaterBodies.waterBodyBalance
@@ -1121,7 +1136,8 @@ class Routing(object):
          pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,
                                self.channelStorage)
         storageAtLakeAndReservoirs = pcr.cover(storageAtLakeAndReservoirs,0.0)
-        #
+        
+        self.soswater_storage_check = storageAtLakeAndReservoirs 
         # - move only non negative values and use rounddown values
         storageAtLakeAndReservoirs = pcr.max(0.00, pcr.rounddown(storageAtLakeAndReservoirs))
         self.channelStorage -= storageAtLakeAndReservoirs                    # unit: m3
@@ -1132,6 +1148,7 @@ class Routing(object):
                                 self.maxTimestepsToAvgDischargeShort,\
                                 self.maxTimestepsToAvgDischargeLong,\
                                 currTimeStep,\
+                                self.env_flow,\
                                 self.avgDischarge,\
                                 vos.secondsPerDay(),\
                                 self.downstreamDemand)
@@ -1186,10 +1203,7 @@ class Routing(object):
         self.discharge = pcr.ifthen(self.landmask, self.discharge)
         #
         self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.ifthen(self.WaterBodies.waterBodyOut, self.discharge))
-        self.disChanWaterBody = pcr.cover(self.disChanWaterBody, 0.0)
-        self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.areamaximum(self.disChanWaterBody,self.WaterBodies.waterBodyIds))
+                                pcr.areamaximum(self.discharge,self.WaterBodies.waterBodyIds))
         self.disChanWaterBody = pcr.cover(self.disChanWaterBody, self.discharge)
         self.disChanWaterBody = pcr.ifthen(self.landmask, self.disChanWaterBody)
         #
@@ -1607,7 +1621,7 @@ class Routing(object):
         #######################################################################################################################
         
         # evaporation (m/day)
-        self.waterBodyEvaporation = acc_water_body_evaporation_volume / self.cellArea
+        self.waterBodyEvaporation = water_body_evaporation_volume / self.cellArea
         
         # local input to surface water (m3)
         self.local_input_to_surface_water += acc_local_input_to_surface_water
@@ -1631,10 +1645,7 @@ class Routing(object):
         self.discharge = pcr.ifthen(self.landmask, self.discharge)
         #
         self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.ifthen(self.WaterBodies.waterBodyOut, self.discharge))
-        self.disChanWaterBody = pcr.cover(self.disChanWaterBody, 0.0)
-        self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.areamaximum(self.disChanWaterBody,self.WaterBodies.waterBodyIds))
+                                pcr.areamaximum(self.discharge,self.WaterBodies.waterBodyIds))
         self.disChanWaterBody = pcr.cover(self.disChanWaterBody, self.discharge)
         self.disChanWaterBody = pcr.ifthen(self.landmask, self.disChanWaterBody)
         #
@@ -1888,7 +1899,7 @@ class Routing(object):
         #######################################################################################################################
         
         # evaporation (m/day)
-        self.waterBodyEvaporation = acc_water_body_evaporation_volume / self.cellArea
+        self.waterBodyEvaporation = water_body_evaporation_volume / self.cellArea
         
         # local input to surface water (m3)
         self.local_input_to_surface_water += acc_local_input_to_surface_water
@@ -1909,10 +1920,7 @@ class Routing(object):
         self.discharge = pcr.ifthen(self.landmask, self.discharge)
         #
         self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.ifthen(self.WaterBodies.waterBodyOut, self.discharge))
-        self.disChanWaterBody = pcr.cover(self.disChanWaterBody, 0.0)
-        self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.areamaximum(self.disChanWaterBody,self.WaterBodies.waterBodyIds))
+                                pcr.areamaximum(self.discharge,self.WaterBodies.waterBodyIds))
         self.disChanWaterBody = pcr.cover(self.disChanWaterBody, self.discharge)
         self.disChanWaterBody = pcr.ifthen(self.landmask, self.disChanWaterBody)
         #
@@ -2152,7 +2160,7 @@ class Routing(object):
         #######################################################################################################################
         
         # evaporation (m/day)
-        self.waterBodyEvaporation = acc_water_body_evaporation_volume / self.cellArea
+        self.waterBodyEvaporation = water_body_evaporation_volume / self.cellArea
         
         # local input to surface water (m3)
         self.local_input_to_surface_water += acc_local_input_to_surface_water
@@ -2173,10 +2181,7 @@ class Routing(object):
         self.discharge = pcr.ifthen(self.landmask, self.discharge)
         #
         self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.ifthen(self.WaterBodies.waterBodyOut, self.discharge))
-        self.disChanWaterBody = pcr.cover(self.disChanWaterBody, 0.0)
-        self.disChanWaterBody = pcr.ifthen(pcr.scalar(self.WaterBodies.waterBodyIds) > 0.,\
-                                pcr.areamaximum(self.disChanWaterBody,self.WaterBodies.waterBodyIds))
+                                pcr.areamaximum(self.discharge,self.WaterBodies.waterBodyIds))
         self.disChanWaterBody = pcr.cover(self.disChanWaterBody, self.discharge)
         self.disChanWaterBody = pcr.ifthen(self.landmask, self.disChanWaterBody)
         #
@@ -2262,14 +2267,30 @@ class Routing(object):
         readAvlChannelStorage *= pcr.min(1.0,\
                                  vos.getValDivZero(pcr.max(0.0, pcr.min(self.avgDischargeShort, self.avgDischarge)), \
                                                                    minDischargeForEnvironmentalFlow, vos.smallNumber))
-        
+        #pcr.report(readAvlChannelStorage, '/scratch/depfg/steya001/available_channel_storage.map')
+
         # maintaining environmental flow if average discharge > minDischargeForEnvironmentalFlow            # TODO: Check why do we need this?
         readAvlChannelStorage = pcr.ifthenelse(self.avgDischargeShort < minDischargeForEnvironmentalFlow,
                                                readAvlChannelStorage,
                                                pcr.max(readAvlChannelStorage, \
                                                pcr.max(0.0,\
                                                self.avgDischargeShort - minDischargeForEnvironmentalFlow)*length_of_time_step))
+        new_conserve = pcr.cover(self.WaterBodies.turnerConserveF,pcr.scalar(0))
+        difference_wb = self.waterBodyStorage - new_conserve #self.WaterBodies.turner_current_stor - new_conserve
+        self.channel_storage_diff = difference_wb
+        
+        ## REPORT DIFFERENCE AND READ AVL CHANNEL STORAGE 
+        #pcr.report(self.WaterBodies.sw_abstraction_check, '/scratch/depfg/steya001/sw_abstraction_check.map')
+        # two if statements: 1 If waterbody, do this and then if water body cannot extract make it 0 
+        
+        readAvlChannelStorage = pcr.ifthenelse(self.WaterBodies.sw_abstraction_check == pcr.scalar(1), pcr.min(pcr.max(difference_wb,pcr.scalar(0)), readAvlChannelStorage), readAvlChannelStorage)
+        
+        #readAvlChannelStorage = pcr.min(pcr.max(difference_wb,pcr.scalar(0)), readAvlChannelStorage)* pcr.cover(self.WaterBodies.sw_abstraction_check, pcr.scalar(0))
+        #pcr.report(readAvlChannelStorage, '/scratch/depfg/steya001/available_channel_storage.map')
+        self.intermediateCS = readAvlChannelStorage
+        #pcr.report(self.intermediateCS, '/scratch/depfg/steya001/intermediate_channel_storage.map')
 
+        #self.sw_abstraction_check
         # maximum (precentage) of water can be abstracted from the channel - to avoid flip-flop
         maximum_percentage = 0.90
         readAvlChannelStorage = pcr.min(readAvlChannelStorage, \
@@ -2280,6 +2301,7 @@ class Routing(object):
         # ignore small volume values - less than 0.1 m3
         readAvlChannelStorage = pcr.rounddown(readAvlChannelStorage*10.)/10.
         readAvlChannelStorage = pcr.ifthen(self.landmask, readAvlChannelStorage)
+        
         
         return readAvlChannelStorage      # unit: m3
 

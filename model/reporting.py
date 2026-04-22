@@ -116,7 +116,59 @@ class Reporting(object):
                                             str(var)+\
                                             "_dailyTot_output.nc",\
                                             short_name,unit,long_name,standard_name)
-        #
+        ## -- weekly average
+        self.outWeekTotNC = ["None"]
+        try:
+            self.outWeekTotNC = self.configuration.reportingOptions['outWeekTotNC'].split(",")
+        except:
+            pass
+        if self.outWeekTotNC[0] != "None":
+            for var in self.outWeekTotNC:
+
+                # initiating monthlyVarTot (accumulator variable):
+                vars(self)[var+'WeekTot'] = None
+
+                logger.info("Creating the netcdf file for weekly accumulation reporting for variable %s.", str(var))
+
+                short_name = varDicts.netcdf_short_name[var]
+                unit       = varDicts.netcdf_monthly_total_unit[var]      
+                long_name  = varDicts.netcdf_long_name[var]
+                if long_name == None: long_name = short_name  
+
+                # creating netCDF files:
+                self.netcdfObj.createNetCDF(self.outNCDir+"/"+ \
+                                            str(var)+\
+                                            "_weekTot_output.nc",\
+                                            short_name,unit,long_name)
+        
+        self.outWeekAvgNC = ["None"]
+        try:
+            self.outWeekAvgNC = self.configuration.reportingOptions['outWeekAvgNC'].split(",")
+        except:
+            pass
+        if self.outWeekAvgNC[0] != "None":
+
+            for var in self.outWeekAvgNC:
+
+                # initiating monthlyTotAvg (accumulator variable)
+                vars(self)[var+'WeekTot'] = None
+
+                # initiating monthlyVarAvg:
+                vars(self)[var+'WeekAvg'] = None
+
+                logger.info("Creating the netcdf file for weekly average reporting for variable %s.", str(var))
+
+                short_name = varDicts.netcdf_short_name[var]
+                unit       = varDicts.netcdf_unit[var]      
+                long_name  = varDicts.netcdf_long_name[var]
+                if long_name == None: long_name = short_name  
+
+                # creating netCDF files:
+                self.netcdfObj.createNetCDF(self.outNCDir+"/"+ \
+                                            str(var)+\
+                                            "_weekAvg_output.nc",\
+                                            short_name,unit,long_name)
+        
         # - MONTHly output in netCDF files:
         # -- cummulative
         self.outMonthTotNC = ["None"]
@@ -394,7 +446,8 @@ class Reporting(object):
         
         # reporting, post-processing for the Ulysses project
         self.ulysses_post_processing()
-                
+        self.sos_water()
+        
         if self.debug_to_version_one:
             if self._modelTime.timeStepPCR == 1: self.report_static_maps_for_debugging()
             self.report_forcing_for_debugging()
@@ -1054,6 +1107,45 @@ class Reporting(object):
                                             short_name,\
                   pcr.pcr2numpy(self.__getattribute__(var),vos.MV),\
                                             timeStamp)
+# - weekly average
+        if self.outWeekAvgNC[0] != "None":
+            for var in self.outWeekAvgNC:
+
+                # only if a accumulator variable has not been defined: 
+                if var not in self.outWeekTotNC: 
+                    print(self._modelTime.day)
+                    print("HERE!!")
+                    # introduce accumulator at the beginning of simulation or
+                    #     reset accumulator at the beginning of the week
+                    if self._modelTime.day == 1:
+                        
+                        print("Annual counter reset")
+                        vars(self)[var+'WeekTot'] = pcr.scalar(0.0)
+                        self._ndays_week = pcr.scalar(0.0)
+
+                    # accumulating
+                    vars(self)[var+'WeekTot'] += vars(self)[var]
+                    self._ndays_week += pcr.scalar(1.0)
+                    print(pcr.pcr2numpy(self._ndays_week, np.nan))
+
+                # calculating average & reporting at the end of the month:
+                if self._modelTime.doy % 7 == 0 or self._modelTime.endYear == True: 
+
+                    print("reporting weekly values")
+                    vars(self)[var+'WeekAvg'] = vars(self)[var+'WeekTot']/\
+                                                 self._ndays_week
+
+                    short_name = varDicts.netcdf_short_name[var]
+                    self.netcdfObj.data2NetCDF(self.outNCDir+"/"+ \
+                                               str(var)+\
+                                               "_weekAvg_output.nc",\
+                                               short_name,\
+                      pcr.pcr2numpy(self.__getattribute__(var+'WeekAvg'),\
+                       vos.MV),timeStamp)
+                    print("Counters reset due to new week")
+                    vars(self)[var+'WeekAvg'] = pcr.scalar(0.0)
+                    vars(self)[var+'WeekTot'] = pcr.scalar(0.0)
+                    self._ndays_week = pcr.scalar(0.0)
 
         # writing monthly output to netcdf files
         # - cummulative
@@ -1339,6 +1431,46 @@ class Reporting(object):
         self.TotMoist   =   self.RootMoist # equals RootMoist...
         self.GroundMoist    = self._model.groundwater.storGroundwater * 1000  # self._model.groundwater. # report in kg m-2
 
+    def sos_water(self):
+
+        # PGB is assumed to write at least ET, SWE, Qsm, SM, Qr
+        
+        # reservoir_inflow
+        self.soswaterInflow =self._model.routing.WaterBodies.sos_inflow
+        self.soswater_overtopping = self._model.routing.WaterBodies.sos_overtopping
+        self.SOSflood = self._model.routing.WaterBodies.turnerFlood
+        self.SOSconserve = self._model.routing.WaterBodies.turnerConservation
+        self.SOSflood_final= self._model.routing.WaterBodies.turnerFloodF
+        self.SOSconserve_final = self._model.routing.WaterBodies.turnerConserveF
+        self.sosreduction = self._model.routing.WaterBodies.turnerReduction
+        #self.RensReduction = self._model.routing.WaterBodies.RensReduction
+        self.sosreduction_demand = self._model.routing.WaterBodies.reductionFactorDemand
+        self.soscurrStor = self._model.routing.WaterBodies.turner_current_stor
+        self.sosStor_check = self._model.routing.WaterBodies.soswater_storage_check
+        self.soswater_env_flow = self._model.routing.env_flow
+        self.sos_main_use = self._model.routing.WaterBodies.hydropower_check
+        print('made it through SOS reduction')
+        #self.reduce_final = self._model.routing.WaterBodies.reductionFactor2
+        self.sos_demand = self._model.routing.WaterBodies.sosdemand
+        #self.sosflood_test = self._model.routing.WaterBodies.test2_flood
+        #self.sosconserve_test =self._model.routing.WaterBodies.test1_conserve
+        
+        # VALUES FOR Niko
+        self.sosreduction = self._model.routing.WaterBodies.turnerReduction
+        self.SOSflood_final= self._model.routing.WaterBodies.turnerFloodF
+        self.SOSflood = self._model.routing.WaterBodies.turnerFlood
+        self.soswaterInflow =self._model.routing.WaterBodies.sos_inflow
+        self.sos_out_start= self._model.routing.WaterBodies.sos_outflow_beginning
+        self.sos_resout_final = self._model.routing.WaterBodies.sos_outflow_end
+        self.sos_outflow_reduction  = self._model.routing.WaterBodies.sos_outflow_reduction
+        self.resoutflow_irrigation = self._model.routing.WaterBodies.resoutflow_irrigation
+        self.resoutflow_hydropower = self._model.routing.WaterBodies.resoutflow_hydropower
+        self.flood_cap = self._model.routing.WaterBodies.flood_cap1
+        self.sos_stor_fraction = self._model.routing.WaterBodies.fraction_stor
+        
+        self.sos_command_area= self._model.routing.WaterBodies.sos_command_area
+
+        #print(np.unique(pcr.pcr2numpy(self.sosreduction, mv = np.nan)))
     def ulysses_post_processing(self):
 
         # PGB is assumed to write at least ET, SWE, Qsm, SM, Qr
@@ -1374,22 +1506,10 @@ class Reporting(object):
         # Qsm = snowmelt (kg m-2 s-1)
         self.ulyssesQsm      =    self._model.landSurface.snowMelt / 86.4
         
-        # SM: theta = total volumetric of soil moisture (m3) 
-        # - theta = theta_res + degree_of_saturation * (theta_sat  theta_res)  
-        # - Note for this version, we assume soil properties are the same for all land cover types. Also, now they are valid only for two layers. TODO: Make the following calculations more flexible.  
-        # -- upper soil moisture layer
-        theta_sat_upp = self._model.landSurface.soil_topo_parameters['default'].satVolMoistContUpp
-        theta_res_upp = self._model.landSurface.soil_topo_parameters['default'].resVolMoistContUpp
-        self.ulyssesSMUpp = theta_res_upp + self._model.landSurface.satDegUppTotal * (theta_sat_upp - theta_res_upp) 
-        # -- low soil moisture layer
-        theta_sat_low = self._model.landSurface.soil_topo_parameters['default'].satVolMoistContLow
-        theta_res_low = self._model.landSurface.soil_topo_parameters['default'].resVolMoistContLow
-        self.ulyssesSMLow = theta_res_low + self._model.landSurface.satDegLowTotal * (theta_sat_low - theta_res_low)
-        # -- entire moisture layer
-        thickness_upp = self._model.landSurface.soil_topo_parameters['default'].thickUpp
-        thickness_low = self._model.landSurface.soil_topo_parameters['default'].thickLow
-        self.ulyssesSM = (self.ulyssesSMUpp * thickness_upp + self.ulyssesSMLow * thickness_low) / (thickness_upp + thickness_low)
-
+        # SM: total volumetric of soil moisture (%) - THIS IS WRONG # TODO: FIX THIS
+        self.ulyssesSM       =    self._model.landSurface.satDegTotal
+        self.ulyssesSMUpp    = self._model.landSurface.satDegUppTotal
+        self.ulyssesSMLow    = self._model.landSurface.satDegLowTotal
 
         # Qr: total runoff (report in kg m-2 s-1)
         # - land only, not including local changes in water body

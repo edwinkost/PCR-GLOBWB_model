@@ -73,8 +73,8 @@ pcr_short_name[pcrglobwb_variable_name]    = "pr"
 pcrglobwb_variable_name = 'temperature'
 netcdf_short_name[pcrglobwb_variable_name] = 'temperature'
 netcdf_unit[pcrglobwb_variable_name]       = 'degrees Celcius'
-netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
-netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = '-' 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = '-'
 netcdf_long_name[pcrglobwb_variable_name]  = 'mean_air_temperature'
 description[pcrglobwb_variable_name]       = None
 comment[pcrglobwb_variable_name]           = None
@@ -798,8 +798,8 @@ latex_symbol[pcrglobwb_variable_name]      = None
 pcrglobwb_variable_name = 'discharge'
 netcdf_short_name[pcrglobwb_variable_name] = 'discharge'
 netcdf_unit[pcrglobwb_variable_name]       = 'm3.s-1'
-netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
-netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3.s-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3.s-1'
 netcdf_long_name[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]       = None
 comment[pcrglobwb_variable_name]           = None
@@ -864,8 +864,8 @@ latex_symbol[pcrglobwb_variable_name]      = None
 pcrglobwb_variable_name = 'totalWaterStorageThickness'
 netcdf_short_name[pcrglobwb_variable_name] = 'total_thickness_of_water_storage'
 netcdf_unit[pcrglobwb_variable_name]       = 'm'
-netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
-netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm' 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm'
 netcdf_long_name[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]       = None
 comment[pcrglobwb_variable_name]           = "Including fossil groundwater."
@@ -875,8 +875,8 @@ latex_symbol[pcrglobwb_variable_name]      = None
 pcrglobwb_variable_name = 'totalWaterStorageVolume'
 netcdf_short_name[pcrglobwb_variable_name] = 'total_volume_of_water_storage'
 netcdf_unit[pcrglobwb_variable_name]       = 'm3'
-netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
-netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3' 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
 netcdf_long_name[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]       = None
 comment[pcrglobwb_variable_name]           = "Including fossil groundwater."
@@ -1725,6 +1725,265 @@ latex_symbol[pcrglobwb_variable_name]      = None
 
 # RvB 23/02/2017: end of edit
 
+######
+# SOS Water
+#####
+
+# SOS Water inflow
+pcrglobwb_variable_name                            = 'soswaterInflow'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_inflow'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Averasge Reservoir Inflow'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res_inflow'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'SOSflood'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_flood'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Flood Value'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_flood'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'SOSflood_final'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_flood_final'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Flood with Cap'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_flood_final'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'SOSconserve'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_conserve'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Conservation Value'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_conservation'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'SOSconserve_final'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_conserve_final'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Conservation with 10% Cap'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_conserve_final'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'flood_cap'
+netcdf_short_name[pcrglobwb_variable_name]         = 'flood_cap'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Flood divided by cap'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'flood_cap'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'sosreduction'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_reduction_factor'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Reduction Factor'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_RF'
+netcdf_unit[pcrglobwb_variable_name]               = '-'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = '_' 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = '_'
+
+
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'sosreduction_demand'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_RF_demand'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Reduction Factor Deamnd'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_demand_rf'
+netcdf_unit[pcrglobwb_variable_name]               = '-'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = '_'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = '_'
+
+# SOS WATER FLOOD
+pcrglobwb_variable_name                            = 'RensReduction'
+netcdf_short_name[pcrglobwb_variable_name]         = 'RensReduction_factor'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Rens Reduction Factor Deamnd'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'rens_rf'
+netcdf_unit[pcrglobwb_variable_name]               = '-'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = '_'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = '_'
+
+
+
+# SOS Usage Check
+pcrglobwb_variable_name                            = 'sos_main_use'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_main_use'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Hydropower Check'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'hydro_check'
+netcdf_unit[pcrglobwb_variable_name]               = '-'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = '_'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = '_'
+
+# # SOS Reduction Demand
+# pcrglobwb_variable_name                            = 'reduce_final'
+# netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_RF_final'
+# netcdf_long_name[pcrglobwb_variable_name]          = 'Turner Reduction Factor Final'
+# netcdf_standard_name[pcrglobwb_variable_name]      = 'turner_RFF'
+# netcdf_unit[pcrglobwb_variable_name]               = '-'
+# netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
+# netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+
+
+# SOS WATER FLOOD Test
+pcrglobwb_variable_name                            = 'soswater_overtopping'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_overtopping'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Overtopping Value'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'flood_test'
+netcdf_unit[pcrglobwb_variable_name]                ='m3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+# SOS WATER FLOOD Test
+pcrglobwb_variable_name                            = 'sosconserve_test'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_conserve_test'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Test to see if this is boolean or not'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'conserve_test'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+# SOS WATER Current Stor
+pcrglobwb_variable_name                            = 'soscurrStor'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_current_storage'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Current Storage to check reduction'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'curr_stor'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+
+
+# SOS WATER DEMAND
+pcrglobwb_variable_name                            = 'sos_demand'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_demand'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Demand Preprocessing'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'demand'
+netcdf_unit[pcrglobwb_variable_name]       = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+
+
+
+# SOS WATER DEMAND
+pcrglobwb_variable_name                            = 'sosStor_check'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_storage_check'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Storage Check'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'storage sos'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3'
+
+
+# SOS CA 
+pcrglobwb_variable_name                            = 'sos_command_area'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_command_area'
+netcdf_long_name[pcrglobwb_variable_name]          = 'SOS Command Area'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'sos_command_area'
+netcdf_unit[pcrglobwb_variable_name]               = "km2"
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = "km2"
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = "km2"
+
+# SOS WATER OUTFLOW
+pcrglobwb_variable_name                            = 'sos_resout_final'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_reservoir_outflow_end'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Reservoir_outflow_final'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res outflow'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+# SOS WATER OUTFLOW
+pcrglobwb_variable_name                            = 'sos_out_start'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_reservoir_outflow_start'
+netcdf_long_name[pcrglobwb_variable_name]          = 'outflow beginning'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res outflow'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+# SOS WATER OUTFLOW
+pcrglobwb_variable_name                            = 'sos_outflow_reduction'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_reservoir_outflow'
+netcdf_long_name[pcrglobwb_variable_name]          = 'outflow times reduction'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res outflow'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+
+# SOS WATER OUTFLOW
+pcrglobwb_variable_name                            = 'resoutflow_irrigation'
+netcdf_short_name[pcrglobwb_variable_name]         = 'outflow_irrigation'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Outflow irrigation'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res outflow'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+# SOS WATER OUTFLOW
+pcrglobwb_variable_name                            = 'resoutflow_hydropower'
+netcdf_short_name[pcrglobwb_variable_name]         = 'outflow_hydropower'
+netcdf_long_name[pcrglobwb_variable_name]          = 'outflow hydropower'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res outflow'
+netcdf_unit[pcrglobwb_variable_name]                = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+# SOS WATER ENV FLOW
+pcrglobwb_variable_name                            = 'soswater_env_flow'
+netcdf_short_name[pcrglobwb_variable_name]         = 'soswater_env_flow'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Environmental Flow'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'env_flow'
+netcdf_unit[pcrglobwb_variable_name]               = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm3.month-1'
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm3.year-1'
+#netcdf_unit[pcrglobwb_variable_name]               = 'm3.s-1'
+#netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
+#netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+
+
+
+### VALIDATION VARIABLES ####
+
+# SOS WATER DEMAND
+pcrglobwb_variable_name                            = 'sos_out_old'
+netcdf_short_name[pcrglobwb_variable_name]         = 'sos_reservoir_outflow_rens'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Reservoir_outflow'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'res outflow'
+netcdf_unit[pcrglobwb_variable_name]               = 'm3.s-1'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
+
+# SOS WATER DEMAND
+pcrglobwb_variable_name                            = 'sos_stor_fraction'
+netcdf_short_name[pcrglobwb_variable_name]         = 'storage fraction'
+netcdf_long_name[pcrglobwb_variable_name]          = 'Storage Fraction'
+netcdf_standard_name[pcrglobwb_variable_name]      = 'stor fract'
+netcdf_unit[pcrglobwb_variable_name]               = 'm'
+netcdf_monthly_total_unit[pcrglobwb_variable_name] = 'm.month-1' 
+netcdf_yearly_total_unit[pcrglobwb_variable_name]  = 'm.year-1'
+
+
 
 
 #############################################################################################################
@@ -1808,7 +2067,7 @@ pcrglobwb_variable_name                            = 'ulyssesSM'
 netcdf_short_name[pcrglobwb_variable_name]         = 'SM'
 netcdf_long_name[pcrglobwb_variable_name]          = 'Percentage of water with respect to the available volume in the soil layers.'
 netcdf_standard_name[pcrglobwb_variable_name]      = 'total_volumetric_soil_moisture'
-netcdf_unit[pcrglobwb_variable_name]               = 'm3.m-3'
+netcdf_unit[pcrglobwb_variable_name]               = '%'
 netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
 netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]               = 'Volumetric soil moisture content in the soil layers at the end of each model time step.'
@@ -1852,7 +2111,7 @@ pcrglobwb_variable_name                            = 'ulyssesSMUpp'
 netcdf_short_name[pcrglobwb_variable_name]         = 'UppSM'
 netcdf_long_name[pcrglobwb_variable_name]          = 'Percentage of water with respect to the available volume in the top soil (<= 30 cm).'
 netcdf_standard_name[pcrglobwb_variable_name]      = 'upper_volumetric_soil_moisture'
-netcdf_unit[pcrglobwb_variable_name]               = 'm3.m-3'
+netcdf_unit[pcrglobwb_variable_name]               = '%'
 netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
 netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]               = 'Volumetric soil moisture content in the top soil (<= 30 cm) at the end of each model time step.'
@@ -1863,7 +2122,7 @@ pcrglobwb_variable_name                            = 'ulyssesSMLow'
 netcdf_short_name[pcrglobwb_variable_name]         = 'LowSM'
 netcdf_long_name[pcrglobwb_variable_name]          = 'Percentage of water with respect to the available volume in the lower soil layer (30-150 cm).'
 netcdf_standard_name[pcrglobwb_variable_name]      = 'lower_volumetric_soil_moisture'
-netcdf_unit[pcrglobwb_variable_name]               = 'm3.m-3'
+netcdf_unit[pcrglobwb_variable_name]               = '%'
 netcdf_monthly_total_unit[pcrglobwb_variable_name] = None 
 netcdf_yearly_total_unit[pcrglobwb_variable_name]  = None
 description[pcrglobwb_variable_name]               = 'Volumetric soil moisture content in the lower soil layer (30-150 cm) at the end of each model time step.'
@@ -1916,3 +2175,5 @@ latex_symbol[pcrglobwb_variable_name]              = None
 #~ # remove/clear pcrglobwb_variable_name 
 #~ pcrglobwb_variable_name = None
 #~ del pcrglobwb_variable_name
+
+# %%
