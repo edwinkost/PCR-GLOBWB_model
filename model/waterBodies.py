@@ -782,13 +782,13 @@ class WaterBodies(object):
         self.upper_bound_res = pcr.scalar(1.0)
         if self.upper_bound_res_nc is not None:
             date_used = currTimeStep.fulldate
-            self.upper_bound_res = vos.netcdf2PCRobjClone(self.upper_bound_res_nc,  
+            self.upper_bound_res = vos.netcdf2PCRobjClone(self.upper_bound_res_nc,\
                                                            varName = 'automatic', date_used, useDoy = 'yearly',\
                                                            cloneMapFileName = self.cloneMap)
         self.lower_bound_res = pcr.scalar(1.0)
         if self.lower_bound_res_nc is not None:
             date_used = currTimeStep.fulldate
-            self.lower_bound_res = vos.netcdf2PCRobjClone(self.lower_bound_res_nc,  
+            self.lower_bound_res = vos.netcdf2PCRobjClone(self.lower_bound_res_nc, \
                                                            varName = 'automatic', date_used, useDoy = 'yearly',\
                                                            cloneMapFileName = self.cloneMap)
 
