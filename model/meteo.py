@@ -325,6 +325,10 @@ class Meteo(object):
 
     def read_meteo_variable_names(self, meteoOptions):
 
+        self.preVarName      = "automatic"
+        self.tmpVarName      = "automatic"
+        self.refETPotVarName = "automatic"
+        
         if 'precipitationVariableName' in meteoOptions: self.preVarName      = meteoOptions['precipitationVariableName']
         if 'temperatureVariableName'   in meteoOptions: self.tmpVarName      = meteoOptions['temperatureVariableName'  ]
         if 'referenceEPotVariableName' in meteoOptions: self.refETPotVarName = meteoOptions['referenceEPotVariableName']
@@ -1008,43 +1012,47 @@ class Meteo(object):
         # by the variable names used in the netCDF and passed from the ini file
         #-----------------------------------------------------------------------
 
-        
+        # reading precipitation:
+        netcdf_file_name = self.preFileNC
+
         # method for finding time indexes in the precipitation netdf file:
         # - the default one
         method_for_time_index = None
         method_for_time_index = "daily"
-        # - based on the ini/configuration file (if given)
-        if 'time_index_method_for_precipitation_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
-                                                           self.iniItems.meteoOptions['time_index_method_for_precipitation_netcdf'] != "None":
-            method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_precipitation_netcdf']
-        
-        # reading precipitation:
-        netcdf_file_name = self.preFileNC
 
         if ("precipitation_file_per_month" in list(self.iniItems.meteoOptions.keys())) and\
                                                   (self.iniItems.meteoOptions['precipitation_file_per_month'] == "True"):
             try:
                 netcdf_file_name = self.preFileNC %(int(currTimeStep.year), int(currTimeStep.month), int(currTimeStep.month), int(currTimeStep.year))
             except:
-                netcdf_file_name = self.preFileNC %(int(currTimeStep.month), int(currTimeStep.year))
+                try:
+                    netcdf_file_name = self.preFileNC %(int(currTimeStep.year), int(currTimeStep.month))
+                except:
+                    netcdf_file_name = self.preFileNC %(int(currTimeStep.month), int(currTimeStep.year))
             method_for_time_index = "daily_per_monthly_file"
         
         if self.precipitation_set_per_year:
             netcdf_file_name = self.preFileNC %(int(currTimeStep.year), int(currTimeStep.year))
 
-        # ~ self.precipitation = vos.netcdf2PCRobjClone(\
-                                      # ~ netcdf_file_name, self.preVarName,\
-                                      # ~ str(currTimeStep.fulldate), 
-                                      # ~ useDoy = method_for_time_index,
-                                      # ~ cloneMapFileName = self.cloneMap,\
-                                      # ~ LatitudeLongitude = True)
+        # method for finding time indexes in the precipitation netdf file:
+        # - based on the ini/configuration file (if given)
+        if 'time_index_method_for_precipitation_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
+                                                           self.iniItems.meteoOptions['time_index_method_for_precipitation_netcdf'] != "None":
+            method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_precipitation_netcdf']
 
         self.precipitation = vos.netcdf2PCRobjClone(\
-                                      netcdf_file_name, "automatic",\
-                                      str(currTimeStep.fulldate), 
-                                      useDoy = method_for_time_index,
-                                      cloneMapFileName = self.cloneMap,\
-                                      LatitudeLongitude = True)
+                                  netcdf_file_name, self.preVarName,\
+                                  str(currTimeStep.fulldate), 
+                                  useDoy = method_for_time_index,
+                                  cloneMapFileName = self.cloneMap,\
+                                  LatitudeLongitude = True)
+
+        #~ self.precipitation = vos.netcdf2PCRobjClone(\
+                                      #~ netcdf_file_name, "automatic",\
+                                      #~ str(currTimeStep.fulldate), 
+                                      #~ useDoy = method_for_time_index,
+                                      #~ cloneMapFileName = self.cloneMap,\
+                                      #~ LatitudeLongitude = True)
 
         #-----------------------------------------------------------------------
         # NOTE: RvB 13/07/2016 added to automatically update precipitation              
@@ -1060,42 +1068,47 @@ class Meteo(object):
             self.precipitation = pcr.rounddown(self.precipitation*100000.)/100000.
 
         
-        # method for finding time index in the temperature netdf file:
+        # reading temperature
+        netcdf_file_name = self.tmpFileNC
+
+        # method for finding time indexes in the precipitation netdf file:
         # - the default one
         method_for_time_index = None
         method_for_time_index = "daily"
-        # - based on the ini/configuration file (if given)
-        if 'time_index_method_for_temperature_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
-                                                         self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf'] != "None":
-            method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf']
-
-        # reading temperature
-        netcdf_file_name = self.tmpFileNC
 
         if ("temperature_file_per_month" in list(self.iniItems.meteoOptions.keys())) and\
                                                  (self.iniItems.meteoOptions['temperature_file_per_month'] == "True"):
             try:
                 netcdf_file_name = self.tmpFileNC %(int(currTimeStep.year), int(currTimeStep.month), int(currTimeStep.month), int(currTimeStep.year))
             except:
-                netcdf_file_name = self.tmpFileNC %(int(currTimeStep.month), int(currTimeStep.year))
+                try:
+                    netcdf_file_name = self.tmpFileNC %(int(currTimeStep.year), int(currTimeStep.month))
+                except:
+                    netcdf_file_name = self.tmpFileNC %(int(currTimeStep.month), int(currTimeStep.year))
             method_for_time_index = "daily_per_monthly_file"
         
         if self.temperature_set_per_year:
             netcdf_file_name = self.tmpFileNC %(int(currTimeStep.year), int(currTimeStep.year))
 
-        # ~ self.temperature = vos.netcdf2PCRobjClone(\
-                                      # ~ netcdf_file_name, self.tmpVarName,\
-                                      # ~ str(currTimeStep.fulldate), 
-                                      # ~ useDoy = method_for_time_index,
-                                      # ~ cloneMapFileName = self.cloneMap,\
-                                      # ~ LatitudeLongitude = True)
+        # method for finding time index in the temperature netdf file:
+        # - based on the ini/configuration file (if given)
+        if 'time_index_method_for_temperature_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
+                                                         self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf'] != "None":
+            method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_temperature_netcdf']
 
         self.temperature = vos.netcdf2PCRobjClone(\
-                                      netcdf_file_name, "automatic",\
-                                      str(currTimeStep.fulldate), 
-                                      useDoy = method_for_time_index,
-                                      cloneMapFileName = self.cloneMap,\
-                                      LatitudeLongitude = True)
+                                  netcdf_file_name, self.tmpVarName,\
+                                  str(currTimeStep.fulldate), 
+                                  useDoy = method_for_time_index,
+                                  cloneMapFileName = self.cloneMap,\
+                                  LatitudeLongitude = True)
+
+        #~ self.temperature = vos.netcdf2PCRobjClone(\
+                                      #~ netcdf_file_name, "automatic",\
+                                      #~ str(currTimeStep.fulldate), 
+                                      #~ useDoy = method_for_time_index,
+                                      #~ cloneMapFileName = self.cloneMap,\
+                                      #~ LatitudeLongitude = True)
 
         #-----------------------------------------------------------------------
         # NOTE: RvB 13/07/2016 added to automatically update temperature
@@ -1105,42 +1118,47 @@ class Meteo(object):
 
         if self.refETPotMethod == 'Input': 
 
+            # reading referencePotET
+            netcdf_file_name = self.etpFileNC
+		    
             # method for finding time indexes in the precipitation netdf file:
             # - the default one
             method_for_time_index = None
             method_for_time_index = "daily"
-            # - based on the ini/configuration file (if given)
-            if 'time_index_method_for_ref_pot_et_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
-                                                            self.iniItems.meteoOptions['time_index_method_for_ref_pot_et_netcdf'] != "None":
-                method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_ref_pot_et_netcdf']
 
-            # reading referencePotET
-            netcdf_file_name = self.etpFileNC
-		    
             if ("refETPotFileNC_file_per_month" in list(self.iniItems.meteoOptions.keys())) and\
                                                        (self.iniItems.meteoOptions['refETPotFileNC_file_per_month'] == "True"):
                 try:
                     netcdf_file_name = self.etpFileNC %(int(currTimeStep.year), int(currTimeStep.month), int(currTimeStep.month), int(currTimeStep.year))
                 except:
-                    netcdf_file_name = self.etpFileNC %(int(currTimeStep.month), int(currTimeStep.year))
+                    try:
+                        netcdf_file_name = self.etpFileNC %(int(currTimeStep.year), int(currTimeStep.month))
+                    except:
+                        netcdf_file_name = self.etpFileNC %(int(currTimeStep.month), int(currTimeStep.year))
                 method_for_time_index = "daily_per_monthly_file"
             
+            # method for finding time indexes in the precipitation netdf file:
+            # - based on the ini/configuration file (if given)
+            if 'time_index_method_for_ref_pot_et_netcdf' in list(self.iniItems.meteoOptions.keys()) and\
+                                                            self.iniItems.meteoOptions['time_index_method_for_ref_pot_et_netcdf'] != "None":
+                method_for_time_index = self.iniItems.meteoOptions['time_index_method_for_ref_pot_et_netcdf']
+
             if self.temperature_set_per_year:
                 netcdf_file_name = self.etpFileNC %(int(currTimeStep.year), int(currTimeStep.year))
 		    
-            # ~ self.referencePotET = vos.netcdf2PCRobjClone(\
-                                          # ~ netcdf_file_name, self.refETPotVarName,\
-                                          # ~ str(currTimeStep.fulldate), 
-                                          # ~ useDoy = method_for_time_index,
-                                          # ~ cloneMapFileName = self.cloneMap,\
-                                          # ~ LatitudeLongitude = True)
-
             self.referencePotET = vos.netcdf2PCRobjClone(\
-                                          netcdf_file_name, "automatic",\
-                                          str(currTimeStep.fulldate), 
-                                          useDoy = method_for_time_index,
-                                          cloneMapFileName = self.cloneMap,\
-                                          LatitudeLongitude = True)
+                                      netcdf_file_name, self.refETPotVarName,\
+                                      str(currTimeStep.fulldate), 
+                                      useDoy = method_for_time_index,
+                                      cloneMapFileName = self.cloneMap,\
+                                      LatitudeLongitude = True)
+
+            #~ self.referencePotET = vos.netcdf2PCRobjClone(\
+                                          #~ netcdf_file_name, "automatic",\
+                                          #~ str(currTimeStep.fulldate), 
+                                          #~ useDoy = method_for_time_index,
+                                          #~ cloneMapFileName = self.cloneMap,\
+                                          #~ LatitudeLongitude = True)
 
             #-----------------------------------------------------------------------
             # NOTE: RvB 13/07/2016 added to automatically update reference potential evapotranspiration

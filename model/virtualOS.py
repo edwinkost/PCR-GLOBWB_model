@@ -150,7 +150,7 @@ def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
         nc_dims = [dim for dim in f.dimensions]
         nc_vars = [var for var in f.variables]
         for var in nc_vars:                   
-            if var not in nc_dims and var not in ["lat", "lon", "latitude", "longitude"]: varName = var
+            if var not in nc_dims and var not in ["lat", "lon", "latitude", "longitude", "y", "x"]: varName = var
         logger.debug('reading variable: '+str(varName)+' from the file: '+str(ncFile))
 
     if LatitudeLongitude == True:
@@ -158,7 +158,12 @@ def singleTryNetcdf2PCRobjCloneWithoutTime(ncFile, varName,\
             f.variables['lat'] = f.variables['latitude']
             f.variables['lon'] = f.variables['longitude']
         except:
-            pass
+            try: 
+                f.variables['lat'] = f.variables['y']
+                f.variables['lon'] = f.variables['x']
+            except:
+                pass
+            # ~ pass
     
     sameClone = True
     # check whether clone and input maps have the same attributes:
@@ -311,13 +316,19 @@ def singleTryNetcdf2PCRobjClone_version_until_2020_07_14(ncFile,\
             f.variables['lat'] = f.variables['latitude']
             f.variables['lon'] = f.variables['longitude']
         except:
-            pass
+            try: 
+                f.variables['lat'] = f.variables['y']
+                f.variables['lon'] = f.variables['x']
+            except:
+                pass
+            # ~ pass
+            
 
     if varName == "automatic":
         nc_dims = [dim for dim in f.dimensions]
         nc_vars = [var for var in f.variables]
         for var in nc_vars:                   
-            if var not in nc_dims and var not in ["lat", "lon", "latitude", "longitude"]: varName = var
+            if var not in nc_dims and var not in ["lat", "lon", "latitude", "longitude", "y", "x"]: varName = var
         logger.debug('reading variable: '+str(varName)+' from the file: '+str(ncFile))
     
     if varName == "evapotranspiration":        
@@ -598,10 +609,15 @@ def singleTryNetcdf2PCRobjClone(ncFile,\
     
     if LatitudeLongitude == True:
         try:
-            f.variables['lat'] = f.variables['latitude']
-            f.variables['lon'] = f.variables['longitude']
+            f.variables['lat'] = f.variables['y']
+            f.variables['lon'] = f.variables['x']
         except:
-            pass
+            try: 
+                f.variables['lat'] = f.variables['latitude']
+                f.variables['lon'] = f.variables['longitude']
+            except:
+                pass
+            # ~ pass
 
     if varName == "automatic":
         nc_dims = [dim for dim in f.dimensions]
@@ -1586,6 +1602,10 @@ def singleTryReadPCRmapClone(v, cloneMapFileName, tmpDir, absolutePath = None, i
                                             dateInput = None,\
                                             useDoy = None, \
                                             cloneMapFileName = cloneMapFileName)
+
+                # ~ PCRmap = netcdf2PCRobjCloneWithoutTime(ncFile = v,\
+                                                       # ~ varName = "automatic",\
+                                                       # ~ cloneMapFileName = cloneMapFileName)
 
         else:
             

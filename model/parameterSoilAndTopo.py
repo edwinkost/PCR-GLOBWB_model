@@ -23,9 +23,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import logging
 
 import pcraster as pcr
 import virtualOS as vos
+
+logger = logging.getLogger(__name__)
 
 class SoilAndTopoParameters(object):
 
@@ -140,6 +143,8 @@ class SoilAndTopoParameters(object):
 
                 vars(self)[var] = pcr.cover(vars(self)[var], 0.0)
 
+                # ~ pcr.aguila(vars(self)[var])
+
         else:
             soilPropertiesNC = vos.getFullPath(\
                                optionDict['soilPropertiesNC'],
@@ -214,9 +219,21 @@ class SoilAndTopoParameters(object):
                         'soilWaterStorageCap1','soilWaterStorageCap2'] 
         if optionDict['soilPropertiesNC'] == str(None):
             for var in soilStorages:
+                
                 input = optionDict[str(var)]
                 temp = str(var)+'Inp'
-                vars(self)[temp] = vos.readPCRmapClone(input,\
+                
+                if var in ['soilWaterStorageCap1','soilWaterStorageCap2'] and input.endswith("CALC"):
+
+                    msg = var + " is calculated based on thickness and volumetric mousture contents."
+                    logger.info(msg)
+                    
+                    if var == 'soilWaterStorageCap1': vars(self)[temp] = self.firstStorDepthInp * (self.satVolMoistContUpp - self.resVolMoistContUpp) 
+                    if var == 'soilWaterStorageCap2': vars(self)[temp] = self.secondStorDepthInp * (self.satVolMoistContLow - self.resVolMoistContLow) 
+                
+                else:
+
+                    vars(self)[temp] = vos.readPCRmapClone(input,\
                                             self.cloneMap,
                                             self.tmpDir,self.inputDir)
 

@@ -341,8 +341,10 @@ class Configuration(object):
         os.makedirs(self.mapsDir)
         
         # go to pcraster maps directory (so all pcr.report files will be saved in this directory) 
-        os.chdir(self.mapsDir)
-
+        if "keep_cwd" in self.globalOptions.keys() and self.globalOptions["keep_cwd"] == "True":
+            pass
+        else:     
+            os.chdir(self.mapsDir)
 
     def repair_ini_key_names(self):
         """

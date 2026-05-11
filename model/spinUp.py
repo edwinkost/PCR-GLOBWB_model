@@ -26,6 +26,7 @@ import os
 import glob
 import shutil
 import math
+import time
 
 import pcraster as pcr
 
@@ -187,6 +188,7 @@ class SpinUp(object):
 
             # cleaning up the spin-up directory:
             if os.path.exists(self.spinUpOutputDir): shutil.rmtree(self.spinUpOutputDir)
+            time.sleep(1)
             os.makedirs(self.spinUpOutputDir)
 
             # move files
