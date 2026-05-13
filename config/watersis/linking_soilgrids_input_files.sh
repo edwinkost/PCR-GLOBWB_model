@@ -8,8 +8,8 @@ SOURCE_DIR="/scratch/depfg/sutan101/pcrglobwb_input_ulysses_v202312XX/develop_ed
 #~ ln -s ${SOURCE_DIR}/layerDepth_average_2_global_06min.nc
 ln -s ${SOURCE_DIR}/WHC_average_1_global_06min.nc
 ln -s ${SOURCE_DIR}/WHC_average_2_global_06min.nc
-#~ ln -s ${SOURCE_DIR}/psiAir_average_1_global_06min.nc
-#~ ln -s ${SOURCE_DIR}/psiAir_average_2_global_06min.nc
+ln -s ${SOURCE_DIR}/psiAir_average_1_global_06min.nc
+ln -s ${SOURCE_DIR}/psiAir_average_2_global_06min.nc
 ln -s ${SOURCE_DIR}/BCH_average_1_global_06min.nc
 ln -s ${SOURCE_DIR}/BCH_average_2_global_06min.nc
 #~ ln -s ${SOURCE_DIR}/vmcRes_average_1_global_06min.nc
