@@ -26,5 +26,10 @@ cdo -L -f nc4 -mergetime  ${SOURCE_DIR}/*/*/pre_0p1.nc                   global_
 cdo -L -f nc4 -mergetime  ${SOURCE_DIR}/*/*/tas_day.nc                   global_tas_day_0p1_v20260514.nc               &            
 wait
 
+cdo monmean global_pet_hargreaves_samani_0p1_v20260514.nc monmean_global_pet_hargreaves_samani_0p1_v20260514.nc &
+cdo monmean global_pre_0p1_v20260514.nc                   monmean_global_pre_0p1_v20260514.nc                   &
+cdo monmean global_tas_day_0p1_v20260514.nc               monmean_global_tas_day_0p1_v20260514.nc               &
+wait
+
 #~ cdo -L -f nc4 -mergetime  ${SOURCE_DIR}/1970/*/pet_hargreaves_samani_0p1.nc test.nc
 

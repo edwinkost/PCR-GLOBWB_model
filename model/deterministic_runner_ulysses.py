@@ -3,10 +3,10 @@
 #
 # PCR-GLOBWB (PCRaster Global Water Balance) Global Hydrological Model
 #
-# Copyright (C) 2016, Ludovicus P. H. (Rens) van Beek, Edwin H. Sutanudjaja, Yoshihide Wada,
-# Joyce H. C. Bosmans, Niels Drost, Inge E. M. de Graaf, Kor de Jong, Patricia Lopez Lopez,
-# Stefanie Pessenteiner, Oliver Schmitz, Menno W. Straatsma, Niko Wanders, Dominik Wisser,
-# and Marc F. P. Bierkens,
+# Copyright (C) 2016, Edwin H. Sutanudjaja, Rens van Beek, Niko Wanders, Yoshihide Wada, 
+# Joyce H. C. Bosmans, Niels Drost, Ruud J. van der Ent, Inge E. M. de Graaf, Jannis M. Hoch, 
+# Kor de Jong, Derek Karssenberg, Patricia López López, Stefanie Peßenteiner, Oliver Schmitz, 
+# Menno W. Straatsma, Ekkamol Vannametee, Dominik Wisser, and Marc F. P. Bierkens
 # Faculty of Geosciences, Utrecht University, Utrecht, The Netherlands
 #
 # This program is free software: you can redistribute it and/or modify
@@ -43,6 +43,7 @@ from modify_ini_file import *
 import logging
 logger = logging.getLogger(__name__)
 
+import oldcalc_framework
 import disclaimer
 
 class DeterministicRunner(DynamicModel):
@@ -55,12 +56,9 @@ class DeterministicRunner(DynamicModel):
         self.reporting = Reporting(configuration, self.model, modelTime)
         
         # option to include merging processes for pcraster maps and netcdf files:
-        # - default option
         self.with_merging = False
-        # - set based on ini file
-        if ('with_merging' in configuration.globalOptions.keys()) and (configuration.globalOptions['with_merging'] == "False"):
-            self.with_merging = False
         if ('with_merging' in configuration.globalOptions.keys()) and (configuration.globalOptions['with_merging'] == "True"):
+            logger.info("Merging output files (e.g. to a global extent) is assumed (within an external process executing every last day of the month/year.")
             self.with_merging = True
 
         # for a run with spinUp, we have to disactivate merging
@@ -103,8 +101,6 @@ class DeterministicRunner(DynamicModel):
 
     def check_merging_status(self):
 
-        # ~ status_file = str(self.configuration.main_output_directory) + "/global/maps/merged_files_for_"    + str(self.modelTime.fulldate) + "_are_ready.txt"
-
         status_file = str(self.configuration.main_output_directory) + "/../global/maps/merged_files_for_"    + str(self.modelTime.fulldate) + "_are_ready.txt"
 
         msg = 'Waiting for the file: ' + status_file
@@ -137,7 +133,6 @@ def main():
     if len(sys.argv) > 2: 
         if sys.argv[2] == "debug" or sys.argv[2] == "debug_parallel" or sys.argv[2] == "debug-parallel": debug_mode = True
     
-
     # parallel option
     this_run_is_part_of_a_set_of_parallel_run = False    
     if len(sys.argv) > 2: 
@@ -170,7 +165,6 @@ def main():
 
     # set configuration
     configuration.set_configuration(system_arguments = sys.argv)
-    
 
     # timeStep info: year, month, day, doy, hour, etc
     currTimeStep = ModelTime() 
@@ -219,6 +213,27 @@ def main():
     dynamic_framework.setQuiet(True)
     dynamic_framework.run()
 
+
+    # for debugging to PCR-GLOBWB version one
+    if configuration.debug_to_version_one:
+    
+        logger.info('\n\n\n\n\n'+'Executing PCR-GLOBWB version 1.'+'\n\n\n\n\n')
+
+        # reset modelTime object
+        currTimeStep = None; currTimeStep = ModelTime() 
+        currTimeStep.getStartEndTimeSteps(configuration.globalOptions['startTime'],
+                                          configuration.globalOptions['endTime'])
+        
+        # execute PCR-GLOBWB version 1
+        # - including comparing model outputs (from versions one and two)
+        pcrglobwb_one = oldcalc_framework.PCRGlobWBVersionOne(configuration, \
+                                                              currTimeStep, \
+                                                              deterministic_runner.model.routing.landmask, \
+                                                              deterministic_runner.model.routing.cellArea)
+        dynamic_framework = DynamicFramework(pcrglobwb_one, currTimeStep.nrOfTimeSteps)
+        dynamic_framework.setQuiet(True)
+        dynamic_framework.run()
+        
 if __name__ == '__main__':
     # print disclaimer
     disclaimer.print_disclaimer(with_logger = True)
