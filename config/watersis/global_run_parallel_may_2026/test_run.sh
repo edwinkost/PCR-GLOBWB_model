@@ -13,8 +13,12 @@ REF_POT_ET_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v2
 MAIN_INITIAL_STATE_FOLDER="dummy_initial_conditions/" 
 DATE_FOR_INITIAL_STATES="1999-12-31"   
 
+
+set -x
+
 # go to the script folder
 cd /eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/
+
 
 #~ python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE} \
 
@@ -31,3 +35,5 @@ python3 deterministic_runner_ulysses.py ${INI_FILE} debug \
 -misf    ${MAIN_INITIAL_STATE_FOLDER}  \
 -dfis    ${DATE_FOR_INITIAL_STATES}    \
 -end_of_arguments
+
+set +x
