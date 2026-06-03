@@ -1,6 +1,6 @@
 
 
-INI_FILE="../config/setup_6min_global_watersis_develop.ini"
+INI_FILE="../config/watersis/global_run_parallel_may_2026/setup_6min_global_watersis_develop.ini"
 
 MAIN_OUTPUT_DIRECTORY="/scratch/depfg/sutan101/watersis_runs_may_2026/test_global_6min_with_watersis_forcing_with_parallel/test_single_clone/"     
 MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   
@@ -23,7 +23,6 @@ cd /eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/
 #~ python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE} \
 
 python3 deterministic_runner_ulysses.py ${INI_FILE} debug \
-
 -mod     ${MAIN_OUTPUT_DIRECTORY}      \
 -mid     ${MAIN_INPUT_DIRECTORY}       \
 -sd      ${STARTING_DATE}              \

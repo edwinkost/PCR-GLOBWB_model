@@ -32,8 +32,7 @@ REF_POT_ET_FORCING_FILE=${10}
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
 
 # load modules on eejit
-. /quanta1/home/sutan101/load_my_miniconda_and_my_default_env.sh
-
+. /eejit/home/sutan10/load_default.sh
 
 #~ # load modules on snellius
 #~ . /home/edwin/load_all_default.sh
@@ -41,8 +40,8 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_
 # - unset pcraster working threads
 unset PCRASTER_NR_WORKER_THREADS
 
-# - you may have to activate the following
-export OPENBLAS_NUM_THREADS=1
+#~ # - you may have to activate the following
+#~ export OPENBLAS_NUM_THREADS=1
 
 # go to the folder that contain PCR-GLOBWB scripts
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
