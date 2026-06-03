@@ -19,10 +19,10 @@ set -x
 # go to the script folder
 cd /eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/
 
+CLONE_CODE="2"
 
-#~ python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE} \
-
-python3 deterministic_runner_ulysses.py ${INI_FILE} debug \
+python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE} \
+#~ python3 deterministic_runner_ulysses.py ${INI_FILE} debug \
 -mod     ${MAIN_OUTPUT_DIRECTORY}      \
 -mid     ${MAIN_INPUT_DIRECTORY}       \
 -sd      ${STARTING_DATE}              \
