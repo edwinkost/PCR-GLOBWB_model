@@ -81,7 +81,7 @@ python3 deterministic_runner_ulysses.py ${INI_FILE} debug_parallel ${CLONE_CODE}
 -rpetff  ${REF_POT_ET_FORCING_FILE}    \
 -misf    ${MAIN_INITIAL_STATE_FOLDER}  \
 -dfis    ${DATE_FOR_INITIAL_STATES}    \
--end_of_arguments
+-end_of_arguments \ 
 &
 
 done
@@ -99,7 +99,7 @@ python3 dynamic_file_merging_ulysses.py ${INI_FILE} \
 -rpetff  ${REF_POT_ET_FORCING_FILE}    \
 -misf    ${MAIN_INITIAL_STATE_FOLDER}  \
 -dfis    ${DATE_FOR_INITIAL_STATES}    \
--end_of_arguments
+-end_of_arguments \ 
 &
 
 wait
