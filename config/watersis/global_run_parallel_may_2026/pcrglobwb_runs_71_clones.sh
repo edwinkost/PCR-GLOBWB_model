@@ -21,10 +21,10 @@ NUM_OF_YEARS_FOR_SPINUP=$5
 MAIN_INITIAL_STATE_FOLDER=$6         
 DATE_FOR_INITIAL_STATES=$7           
 MAIN_INPUT_DIRECTORY=$8
-PRECIPITATION_FORCING_FILE=$8        
-TEMPERATURE_FORCING_FILE=$9          
-REF_POT_ET_FORCING_FILE=${10}           
-PCRGLOBWB_MODEL_SCRIPT_FOLDER=${11}
+PRECIPITATION_FORCING_FILE=$9        
+TEMPERATURE_FORCING_FILE=${10}          
+REF_POT_ET_FORCING_FILE=${11}           
+PCRGLOBWB_MODEL_SCRIPT_FOLDER=${12}
 
 #~ # example of input arguments
 #~ INI_FILE="../config/watersis/global_run_parallel_may_2026/setup_6min_global_watersis_develop.ini"
@@ -43,7 +43,7 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER=${11}
 
 
 # load modules on eejit
-. /eejit/home/sutan10/load_default.sh
+. /eejit/home/sutan101/load_default.sh
 
 #~ # load modules on snellius
 #~ . /home/edwin/load_all_default.sh
