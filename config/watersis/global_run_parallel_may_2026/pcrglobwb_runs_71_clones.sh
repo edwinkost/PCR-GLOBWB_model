@@ -12,36 +12,35 @@
 
 set -x
 
-INI_FILE="../config/watersis/global_run_parallel_may_2026/setup_6min_global_watersis_develop.ini"
-MAIN_OUTPUT_DIRECTORY="/scratch/depfg/sutan101/watersis_runs_may_2026/test_global_6min_with_watersis_forcing_with_parallel/test_multiple_clones/"     
-STARTING_DATE="1970-01-01"             
-END_DATE="2019-12-31"                  
-NUM_OF_YEARS_FOR_SPINUP=1   
-MAIN_INITIAL_STATE_FOLDER="dummy_initial_conditions/" 
-DATE_FOR_INITIAL_STATES="1999-12-31"   
-MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   
-PRECIPITATION_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260514/global_pre_0p1_v20260514.nc"
-TEMPERATURE_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260514/global_tas_day_0p1_v20260514.nc"  
-REF_POT_ET_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260514/global_pet_hargreaves_samani_0p1_v20260514.nc"   
+# get the aguments
+INI_FILE=$1                          
+MAIN_OUTPUT_DIRECTORY=$2             
+STARTING_DATE=$3                     
+END_DATE=$4                          
+NUM_OF_YEARS_FOR_SPINUP=$5        
+MAIN_INITIAL_STATE_FOLDER=$6         
+DATE_FOR_INITIAL_STATES=$7           
+MAIN_INPUT_DIRECTORY=$8
+PRECIPITATION_FORCING_FILE=$8        
+TEMPERATURE_FORCING_FILE=$9          
+REF_POT_ET_FORCING_FILE=${10}           
+PCRGLOBWB_MODEL_SCRIPT_FOLDER=${11}
 
-#~ # get the aguments
-#~ INI_FILE=$1                          
-#~ MAIN_OUTPUT_DIRECTORY=$2             
-#~ STARTING_DATE=$3                     
-#~ END_DATE=$4                          
-#~ NUM_OF_YEARS_FOR_SPINUP=$5        
-#~ MAIN_INITIAL_STATE_FOLDER=$6         
-#~ DATE_FOR_INITIAL_STATES=$7           
-#~ MAIN_INPUT_DIRECTORY=$8
-#~ PRECIPITATION_FORCING_FILE=$8        
-#~ TEMPERATURE_FORCING_FILE=$9          
-#~ REF_POT_ET_FORCING_FILE=${10}           
+#~ # example of input arguments
+#~ INI_FILE="../config/watersis/global_run_parallel_may_2026/setup_6min_global_watersis_develop.ini"
+#~ MAIN_OUTPUT_DIRECTORY="/scratch/depfg/sutan101/watersis_runs_may_2026/test_global_6min_with_watersis_forcing_with_parallel/test_multiple_clones/"     
+#~ STARTING_DATE="1970-01-01"             
+#~ END_DATE="2019-12-31"                  
+#~ NUM_OF_YEARS_FOR_SPINUP=1   
+#~ MAIN_INITIAL_STATE_FOLDER="dummy_initial_conditions/" 
+#~ DATE_FOR_INITIAL_STATES="1999-12-31"   
+#~ MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   
+#~ PRECIPITATION_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260514/global_pre_0p1_v20260514.nc"
+#~ TEMPERATURE_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260514/global_tas_day_0p1_v20260514.nc"  
+#~ REF_POT_ET_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260514/global_pet_hargreaves_samani_0p1_v20260514.nc"   
+#~ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
 
-# on eejit
-PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
 
-#~ # on snellius
-#~ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/model/"
 
 # load modules on eejit
 . /eejit/home/sutan10/load_default.sh
