@@ -27,7 +27,7 @@ set -x
 #~ PCRGLOBWB_MODEL_SCRIPT_FOLDER=${12}
 
 # example of input arguments
-INI_FILE="../config/watersis/global_run_parallel_may_2026/setup_6min_global_watersis_develop.ini"
+INI_FILE="../config/watersis/config_watersis_2026_july/setup_6min_global_watersis_nopar_develop.ini"
 MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_global_6min/"     
 STARTING_DATE="2000-01-01"             
 END_DATE="2000-01-31"                  
