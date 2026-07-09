@@ -58,6 +58,9 @@ module load gdal/3.6.2
 #~ # - you may have to activate the following
 #~ export OPENBLAS_NUM_THREADS=1
 
+export OMP_NUM_THREADS=16
+export PCRASTER_NR_WORKER_THREADS=16
+
 # go to the folder that contain PCR-GLOBWB scripts
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
 
