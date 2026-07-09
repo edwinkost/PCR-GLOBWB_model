@@ -52,11 +52,11 @@ module load gdal/3.6.2
 #~ # load modules on snellius
 #~ . /home/edwin/load_all_default.sh
 
-# - unset pcraster working threads
-unset PCRASTER_NR_WORKER_THREADS
+#~ # - unset pcraster working threads
+#~ unset PCRASTER_NR_WORKER_THREADS
 
-# - you may have to activate the following
-export OPENBLAS_NUM_THREADS=1
+#~ # - you may have to activate the following
+#~ export OPENBLAS_NUM_THREADS=1
 
 # go to the folder that contain PCR-GLOBWB scripts
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
