@@ -16,9 +16,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --threads-per-core=2
 
+#SBATCH --time=15:00
 #~ #SBATCH --time=04:00:00
-
-
 
 
 
@@ -81,9 +80,9 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/mode
 #~ module load pcraster/4.4.0-01 
 #~ module load gdal/3.6.2
 
-module load python3
-module load pcraster 
-module load gdal
+module load python3/3.13.13-01
+module load pcraster/4.4.2-01 
+module load gdal/3.12.3
 
 #~ # load modules on eejit
 #~ . /eejit/home/sutan101/load_default.sh
