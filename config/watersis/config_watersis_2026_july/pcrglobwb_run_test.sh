@@ -16,8 +16,8 @@
 #SBATCH --cpus-per-task=1
 #SBATCH --threads-per-core=2
 
-#SBATCH --time=15:00
-#~ #SBATCH --time=04:00:00
+#~ #SBATCH --time=15:00
+#SBATCH --time=04:00:00
 
 
 
