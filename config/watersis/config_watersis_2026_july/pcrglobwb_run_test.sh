@@ -80,7 +80,7 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/mode
 #~ module load pcraster/4.4.0-01 
 #~ module load gdal/3.6.2
 
-module load python3/3.13.13-01
+module load python3/3.12.9-01
 module load pcraster/4.4.2-01 
 module load gdal/3.12.3
 
