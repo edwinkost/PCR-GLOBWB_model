@@ -75,14 +75,15 @@ REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysi
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/model/"
 
-# load modules on Atos
-#~ module load python3/3.10.10-01 
-#~ module load pcraster/4.4.0-01 
-#~ module load gdal/3.6.2
+# load modules on Atos - the following works (and it was used by Robert UFZ)
+module load python3/3.10.10-01 
+module load pcraster/4.4.0-01 
+module load gdal/3.6.2
 
-module load python3/3.12.9-01
-module load pcraster/4.4.2-01 
-module load gdal/3.12.3
+#~ # the following does not work
+#~ module load python3/3.12.9-01
+#~ module load pcraster/4.4.2-01 
+#~ module load gdal/3.12.3
 
 #~ # load modules on eejit
 #~ . /eejit/home/sutan101/load_default.sh
