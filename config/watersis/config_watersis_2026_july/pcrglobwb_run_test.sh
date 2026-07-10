@@ -40,13 +40,14 @@ set -x
 # example of input arguments
 INI_FILE="../config/watersis/config_watersis_2026_july/setup_6min_global_watersis_nopar_develop.ini"
 
-MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_pcrglobwb_global_6min/with_mk_forcing_without_workers/"     
+MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_pcrglobwb_global_6min/with_mk_forcing_with_workers/"     
 
 STARTING_DATE="2000-01-01"             
 END_DATE="2000-01-31"                  
 NUM_OF_YEARS_FOR_SPINUP=0   
 MAIN_INITIAL_STATE_FOLDER="dummy_initial_conditions/" 
 DATE_FOR_INITIAL_STATES="1999-12-31"   
+
 MAIN_INPUT_DIRECTORY="/ec/fws4/sb/project/C3SHydroGL/edwin/data/pcrglobwb_input_watersis/develop/global_6min/"   
 
 #~ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/edwin/data/watersis_forcing/global/v20260514/global_pre_0p1_v20260514.nc"
@@ -93,12 +94,11 @@ module load gdal/3.6.2
 
 #~ # - unset pcraster working threads
 #~ unset PCRASTER_NR_WORKER_THREADS
-
 #~ # - you may have to activate the following
 #~ export OPENBLAS_NUM_THREADS=1
 
-#~ export OMP_NUM_THREADS=16
-#~ export PCRASTER_NR_WORKER_THREADS=16
+export OMP_NUM_THREADS=16
+export PCRASTER_NR_WORKER_THREADS=16
 
 # go to the folder that contain PCR-GLOBWB scripts
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
