@@ -40,15 +40,15 @@ set -x
 # example of input arguments
 INI_FILE="../config/watersis/config_watersis_2026_july/setup_6min_global_watersis_nopar_develop.ini"
 
-MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_pcrglobwb_global_6min/with_mk_forcing_with_workers/"     
+MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_final_pcrglobwb_global_6min/with_mk_forcing_with_workers/"     
 
 STARTING_DATE="2000-01-01"             
 END_DATE="2000-01-31"                  
 NUM_OF_YEARS_FOR_SPINUP=0   
-MAIN_INITIAL_STATE_FOLDER="dummy_initial_conditions/" 
+MAIN_INITIAL_STATE_FOLDER="initial_conditions/from_run_v20260604/" 
 DATE_FOR_INITIAL_STATES="1999-12-31"   
 
-MAIN_INPUT_DIRECTORY="/ec/fws4/sb/project/C3SHydroGL/edwin/data/pcrglobwb_input_watersis/develop/global_6min/"   
+MAIN_INPUT_DIRECTORY="/home/cyes/C3SHydroGL/edwin/data/pcrglobwb_input_watersis/release/global_6min_v20260710/"   
 
 #~ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/edwin/data/watersis_forcing/global/v20260514/global_pre_0p1_v20260514.nc"
 #~ TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/edwin/data/watersis_forcing/global/v20260514/global_tas_day_0p1_v20260514.nc"  
