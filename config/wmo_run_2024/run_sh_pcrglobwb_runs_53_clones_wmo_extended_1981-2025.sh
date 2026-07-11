@@ -43,7 +43,7 @@ END_DATE="2025-12-31"
 
 
 # location/folder, where you will store output files of your 
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_wmo_run_2024_extended_1981-2025/version20260711/"
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_wmo_run_2024_extended_1981-2025/wmo_2024_1981-2025_version20260711/"
 
 
 # meteorological forcing files - DEFINED IN THE CONFIGURATION FILE
