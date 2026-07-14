@@ -32,6 +32,8 @@ export PCRASTER_NR_WORKER_THREADS=8
 
 # PCR-GLOBWB configuration (.ini) file that will be used  
 INI_FILE="setup_6min_global_watersis_nopar_v20260714.ini"
+DIR_INI_FILE=$(pwd)
+INI_FILE=${DIR_INI_FILE}/${INI_FILE}
 
 # Output directory  
 MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_final_pcrglobwb_global_6min/with_mk_forcing_with_workers/"     
@@ -56,10 +58,10 @@ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanal
 TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/tas_day.nc"  
 REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pet_hargreaves_samani_0p1.nc"  
 
-# Directory containing the model script
+# Directory containing the model script files
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/model/"
 
-# go to the folder that contain PCR-GLOBWB scripts
+# go to the folder that contain PCR-GLOBWB model script file
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
 
 # run the model
