@@ -4,7 +4,7 @@
 #SBATCH --job-name=pgb_5km_europe
 
 #SBATCH --mem-per-cpu=1250MB
-#SBATCH --ntasks=8
+#SBATCH --ntasks=16
 #SBATCH --cpus-per-task=1
 #SBATCH --threads-per-core=2
 
@@ -21,8 +21,8 @@ module load pcraster/4.4.0-01
 module load gdal/3.6.2
 
 # to speed up, using some cores/threads
-export OMP_NUM_THREADS=4
-export PCRASTER_NR_WORKER_THREADS=4
+export OMP_NUM_THREADS=8
+export PCRASTER_NR_WORKER_THREADS=8
 
 #~ # activate the following for using a single core/thread (lo
 #~ # - unset pcraster working threads
