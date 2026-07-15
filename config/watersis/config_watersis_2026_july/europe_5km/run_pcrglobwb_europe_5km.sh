@@ -7,6 +7,7 @@
 #SBATCH --ntasks=16
 #SBATCH --cpus-per-task=1
 #SBATCH --threads-per-core=2
+# NOTE: If required, we can reduce the above numbers for this 5 km Europe run.
 
 #SBATCH --time=30:00
 # A one-month europe 5km run (with this configuration) should take less than 3 mins.
