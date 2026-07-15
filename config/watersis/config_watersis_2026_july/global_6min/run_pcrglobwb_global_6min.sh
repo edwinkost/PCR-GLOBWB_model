@@ -9,7 +9,7 @@
 #SBATCH --threads-per-core=2
 
 #SBATCH --time=30:00
-# A one-month run (with this configuration) should take less than 15 mins.
+# A one-month global 6min run (with this configuration) should take less than 15 mins.
 #~ #SBATCH --time=15:00
 
 
@@ -46,12 +46,12 @@ END_DATE="2000-01-31"
 NUM_OF_YEARS_FOR_SPINUP=0   
 
 # Initial conditions, folder and the date
-MAIN_INITIAL_STATE_FOLDER="initial_conditions/from_run_v20260604/" 
+MAIN_INITIAL_STATE_FOLDER="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/data/pcrglobwb_input_watersis/release/global_6min_v20260710/initial_conditions/from_run_v20260604/" 
 DATE_FOR_INITIAL_STATES="1999-12-31"   
-# NOTE: Please use proper warm initial condition files. For the first year, I can also prepare them, but please make sure that the forcing files are final.
+# NOTE: Please consider the above initial condition files as dummy. Please use proper warm initial condition files. For the first year, Edwin can also prepare them, but please make sure that the forcing and landmask files are final.
 
 # Model input directory (containing model parameters)
-MAIN_INPUT_DIRECTORY="/home/cyes/C3SHydroGL/edwin/data/pcrglobwb_input_watersis/release/global_6min_v20260710/"   
+MAIN_INPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/data/pcrglobwb_input_watersis/release/global_6min_v20260710/"   
 
 # Forcing input directory
 PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pre_0p1.nc"
