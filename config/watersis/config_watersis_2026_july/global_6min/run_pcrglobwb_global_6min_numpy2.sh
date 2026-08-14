@@ -25,9 +25,9 @@ module load python3/3.12.9-01
 module load pcraster/4.4.2-01
 module load gdal/3.10.2
 
-# to speed up, using some cores/threads
-export OMP_NUM_THREADS=16
-export PCRASTER_NR_WORKER_THREADS=16
+#~ # to speed up, using some cores/threads
+#~ export OMP_NUM_THREADS=16
+#~ export PCRASTER_NR_WORKER_THREADS=16
 
 #~ # activate the following for using a single core/thread (lo
 #~ # - unset pcraster working threads
