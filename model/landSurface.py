@@ -107,7 +107,7 @@ class LandSurface(object):
         logger.info("SUCCESS1.")
 
         # clone map, temporary directory, absolute path of input directory, and landmask
-        self.cloneMap = iniItems.cloneMap
+        # ~ self.cloneMap = iniItems.cloneMap
         logger.info("SUCCESS2.")
         self.tmpDir   = iniItems.tmpDir
         logger.info("SUCCESS3.")
