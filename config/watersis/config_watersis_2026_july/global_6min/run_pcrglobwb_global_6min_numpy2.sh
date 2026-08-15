@@ -33,8 +33,8 @@ export PCRASTER_NR_WORKER_THREADS=16
 #~ # activate the following for using a single core/thread (lo
 #~ # - unset pcraster working threads
 #~ unset PCRASTER_NR_WORKER_THREADS
-#~ # - you also may have to activate the following
-#~ export OPENBLAS_NUM_THREADS=1
+# - you also may have to activate the following
+export OPENBLAS_NUM_THREADS=1
 
 # PCR-GLOBWB configuration (.ini) file that will be used  
 INI_FILE="setup_6min_global_watersis_nopar_v20260714.ini"
