@@ -16,19 +16,19 @@
 set -x
 
 # load modules on Atos 
-# - the following works (and it was used by Robert UFZ)
-module load python3/3.10.10-01 
-module load pcraster/4.4.0-01 
-module load gdal/3.6.2
-#~ # - using pcraster 4.4.2 (and numpy 2.0) - NOT working if we set PCRASTER_NR_WORKER_THREADS
-#~ module load python3/3.12.9-01
-#~ module load pcraster/4.4.2-01
-#~ module load gdal/3.10.2
+#~ # - the following works (and it was used by Robert UFZ)
+#~ module load python3/3.10.10-01 
+#~ module load pcraster/4.4.0-01 
+#~ module load gdal/3.6.2
+# - using pcraster 4.4.2 (and numpy 2.0) - NOT working if we set PCRASTER_NR_WORKER_THREADS
+module load python3/3.12.9-01
+module load pcraster/4.4.2-01
+module load gdal/3.10.2
 
 # to speed up, using some cores/threads
-export OPENBLAS_NUM_THREADS=16
-export OMP_NUM_THREADS=16
-export PCRASTER_NR_WORKER_THREADS=16
+#~ export OPENBLAS_NUM_THREADS=16
+#~ export OMP_NUM_THREADS=16
+export PCRASTER_NR_WORKER_THREADS=2
 
 #~ # activate the following for using a single core/thread (lo
 #~ # - unset pcraster working threads
@@ -71,7 +71,8 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/mode
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
 
 # run the model
-python3 deterministic_runner_ulysses.py ${INI_FILE} no-debug  \
+#~ python3 deterministic_runner_ulysses.py ${INI_FILE} no-debug  \
+python3 deterministic_runner_ulysses.py ${INI_FILE} debug  \
 -mod     ${MAIN_OUTPUT_DIRECTORY}      \
 -mid     ${MAIN_INPUT_DIRECTORY}       \
 -sd      ${STARTING_DATE}              \
