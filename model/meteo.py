@@ -215,8 +215,12 @@ class Meteo(object):
         # make the iniItems available for the other modules:
         self.iniItems = iniItems
         
+        logger.info("SUCCESS.")
+
         # get the initial conditions
         self.getICs(iniItems, spinUp)
+
+        logger.info("SUCCESS.")
 
         self.report = True
         try:
@@ -404,8 +408,6 @@ class Meteo(object):
 
         else:
             logger.info("No forcing downscaling is implemented.")
-
-        logger.info("SUCCESS.")
 
         # forcing smoothing options: - THIS is still experimental. PS: MUST BE TESTED.
         self.forcingSmoothing = False
