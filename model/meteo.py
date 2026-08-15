@@ -63,6 +63,8 @@ class Meteo(object):
 
         self.initialize_states(iniItems, iniConditions)
 
+        logger.info("SUCCESS.")
+
     def initialize_states(self, iniItems, iniConditions):
 
         # initial conditions (unit: m)
@@ -75,8 +77,6 @@ class Meteo(object):
                 msg = "The initial condition avgAnnualPrecipitationIni is not defined and set to zero. This is needed only for the Bristow-Campbell method."
                 self.avgAnnualPrecipitation    = pcr.scalar(0.0)
                 
-                logger.info("SUCCESS.")
-
             if 'avgAnnualTemperatureIni' in list(iniItems.meteoOptions.keys()):
                 self.avgAnnualTemperature      = vos.readPCRmapClone(iniItems.meteoOptions['avgAnnualTemperatureIni'],
                                                                      self.cloneMap, self.tmpDir, self.inputDir)
