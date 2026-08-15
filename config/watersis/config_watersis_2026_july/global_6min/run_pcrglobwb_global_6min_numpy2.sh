@@ -16,19 +16,19 @@
 set -x
 
 # load modules on Atos 
-#~ # - the following works (and it was used by Robert UFZ)
-#~ module load python3/3.10.10-01 
-#~ module load pcraster/4.4.0-01 
-#~ module load gdal/3.6.2
-# - using pcraster 4.4.2 (and numpy 2.0) - NOT working if we set PCRASTER_NR_WORKER_THREADS
-module load python3/3.12.9-01
-module load pcraster/4.4.2-01
-module load gdal/3.10.2
+# - the following works (and it was used by Robert UFZ)
+module load python3/3.10.10-01 
+module load pcraster/4.4.0-01 
+module load gdal/3.6.2
+#~ # - using pcraster 4.4.2 (and numpy 2.0) - NOT working if we set PCRASTER_NR_WORKER_THREADS
+#~ module load python3/3.12.9-01
+#~ module load pcraster/4.4.2-01
+#~ module load gdal/3.10.2
 
 # to speed up, using some cores/threads
-#~ export OPENBLAS_NUM_THREADS=2
-#~ export OMP_NUM_THREADS=2
-export PCRASTER_NR_WORKER_THREADS=2
+#~ export OPENBLAS_NUM_THREADS=16
+#~ export OMP_NUM_THREADS=16
+export PCRASTER_NR_WORKER_THREADS=16
 
 #~ # activate the following for using a single core/thread (lo
 #~ # - unset pcraster working threads
