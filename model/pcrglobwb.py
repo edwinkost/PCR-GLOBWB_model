@@ -107,7 +107,6 @@ class PCRGlobWB(object):
 
         # initializing sub modules
         self.meteo = meteo.Meteo(self._configuration,self.landmask,initialState)
-        logger.info("SUCCESS.")
         self.landSurface = landSurface.LandSurface(self._configuration,self.landmask,initialState)
         self.groundwater = groundwater.Groundwater(self._configuration,self.landmask,initialState)
         self.routing = routing.Routing(self._configuration, initialState, self.lddMap)

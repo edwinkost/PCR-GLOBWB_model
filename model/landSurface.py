@@ -115,11 +115,15 @@ class LandSurface(object):
         # make iniItems available for the other methods/functions:
         self.iniItems = iniItems
 
+        logger.info("SUCCESS.")
+
         # cellArea (unit: m2)
         self.cellArea = vos.readPCRmapClone(iniItems.routingOptions['cellAreaMap'], \
                                             self.cloneMap, self.tmpDir, self.inputDir)
         self.cellArea = pcr.ifthen(self.landmask, self.cellArea)
         
+        logger.info("SUCCESS_CELLAREA.")
+
         # number of soil layers:
         self.numberOfSoilLayers = int(iniItems.landSurfaceOptions['numberOfUpperSoilLayers'])
         
