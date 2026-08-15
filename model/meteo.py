@@ -302,7 +302,7 @@ class Meteo(object):
                                                     var,"undefined")
 
 
-        logger.info("SUCCESS.")
+        logger.info("SUCCESS_METEO_INIT.")
 
 
     def read_meteo_conversion_factors(self, meteoOptions):
