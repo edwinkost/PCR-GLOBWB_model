@@ -302,6 +302,9 @@ class Meteo(object):
                                                     var,"undefined")
 
 
+        logger.info("SUCCESS.")
+
+
     def read_meteo_conversion_factors(self, meteoOptions):
 
         # conversion constants and factors for default meteo variables: precipitation, temperature and reference potential evaporation 
