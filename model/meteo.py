@@ -61,8 +61,6 @@ class Meteo(object):
 
     def getICs(self, iniItems, iniConditions = None):
 
-        print("sucess")
-
         self.initialize_states(iniItems, iniConditions)
 
     def initialize_states(self, iniItems, iniConditions):
@@ -406,6 +404,8 @@ class Meteo(object):
 
         else:
             logger.info("No forcing downscaling is implemented.")
+
+        logger.info("SUCCESS.")
 
         # forcing smoothing options: - THIS is still experimental. PS: MUST BE TESTED.
         self.forcingSmoothing = False
