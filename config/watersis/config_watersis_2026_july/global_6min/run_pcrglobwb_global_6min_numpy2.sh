@@ -28,7 +28,8 @@ module load gdal/3.10.2
 
 # to speed up, using some cores/threads
 export PCRASTER_NR_WORKER_THREADS=4
-#~ export OMP_NUM_THREADS=16
+export OMP_NUM_THREADS=4
+export OPENBLAS_NUM_THREADS=4
 
 #~ # activate the following for using a single core/thread (lo
 #~ # - unset pcraster working threads
