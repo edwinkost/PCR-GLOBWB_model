@@ -61,6 +61,8 @@ class Meteo(object):
 
     def getICs(self, iniItems, iniConditions = None):
 
+        print("sucess")
+
         self.initialize_states(iniItems, iniConditions)
 
     def initialize_states(self, iniItems, iniConditions):
@@ -106,8 +108,6 @@ class Meteo(object):
         
         # TODO: Check whether we have missing values for zero values (if yes, we have to do the following)
         # ~ self.avgAnnualTemperature = pcr.ifthen(self.landmask, pcr.cover(self.avgAnnualTemperature, 0.0)))
-        
-        print("sucess")
 
     def __init__(self,iniItems,landmask,spinUp):
         object.__init__(self)
