@@ -104,30 +104,20 @@ class LandSurface(object):
     def __init__(self,iniItems,landmask,initialState=None):
         object.__init__(self)
 
-        logger.info("SUCCESS1.")
-
         # clone map, temporary directory, absolute path of input directory, and landmask
-        # ~ self.cloneMap = iniItems.cloneMap
-        logger.info("SUCCESS2.")
+        self.cloneMap = iniItems.cloneMap
         self.tmpDir   = iniItems.tmpDir
-        logger.info("SUCCESS3.")
         self.inputDir = iniItems.globalOptions['inputDir']
-        logger.info("SUCCESS4.")
-
         self.landmask = landmask
         
         # make iniItems available for the other methods/functions:
         self.iniItems = iniItems
-
-        logger.info("SUCCESS.")
 
         # cellArea (unit: m2)
         self.cellArea = vos.readPCRmapClone(iniItems.routingOptions['cellAreaMap'], \
                                             self.cloneMap, self.tmpDir, self.inputDir)
         self.cellArea = pcr.ifthen(self.landmask, self.cellArea)
         
-        logger.info("SUCCESS_CELLAREA.")
-
         # number of soil layers:
         self.numberOfSoilLayers = int(iniItems.landSurfaceOptions['numberOfUpperSoilLayers'])
         
