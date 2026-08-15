@@ -110,6 +110,8 @@ class LandSurface(object):
         self.cloneMap = iniItems.cloneMap
         self.tmpDir   = iniItems.tmpDir
         self.inputDir = iniItems.globalOptions['inputDir']
+        logger.info("SUCCESS_LANDMASK.")
+
         self.landmask = landmask
         
         # make iniItems available for the other methods/functions:
