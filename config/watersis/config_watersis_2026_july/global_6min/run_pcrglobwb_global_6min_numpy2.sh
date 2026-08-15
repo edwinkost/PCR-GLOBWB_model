@@ -4,7 +4,8 @@
 #SBATCH --job-name=pgb_6min_global
 
 #SBATCH --mem-per-cpu=1250MB
-#SBATCH --ntasks=16
+#~ #SBATCH --ntasks=16
+#SBATCH --ntasks=32
 #SBATCH --cpus-per-task=1
 #SBATCH --threads-per-core=2
 
