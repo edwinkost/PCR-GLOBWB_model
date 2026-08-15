@@ -104,13 +104,15 @@ class LandSurface(object):
     def __init__(self,iniItems,landmask,initialState=None):
         object.__init__(self)
 
-        logger.info("SUCCESS.")
+        logger.info("SUCCESS1.")
 
         # clone map, temporary directory, absolute path of input directory, and landmask
         self.cloneMap = iniItems.cloneMap
+        logger.info("SUCCESS2.")
         self.tmpDir   = iniItems.tmpDir
+        logger.info("SUCCESS3.")
         self.inputDir = iniItems.globalOptions['inputDir']
-        logger.info("SUCCESS_LANDMASK.")
+        logger.info("SUCCESS4.")
 
         self.landmask = landmask
         
