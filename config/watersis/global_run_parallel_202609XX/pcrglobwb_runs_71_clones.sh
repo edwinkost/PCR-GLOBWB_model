@@ -44,6 +44,8 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER=${12}
 
 # load modules on eejit
 . /eejit/home/sutan101/load_default.sh
+# - using pcraster 4.3 (as used by the WaterSIS project)
+conda activate /eejit/home/hydrowld/opt/miniconda3/envs/pcrglobwb_python3_pcraster43_v2024-08-30
 
 #~ # load modules on snellius
 #~ . /home/edwin/load_all_default.sh
