@@ -6,7 +6,7 @@ JOBNAME="pgb_6min"
 
 set -x
 
-MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/watersis_runs_202609XX/global_6min_with_watersis_forcing_with_parallel_v20260903/"${JOBNAME}"/"
+MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/watersis_runs_202609XX/global_6min_with_watersis_forcing_with_parallel_v20260904_using_pcraster4.4.1/"${JOBNAME}"/"
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
 
