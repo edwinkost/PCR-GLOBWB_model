@@ -6,7 +6,7 @@ JOBNAME="pgb_6min"
 
 set -x
 
-MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/watersis_runs_202609XX/global_6min_with_watersis_forcing_with_parallel_v20260904_using_pcraster4.4.1/"${JOBNAME}"/"
+MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/watersis_runs_202609XX/global_6min_with_watersis_forcing_with_parallel_v20260905_using_pcraster4.4.1_25_year_spinup/"${JOBNAME}"/"
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
 
@@ -52,6 +52,7 @@ SPINUP=$(sbatch -J "${SUB_JOBNAME}" --export INI_FILE="${SUB_INIFILE}",MAIN_OUTP
 
 
 # run for the period 1970-2019
+NUM_OF_YEARS_FOR_SPINUP="0"
 SUB_JOBNAME=${JOBNAME}_1970-2019
 SUB_INIFILE=${WARMED_RUN_INI}
 STA_DATE="1970-01-01"
