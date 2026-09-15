@@ -29,7 +29,8 @@ set -x
 #~ INI_FILE=${PBS_O_WORKDIR}/${INI_FILE}
 #~ INI_FILE=${SLURM_SUBMIT_DIR}/${INI_FILE}
 #~ INI_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-11-15/"
-INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/"
+#~ INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/"
+INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_for_rerun_on_202609XX/"
 INI_FILE=${INI_FOLDER}/${INI_FILE}
 
 # set the output folder
