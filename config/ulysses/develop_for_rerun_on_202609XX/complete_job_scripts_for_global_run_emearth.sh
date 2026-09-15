@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JOBNAME="mswep_pgb_uly_rerun_two_lcs_sqrt"
+JOBNAME="emearth_pgb_uly_rerun_two_lcs_sqrt"
 LOGRECF="SQUARE_ROOT"
 
 JOBNAME=$1
@@ -43,7 +43,7 @@ NUM_OF_YEARS_FOR_SPINUP="0"
 SUB_JOBNAME=${JOBNAME}_1981-2019
 SUB_INIFILE=${WARMED_RUN_INI}
 STA_DATE="1981-01-01"
-END_DATE="2019-12-31"
+END_DATE="2022-12-31"
 INITIAL_FOLD=${SUB_OUT_DIR}/global/states/
 INITIAL_DATE="1981-12-31"
 SUB_OUT_DIR=${MAIN_OUTPUT_DIR}/begin_from_1981/
