@@ -1,6 +1,7 @@
 #!/bin/bash
 
 JOBNAME="mswep_pgb_uly_rerun_two_lcs_sqrt"
+JOBNAME="mswep_pgb_uly_rerun_two_lcs_sqrt_RERUN"
 LOGRECF="SQUARE_ROOT"
 
 JOBNAME=$1
@@ -40,7 +41,7 @@ SPINUP=$(sbatch -J "${SUB_JOBNAME}" --export INI_FILE="${SUB_INIFILE}",MAIN_OUTP
 
 # run for the period 1981-2019
 NUM_OF_YEARS_FOR_SPINUP="0"
-SUB_JOBNAME=${JOBNAME}_1981-2022
+SUB_JOBNAME=${JOBNAME}_1981-2019
 SUB_INIFILE=${WARMED_RUN_INI}
 STA_DATE="1981-01-01"
 END_DATE="2019-12-31"
