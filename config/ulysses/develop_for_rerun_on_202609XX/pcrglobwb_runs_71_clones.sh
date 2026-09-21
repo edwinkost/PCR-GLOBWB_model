@@ -27,19 +27,17 @@ LOG_10_MULTIPLIER_FOR_KSAT=${11}
 LOG_10_MULTIPLIER_FOR_RECESSION_COEFF=${12}
 NUM_OF_YEARS_FOR_SPINUP=${13}        
 
-#~ # on snellius
-#~ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/model/"
+# on snellius
+PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_uly_reruns/model/"
 
-# on eejit
-PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
+#~ # on eejit
+#~ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/model/"
 
-# load modules on eejit
-#~ . /quanta1/home/sutan101/load_my_miniconda_and_my_default_env.sh
-. /eejit/home/sutan101/load_default.sh
+#~ # load modules on eejit
+#~ . /eejit/home/sutan101/load_default.sh
 
-
-#~ # load modules on snellius
-#~ . /home/edwin/load_all_default.sh
+# load modules on snellius
+. /home/edwin/load_all_default.sh
 
 # - unset pcraster working threads
 unset PCRASTER_NR_WORKER_THREADS

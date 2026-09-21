@@ -1,16 +1,16 @@
 #!/bin/bash 
 #SBATCH -N 1
 
-#~ # on snellius
-#~ #SBATCH -n 96
-#~ #SBATCH -p genoa
-#~ #SBATCH -t 119:59:00
+# on snellius
+#SBATCH -n 96
+#SBATCH -p genoa
+#SBATCH -t 119:59:00
 #~ #SBATCH -t 59:00
 
-# on eejit
-#SBATCH -n 96
-#SBATCH -p defq
-#SBATCH --exclusive
+#~ # on eejit
+#~ #SBATCH -n 96
+#~ #SBATCH -p defq
+#~ #SBATCH --exclusive
 
 #SBATCH -J pgb_uly_spinup_and_actual_runs
 
@@ -30,7 +30,9 @@ set -x
 #~ INI_FILE=${SLURM_SUBMIT_DIR}/${INI_FILE}
 #~ INI_FOLDER="/home/edwin/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-11-15/"
 #~ INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_since_2023-12-XX/two_land_covers/"
-INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_for_rerun_on_202609XX/"
+#~ INI_FOLDER="/eejit/home/sutan101/github/edwinkost/PCR-GLOBWB_model/config/ulysses/develop_for_rerun_on_202609XX/"
+# - on snellius
+INI_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_uly_reruns/config/ulysses/develop_for_rerun_on_202609XX/"
 INI_FILE=${INI_FOLDER}/${INI_FILE}
 
 # set the output folder
