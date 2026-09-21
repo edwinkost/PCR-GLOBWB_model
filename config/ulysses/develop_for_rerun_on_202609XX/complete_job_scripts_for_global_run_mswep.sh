@@ -1,6 +1,6 @@
 #!/bin/bash
 
-JOBNAME="emearth_pgb_uly_rerun_two_lcs_sqrt"
+JOBNAME="mswep_pgb_uly_rerun_two_lcs_sqrt"
 LOGRECF="SQUARE_ROOT"
 
 JOBNAME=$1

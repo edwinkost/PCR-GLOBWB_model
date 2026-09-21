@@ -12,7 +12,10 @@ LOG_10_MULTIPLIER_FOR_KSAT="0.0"
 SPINUP_RUN_INI="setup_6arcmin_ulysses_2LCs_version_2023-12-14_w5e5.ini"
 WARMED_RUN_INI="setup_6arcmin_ulysses_2LCs_version_2023-12-14_w5e5.ini" 
 
-MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609XX/w5e5/"${JOBNAME}
+#~ MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609XX/w5e5/"${JOBNAME}
+
+# - on snellius
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/w5e5/"${JOBNAME}
 
 set -x
 
@@ -22,7 +25,9 @@ SUB_JOBNAME=${JOBNAME}_spinup_with_1981
 SUB_INIFILE=${SPINUP_RUN_INI}
 STA_DATE="1981-01-01"
 END_DATE="1981-12-31"
-INITIAL_FOLD="/scratch/depfg/sutan101/data/pcrglobwb_input_ulysses/initial_conditions/from_runs_created_in_january_2021/"
+#~ INITIAL_FOLD="/scratch/depfg/sutan101/data/pcrglobwb_input_ulysses/initial_conditions/from_runs_created_in_january_2021/"
+# - on snellius
+INITIAL_FOLD="/scratch-shared/edwin/data/pcrglobwb_input_ulysses/initial_conditions/from_runs_created_in_january_2021/"
 INITIAL_DATE="1981-12-31"
 SUB_OUT_DIR=${MAIN_OUTPUT_DIR}/_spinup/with_1981/
 
@@ -39,7 +44,7 @@ SPINUP=$(sbatch -J "${SUB_JOBNAME}" --export INI_FILE="${SUB_INIFILE}",MAIN_OUTP
 
 
 # run for the period 1981-2019
-NUM_OF_YEARS_FOR_SPINUP="0"
+NUM_OF_YEARS_FOR_SPINUP="5"
 SUB_JOBNAME=${JOBNAME}_1981-2019
 SUB_INIFILE=${WARMED_RUN_INI}
 STA_DATE="1981-01-01"
@@ -59,5 +64,5 @@ echo $FIRST
 
 sleep 3
 squeue
-squeue -u sutan101
+#~ squeue -u sutan101
 
