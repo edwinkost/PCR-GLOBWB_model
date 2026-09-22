@@ -1,5 +1,17 @@
 #!/bin/bash 
 
+#~ # load modules on Atos - the following works (and it was used by Robert UFZ)
+#~ module load python3/3.10.10-01 
+#~ module load pcraster/4.4.0-01 
+#~ module load gdal/3.6.2
+
+# load modules on eejit
+. load_default.sh
+
+# to speed up, using some cores/threads
+export OMP_NUM_THREADS=16
+export PCRASTER_NR_WORKER_THREADS=16
+
 # PCR-GLOBWB configuration (.ini) file that will be used  
 INI_FILE="setup_6min_global_watersis_v202609_develop.ini"
 DIR_INI_FILE=$(pwd)
