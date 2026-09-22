@@ -5,8 +5,8 @@
 #~ module load pcraster/4.4.0-01 
 #~ module load gdal/3.6.2
 
-#~ # load software on eejit
-#~ . load_default.sh
+# load software on eejit (somehow pcraster we have to use pcraster 4.3 if we want to use multicore)
+conda activate /eejit/home/hydrowld/opt/miniconda3/envs/pcrglobwb_python3_pcraster43_v2024-08-30
 
 # to speed up, using some cores/threads
 export OMP_NUM_THREADS=16
