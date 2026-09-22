@@ -54,9 +54,9 @@ DATE_FOR_INITIAL_STATES="1980-12-31"
 #~ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pre_0p1.nc"
 #~ TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/tas_day.nc"  
 #~ REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pet_hargreaves_samani_0p1.nc"  
-PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1980/01/pr_era5_mem_00_1980-01-01_1980-01-31_daily.nc"
-TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1980/01/tas_era5_mem_00_1980-01-01_1980-01-31_daily.nc"  
-REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1980/01/pet_era5_mem_00_1980-01-01_1980-01-31_daily.nc"  
+PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pr_era5_mem_00_1981-01-01_1981-01-31_daily.nc"
+TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/tas_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
+REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pet_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
 
 #~ cyes@ac6-194.bullx:/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1980/01$ ls -lah
 #~ total 1.2G
