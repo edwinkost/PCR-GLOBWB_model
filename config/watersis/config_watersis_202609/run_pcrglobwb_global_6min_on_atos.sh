@@ -58,21 +58,6 @@ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanal
 TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/tas_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
 REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pet_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
 
-#~ cyes@ac6-194.bullx:/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1980/01$ ls -lah
-#~ total 1.2G
-#~ dr-xr-sr-x+  2 nemk c3hygl 4.0K Aug 27 15:30 .
-#~ dr-xr-sr-x+ 14 nemk c3hygl 4.0K Aug 27 15:41 ..
-#~ -r-xr-xr-x+  1 nemk c3hygl 124M Aug 27 15:30 hurs_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 100M Aug 27 15:30 pet_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 123M Aug 27 15:30 pr_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 119M Aug 27 15:30 ps_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 124M Aug 27 15:30 rlds_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 111M Aug 27 15:30 rsds_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 141M Aug 27 15:30 sfcWind_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 109M Aug 27 15:30 tas_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 109M Aug 27 15:30 tasmax_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-#~ -r-xr-xr-x+  1 nemk c3hygl 110M Aug 27 15:30 tasmin_era5_mem_00_1980-01-01_1980-01-31_daily.nc
-
 # Directory containing the model script files
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/model/"
 
