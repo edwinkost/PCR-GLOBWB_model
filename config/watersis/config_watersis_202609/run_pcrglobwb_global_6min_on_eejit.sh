@@ -20,7 +20,7 @@ MAIN_INITIAL_STATE_FOLDER="/scratch/depfg/sutan101/data/pcrglobwb_input_watersis
 DATE_FOR_INITIAL_STATES="1980-12-31"   
 
 # Model input directory (containing model parameters)
-MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101/data/pcrglobwb_input_watersis/develop/"   
+MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101/data/pcrglobwb_input_watersis/develop/global_6min/"   
 
 # Forcing input directory
 #~ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pre_0p1.nc"
