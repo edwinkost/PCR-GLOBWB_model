@@ -54,9 +54,22 @@ DATE_FOR_INITIAL_STATES="1980-12-31"
 #~ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pre_0p1.nc"
 #~ TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/tas_day.nc"  
 #~ REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5_em_earth/2000/01/pet_hargreaves_samani_0p1.nc"  
-PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pr_era5_mem_00_1981-01-01_1981-01-31_daily.nc"
-TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/tas_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
-REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pet_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
+#~ PRECIPITATION_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pr_era5_mem_00_1981-01-01_1981-01-31_daily.nc"
+#~ TEMPERATURE_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/tas_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
+#~ REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysis/meteo/era5/mem_00/1981/01/pet_era5_mem_00_1981-01-01_1981-01-31_daily.nc"  
+
+#~ cyes@ac6-150.bullx:/home/cyes/C3SHydroGL/edwin/data/watersis_forcing/global/v20260813$ ls -lah
+#~ total 1.1T
+#~ drwxr-sr-x 2 cyes c3hygl 4.0K Aug 13 03:40 .
+#~ drwxr-sr-x 4 cyes c3hygl 4.0K Aug 13 00:35 ..
+#~ -rw-r--r-- 1 cyes c3hygl 353G Aug 13 01:56 global_pet_hargreaves_samani_0p1_v20260813.nc
+#~ -rw-r--r-- 1 cyes c3hygl 353G Aug 13 02:40 global_pre_0p1_v20260813.nc
+#~ -rw-r--r-- 1 cyes c3hygl 353G Aug 13 02:39 global_tas_day_0p1_v20260813.nc
+#~ -rw-r--r-- 1 cyes c3hygl  571 Aug 13 00:43 merging_global_forcing.sh
+#~ -rw-r--r-- 1 cyes c3hygl  123 Aug 13 03:40 rsync_to_eejit.sh
+PRECIPITATION_FORCING_FILE="/home/cyes/C3SHydroGL/edwin/data/watersis_forcing/global/v20260813/global_pre_0p1_v20260813.nc"
+TEMPERATURE_FORCING_FILE="/home/cyes/C3SHydroGL/edwin/data/watersis_forcing/global/v20260813/global_tas_day_0p1_v20260813.nc"  
+REF_POT_ET_FORCING_FILE="/home/cyes/C3SHydroGL/edwin/data/watersis_forcing/global/v20260813/global_pet_hargreaves_samani_0p1_v20260813.nc"  
 
 # Directory containing the model script files
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/model/"
