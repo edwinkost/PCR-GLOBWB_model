@@ -12,12 +12,7 @@
 # A one-month global 6min run (with this configuration) should take less than 15 mins.
 #~ #SBATCH --time=15:00
 
-#~ # load modules on Atos - using pcraster 4.4.1-01 (may24)
-#~ module load python3/3.11.8-01
-#~ module load pcraster/4.4.1-01 
-#~ module load gdal/3.8.4
-
-# load modules on Atos - the following works (and it was used by Robert UFZ)
+# load modules on Atos - the following works (and it was used by Robert UFZ), note that the other pcraster versions above the following do not work with multicore
 module load python3/3.10.10-01 
 module load pcraster/4.4.0-01 
 module load gdal/3.6.2
@@ -85,7 +80,8 @@ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/mode
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
 
 # run the model
-python3 deterministic_runner_ulysses.py ${INI_FILE} no-debug  \
+#~ python3 deterministic_runner_ulysses.py ${INI_FILE} no-debug  \
+python3 deterministic_runner_ulysses.py ${INI_FILE} debug  \
 -mod     ${MAIN_OUTPUT_DIRECTORY}      \
 -mid     ${MAIN_INPUT_DIRECTORY}       \
 -sd      ${STARTING_DATE}              \
