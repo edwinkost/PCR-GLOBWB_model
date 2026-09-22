@@ -32,7 +32,8 @@ DIR_INI_FILE=$(pwd)
 INI_FILE=${DIR_INI_FILE}/${INI_FILE}
 
 # Output directory  
-MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_pgb_6min_202609/test/"     
+#~ MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_pgb_6min_202609/test/"     
+MAIN_OUTPUT_DIRECTORY="/lus/h2resw01/fws4/sb/project/C3SHydroGL/edwin/test_pgb_6min_202609/test_with_pcraster_4.4.1/"     
 
 # Model input directory (containing model parameters)
 #~ MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101/data/pcrglobwb_input_watersis/develop/global_6min/"   
