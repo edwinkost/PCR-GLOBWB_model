@@ -12,10 +12,15 @@
 # A one-month global 6min run (with this configuration) should take less than 15 mins.
 #~ #SBATCH --time=15:00
 
-# load modules on Atos - the following works (and it was used by Robert UFZ), note that the other pcraster versions above the following do not work with multicore
-module load python3/3.10.10-01 
-module load pcraster/4.4.0-01 
-module load gdal/3.6.2
+#~ # load modules on Atos - the following works (and it was used by Robert UFZ), note that the other pcraster versions above the following do not work with multicore
+#~ module load python3/3.10.10-01 
+#~ module load pcraster/4.4.0-01 
+#~ module load gdal/3.6.2
+
+# load modules on Atos - using pcraster 4.4.1-01 (may24)
+module load python3/3.11.8-01
+module load pcraster/4.4.1-01 
+module load gdal/3.8.4
 
 # to speed up, using some cores/threads
 export OMP_NUM_THREADS=16
