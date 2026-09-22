@@ -79,8 +79,7 @@ REF_POT_ET_FORCING_FILE="/ec/fws4/sb/project/C3SHydroGL/phase_3/global/reanalysi
 #~ -r-xr-xr-x+  1 nemk c3hygl 110M Aug 27 15:30 tasmin_era5_mem_00_1980-01-01_1980-01-31_daily.nc
 
 # Directory containing the model script files
-#~ PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/model/"
-PCRGLOBWB_MODEL_SCRIPT_FOLDER="/eejit/home/sutan101/gits/github/edwinkost/PCR-GLOBWB_model/model/"
+PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/cyes/github/edwinkost/PCR-GLOBWB_model/model/"
 
 # go to the folder that contain PCR-GLOBWB model script file
 cd ${PCRGLOBWB_MODEL_SCRIPT_FOLDER}
