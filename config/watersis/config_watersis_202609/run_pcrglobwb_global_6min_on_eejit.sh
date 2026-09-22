@@ -5,7 +5,7 @@
 #~ module load pcraster/4.4.0-01 
 #~ module load gdal/3.6.2
 
-#~ # load modules on eejit
+#~ # load software on eejit
 #~ . load_default.sh
 
 # to speed up, using some cores/threads
