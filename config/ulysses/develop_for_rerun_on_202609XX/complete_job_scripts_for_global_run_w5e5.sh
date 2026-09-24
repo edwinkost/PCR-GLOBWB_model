@@ -14,8 +14,9 @@ WARMED_RUN_INI="setup_6arcmin_ulysses_2LCs_version_2023-12-14_w5e5.ini"
 
 #~ MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609XX/w5e5/"${JOBNAME}
 
-# - on snellius
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/w5e5/"${JOBNAME}
+# - on snellius 
+#~ MAIN_OUTPUT_DIR="/scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/w5e5/"${JOBNAME}
+MAIN_OUTPUT_DIR="/scratch-shared/hydrowld/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/w5e5/"${JOBNAME}
 
 set -x
 
