@@ -12,5 +12,5 @@ PCRGLOBWB_CONFIG="/scratch/sutan101/debug_multicores/PCR-GLOBWB_model/config/deb
 # Please make sure that you have the write permission to the following
 PCRGLOBWB_OUTPUT_FOLDER="/scratch/sutan101/test_debug_multicores/"
 
-export PCRASTER_NR_WORKER_THREADS=4
+#~ export PCRASTER_NR_WORKER_THREADS=4
 python ${PCRGLOBWB_RUNNER} ${PCRGLOBWB_CONFIG} debug -mod ${PCRGLOBWB_OUTPUT_FOLDER}
