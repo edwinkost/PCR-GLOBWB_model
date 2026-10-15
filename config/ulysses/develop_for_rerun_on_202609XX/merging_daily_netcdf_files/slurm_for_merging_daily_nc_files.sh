@@ -25,10 +25,10 @@ set -x
 
 MERGING_PYTHON_SCRIPT="/home/edwingwt/gits/github/edwinkost/PCR-GLOBWB_model/model/merge_netcdf_6_arcmin_ulysses.py"
 
-FORCING_NAME="emearth"
+FORCING_NAME=${FORCING_NAME}
 
-FIRST_YEAR=1981
-LAST_YEAR=2019
+FIRST_YEAR=${FIRST_YEAR}
+LAST_YEAR=${LAST_YEAR}
 
 for YEAR in $(seq "$FIRST_YEAR" "$LAST_YEAR"); do
 
