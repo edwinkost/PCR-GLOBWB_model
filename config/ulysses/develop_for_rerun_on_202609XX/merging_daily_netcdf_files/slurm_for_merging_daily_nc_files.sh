@@ -51,6 +51,7 @@ done
 
 wait
 
+exit
 
 set +x
 
