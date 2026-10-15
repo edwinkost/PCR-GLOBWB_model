@@ -36,7 +36,7 @@ for YEAR in $(seq "$FIRST_YEAR" "$LAST_YEAR"); do
 
     #~ python merge_netcdf_6_arcmin_ulysses.py /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/emearth/emearth_pgb_uly_rerun_two_lcs_sqrt/begin_from_1981 /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/emearth/emearth_pgb_uly_rerun_two_lcs_sqrt/merged_daily_test/ outDailyTotNC 1981-01-01 1981-12-31 ulyssesP,ulyssesET,ulyssesSWE,ulyssesQsm,ulyssesSM,ulyssesQrRunoff,ulyssesDischarge,ulyssessRefPET,ulyssessCropPET,ulyssesSnowFraction,ulyssesSMUpp,temperature,totalWaterStorageThickness NETCDF4 True 2 Global FUFZ &
 
-    python ${MERGING_PYTHON_SCRIPT} /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/begin_from_1981/ /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/merged_daily/ outDailyTotNC ${YEAR}-01-01 ${YEAR}-12-31 ulyssesQrRunoff,ulyssesDischarge,ulyssesET NETCDF4 True 3 Global FUFZ & 
+    python ${MERGING_PYTHON_SCRIPT} /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/begin_from_1981/ /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/merged_daily/ outDailyTotNC ${YEAR}-01-01 ${YEAR}-12-31 ulyssesQrRunoff,ulyssesDischarge,ulyssesET,totalWaterStorageThickness NETCDF4 True 6 Global FUFZ & 
 
 done
 
@@ -45,11 +45,18 @@ wait
 
 for YEAR in $(seq "$FIRST_YEAR" "$LAST_YEAR"); do
 
-    python ${MERGING_PYTHON_SCRIPT} /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/begin_from_1981/ /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/merged_daily/ outDailyTotNC ${YEAR}-01-01 ${YEAR}-12-31 ulyssesP,ulyssessRefPET,ulyssessCropPET,temperature,ulyssesSWE,ulyssesQsm,ulyssesSM,ulyssesSnowFraction,ulyssesSMUpp,totalWaterStorageThickness NETCDF4 True 4 Global FUFZ & 
+    python ${MERGING_PYTHON_SCRIPT} /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/begin_from_1981/ /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/merged_daily/ outDailyTotNC ${YEAR}-01-01 ${YEAR}-12-31 ulyssesP,ulyssessRefPET,ulyssessCropPET,temperature NETCDF4 True 6 Global FUFZ & 
 
 done
 
 wait
+
+
+for YEAR in $(seq "$FIRST_YEAR" "$LAST_YEAR"); do
+
+    python ${MERGING_PYTHON_SCRIPT} /scratch-shared/edwin/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/begin_from_1981/ /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/merged_daily/ outDailyTotNC ${YEAR}-01-01 ${YEAR}-12-31 ulyssesSWE,ulyssesSnowFraction,ulyssesQsm,ulyssesSM,ulyssesSMUpp NETCDF4 True 6 Global FUFZ & 
+
+done
 
 exit
 
