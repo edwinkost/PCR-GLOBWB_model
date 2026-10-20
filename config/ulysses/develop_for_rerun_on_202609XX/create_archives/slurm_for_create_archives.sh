@@ -17,6 +17,8 @@
 
 #SBATCH --export FORCING_NAME="ERA5"
 
+set -x
+
 MAIN_FOLDER="/projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609_to_archive/"
 cd ${MAIN_FOLDER}
 
@@ -39,6 +41,8 @@ ln -s /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609
 7za l analysis.7z > 7za_l_analysis.7z.txt
 
 tree > tree.txt
+
+set +x
 
 exit
 
