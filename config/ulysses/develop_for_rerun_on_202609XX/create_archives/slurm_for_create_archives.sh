@@ -20,10 +20,11 @@
 MAIN_FOLDER="/projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609_to_archive/"
 cd ${MAIN_FOLDER}
 
-FORCING_NAME=${FORCING_NAME}$
+FORCING_NAME=${FORCING_NAME}
 
-mkdir ${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt
-cd ${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt
+OUTPUT_FOLDER=${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt
+mkdir ${OUTPUT_FOLDER}
+cd ${OUTPUT_FOLDER}
 
 ln -s /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609/${FORCING_NAME}/${FORCING_NAME}_pgb_uly_rerun_two_lcs_sqrt/merged_daily begin_from_1981_global_netcdf_daily
 
@@ -38,3 +39,6 @@ ln -s /projects/0/prjs1222/edwingwt/pcrglobwb_ulysses_2023-12-XX_rerun_on_202609
 7za l analysis.7z > 7za_l_analysis.7z.txt
 
 tree > tree.txt
+
+exit
+
