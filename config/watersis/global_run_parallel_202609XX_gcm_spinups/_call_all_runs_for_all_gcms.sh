@@ -1,5 +1,18 @@
 
-bash complete_job_scripts_for_a_global_run.sh ACCESS_CM2
+#~ bash complete_job_scripts_for_a_global_run.sh ACCESS_CM2
+bash complete_job_scripts_for_a_global_run.sh AWI_CM_1_1_MR
+bash complete_job_scripts_for_a_global_run.sh CNRM_CM6_1
+bash complete_job_scripts_for_a_global_run.sh EC_Earth3_Veg
+bash complete_job_scripts_for_a_global_run.sh GFDL_ESM4
+bash complete_job_scripts_for_a_global_run.sh INM_CM4_8
+bash complete_job_scripts_for_a_global_run.sh INM_CM5_0
+bash complete_job_scripts_for_a_global_run.sh IPSL_CM6A_LR
+bash complete_job_scripts_for_a_global_run.sh MIROC6
+bash complete_job_scripts_for_a_global_run.sh MIROC_ES2L
+bash complete_job_scripts_for_a_global_run.sh MPI_ESM1_2_HR
+bash complete_job_scripts_for_a_global_run.sh MPI_ESM1_2_LR
+bash complete_job_scripts_for_a_global_run.sh MRI_ESM2_0
+bash complete_job_scripts_for_a_global_run.sh NorESM2_MM
 
 #~ cyes@ac6-115.bullx:/ec/fws4/sb/project/C3SHydroGL/edwin/data/watersis_historical_gcms/global/v20261026$ ls -lah
 #~ total 64K
