@@ -11,7 +11,7 @@ MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_v202609_for_gcm_spinups_runs_on_
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/model/"
 
-SPINUP_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202609XX_gcm_spinups/setup_6min_global_watersis_develop_since_oct_2026.ini"
+SPINUP_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202609XX_gcm_spinups/setup_6min_global_watersis_develop_since_oct_2026_without_daily_for_spinups.ini"
 WARMED_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202609XX_gcm_spinups/setup_6min_global_watersis_develop_since_oct_2026.ini" 
 
 #~ MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   

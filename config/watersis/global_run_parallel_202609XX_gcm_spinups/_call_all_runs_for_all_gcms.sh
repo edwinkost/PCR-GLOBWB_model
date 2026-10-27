@@ -1,5 +1,5 @@
 
-#~ bash complete_job_scripts_for_a_global_run.sh ACCESS_CM2
+bash complete_job_scripts_for_a_global_run.sh ACCESS_CM2
 bash complete_job_scripts_for_a_global_run.sh AWI_CM_1_1_MR
 bash complete_job_scripts_for_a_global_run.sh CNRM_CM6_1
 bash complete_job_scripts_for_a_global_run.sh EC_Earth3_Veg
