@@ -1,16 +1,16 @@
 #!/bin/bash 
 #SBATCH -N 1
 
-#~ # on snellius
-#~ #SBATCH -n 96
-#~ #SBATCH -p genoa
-#~ #SBATCH -t 119:59:00
+# on snellius
+#SBATCH -n 96
+#SBATCH -p genoa
+#SBATCH -t 119:59:00
 #~ #SBATCH -t 59:00
 
-# on eejit
-#SBATCH -n 96
-#SBATCH -p defq
-#SBATCH --exclusive
+#~ # on eejit
+#~ #SBATCH -n 96
+#~ #SBATCH -p defq
+#~ #SBATCH --exclusive
 
 #SBATCH -J pgb_watersis_spinup_and_actual_runs
 
