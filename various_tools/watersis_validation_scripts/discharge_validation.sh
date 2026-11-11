@@ -12,9 +12,15 @@
 
 set -x
 
-MODEL_OUTPUT_DIR=YOUR_PATH #/lus/h1resw01/project/C3SHydroGL.addendum/europe/reanalysis/experiment/era5_v4/ecland/output/mem_00/
-EVALUATION_OUTPUT_DIR=/scratch/$USER/validation_europe/discharge2
-START_YEAR=1980 # 1985 if you want to skip the first 5 years of spinup
+#~ MODEL_OUTPUT_DIR=YOUR_PATH #/lus/h1resw01/project/C3SHydroGL.addendum/europe/reanalysis/experiment/era5_v4/ecland/output/mem_00/
+#~ EVALUATION_OUTPUT_DIR=/scratch/$USER/validation_europe/discharge2
+#~ START_YEAR=1980 # 1985 if you want to skip the first 5 years of spinup
+
+MODEL_OUTPUT_DIR="/scratch/cyes/c3s_hydro_reanalysis_run_europe/final_output/reanalysis/experiment/era5_v0/pcr_globwb/output/mem_00/"
+EVALUATION_OUTPUT_DIR=/scratch/$USER/validation_europe/discharge/
+
+START_YEAR=1990
+
 NCPUS=8
 
 cd $MODEL_OUTPUT_DIR
