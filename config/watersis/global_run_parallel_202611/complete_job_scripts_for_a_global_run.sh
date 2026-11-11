@@ -7,13 +7,13 @@ JOBNAME="pgb_6min"
 set -x
 
 #~ MAIN_OUTPUT_DIR="/scratch/depfg/sutan101/watersis_runs_202609XX/global_6min_with_watersis_forcing_with_parallel_v20260905_using_pcraster4.4.1_25_year_spinup/"${JOBNAME}"/"
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_runs_202611/global_6min_with_watersis_forcing_reanalysis_v20261110/"${JOBNAME}"/"
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_runs_202611/global_6min_with_watersis_forcing_reanalysis_v20261111/"${JOBNAME}"/"
 
 PCRGLOBWB_MODEL_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_reanalysis"
 PCRGLOBWB_MODEL_SCRIPT_FOLDER=${PCRGLOBWB_MODEL_FOLDER}"/model/"
 
-SPINUP_RUN_INI=${PCRGLOBWB_MODEL_FOLDER}"/config/watersis/global_run_parallel_202611/setup_6min_global_watersis_develop_since_sep_2026.ini"
-WARMED_RUN_INI=${PCRGLOBWB_MODEL_FOLDER}"/config/watersis/global_run_parallel_202611/setup_6min_global_watersis_develop_since_sep_2026.ini" 
+SPINUP_RUN_INI=${PCRGLOBWB_MODEL_FOLDER}"/config/watersis/global_run_parallel_202611/setup_6min_global_watersis_develop_since_nov_2026.ini"
+WARMED_RUN_INI=${PCRGLOBWB_MODEL_FOLDER}"/config/watersis/global_run_parallel_202611/setup_6min_global_watersis_develop_since_nov_2026.ini" 
 
 #~ MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   
 MAIN_INPUT_DIRECTORY="/scratch-shared/edwin/data/pcrglobwb_input_watersis/release/global_6min_v20260922/"
