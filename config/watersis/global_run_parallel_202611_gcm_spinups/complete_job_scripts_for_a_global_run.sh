@@ -7,12 +7,12 @@ JOBNAME=${GCMNAME}
 
 set -x
 
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_v202609_for_gcm_spinups_runs_on_20261026/"${JOBNAME}"/"
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_v202611_for_gcm_spinups_runs_on_20261111/"${JOBNAME}"/"
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/model/"
 
-SPINUP_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202609XX_gcm_spinups/setup_6min_global_watersis_develop_since_oct_2026_without_daily_for_spinups.ini"
-WARMED_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202609XX_gcm_spinups/setup_6min_global_watersis_develop_since_oct_2026.ini" 
+SPINUP_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202611_gcm_spinups/setup_6min_global_watersis_develop_since_nov_2026.ini"
+WARMED_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202611_gcm_spinups/setup_6min_global_watersis_develop_since_nov_2026.ini" 
 
 #~ MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   
 MAIN_INPUT_DIRECTORY="/scratch-shared/edwin/data/pcrglobwb_input_watersis/release/global_6min_v20260922/"   
@@ -21,17 +21,9 @@ MAIN_INPUT_DIRECTORY="/scratch-shared/edwin/data/pcrglobwb_input_watersis/releas
 #~ TEMPERATURE_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260813/global_tas_day_0p1_v20260813.nc"  
 #~ REF_POT_ET_FORCING_FILE="/scratch/depfg/sutan101/data/watersis_forcing/global/v20260813/global_pet_hargreaves_samani_0p1_v20260813.nc"   
 
-PRECIPITATION_FORCING_FILE="/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261026_only1951/"${GCMNAME}"/pr_"${GCMNAME}"_1951_daily.nc"
-TEMPERATURE_FORCING_FILE="/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261026_only1951/"${GCMNAME}"/tas_"${GCMNAME}"_1951_daily.nc"  
-REF_POT_ET_FORCING_FILE="/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261026_only1951/"${GCMNAME}"/pet_"${GCMNAME}"_1951_daily.nc"   
-
-#~ edwin@tcn530.local.snellius.surf.nl:/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261026_only1951$ ls -lah ACCESS_CM2/
-#~ total 21G
-#~ drwxr-xr-x+  2 edwin edwin 4.0K Oct 26 13:29 .
-#~ drwxr-xr-x+ 16 edwin edwin 4.0K Oct 26 13:14 ..
-#~ -rw-r--r--.  1 edwin edwin 6.9G Oct 26 13:20 pet_ACCESS_CM2_1951_daily.nc
-#~ -rw-r--r--.  1 edwin edwin 6.9G Oct 26 13:25 pr_ACCESS_CM2_1951_daily.nc
-#~ -rw-r--r--.  1 edwin edwin 6.9G Oct 26 13:29 tas_ACCESS_CM2_1951_daily.nc
+PRECIPITATION_FORCING_FILE="/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261111_only1951/"${GCMNAME}"/pr_"${GCMNAME}"_1951_daily.nc"
+TEMPERATURE_FORCING_FILE="/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261111_only1951/"${GCMNAME}"/tas_"${GCMNAME}"_1951_daily.nc"  
+REF_POT_ET_FORCING_FILE="/scratch-shared/edwin/data/watersis_historical_gcms/global/v20261111_only1951/"${GCMNAME}"/pet_"${GCMNAME}"_1951_daily.nc"   
 
 
 # spin up run
