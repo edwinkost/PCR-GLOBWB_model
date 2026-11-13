@@ -7,7 +7,7 @@ JOBNAME=${GCMNAME}
 
 set -x
 
-MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_v202611_for_gcm_spinups_runs_on_20261111/"${JOBNAME}"/"
+MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_v202611_for_gcm_spinups_runs_on_20261113/"${JOBNAME}"/"
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/model/"
 
