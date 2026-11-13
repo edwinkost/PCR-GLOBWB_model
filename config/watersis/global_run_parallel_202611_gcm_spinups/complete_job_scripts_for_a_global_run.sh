@@ -11,7 +11,7 @@ MAIN_OUTPUT_DIR="/scratch-shared/edwin/watersis_v202611_for_gcm_spinups_runs_on_
 
 PCRGLOBWB_MODEL_SCRIPT_FOLDER="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/model/"
 
-SPINUP_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202611_gcm_spinups/setup_6min_global_watersis_develop_since_nov_2026.ini"
+SPINUP_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202611_gcm_spinups/setup_6min_global_watersis_develop_since_nov_2026_without_daily_output_for_spinup.ini"
 WARMED_RUN_INI="/home/edwin/gits/github/edwinkost/PCR-GLOBWB_model_for_watersis_gcm_spinups/config/watersis/global_run_parallel_202611_gcm_spinups/setup_6min_global_watersis_develop_since_nov_2026.ini" 
 
 #~ MAIN_INPUT_DIRECTORY="/scratch/depfg/sutan101_new/pcrglobwb_input_watersis/develop/global_6min/"   
@@ -33,7 +33,7 @@ SUB_INIFILE=${SPINUP_RUN_INI}
 STA_DATE="1951-01-01"
 END_DATE="1951-12-31"
 #~ INITIAL_FOLD="dummy_initial_conditions/"
-INITIAL_FOLD="/scratch-shared/edwin/data/watersis_initial_conditions_for_spinup_historical_gcms/v20261026/"
+INITIAL_FOLD="/scratch-shared/edwin/data/watersis_initial_conditions_for_spinup_historical_gcms/v20261113/"
 INITIAL_DATE="2019-12-31"
 SUB_OUT_DIR=${MAIN_OUTPUT_DIR}/_spinup/with_1951/
 
